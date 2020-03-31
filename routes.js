@@ -1,0 +1,11 @@
+const routes = require('next-routes')
+
+module.exports = routes()
+.add('marketplace', '/(|marketplace?)/:algorithm?')
+.add('addminers', '/addminers')
+.add('invoice', '/invoice/id/:bidid')
+.add('editstratum', '/editstratum/id/:bidid')
+.add('editoffer', '/editoffer/id/:offerid')
+.add('profile', '/profile/:sellorders?')
+.add('sell', '/sell')
+.add('stratum', '/stratum')

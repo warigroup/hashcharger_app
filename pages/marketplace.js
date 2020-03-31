@@ -1,0 +1,1887 @@
+import React from "react";
+import PublicRoute from "../components/routes/PublicRoute";
+import { connect } from "react-redux";
+import {
+  resetErrors,
+  logoutUser,
+  takeOffer,
+  clearNetwork,
+  clearCurrentProfile,
+  clearPaymentInfo,
+  clearAlert,
+  redirectErrorMessage,
+  getCurrentProfile,
+  marketplacePage,
+  formSubmission,
+  enableNavigation,
+  timeoutError,
+  timeoutReset,
+  algoSelect, 
+  getStratumList, 
+  fiatOrder } from "../actions/warihashApiCalls";
+import { FaRegClock, FaPhone, FaEnvelope, FaPen, FaBitcoin, FaQuestionCircle } from "react-icons/fa";
+import { TiFlash } from "react-icons/ti";
+import { Router } from "../routes";
+import MiningAlgoDropDown from "../components/tools/MiningAlgoDropDown";
+import CurrencyDropDown from "../components/tools/CurrencyDropDown";
+import PropTypes from "prop-types";
+import NProgress from "nprogress";
+import CSRFToken from "../utils/csrftoken";
+import Cookies from "js-cookie";
+import { maintenanceMode, googleAnalytics, algorithms, minerLocations } from "../settings";
+import PaymentRate from "../components/tools/PaymentRate";
+import Head from "next/head";
+import {
+  WAIT_ALERT,
+  TIMEOUT_DURATION
+} from "../utils/timeout-config";
+import { csrfcookie } from "../utils/cookieNames";
+import ThreeDotsLoading from "../components/tools/ThreeDotsLoading";
+import SweetAlert from "react-bootstrap-sweetalert";
+var Scroll = require('react-scroll');
+var scroll = Scroll.animateScroll;
+
+class Marketplace extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      hashrate: "",
+      hashrate_fiat: "",
+      hashrate_units: "",
+      hashrate_units_fiat: "",
+      mining_algo: "",
+      tag: " ",
+      host: "",
+      port: "",
+      duration: "",
+      duration_example: "",
+      discount_code: "",
+      limit_price: "",
+      durationClicked: false,
+      username: "",
+      password: "",
+      stratum_id: "",
+      currency: "BTC",
+      location: "NA East",
+      networkerror: "",
+      stratum_info: [],
+      email: "", 
+      name_or_company: "", 
+      phone_number: "",
+      duration_days: "",
+      hideDiscount: false,
+      loading: false,
+      hashratefocus: false,
+      durationfocus: false,
+      emailfocus: false,
+      pricefocus: false,
+      nameorcompanyfocus: false,
+      durationdaysfocus: false,
+      phonenumberfocus: false,
+      discountfocus: false,
+      formloading: false,
+      menuOpen: false,
+      checked: false
+    };
+    this.timer = null;
+  }
+
+  static async getInitialProps(props) {
+    return props.query;
+  };    
+
+  componentDidMount() {
+    if (maintenanceMode === "true") {
+      this.props.logoutUser();
+    };
+    
+    const algocookie = Cookies.get("algo_select");
+    if(algocookie !== undefined && this.props.algorithm === undefined && 
+      algorithms.includes(algocookie) === true) {
+      this.props.algoSelect(algocookie);
+      const hashunits= ((this.props.configs || {})[algocookie] || {}).hashrate_units;
+      this.setState({ hashrate_units: hashunits, mining_algo: algocookie });
+      this.selectFirstRegion(algocookie);
+    };
+    if (algocookie === undefined && this.props.algorithm === undefined) {
+      this.props.algoSelect(this.props.miningalgo.algorithm);
+      const hashunits = ((this.props.configs || {})[this.props.miningalgo.algorithm] || {}).hashrate_units;
+      this.setState({ hashrate_units: hashunits, mining_algo: this.props.miningalgo.algorithm });
+      this.selectFirstRegion("sha256d");
+    };
+
+    // user enters random string to url
+    if (
+      this.props.algorithm !== "" &&
+      this.props.algorithm !== undefined &&
+      algorithms.includes(this.props.algorithm) === false
+    ) {
+      Router.pushRoute('/404')
+    };
+    // user enters valid algo to url
+    if (this.props.algorithm !== undefined && 
+      algorithms.includes(this.props.algorithm) === true) {
+      this.props.algoSelect(this.props.algorithm);
+      const algorithm = this.props.algorithm;
+      const hashunits = ((this.props.configs || {})[this.props.algorithm] || {}).hashrate_units;
+      this.setState({ hashrate_units: hashunits, mining_algo: algorithm });
+    };
+
+    this.props.timeoutReset();
+    this.props.marketplacePage();
+
+      this.props.clearPaymentInfo();
+ 
+    scroll.scrollToTop({ duration: 200 });
+    this.props.clearNetwork();
+    this.props.resetErrors();
+    Cookies.remove("markethistory_page");
+    Cookies.remove("page_number");
+  };
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.errors !== this.props.errors &&
+      this.props.errors.errors === undefined) {
+      this.setState({ formloading: false });
+      NProgress.done();
+      this.props.enableNavigation();
+    };
+    if (prevProps.configs !== this.props.configs) {
+        this.setState({ hashrate_units: (this.props.configs[this.props.miningalgo.algorithm] || {}).hashrate_units });
+        if (this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location].min_order_hashrate[0].min) === null) {
+          this.setState({ duration: 25, duration_example: 25 });
+        };
+        if (this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location].min_order_hashrate[0].min) !== null){
+          this.setState({ duration:  parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].min_order_duration_min) / 60), 
+            duration_example: parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].min_order_duration_min) / 60) });
+        };
+    };
+    if (
+      this.props.errors.alertnow === "alertnow" &&
+      prevProps.errors.alertnow !== "alertnow"
+    ) {
+      NProgress.done();
+      this.props.enableNavigation();
+      this.setState({ networkerror: "", formloading: false });
+    };
+    if (
+      this.props.errors.alertnow === "fiat_form_submitted" &&
+      prevProps.errors.alertnow !== "fiat_form_submitted"
+    ) {
+      NProgress.done();
+      this.props.enableNavigation();
+      setTimeout(() => {
+        this.successAlert();
+        this.setState({ networkerror: "", formloading: false });
+      }, WAIT_ALERT);
+    };
+    if(this.props.payment !== prevProps.payment && 
+      this.props.payment.bid_id !== undefined) {
+      if (googleAnalytics === "on") {
+        window.gtag('event', 'conversion', 
+        { 'send_to': 'AW-693268366/0QwACN7PnrYBEI7fycoC', 
+        'transaction_id': `${this.props.payment.bid_id}` });
+
+        window.ga('send', {
+          hitType: 'event',
+          eventCategory: 'marketplace',
+          eventAction: 'invoice',
+          eventLabel: 'Marketplace Events'
+        });
+      };
+      Router.pushRoute(`/invoice/id/${this.props.payment.bid_id}`);
+    };
+    if (
+      this.props.errors.detail ===
+      "CSRF Failed: CSRF token missing or incorrect." &&
+      prevProps.errors.detail !==
+      "CSRF Failed: CSRF token missing or incorrect."
+    ) {
+      Cookies.remove(csrfcookie);
+      this.props.enableNavigation();
+      this.props.redirectErrorMessage();
+      this.props.clearCurrentProfile();
+      this.props.logoutUser();
+    };
+    if (
+      (this.props.network.networkstatus === 500) &
+      (prevProps.network.networkstatus !== 500)
+    ) {
+      NProgress.done();
+      this.props.enableNavigation();
+      this.setState({
+        networkerror: "Failed for unknown reason. Contact info@warihash.com",
+        formloading: false
+      });
+    };
+    if (
+      this.props.network.networkstatus === 401 &&
+      prevProps.network.networkstatus !== 401
+    ) {
+      this.props.redirectErrorMessage();
+      this.props.clearCurrentProfile();
+      this.props.logoutUser();
+    };
+    // clean up settimeout function
+    clearTimeout(this.timer);
+  };
+
+  componentWillUnmount() {
+    // clean up settimeout function
+    clearTimeout(this.timer);
+    this.props.resetErrors();
+  };
+
+  handleHashrateFocus = () => this.setState({ hashratefocus: true });
+  handleHashrateBlur = () => this.setState({ hashratefocus: false });
+  handleDurationFocus = () => this.setState({ durationfocus: true, durationClicked: true });
+  handleDurationBlur = () => this.setState({ durationfocus: false });
+  handleDurationDaysFocus = () => this.setState({ durationdaysfocus: true });
+  handleDurationDaysBlur = () => this.setState({ durationdaysfocus: false });
+  handleEmailFocus = () => this.setState({ emailfocus: true });
+  handleEmailBlur = () => this.setState({ emailfocus: false });
+  handleNameOrCompanyFocus = () => this.setState({ nameorcompanyfocus: true });
+  handleNameOrCompanyBlur = () => this.setState({ nameorcompanyfocus: false });
+  handlePhoneNumberFocus = () => this.setState({ phonenumberfocus: true });
+  handlePhoneNumberBlur = () => this.setState({ phonenumberfocus: false });
+  handleDiscountFocus = () => this.setState({ discountfocus: true });
+  handleDiscountBlur = () => this.setState({ discountfocus: false });
+  handlePriceFocus = () => this.setState({ pricefocus: true });
+  handlePriceBlur = () => this.setState({ pricefocus: false });  
+
+  handleCheck = () => this.setState({ checked: !this.state.checked, limit_price: "" });
+
+  handleSubmit = event => {
+    event.preventDefault();
+    const durationInMinutes = this.state.duration * 60;
+    this.setState({ formloading: true });
+    NProgress.start();
+    this.props.resetErrors();
+    this.props.formSubmission();
+    this.props.timeoutReset();
+    this.props.takeOffer(
+      this.state.hashrate,
+      this.state.hashrate_units,
+      this.state.mining_algo,
+      durationInMinutes,
+      this.state.host,
+      this.state.port,
+      this.state.username,
+      this.state.password,
+      this.state.location
+    );
+    this.timer = setTimeout(() => {
+      NProgress.done();
+      this.setState({ formloading: false });
+      this.props.enableNavigation();
+      if (!this.props.errors) {
+        this.props.timeoutError();
+      }
+    }, TIMEOUT_DURATION);
+    Cookies.remove("saved_data");
+  };
+
+  handleChange = event => {
+    const itemName = event.target.name;
+    const itemValue = event.target.value;
+    this.setState({ [itemName]: itemValue });
+  };
+
+  handleSelect = event => {
+    this.setState({ stratum_id: event.target.value });
+    this.selectStratumSetting(event.target.value);
+  };
+
+  selectStratumSetting = stratum_id => {
+     const filteredStratum = this.props.stratum.stratum_list.find((stratum_setting) => {
+        return stratum_setting.stratum_id == stratum_id;
+      });
+      if (filteredStratum !== undefined) {
+      this.setState({ 
+        host: filteredStratum.stratum_host,
+        port: filteredStratum.stratum_port,
+        username: filteredStratum.stratum_username,
+        password: filteredStratum.stratum_password
+      });
+      }
+      if (filteredStratum === undefined) {
+        this.setState({ 
+          host: "",
+          port: "",
+          username: "",
+          password: ""
+        });
+       }
+  };
+
+    /// SUBMIT FIAT ORDER //////////////////////
+    submitFiatOrder = event => {
+      event.preventDefault();
+      this.setState({ formloading: true });
+      NProgress.start();
+      this.props.resetErrors();
+      this.props.formSubmission();
+      this.props.timeoutReset();
+      this.props.fiatOrder(
+        this.state.mining_algo, 
+        this.state.email, 
+        this.state.name_or_company, 
+        this.state.phone_number, 
+        this.state.duration_days, 
+        this.state.hashrate_fiat, 
+        this.state.hashrate_units_fiat
+      );
+      this.timer = setTimeout(() => {
+        NProgress.done();
+        this.setState({ formloading: false });
+        this.props.enableNavigation();
+        if (!this.props.errors) {
+          this.props.timeoutError();
+        }
+      }, TIMEOUT_DURATION);
+      Cookies.remove("saved_data");
+    };
+
+      /// SUCCESS ALERT ////////////////////////////
+      successAlert = () => {
+        const successAlert = (
+          <SweetAlert
+            success
+            confirmBtnText="Confirm"
+            confirmBtnBsStyle="default"
+            title=""
+            style={{borderRadius: "0px"}}
+            onConfirm={this.onConfirm}
+          >
+            <p style={{ fontSize: "0.7em" }}>
+              <br />
+              We have received your order!
+              <br />
+              We'll get in touch with you shortly.
+              <br />
+              <br />
+            </p>
+          </SweetAlert>
+        );
+        this.setState({ successAlert: successAlert });
+      };
+
+      onConfirm = () => {
+        this.setState({ 
+          email: "", 
+          name_or_company: "", 
+          phone_number: "", 
+          duration_days: "", 
+          hashrate_fiat: "", 
+          hashrate_units_fiat: ""
+        });
+        this.props.clearAlert();
+        this.setState({ successAlert: null });
+      };
+
+    /// ALGORITHM SELECTOR /////////////////////
+
+    selectAlgorithm = algorithm_name => {
+      this.props.algoSelect(algorithm_name);
+      const hashunits = ((this.props.configs || {})[algorithm_name] || {}).hashrate_units;
+      this.setState({ mining_algo: algorithm_name, hashrate_units: hashunits });
+      Cookies.set("algo_select", algorithm_name, { expires: 7 });
+
+      this.setState({ durationClicked: false });
+      this.selectFirstRegion(algorithm_name);
+    };
+
+    selectFirstRegion = algorithm_name => {
+      const locations = minerLocations;
+      const firstAvailableLocation = locations.find(location => this.safeNestedCheck(() => this.props.configs[algorithm_name][location.value].min_order_hashrate[0].min) !== null ||
+      this.safeNestedCheck(() => this.props.configs[algorithm_name][location.value].min_order_hashrate[1].min) !== null );
+      if (firstAvailableLocation !== undefined) {
+        this.setState({ location: firstAvailableLocation.value });
+        if (this.safeNestedCheck(() => (this.props.configs[algorithm_name] || {})[firstAvailableLocation.value].min_order_hashrate[0].min) === null) {
+          this.setState({ duration: 25, duration_example: 25 });
+        } else { 
+          this.setState({ duration:  parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name].min_order_duration_min) / 60), 
+            duration_example:  parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name].min_order_duration_min) / 60) });
+        };
+      };
+      if (firstAvailableLocation === undefined) {
+        this.setState({ location: "NA East" });
+      };
+    };
+
+    handleUnitSelect = event => this.setState({ hashrate_units_fiat: event.target.value });
+
+    selectCurrency = value => this.setState({ currency: value });
+
+    selectLocation = event => {
+      this.setState({ location: event.target.value });
+      if (this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[event.target.value].min_order_hashrate[0].min) === null) {
+        this.setState({ duration: 25, duration_example: 25 });
+      } else { 
+        this.setState({ duration:  parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].min_order_duration_min) / 60), 
+          duration_example:  parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].min_order_duration_min) / 60) });
+      };
+    };
+
+    checkNestedConfigs = () => { 
+      return (this.props.configs &&
+        this.props.configs[this.props.miningalgo.algorithm])
+    };
+    
+    checkNestedAvailable = () => {
+      return (
+        this.props.stats &&
+        this.props.stats.available &&
+        this.props.stats.available[this.props.miningalgo.algorithm]
+      )
+    };
+
+    bestAvailableRate = () => {
+      return (
+        this.props.stats &&
+        this.props.stats.best_offer && 
+        (this.props.stats || {}).best_offer[this.props.miningalgo.algorithm]
+      )
+    };
+
+    maxDurationCheck = () => {
+      return (
+        this.state.duration !== "" && 
+        this.state.duration > 24
+      )
+    };
+
+    minDurationCheck = () => {
+      return (
+        this.state.duration !== "" && 
+        this.state.duration < 25
+      )
+    };
+
+    checkDurationBelowDay = () => {
+      return (
+        this.state.duration === "" || 
+        this.state.duration < 25
+      )
+    };
+
+    safeNestedCheck = (fn, defaultVal) => {
+      try {
+          return fn();
+      } catch (e) {
+          return defaultVal;
+      }
+    };
+
+    revealDiscount = () => this.setState({ hideDiscount: true });
+
+  render() {
+    const {
+      hashratefocus,
+      durationfocus,
+      nameorcompanyfocus,
+      durationdaysfocus,
+      emailfocus,
+      phonenumberfocus,
+      durationClicked,
+      discountfocus,
+      pricefocus
+    } = this.state;
+
+    const loginURL = "login";
+    const registerURL = "register";
+    let hashrateExampleText = "";
+    
+    if (this.checkDurationBelowDay() && 
+      this.checkNestedConfigs() &&
+      this.props.configs[this.props.miningalgo.algorithm][this.state.location] &&
+      this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min !== null 
+    ) {
+      hashrateExampleText = `Example: ${
+        this.checkNestedConfigs() &&
+        this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0] &&
+        this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min}`;
+   
+    } else if (this.maxDurationCheck() && 
+    this.checkNestedConfigs() &&
+    this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1].min !== null 
+    ) {
+      hashrateExampleText = `Example: ${this.checkNestedConfigs() &&
+        this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1] && 
+        this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1].min}`;
+ 
+    } else if (this.checkDurationBelowDay() && 
+    this.checkNestedConfigs() &&
+    this.props.configs[this.props.miningalgo.algorithm][this.state.location] &&
+    this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min === null 
+    ) {
+      hashrateExampleText = "Not available";
+    } else if (this.maxDurationCheck() && 
+    this.checkNestedConfigs() &&
+    this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1].min === null
+    ) {
+      hashrateExampleText = "Not available";
+    };
+
+    const availableRegions = minerLocations.map(location => { 
+      if (this.checkNestedConfigs() &&
+      this.props.configs[this.props.miningalgo.algorithm] !== undefined &&
+      this.props.configs[this.props.miningalgo.algorithm][location.value] !== undefined) 
+        return (
+        <option className={
+          this.props.configs[this.props.miningalgo.algorithm][location.value].min_order_hashrate[0].min !== null ||
+        this.props.configs[this.props.miningalgo.algorithm][location.value].min_order_hashrate[1].min !== null ?
+          "selectstyles" : "hidethis"} 
+          key={location.value} 
+          value={location.value}
+          disabled={this.props.configs[this.props.miningalgo.algorithm][location.value].min_order_hashrate[0].min === null &&
+            this.props.configs[this.props.miningalgo.algorithm][location.value].min_order_hashrate[1].min === null}
+          >
+          {location.name}
+          </option>
+        )
+      } 
+    );
+
+    const fielderrors = Object.keys(this.props.errors);
+    const fielderrorsReason = this.props.errors[fielderrors];
+
+    return (
+      <PublicRoute>
+        <Head>
+            <title>Marketplace | WariHash</title>
+            <meta name="description" content="" />
+            <meta name="keywords" content="" />
+            <meta name="author" content="" />
+        </Head>
+        <style jsx>
+          {`
+
+          .miningalgo-selector-container {
+            display: block;
+            width: 100%;
+            margin-top: 77px;
+          }
+
+          .number-circle {
+            border: 2.5px solid #3626a5;
+            border-radius: 50%;
+            padding: 1px 7px 1px 7px;
+            color: #3626a5;
+            display: inline-block;
+            font-size: 0.95em;
+            font-weight: bold;
+            position: relative;
+            top: -1px;
+          }
+          
+          .offerformlabel {
+            display: inline-block; 
+            margin-left: 15px;
+            font-weight: bold;
+            font-size: 1.11em;
+          }
+          .buypage-title {
+            display: inline-block; 
+            margin-left: 3px;
+            font-weight: bold;
+            font-size: 1.4em;
+          }
+          .buy-info-container {
+            width: 100%;
+            display: block;
+          }
+            .pagetitle-container {
+              margin-bottom: 6px;
+              margin-top: 11px;
+            }
+            .pagetitle-container h6 {
+              font-weight: bold;
+              display: inline-block;
+              margin-right: 15px;
+            }
+            .algo-select-title {
+              display: inline-block;
+              margin-right: 14px;
+            }
+            .formstyles {
+              width: 100%;
+            }
+            .inputlabel {
+              font-size: 0.83em;
+            }
+            .select-container {
+              margin-bottom: 15px;
+            }
+            .addmarginright {
+              margin-right: 14px;
+            }
+            .notamember-link {
+              display: inline-block; 
+              font-size: 0.85em; 
+              cursor: pointer;
+              font-weight: bold;
+              transition: 0.2s ease all;
+            }
+            .notamember-link span {
+              color: #3626a5;
+            }
+            .notamember-link:hover {
+              opacity: 0.7;
+            }
+            .buybtn {
+              font-size: 0.85em;
+              background: #c526d8;
+              border: 1px solid #c526d8;
+              border-radius: 0px;
+              width: 200px;
+              height: 40px;
+              margin-top: 17px;
+              margin-bottom: 0px;
+              color: white;
+              font-weight: 600;
+            }
+            .buybtn:hover {
+              background: rgb(224, 79, 240) !important;
+            }
+            .buybtn:focus,
+            .buybtn:active:focus,
+            .buybtn.active:focus,
+            .buybtn.focus,
+            .buybtn:active.focus,
+            .buybtn.active.focus {
+              background: rgb(224, 79, 240) !important;
+              outline: none !important;
+              box-shadow: none !important;
+            }
+            .stratum-address-container {
+              padding-right: 30px; 
+              padding-left: 0px;
+            }
+            .stratum-title {
+              font-weight: bold;
+              margin-bottom: 17px;
+            }
+            .description-texts {
+              font-size: 0.82em;
+              display: inline-block;
+              margin-top: 0px;
+              margin-bottom: 20px;
+            }
+            .formcontainer-price {
+              width: 100%;
+              margin-top: 15px;
+              padding-left: 15px;
+            }
+            .formcontainer-offerdetails {
+              border: 0.5px solid rgba(0, 0, 0, 0.1);
+              width: 100%;
+              padding: 30px 35px 5px 35px;
+              margin-top: 20px;
+              border-radius: 7px;
+              box-shadow: 0 11px 21px rgba(0, 0, 0, 0.08),
+                0 10px 50px rgba(0, 0, 0, 0.02);
+            }
+            .buypage-details {
+              font-size: 0.85em;
+              display: block;
+              margin-top: 5px;
+              margin-bottom: 5px;
+              padding-left: 5px;
+            }
+            .detail-title {
+              font-weight: bold;
+            }
+            .instructions {
+              padding-top: 10px;
+              padding-bottom: 10px;
+              padding-left: 0px;
+              margin-left: 0px;
+              font-size: 0.89em;
+            }
+            .nopower-icon {
+              width: 147px; 
+              margin-left: 50px;
+            }
+            .mobile-marketplacetitle1 {
+              display: inline-block !important;
+            }
+            .mobile-marketplacetitle2 {
+              display: none !important;
+            }
+            .linebreak-br {
+              display: none;
+            }
+            .managestratum-btn {
+              height: 41px;
+              padding-top: 10px;
+            }
+
+            .discount-code-btn {
+              background: transparent;
+              border: none;
+              display: inline-block;
+              position: relative; 
+              top: 20px;
+              right: 10px;
+              color: rgba(0,0,0,0.59);
+            }
+
+            .discount-code-btn:hover {
+              color: rgba(0,0,0,0.77);
+            }
+
+            .borderbottomadj {
+              border-bottom: 1.3px solid rgba(0,0,0,0.55);
+            }
+
+            .borderbottomfocus {
+              border-bottom: 1.3px solid #4cb4cb;
+            }
+
+            .link-icon {
+              color: rgba(0,0,0,0.5);
+              position: relative;
+              left: 6px;
+              top: -2px;
+              margin-right: 14px;
+            }
+
+            .link-icon:hover {
+              color: rgba(0,0,0,0.77);
+            }
+
+            @media (max-width: 770px) {
+              .offerformlabel {
+                display: inline-block; 
+                margin-left: 15px;
+                font-weight: bold;
+                font-size: 1.12em;
+              }
+              .managestratum-btn{
+                display: block;
+                margin-top: 17px;
+                margin-bottom: 17px;
+                margin-left: 0px;
+              }
+              .nopower-icon {
+                width: 130px; 
+                margin-left: 20px;
+              }
+              .stratum-address-container {
+                padding-right: 0px; 
+                padding-left: 0px;
+              }
+              .addpadding {
+                padding: 0px;
+              }
+              .containerpadding {
+                padding: 1px;
+              }
+              .miningalgo-selector-container {
+                margin-top: 55px;
+              }
+              .miningalgorithm-dropdown {
+                margin-left: 37.7px;
+              }
+              .formcontainer-price {
+                padding: 0px 15px 15px 15px;
+                margin-top: 10px;
+              }
+              .formcontainer-offerdetails {
+                padding: 15px;
+              }
+              .mainwrapper {
+                padding: 0px;
+              }
+              .buypage-title {
+                font-size: 1.1em;
+                margin-top: 0px;
+              }
+              .buypage-details {
+                font-size: 0.8em;
+              }
+              .pagetitle-container {
+                margin-top: 0px;
+              }
+            }
+
+            @media (max-width: 620px) {
+              .linebreak-br {
+                display: block;
+              }
+              .mobile-marketplacetitle1 {
+                display: none !important;
+              }
+              .mobile-marketplacetitle2 {
+                display: inline-block !important;
+              }
+            }
+
+            @media (max-width: 460px) {
+              .number-circle {
+                border: 2.5px solid #3626a5;
+                border-radius: 50%;
+                padding: 1px 7px 1px 7px;
+                margin-right: 12px;
+                color: #3626a5;
+                display: inline-block;
+                font-size: 0.9em;
+                font-weight: bold;
+                position: relative;
+                top: 0px;
+              }
+              .nopower-icon {
+                width: 120px; 
+                margin-left: 0px;
+              }
+              .offerformlabel {
+                display: inline-block; 
+                margin-left: 6px;
+                font-weight: bold;
+                font-size: 1em;
+              }
+            }
+          `}
+        </style>
+        {this.state.successAlert}
+        <div
+          className="container"
+          style={{ marginBottom: "150px" }}
+        >
+          <div className="row">
+             <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"> 
+              {/******* MINING ALGORITHM SELECTOR *********/}
+               <div className="miningalgo-selector-container">
+                  <h4 className="marketplacetitle">Buy Hashing Power for</h4>
+                  <MiningAlgoDropDown 
+                    selectAlgorithm={this.selectAlgorithm}
+                    />
+                   <h4 className="marketplacetitle mobile-marketplacetitle1" style={{marginLeft: "13.5px"}}>with</h4>
+                   <div style={{width: "100%"}} className="linebreak-br" />
+                   <h4 className="marketplacetitle mobile-marketplacetitle2">Payment Currency:{" "}</h4>
+                   <CurrencyDropDown 
+                   currency={this.state.currency}
+                   selectCurrency={this.selectCurrency}
+                   />
+                </div>
+                {/******* MINING ALGORITHM SELECTOR END *********/}
+             </div>
+
+             {this.state.currency === "USD" ?  <div className="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12" style={{paddingBottom: "0px"}}>
+              <p style={{fontSize: "0.8em", color: "rgba(0,0,0,0.6)", paddingTop: "12px", paddingBottom: "10px"}}>
+              Purchases with USD must be processed manually and may take several business days to process.{" "}
+              We also reserve the right to reject the request for any reason.{" "}
+              Please fill out the form below and we will get back to you with further instructions.{" "}
+              For automated and immediate purchases, please buy hashing power with BTC.
+              </p>
+             </div> : null}
+
+{ this.checkNestedAvailable() &&
+  this.props.stats.available[this.props.miningalgo.algorithm].hashrate !== undefined &&
+  this.props.stats.available[this.props.miningalgo.algorithm].hashrate === "0.0000" ||
+  this.checkNestedConfigs() &&
+  this.props.configs[this.props.miningalgo.algorithm]['NA East'] &&
+  this.props.configs[this.props.miningalgo.algorithm]['NA East'].min_order_hashrate[0].min === null &&
+  this.props.configs[this.props.miningalgo.algorithm]['NA East'].min_order_hashrate[1].min === null && 
+  this.props.configs[this.props.miningalgo.algorithm]['NA West'] &&
+  this.props.configs[this.props.miningalgo.algorithm]['NA West'].min_order_hashrate[0].min === null &&
+  this.props.configs[this.props.miningalgo.algorithm]['NA West'].min_order_hashrate[1].min === null && 
+  this.props.configs[this.props.miningalgo.algorithm]['EU West'] &&
+  this.props.configs[this.props.miningalgo.algorithm]['EU West'].min_order_hashrate[0].min === null &&
+  this.props.configs[this.props.miningalgo.algorithm]['EU West'].min_order_hashrate[1].min === null
+  ? 
+<div className="container"
+style={{ marginBottom: "150px" }}>
+
+<div className="row">
+           <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-left">
+                <br /><br /><br /><br />
+                <div className="container">
+                   <div className="row">
+                     <div className="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12 text-center">
+                       <img src="/static/power-off-icon-2.svg" 
+                       className="nopower-icon" alt="Not available" />
+
+                      </div>
+                   </div>
+                </div>
+                <br />
+                <br /><br />
+      
+     <div>
+        <p style={{fontWeight: "bold",
+              fontSize: "0.85em"}}>Currently, no hashing power is available for this algorithm. Please check again later.
+              <br /> You can still buy hashing power for different mining algorithms.</p>
+              </div> 
+                <br />
+           </div>
+       </div>
+</div> : 
+            <div style={{width: "100%"}}>
+              {this.state.currency === "BTC" ?  
+            <form
+              className="formstyles"
+              onSubmit={this.handleSubmit}
+              autoComplete="off"
+              id="buy-form"
+            >
+                  <div className="col-xl-6 col-lg-8 col-md-12 col-sm-12 col-12">
+                    <div className="row formcontainer-price">
+                        <div className="buy-info-container">
+                       <div style={{display: "block", width: "100%", marginBottom: "10px"}}>
+                        <p className="buypage-details">
+                          <span className="detail-title">Best available rate:</span> 
+                          {this.props.configs.server_time === undefined ? 
+                          <img src="/static/three-dots.svg"
+                            style={{width: "45px", marginLeft: "20px", position: "relative", top: "-1px"}} 
+                            alt="Loading ..."
+                            /> : 
+                          <span> {this.bestAvailableRate()}
+                          {" "}
+                          <PaymentRate />
+                          </span>
+                          }
+                        </p>
+                        </div>
+                        <div style={{display: "block", width: "100%", marginBottom: "10px", paddingTop: "2px",
+                      paddingBottom: "2px"}}>
+                          <p className="buypage-details">
+                          <span className="detail-title">Last trade rate:</span> 
+                            {" "}{this.props.stats && 
+                            this.props.stats.last_trade &&
+                            this.props.stats.last_trade[this.props.miningalgo.algorithm] !== null ?
+                            <span>{this.props.stats.last_trade[this.props.miningalgo.algorithm]}{" "}
+                            <PaymentRate /></span>: 
+                            " "}
+                          </p>
+                        </div>
+
+                        <div style={{display: "block", width: "100%"}}>
+                        <p className="buypage-details">
+                        <span className="detail-title">Total available hashrate:</span> 
+                        {this.props.configs.server_time === undefined ? <span></span> :
+                        <span> {this.safeNestedCheck(() => this.props.stats.available[this.props.miningalgo.algorithm].hashrate) }
+                        {" "}
+                        {this.safeNestedCheck(() => this.props.stats.available[this.props.miningalgo.algorithm].hashrate_units) }H/s
+                        </span>
+                        }
+                        </p>
+                        </div>
+                      </div>
+
+                      <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" 
+                      style={{ marginTop: "35px", marginBottom: "32px", paddingLeft: "3px" }}>
+                        <h4 className="number-circle">1</h4>
+                        <h4 className="offerformlabel">
+                        Order Details
+                        </h4>
+                      </div>
+
+                      <div><p className="description-texts">
+                      Upon submission, we will provide you with hashrate equal to or slightly less than what you requested. Order duration will be provided exactly after payment has completed. If you need more hashing power or longer duration orders, please 
+                      {" "}contact <a href="mailto:support@warihash.com">support@warihash.com</a>.
+                        </p></div>
+
+                        <div className="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12" style={{paddingLeft: "0px", paddingRight: "0px"}}>
+                      
+                      <div className="form-group">
+                      <label htmlFor="location" className="inputlabel">
+                        Miner Location:
+                      </label><br />
+                      <select
+                            className="form-control selectstyles miningalgoselect"
+                            name="location"
+                            onChange={this.selectLocation}
+                            style={{height: "42px", width: "285px"}}
+                            value={this.checkNestedConfigs() &&
+                              this.props.configs[this.props.miningalgo.algorithm] !== undefined &&
+                              this.props.configs[this.props.miningalgo.algorithm][minerLocations[0].value] !== undefined ? 
+                              this.state.location : ""}
+                          >
+                     {this.checkNestedConfigs() &&
+      this.props.configs[this.props.miningalgo.algorithm] !== undefined &&
+      this.props.configs[this.props.miningalgo.algorithm][minerLocations[0].value] !== undefined ?
+                     availableRegions : <option className="selectstyles" selected>Loading ...</option>}  
+                          </select>
+                          </div>
+                          </div>
+
+                      <div className="col-xl-7 col-lg-7 col-md-8 col-sm-12 col-12" style={{paddingLeft: "0px", paddingRight: "0px"}}>
+                      
+                      <div className="form-group">
+                        <label htmlFor="duration" className="inputlabel">
+                        Order Duration:
+                        </label>
+                        <div
+                          className={
+                            durationfocus === true
+                              ? "input-group input-group-md focused"
+                              : "input-group input-group-md"
+                          }
+                          style={{maxWidth: "285px"}}
+                        >
+                          <div className="input-group-prepend">
+                            <span
+                              className="input-group-text"
+                              style={{
+                                background: "white",
+                                border: "none",
+                                color: "rgba(0,0,0,0.5)"
+                              }}
+                            >
+                              <FaRegClock style={durationfocus === true ? 
+                                { fontSize: "1.26em", opacity: "1" } : 
+                                { fontSize: "1.26em", opacity: "0.8" }} />
+                            </span>
+                          </div>
+                          <input
+                            type="text"
+                            name="duration"
+                            value={durationClicked === false ? "" : this.state.duration}
+                            placeholder={durationClicked === false ? 
+                              `Example: ${this.state.duration_example}` : this.state.duration}
+                            className="form-control inputstyles2"
+                            style={{
+                              border: "none",
+                              borderRadius: "7px",
+                              fontSize: "0.82em"
+                            }}
+                            onChange={event => this.setState({duration: event.target.value.replace(/\D/,'')})}
+                            onFocus={this.handleDurationFocus}
+                            onBlur={this.handleDurationBlur}
+                            autoComplete="off"
+                            required
+                          />
+                          <p style={{paddingTop: "0px", 
+                          paddingBottom: "0px", 
+                          marginBottom: "0px",
+                          position: "relative",
+                          fontSize: "0.88em",
+                          top: "6.2px",
+                          right: "13px", 
+                          zIndex: "2342342"}}>
+                          Hours
+                          </p>
+                          <br />
+                        </div>
+
+                  {this.props.errors.duration !== undefined ? 
+                  <p className="is-invalid-error add-padding-left">{this.props.errors.duration}</p> : null}
+                  {this.props.errors.duration === undefined && 
+                  this.state.duration !== "" && 
+                  this.checkNestedConfigs() && 
+                  parseInt(this.state.duration * 60) > (this.props.configs[this.props.miningalgo.algorithm] || {}).max_order_duration_min ? 
+                  <p className="is-invalid-error add-padding-left">
+                    Your duration exceeds the maximum duration. Please decrease your duration input value. 
+                  </p> : null}
+
+                  {this.props.errors.duration === undefined && 
+                  this.state.duration !== "" && 
+                  durationfocus === false &&
+                  this.checkNestedConfigs() && 
+                  parseInt(this.state.duration * 60) < (this.props.configs[this.props.miningalgo.algorithm] || {}).min_order_duration_min ? 
+                  <p className="is-invalid-error add-padding-left">
+                    The minimum duration you can purchase is {this.props.configs &&
+                    this.props.configs[this.props.miningalgo.algorithm] && 
+                    (this.props.configs[this.props.miningalgo.algorithm] || {}).min_order_duration_min / 60 + " hours"}. 
+                    Please increase your duration input value. 
+                  </p> : null}
+
+                  {this.maxDurationCheck() &&
+                  this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1].min) === null ||
+                  this.minDurationCheck() &&
+                  this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min) === null
+                  ? 
+                  <p className="is-invalid-error add-padding-left">
+                   Selected duration is not available. Please change your duration.
+                  </p> : null}
+                         
+                      </div>
+                      </div>
+
+                      <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
+                      style={{paddingLeft: "0px", paddingRight: "0px", paddingTop: "0px"}}
+                      >
+                      <p
+                      style={{
+                        fontSize: "0.7em",
+                        color: "rgba(0,0,0,0.6)",
+                        marginLeft: "5px"
+                      }}
+                    >
+                    <span className="min-value">Minimum duration:{" "}
+                    {this.checkNestedConfigs() && 
+                    this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location].min_order_hashrate[0].min) === null ? "25 hours" :
+                    parseInt((this.props.configs[this.props.miningalgo.algorithm] || {}).min_order_duration_min / 60) + " hours"}</span>
+                    <span className="max-min-bar">|</span>
+                    <span className="max-value">Maximum duration:{" "}
+                    {this.checkNestedConfigs() && 
+                    this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location].min_order_hashrate[1].min) === null ? "24 hours" :
+                     this.checkNestedConfigs() &&
+                     parseInt(this.props.configs[this.props.miningalgo.algorithm].max_order_duration_min / 60) + " hours" }
+                    </span>
+                      </p> 
+                      </div>
+
+                      <div className="col-xl-7 col-lg-7 col-md-8 col-sm-12 col-12" 
+                      style={{paddingLeft: "0px", paddingRight: "0px"}}>
+                      <div className="form-group">
+                        <label htmlFor="hashrate" className="inputlabel">
+                         Hashrate to Purchase:
+                        </label>
+                        <div
+                          className={
+                            hashratefocus === true
+                              ? "input-group input-group-md focused"
+                              : "input-group input-group-md"
+                          }
+                          style={{maxWidth: "285px"}}
+                        >
+                          <div className="input-group-prepend">
+                            <span
+                              className="input-group-text"
+                              style={{
+                                background: "white",
+                                border: "none",
+                                color: "rgba(0,0,0,0.5)"
+                              }}
+                            >
+                              <TiFlash style={hashratefocus === true ? 
+                              { fontSize: "1.4em", opacity: "1" } : 
+                              { fontSize: "1.4em", opacity: "0.8" }} />
+                            </span>
+                          </div>
+                          <input
+                            type="text"
+                            name="hashrate"
+                            value={this.state.hashrate}
+                            placeholder={this.checkNestedConfigs() &&
+                              this.props.configs[this.props.miningalgo.algorithm] !== undefined &&
+                              this.props.configs[this.props.miningalgo.algorithm][minerLocations[0].value] !== undefined ?
+                              hashrateExampleText : "Loading..."
+                            }
+                            className="form-control inputstyles2"
+                            style={{
+                              border: "none",
+                              borderRadius: "7px",
+                              fontSize: "0.82em"
+                            }}
+                            onChange={this.handleChange}
+                            onFocus={this.handleHashrateFocus}
+                            onBlur={this.handleHashrateBlur}
+                            autoComplete="off"
+                            required
+                          />   <p style={{paddingTop: "0px", 
+                          paddingBottom: "0px", 
+                          marginBottom: "0px",
+                          position: "relative",
+                          fontSize: "0.92em",
+                          top: "5.9px",
+                          right: "13px", 
+                          zIndex: "222"}}>
+                            {this.checkNestedConfigs() &&
+                            this.props.configs[this.props.miningalgo.algorithm] !== undefined &&
+                            this.props.configs[this.props.miningalgo.algorithm][minerLocations[0].value] !== undefined ?
+                            this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].hashrate_units) + "H/s" : ""}
+                          
+                          </p>
+                          <br />
+                        </div>
+                      
+
+{this.props.errors.hashrate !== undefined ? 
+<p className="is-invalid-error add-padding-left">{this.props.errors.hashrate}</p> : null}
+
+{this.props.errors.hashrate === undefined && 
+  this.state.hashrate !== "" &&
+  hashratefocus === false &&
+  this.minDurationCheck() &&
+  this.checkNestedConfigs() &&
+  this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[0].max) !==
+  this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min) &&
+  parseFloat(this.state.hashrate) > parseFloat(this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[0].max) ? 
+  <p className="is-invalid-error add-padding-left">
+    The maximum hashrate you can purchase is {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].max_order_hashrate[0].max)}{" "}
+    {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].hashrate_units)}H/s. 
+  Please decrease your hashrate input value.</p>
+   : null}
+
+{this.props.errors.hashrate === undefined && 
+  this.state.hashrate !== "" &&
+  this.maxDurationCheck() &&
+  this.checkNestedConfigs() &&
+  this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[1].max) !==
+  this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1].min) &&
+  parseFloat(this.state.hashrate) > parseFloat(this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[1].max) ? 
+  <p className="is-invalid-error add-padding-left">
+    The maximum hashrate you can purchase is {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[1].max)}{" "}
+     {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].hashrate_units)}H/s. 
+  Please decrease your hashrate input value.</p>
+   : null}
+
+
+{this.props.errors.hashrate === undefined && 
+  this.state.hashrate !== "" &&
+  this.minDurationCheck() &&
+  hashratefocus === false &&
+  this.checkNestedConfigs() &&
+  this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[0].max) !==
+  this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min) &&
+  parseFloat(this.state.hashrate) < parseFloat(this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min) ? 
+  <p className="is-invalid-error add-padding-left">
+    The minimum hashrate you can purchase is {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min)}{" "}
+    {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].hashrate_units)}H/s.
+    Please increase your hashrate input value.
+  </p>
+   : null}                       
+                 
+{this.props.errors.hashrate === undefined && 
+  this.state.hashrate !== "" &&
+  this.maxDurationCheck() &&
+  hashratefocus === false &&
+  this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[1].max) !==
+  this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1].min) &&
+  parseFloat(this.state.hashrate) < parseFloat(this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1].min) ? 
+  <p className="is-invalid-error add-padding-left">
+    The minimum hashrate you can purchase is {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1].min)}{" "}
+   {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].hashrate_units)}H/s.
+    Please increase your hashrate input value.
+  </p> : null}                       
+
+
+
+                        </div>
+                        </div>
+
+                        <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
+                      style={{paddingLeft: "0px", paddingRight: "0px", paddingTop: "0px"}}
+                      >
+                     
+                      <p
+                      style={{
+                        fontSize: "0.7em",
+                        color: "rgba(0,0,0,0.6)",
+                        marginLeft: "5px"
+                      }}
+                    >
+                    <span className="min-value">Minimum hashrate:{" "}{
+                    this.checkNestedConfigs() &&
+                    this.checkDurationBelowDay() ?
+                    this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min) !== null &&
+                    this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min) 
+                   : 
+                   this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1].min) !== null &&
+                   this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1].min)
+                   } 
+                   {" "}{this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].hashrate_units)}H/s</span>
+                    <span className="max-min-bar">|</span>
+                    <span className="max-value">Maximum hashrate:{" "}{
+                      this.checkNestedConfigs() && 
+                      this.checkDurationBelowDay() ?
+                      
+                     this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[0].max) !== null &&
+                     this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[0].max)
+                    :
+                     this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[1].max) !== null &&
+                     this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[1].max)
+                    }{" "}{this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].hashrate_units)}H/s</span>
+                      </p> 
+                   
+                      </div>
+
+
+                      <div>
+
+                      <div
+                  className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
+                  style={{ marginTop: "8px", marginLeft: "0px", paddingLeft: "0px" }}
+                >
+                      <label>
+                        <span
+                          style={{
+                            fontSize: "0.83em",
+                            marginLeft: "0px",
+                            marginRight: "2.5px",
+                            position: "relative",
+                            top: "-2px",
+                            zIndex: "1423",
+                            display: "inline-block"
+                          }}
+                        >
+                         Specify limit price
+                        </span>
+                        <a href="https://warihash.zendesk.com/hc/en-us/articles/360040612232-What-is-a-limit-price-" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="link-icon">
+                        <FaQuestionCircle />
+                      </a>
+                      </label>
+
+                      <div className="pretty p-svg p-curve">
+                    <input
+                      type="checkbox"
+                      onChange={this.handleCheck}
+                      defaultChecked={this.state.checked}
+                    
+                    />
+                    <div className="state p-success">
+                      <label>
+                        <span
+                          style={{
+                            fontSize: "0.83em",
+                            marginLeft: "7px",
+                            position: "relative",
+                            top: "-2px",
+                            zIndex: "1423"
+                          }}
+                        >
+                        </span>
+                      </label>
+                      <svg className="svg svg-icon" viewBox="0 0 20 20" >
+                        <path
+                          d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"
+                          style={{ stroke: "white", fill: "white" }}
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                    </div>
+                    </div>
+
+               {this.state.checked === true ? 
+                <div
+                  className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
+                  style={{ marginTop: "8px", marginLeft: "0px", paddingLeft: "0px" }}
+                >
+                  <div className="form-group">
+                    <label htmlFor="limit_price" className="inputlabel">
+                      Limit Price in <PaymentRate /> [optional]{" "}
+                     
+                    </label>
+                    <div
+                      className={
+                        pricefocus === true
+                          ? "input-group input-group-md focused"
+                          : "input-group input-group-md"
+                      }
+                      style={{maxWidth: "285px"}}
+                    >
+                      <div className="input-group-prepend">
+                        <span
+                          className="input-group-text"
+                          style={{
+                            background: "white",
+                            border: "none",
+                            color: "rgba(0,0,0,0.5)"
+                          }}
+                        >
+                          <FaBitcoin style={pricefocus === true ?
+                           { fontSize: "1.3em", opacity: "1" } : 
+                           { fontSize: "1.3em", opacity: "0.8" }} />
+                        </span>
+                      </div>
+                      <input
+                        type="text"
+                        placeholder="Example: 0.0015"
+                        name="limit_price"
+                        value={this.state.limit_price}
+                        onChange={this.handleChange}
+                        className="form-control inputstyles2"
+                        style={{
+                          border: "none",
+                          borderRadius: "7px",
+                          fontSize: "0.82em"
+                        }}
+                        onFocus={this.handlePriceFocus}
+                        onBlur={this.handlePriceBlur}
+                        autoComplete="off"
+                      /><p style={{paddingTop: "0px", 
+                      paddingBottom: "0px", 
+                      marginBottom: "0px",
+                      position: "relative",
+                      fontSize: "0.92em",
+                      top: "5.9px",
+                      right: "13px", 
+                      zIndex: "222"}}>
+                        BTC
+                        </p>
+                    </div>
+
+                    {this.props.errors.price !== undefined ? <p className="is-invalid-error add-padding-left">
+                      {this.props.errors.price}</p> : null}
+                  </div>
+                  </div> : null}
+
+
+
+
+
+                    </div>
+                  </div>
+                  
+             <div className="clearfix" />
+  
+            
+
+          <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 text-right">
+                      <div
+                          className="text-center"
+                            style={{ paddingTop: "0px", paddingBottom: "0px" }}
+                          >
+
+                           {this.props.time.message !== null ? 
+                           <p className="is-invalid-error add-padding-left">{this.props.time.message}</p> : null}
+                           
+                           {this.state.networkerror !== "" ? 
+                           <p className="is-invalid-error add-padding-left">{this.state.networkerror}</p> : null}
+                           {this.props.errors.errors !== null &&
+                           this.props.errors !== undefined &&
+                           this.props.payment.bid_id === undefined &&
+                           this.state.networkerror === "" &&
+                                fielderrors != "hashrate" &&
+                                fielderrors != "duration" &&
+                                fielderrors != "username" &&
+                                fielderrors != "password" &&
+                                fielderrors != "discount_code" &&
+                                fielderrors != "price" &&
+                               this.props.errors.host === undefined &&
+                               this.props.errors.port === undefined 
+                                ? <p className="is-invalid-error add-padding-left">
+                               {fielderrorsReason} </p>
+                                : null}
+                          </div>
+
+                
+                      <div className="container-fluid">
+                        <div className="row" style={{paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px"}}>
+                       
+
+                           <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 text-right" 
+                           style={{paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px"}}>
+                           <CSRFToken />
+                       <button
+                        disabled={this.state.formloading}
+                        className="btn btn-info nooutline buybtn"
+                        type="submit"
+                      >
+                        {this.state.formloading === true
+                          ? <ThreeDotsLoading />
+                          : <p style={{ paddingBottom: "0px", marginBottom: "0px" }}>Continue to Payment</p>}
+
+                      </button>
+                           </div>
+                        </div>
+                      </div>
+                    
+                       
+                      </div>
+                        </form> : 
+                        
+                        
+                        <form className="formstyles"
+              onSubmit={this.submitFiatOrder}
+              autoComplete="off"
+              id="buy-form">
+                          <div className="container-fluid">
+                            <div className="row">
+                          <div className="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+                          <div className="form-group">
+                        <label htmlFor="name_or_company" className="inputlabel">
+                        Name or Company [optional]:
+                        </label>
+                        <div
+                          className={
+                            nameorcompanyfocus === true
+                              ? "input-group input-group-md focused"
+                              : "input-group input-group-md"
+                          }
+                          style={{maxWidth: "285px"}}
+                        >
+                          <div className="input-group-prepend">
+                            <span
+                              className="input-group-text"
+                              style={{
+                                background: "white",
+                                border: "none",
+                                color: "rgba(0,0,0,0.5)"
+                              }}
+                            >
+                              <FaPen style={nameorcompanyfocus === true ? 
+                                { fontSize: "1.26em", opacity: "1" } : 
+                                { fontSize: "1.26em", opacity: "0.8" }} />
+                            </span>
+                          </div>
+                          <input
+                            type="text"
+                            name="name_or_company"
+                            value={this.state.name_or_company}
+                            placeholder="Example: Bitmain"
+                            className="form-control inputstyles2"
+                            style={{
+                              border: "none",
+                              borderRadius: "7px",
+                              fontSize: "0.82em"
+                            }}
+                            onChange={this.handleChange}
+                            onFocus={this.handleNameOrCompanyFocus}
+                            onBlur={this.handleNameOrCompanyBlur}
+                            autoComplete="off"
+                            required
+                          />
+                          <br />
+                        </div>
+                        </div> 
+
+                        </div>
+
+                        <div className="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">    
+                          <div className="form-group">
+                        <label htmlFor="email" className="inputlabel">
+                        Email:
+                        </label>
+                        <div
+                          className={
+                            emailfocus === true
+                              ? "input-group input-group-md focused"
+                              : "input-group input-group-md"
+                          }
+                          style={{maxWidth: "285px"}}
+                        >
+                          <div className="input-group-prepend">
+                            <span
+                              className="input-group-text"
+                              style={{
+                                background: "white",
+                                border: "none",
+                                color: "rgba(0,0,0,0.5)"
+                              }}
+                            >
+                              <FaEnvelope style={emailfocus === true ? 
+                                { fontSize: "1.26em", opacity: "1" } : 
+                                { fontSize: "1.26em", opacity: "0.8" }} />
+                            </span>
+                          </div>
+                          <input
+                            type="text"
+                            name="email"
+                            value={this.state.email}
+                            placeholder="Example: example@abc.com"
+                            className="form-control inputstyles2"
+                            style={{
+                              border: "none",
+                              borderRadius: "7px",
+                              fontSize: "0.82em"
+                            }}
+                            onChange={this.handleChange}
+                            onFocus={this.handleEmailFocus}
+                            onBlur={this.handleEmailBlur}
+                            autoComplete="off"
+                            required
+                          />
+                          <br />
+                        </div>
+                        </div>   
+                        </div>
+
+                        <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" />
+                        <div className="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">     
+                        <div className="form-group">
+                        <label htmlFor="phone_number" className="inputlabel">
+                        Phone Number [optional]:
+                        </label>
+                        <div
+                          className={
+                            phonenumberfocus === true
+                              ? "input-group input-group-md focused"
+                              : "input-group input-group-md"
+                          }
+                          style={{maxWidth: "285px"}}
+                        >
+                          <div className="input-group-prepend">
+                            <span
+                              className="input-group-text"
+                              style={{
+                                background: "white",
+                                border: "none",
+                                color: "rgba(0,0,0,0.5)"
+                              }}
+                            >
+                              <FaPhone style={phonenumberfocus === true ? 
+                                { fontSize: "1.11em", opacity: "1", transform: "rotate(90deg)" } : 
+                                { fontSize: "1.11em", opacity: "0.8", transform: "rotate(90deg)" }} />
+                            </span>
+                          </div>
+                          <input
+                            type="text"
+                            name="phone_number"
+                            value={this.state.phone_number}
+                            placeholder="Example: 888-888-1234"
+                            className="form-control inputstyles2"
+                            style={{
+                              border: "none",
+                              borderRadius: "7px",
+                              fontSize: "0.82em"
+                            }}
+                            onChange={this.handleChange}
+                            onFocus={this.handlePhoneNumberFocus}
+                            onBlur={this.handlePhoneNumberBlur}
+                            autoComplete="off"
+                            required
+                          />
+                          <br />
+                        </div>
+                        </div>   
+                            </div>
+
+
+                            <div className="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">   
+                       <div className="form-group">
+                        <label htmlFor="duration_days" className="inputlabel">
+                        Order Duration (Days):
+                        </label>
+                        <div
+                          className={
+                            durationdaysfocus === true
+                              ? "input-group input-group-md focused"
+                              : "input-group input-group-md"
+                          }
+                          style={{maxWidth: "285px"}}
+                        >
+                          <div className="input-group-prepend">
+                            <span
+                              className="input-group-text"
+                              style={{
+                                background: "white",
+                                border: "none",
+                                color: "rgba(0,0,0,0.5)"
+                              }}
+                            >
+                              <FaRegClock style={durationdaysfocus === true ? 
+                                { fontSize: "1.26em", opacity: "1" } : 
+                                { fontSize: "1.26em", opacity: "0.8" }} />
+                            </span>
+                          </div>
+                          <input
+                            type="text"
+                            name="duration_days"
+                            value={this.state.duration_days}
+                            placeholder="Example: 15"
+                            className="form-control inputstyles2"
+                            style={{
+                              border: "none",
+                              borderRadius: "7px",
+                              fontSize: "0.82em"
+                            }}
+                            onChange={this.handleChange}
+                            onFocus={this.handleDurationDaysFocus}
+                            onBlur={this.handleDurationDaysBlur}
+                            autoComplete="off"
+                            required
+                          />
+                          <p style={{paddingTop: "0px", 
+                          paddingBottom: "0px", 
+                          marginBottom: "0px",
+                          position: "relative",
+                          fontSize: "0.88em",
+                          top: "6.2px",
+                          right: "13px", 
+                          zIndex: "99"}}>
+                          Days
+                          </p>
+                          <br />
+                        </div>
+                        </div>
+                            </div>
+
+
+                    <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" />
+                    <div className="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12"> 
+                        <div className="form-group">
+                        <label htmlFor="hashrate_fiat" className="inputlabel">
+                         Hashrate to Purchase:
+                        </label>
+                        <div
+                          className={
+                            hashratefocus === true
+                              ? "input-group input-group-md focused"
+                              : "input-group input-group-md"
+                          }
+                          style={{maxWidth: "285px"}}
+                        >
+                          <div className="input-group-prepend">
+                            <span
+                              className="input-group-text"
+                              style={{
+                                background: "white",
+                                border: "none",
+                                color: "rgba(0,0,0,0.5)"
+                              }}
+                            >
+                              <TiFlash style={hashratefocus === true ? 
+                              { fontSize: "1.4em", opacity: "1" } : 
+                              { fontSize: "1.4em", opacity: "0.8" }} />
+                            </span>
+                          </div>
+                          <input
+                            type="text"
+                            name="hashrate_fiat"
+                            value={this.state.hashrate_fiat}
+                            placeholder={hashrateExampleText}
+                            className="form-control inputstyles2"
+                            style={{
+                              border: "none",
+                              borderRadius: "7px",
+                              fontSize: "0.82em"
+                            }}
+                            onChange={this.handleChange}
+                            onFocus={this.handleHashrateFocus}
+                            onBlur={this.handleHashrateBlur}
+                            autoComplete="off"
+                            required
+                          />   
+                          <br />
+                        </div>
+                        </div>
+                        </div>
+
+                        <div className="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12"> 
+                        <div className="form-group">   
+                         
+                          <label htmlFor="hashrate_units" className="inputlabel">
+                          Hashrate unit:
+                        </label> <br/>
+                    
+                          <select
+                            className="form-control selectstyles miningalgoselect"
+                            name="hashrate_units"
+                            placeholder="Select hashrate unit"
+                            style={{
+                              display: "inline-block",
+                              width: "200px",
+                              height: "41.5px"
+                            }}
+                            value={this.state.hashrate_units_fiat}
+                            onChange={this.handleUnitSelect}
+                          >
+                            <option className="selectstyles" value="">
+                              Select hashrate unit
+                            </option>
+                            <option className="selectstyles" value="K">
+                              KH/s
+                            </option>
+                            <option className="selectstyles" value="M">
+                              MH/s
+                            </option>
+                            <option className="selectstyles" value="G">
+                              GH/s
+                            </option>
+                            <option className="selectstyles" value="T">
+                              TH/s
+                            </option>
+                          </select>
+
+                        </div>
+                        </div> 
+
+                         <div className="col-xl-12 col-lg-12 col-md-12 col-12 col-sm-12">
+
+                        
+                            <button
+                            disabled={this.state.formloading}
+                            className="btn btn-info nooutline buybtn"
+                            id="submit-fiat-order"
+                            type="submit"
+                          >
+                            {this.state.formloading === true
+                              ? <ThreeDotsLoading />
+                              : <p style={{ paddingBottom: "0px", marginBottom: "0px" }}>Submit Order</p>}
+    
+                          </button>
+
+                          </div>
+
+                          </div>
+                          </div>
+                          </form> }
+            </div>   }
+          </div>
+         </div> 
+      </PublicRoute>
+    );
+  }
+}
+
+Marketplace.defaultProps = {
+  network: [],
+  configs: [],
+  errors: {},
+  profile: []
+};
+
+Marketplace.propTypes = {
+  takeOffer: PropTypes.func,
+  resetErrors: PropTypes.func,
+  logoutUser: PropTypes.func,
+  redirectErrorMessage: PropTypes.func,
+  marketplacePage: PropTypes.func,
+  getCurrentProfile: PropTypes.func,
+  clearCurrentProfile: PropTypes.func,
+  clearPaymentInfo: PropTypes.func,
+  clearNetwork: PropTypes.func,
+  clearAlert: PropTypes.func,
+  formSubmission: PropTypes.func,
+  enableNavigation: PropTypes.func,
+  timeoutError: PropTypes.func,
+  timeoutReset: PropTypes.func,
+  algoSelect: PropTypes.func,
+  getStratumList: PropTypes.func,
+  fiatOrder: PropTypes.func,
+  errors: PropTypes.object,
+  configs: PropTypes.object,
+  network: PropTypes.object,
+  miningalgo: PropTypes.object,
+  form: PropTypes.object,
+  time: PropTypes.object,
+  profile: PropTypes.object,
+  stats: PropTypes.object,
+  payment: PropTypes.object,
+  stratum: PropTypes.object
+};
+
+const mapStateToProps = state => ({
+  errors: state.errors,
+  configs: state.configs,
+  network: state.network,
+  miningalgo: state.miningalgo,
+  form: state.form,
+  time: state.time,
+  profile: state.profile,
+  stats: state.stats,
+  payment: state.payment,
+  stratum: state.stratum
+});
+
+export default connect(
+  mapStateToProps,
+  {
+    logoutUser,
+    redirectErrorMessage,
+    takeOffer,
+    clearCurrentProfile,
+    clearPaymentInfo,
+    clearNetwork,
+    clearAlert,
+    getCurrentProfile,
+    marketplacePage,
+    resetErrors,
+    formSubmission,
+    enableNavigation,
+    timeoutError,
+    timeoutReset,
+    algoSelect,
+    getStratumList,
+    fiatOrder
+  }
+)(Marketplace);
