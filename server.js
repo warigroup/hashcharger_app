@@ -14,5 +14,5 @@ var allowCrossDomain = function(req, res, next) {
 }  
 
 app.prepare().then(() => {
-  express().use(handler, xFrameOptions).listen(3000)
+  express().use(handler, xFrameOptions()).listen(3000)
 })
