@@ -2,7 +2,7 @@
 ///##########  WariHash backend API URL
 ///##########
 
-export const apiurl = "https://alphaapi.warihash.com";
+export const apiurl = "https://api.warihash.com";
 
 ///#########
 ///#########  Mining algorithms. Add or remove mining algorithms here.
@@ -18,6 +18,17 @@ export const minerLocations = [
     {name: 'North America East (New York)', value: 'NA East'}, 
     {name: 'North America West (San Francisco)', value: 'NA West'},
     {name: 'Europe West (Amsterdam)', value: 'EU West'}    
+];
+
+///#########
+///#########  Hashrate units for addminers dropdown menus. Add or remove hashrate units here.
+///#########
+
+export const hashrateUnits = [ 
+    {name: 'KH/s', value: 'K'}, 
+    {name: 'MH/s', value: 'M'},
+    {name: 'GH/s', value: 'G'},
+    {name: 'TH/s', value: 'T'}
 ];
 
 ///#########
@@ -55,11 +66,11 @@ export const searchEngine = "on";
 ///########## Alpha URL
 ///########## 
 
-export const alphaURL = "https://alpha.warihash.com";
+export const alphaURL = "https://market.warihash.com";
 
 
 ///##########
 ///########## Invoice Expiration Time In Minutes. Set your invoice expiration time here.
 ///########## 
 
-export const invoiceExpMin = 30;
+export const invoiceExpMin = 60;

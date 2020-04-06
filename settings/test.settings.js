@@ -24,6 +24,17 @@ export const minerLocations = [
 ];
 
 ///#########
+///#########  Hashrate units for addminers dropdown menus. Add or remove hashrate units here.
+///#########
+
+export const hashrateUnits = [ 
+    {name: 'KH/s', value: 'K'}, 
+    {name: 'MH/s', value: 'M'},
+    {name: 'GH/s', value: 'G'},
+    {name: 'TH/s', value: 'T'}   
+];
+
+///#########
 ///#########  Maintenance Mode. Setting maintenanceMode to "true" will create a maintenance version build.
 ///#########  Make sure to leave apiurl selected while using maintenance build.
 ///#########
@@ -65,4 +76,4 @@ export const alphaURL = "https://alpha.warihash.com";
 ///########## Invoice Expiration Time In Minutes. Set your invoice expiration time here.
 ///########## 
 
-export const invoiceExpMin = 30;
+export const invoiceExpMin = 60;
