@@ -12,8 +12,9 @@ var allowCrossDomain = function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Cache-Control");
 }  
 
-express().use(allowCrossDomain);
+
 
 app.prepare().then(() => {
+  express().use(allowCrossDomain);
   express().use(handler).listen(3000)
 })
