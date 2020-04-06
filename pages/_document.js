@@ -32,6 +32,7 @@ class MyDocument extends Document {
       >
         <Head>
           <meta charSet="utf-8" />
+          <meta httpEquiv="X-Frame-Options" content="allow" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
           <meta httpEquiv="Content-Language" content="en-US" />
           <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
