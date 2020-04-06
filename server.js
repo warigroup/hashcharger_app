@@ -11,8 +11,8 @@ const express = require('express')
 
 app.prepare().then(() => {
 
+  
   express().use(helmet({
     frameguard: false
-  }));
-  express().use(handler).listen(3000)
+  })).listen(3000)
 })
