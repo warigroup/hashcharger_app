@@ -3,7 +3,7 @@ const next = require('next')
 const routes = require('./routes')
 const app = next({dev: process.env.NODE_ENV !== 'production'})
 const handler = routes.getRequestHandler(app)
-
+const xFrameOptions = require('x-frame-options')
 // With express
 const express = require('express')
 
@@ -14,5 +14,5 @@ var allowCrossDomain = function(req, res, next) {
 }  
 
 app.prepare().then(() => {
-  express().use(handler, allowCrossDomain).listen(3000)
+  express().use(handler, xFrameOptions).listen(3000)
 })
