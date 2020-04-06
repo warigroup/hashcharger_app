@@ -7,10 +7,12 @@ const helmet = require('helmet')
 // With express
 const express = require('express')
 
-express().use(helmet({
-  frameguard: false
-}));
+
 
 app.prepare().then(() => {
+
+  express().use(helmet({
+    frameguard: false
+  }));
   express().use(handler).listen(3000)
 })
