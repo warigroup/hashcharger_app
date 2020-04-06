@@ -944,7 +944,7 @@ style={{ marginBottom: "150px" }}>
                           }
                         </p>
                         </div>
-                        <div style={{display: "block", width: "100%", marginBottom: "10px", paddingTop: "2px",
+                        {/* <div style={{display: "block", width: "100%", marginBottom: "10px", paddingTop: "2px",
                       paddingBottom: "2px"}}>
                           <p className="buypage-details">
                           <span className="detail-title">Last trade rate:</span> 
@@ -967,7 +967,7 @@ style={{ marginBottom: "150px" }}>
                         </span>
                         }
                         </p>
-                        </div>
+                        </div> */}
                       </div>
 
                       <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" 
