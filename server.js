@@ -5,7 +5,6 @@ const app = next({dev: process.env.NODE_ENV !== 'production'})
 const handler = routes.getRequestHandler(app)
 // With express
 const express = require('express')
-const frameguard = require('frameguard')
 
 // var enableCORS = function(req, res, next) {
 //   res.header('Access-Control-Allow-Origin', '*');
@@ -17,8 +16,6 @@ const frameguard = require('frameguard')
 //     next();
 //   }
 // };
-
-express().use(frameguard({ action: 'deny' }))
 
 app.prepare().then(() => {
   express().use(handler).listen(3000)
