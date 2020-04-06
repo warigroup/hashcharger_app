@@ -11,6 +11,7 @@ import {
   clearAlert,
   redirectErrorMessage,
   getCurrentProfile,
+  getConfigs,
   marketplacePage,
   formSubmission,
   enableNavigation,
@@ -129,7 +130,7 @@ class Marketplace extends React.Component {
 
     this.props.timeoutReset();
     this.props.marketplacePage();
-
+    this.props.getConfigs();
       this.props.clearPaymentInfo();
  
     scroll.scrollToTop({ duration: 200 });
@@ -1827,6 +1828,7 @@ Marketplace.propTypes = {
   redirectErrorMessage: PropTypes.func,
   marketplacePage: PropTypes.func,
   getCurrentProfile: PropTypes.func,
+  getConfigs: PropTypes.func,
   clearCurrentProfile: PropTypes.func,
   clearPaymentInfo: PropTypes.func,
   clearNetwork: PropTypes.func,
@@ -1874,6 +1876,7 @@ export default connect(
     clearNetwork,
     clearAlert,
     getCurrentProfile,
+    getConfigs,
     marketplacePage,
     resetErrors,
     formSubmission,
