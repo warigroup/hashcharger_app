@@ -43,7 +43,7 @@ export const loginUser = () => dispatch => {
     .post(
       "/login/",
       {
-        username: 'widgetaccount@protonmail.com',
+        username: 'widgetaccount',
         password: 'AJ542#^@%4thw!!9y5829!'
       },
       { cancelToken: source.token }
