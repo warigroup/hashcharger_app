@@ -4,8 +4,10 @@ import { Provider } from "react-redux";
 /// NEXT REDUX WRAPPER ///////
 import withRedux from "next-redux-wrapper";
 import { initializeStore } from "../store";
-import Cookies from "js-cookie";
-import { sessioncookie, csrfcookie } from "../utils/cookieNames";
+import { csrfcookie } from "../utils/cookieNames";
+import getCookie from "../utils/getCookie";
+import axios from "axios";
+import { apiurl } from "../settings";
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -17,8 +19,24 @@ class MyApp extends App {
   }
 
   ComponentWillUnmount() {
-    Cookies.set(sessioncookie, 'empty', { expires: 0 });
-    Cookies.remove(csrfcookie);
+    logoutUser = () => {
+      const csrftoken = getCookie(`${csrfcookie}`);
+      const instance = axios.create({
+        baseURL: `${apiurl}`,
+        timeout: TIMEOUT_DURATION
+      });
+      instance.defaults.withCredentials = true;
+      instance.defaults.crossDomain = true;
+    
+      instance.post(
+        "/logout/",
+        { [`${csrfcookie}`]: csrftoken },
+        {
+          headers: { "Content-Type": "application/json", "X-CSRFToken": csrftoken }
+        }
+      );
+    };
+    
   }
 
   render() {
