@@ -25,6 +25,6 @@ function removeFrameguard (req, res, next) {
 }
 
 app.prepare().then(() => {
-  
-  express().use(handler, removeFrameguard).listen(3000)
+
+  express().use(handler, helmet, removeFrameguard).listen(3000)
 })
