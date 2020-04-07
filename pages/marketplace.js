@@ -456,12 +456,9 @@ class Marketplace extends React.Component {
       emailfocus,
       phonenumberfocus,
       durationClicked,
-      discountfocus,
       pricefocus
     } = this.state;
 
-    const loginURL = "login";
-    const registerURL = "register";
     let hashrateExampleText = "";
     
     if (this.checkDurationBelowDay() && 

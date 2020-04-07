@@ -4,6 +4,8 @@ import { Provider } from "react-redux";
 /// NEXT REDUX WRAPPER ///////
 import withRedux from "next-redux-wrapper";
 import { initializeStore } from "../store";
+import Cookies from "js-cookie";
+import { sessioncookie, csrfcookie } from "../utils/cookieNames";
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -12,6 +14,11 @@ class MyApp extends App {
       ? await Component.getInitialProps(ctx)
       : {};
     return { pageProps };
+  }
+
+  ComponentWillUnmount() {
+    Cookies.remove(sessioncookie);
+    Cookies.remove(csrfcookie);
   }
 
   render() {
