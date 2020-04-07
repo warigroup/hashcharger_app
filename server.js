@@ -3,6 +3,7 @@ const next = require('next')
 const routes = require('./routes')
 const app = next({dev: process.env.NODE_ENV !== 'production'})
 const handler = routes.getRequestHandler(app)
+const cors = require('cors');
 // With express
 const express = require('express')
 // var enableCORS = function(req, res, next) {
@@ -15,8 +16,11 @@ const express = require('express')
 //     next();
 //   }
 // };
-
+let expressApp = express();
+expressApp.use(cors());
+expressApp.options('*', cors());
 
 app.prepare().then(() => {
-  express().use(handler).listen(3000)
+  
+  expressApp.use(handler).listen(3000)
 })
