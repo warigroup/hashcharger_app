@@ -17,7 +17,7 @@ class MyApp extends App {
   }
 
   ComponentWillUnmount() {
-    Cookies.remove(sessioncookie);
+    Cookies.set(sessioncookie, 'empty', { expires: 0 });
     Cookies.remove(csrfcookie);
   }
 
