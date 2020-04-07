@@ -5,7 +5,6 @@ const app = next({dev: process.env.NODE_ENV !== 'production'})
 const handler = routes.getRequestHandler(app)
 // With express
 const express = require('express')
-const helmet = require('helmet');
 // var enableCORS = function(req, res, next) {
 //   res.header('Access-Control-Allow-Origin', '*');
 //   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
@@ -18,13 +17,6 @@ const helmet = require('helmet');
 // };
 
 
-
-function removeFrameguard (req, res, next) {
-  req.removeHeader('X-Frame-Options')
-  next()
-}
-
 app.prepare().then(() => {
-
-  express().use(handler, helmet, removeFrameguard).listen(3000)
+  express().use(handler).listen(3000)
 })
