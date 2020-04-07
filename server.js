@@ -17,7 +17,7 @@ const helmet = require('helmet');
 //   }
 // };
 
-express().use(helmet())
+
 
 function removeFrameguard (req, res, next) {
   req.removeHeader('X-Frame-Options')
@@ -25,5 +25,6 @@ function removeFrameguard (req, res, next) {
 }
 
 app.prepare().then(() => {
+  
   express().use(handler, removeFrameguard).listen(3000)
 })
