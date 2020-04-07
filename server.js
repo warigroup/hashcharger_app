@@ -16,11 +16,9 @@ const express = require('express')
 //     next();
 //   }
 // };
-let expressApp = express();
-expressApp.use(cors());
-expressApp.options('*', cors());
+
 
 app.prepare().then(() => {
   
-  expressApp.use(handler).listen(3000)
+  express().use(handler).listen(3000)
 })
