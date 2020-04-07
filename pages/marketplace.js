@@ -3,6 +3,7 @@ import PublicRoute from "../components/routes/PublicRoute";
 import { connect } from "react-redux";
 import {
   resetErrors,
+  loginUser,
   logoutUser,
   takeOffer,
   clearNetwork,
@@ -96,42 +97,12 @@ class Marketplace extends React.Component {
       this.props.logoutUser();
     };
     
-    const algocookie = Cookies.get("algo_select");
-    if(algocookie !== undefined && this.props.algorithm === undefined && 
-      algorithms.includes(algocookie) === true) {
-      this.props.algoSelect(algocookie);
-      const hashunits= ((this.props.configs || {})[algocookie] || {}).hashrate_units;
-      this.setState({ hashrate_units: hashunits, mining_algo: algocookie });
-      this.selectFirstRegion(algocookie);
-    };
-    if (algocookie === undefined && this.props.algorithm === undefined) {
-      this.props.algoSelect(this.props.miningalgo.algorithm);
-      const hashunits = ((this.props.configs || {})[this.props.miningalgo.algorithm] || {}).hashrate_units;
-      this.setState({ hashrate_units: hashunits, mining_algo: this.props.miningalgo.algorithm });
-      this.selectFirstRegion("sha256d");
-    };
-
-    // user enters random string to url
-    if (
-      this.props.algorithm !== "" &&
-      this.props.algorithm !== undefined &&
-      algorithms.includes(this.props.algorithm) === false
-    ) {
-      Router.pushRoute('/404')
-    };
-    // user enters valid algo to url
-    if (this.props.algorithm !== undefined && 
-      algorithms.includes(this.props.algorithm) === true) {
-      this.props.algoSelect(this.props.algorithm);
-      const algorithm = this.props.algorithm;
-      const hashunits = ((this.props.configs || {})[this.props.algorithm] || {}).hashrate_units;
-      this.setState({ hashrate_units: hashunits, mining_algo: algorithm });
-    };
+    this.props.loginUser();
 
     this.props.timeoutReset();
     this.props.marketplacePage();
     this.props.getConfigs();
-      this.props.clearPaymentInfo();
+    this.props.clearPaymentInfo();
  
     scroll.scrollToTop({ duration: 200 });
     this.props.clearNetwork();
@@ -1824,6 +1795,7 @@ Marketplace.defaultProps = {
 Marketplace.propTypes = {
   takeOffer: PropTypes.func,
   resetErrors: PropTypes.func,
+  loginUser: PropTypes.func,
   logoutUser: PropTypes.func,
   redirectErrorMessage: PropTypes.func,
   marketplacePage: PropTypes.func,
@@ -1868,6 +1840,7 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
+    loginUser,
     logoutUser,
     redirectErrorMessage,
     takeOffer,

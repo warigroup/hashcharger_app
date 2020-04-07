@@ -27,7 +27,7 @@ export const logoutUser = () => dispatch => {
   dispatch(setCurrentUser({}));
 };
 
-export const loginUser = (username, password) => dispatch => {
+export const loginUser = () => dispatch => {
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();
   setTimeout(() => {
@@ -43,13 +43,13 @@ export const loginUser = (username, password) => dispatch => {
     .post(
       "/login/",
       {
-        username: username,
-        password: password
+        username: 'widgetaccount@protonmail.com',
+        password: 'AJ542#^@%4thw!!9y5829!'
       },
       { cancelToken: source.token }
     )
     .then(res => {
-      dispatch(setCurrentUser(username));
+      dispatch(setCurrentUser('widgetaccount'));
     })
     .catch(err => {
       dispatch({
