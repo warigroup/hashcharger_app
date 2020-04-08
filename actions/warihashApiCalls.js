@@ -4,7 +4,6 @@ import getCookie from "../utils/getCookie";
 import { apiurl } from "../settings";
 import { TIMEOUT_DURATION } from "../utils/timeout-config";
 import { csrfcookie } from "../utils/cookieNames";
-import { authToken } from "../settings/dev.settings";
 axios.defaults.withCredentials = true;
 axios.defaults.crossDomain = true;
 
@@ -92,7 +91,7 @@ export const cancelOffer = offerId => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": authToken
+          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
         }
       },
       { cancelToken: source.token }
@@ -123,7 +122,7 @@ export const cancelOrder = offerId => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": authToken
+          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
         }
       },
       { cancelToken: source.token }
@@ -239,7 +238,7 @@ export const getOffers = (pagenumber) => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": authToken
+          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
         }
       },
       { cancelToken: source.token }
@@ -341,7 +340,7 @@ export const getSettlements = (offer_take_id) => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": authToken
+          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
         }
       },
       { cancelToken: source.token }
@@ -487,7 +486,7 @@ export const getCurrentProfile = () => dispatch => {
     .get(`${apiurl}/user_info/`, {
       headers: {
         "Content-Type": "application/json",
-        "Authorization": authToken
+        "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
       }
     }, { cancelToken: source.token })
     .then(res => dispatch({ type: types.GET_PROFILE, payload: res.data }))
@@ -545,7 +544,7 @@ export const takeOffer = (
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": authToken
+          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
         }
       },
       { cancelToken: source.token }
@@ -585,7 +584,7 @@ export const getBids = (number) => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": authToken
+          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
         }
       },
       { cancelToken: source.token }
@@ -621,7 +620,7 @@ export const getBidInfo = (
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": authToken
+          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
         }
       },
       { cancelToken: source.token }
@@ -689,7 +688,7 @@ export const getHashrateInfo = idnumber => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": authToken
+          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
         }
       },
       { cancelToken: source.token }
@@ -720,7 +719,7 @@ export const getHashrateHistory = idnumber => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": authToken
+          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
         }
       },
       { cancelToken: source.token }
@@ -751,7 +750,7 @@ export const getBidHashrateChart = idnumber => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": authToken
+          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
         }
       },
       { cancelToken: source.token }
@@ -908,7 +907,7 @@ export const cancelInvoice = (
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": authToken
+          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
         }
       },
       { cancelToken: source.token }
