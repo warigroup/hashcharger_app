@@ -25,12 +25,11 @@ import { FaRegClock, FaPhone, FaEnvelope, FaPen, FaBitcoin, FaQuestionCircle } f
 import { TiFlash } from "react-icons/ti";
 import { Router } from "../routes";
 import MiningAlgoDropDown from "../components/tools/MiningAlgoDropDown";
-import CurrencyDropDown from "../components/tools/CurrencyDropDown";
 import PropTypes from "prop-types";
 import NProgress from "nprogress";
 import CSRFToken from "../utils/csrftoken";
 import Cookies from "js-cookie";
-import { maintenanceMode, googleAnalytics, algorithms, minerLocations } from "../settings";
+import { maintenanceMode, googleAnalytics, minerLocations } from "../settings";
 import PaymentRate from "../components/tools/PaymentRate";
 import Head from "next/head";
 import {
@@ -826,13 +825,7 @@ class Marketplace extends React.Component {
                   <MiningAlgoDropDown 
                     selectAlgorithm={this.selectAlgorithm}
                     />
-                   <h4 className="marketplacetitle mobile-marketplacetitle1" style={{marginLeft: "13.5px"}}>with</h4>
-                   <div style={{width: "100%"}} className="linebreak-br" />
-                   <h4 className="marketplacetitle mobile-marketplacetitle2">Payment Currency:{" "}</h4>
-                   <CurrencyDropDown 
-                   currency={this.state.currency}
-                   selectCurrency={this.selectCurrency}
-                   />
+                   
                 </div>
                 {/******* MINING ALGORITHM SELECTOR END *********/}
              </div>
