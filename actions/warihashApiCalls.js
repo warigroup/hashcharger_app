@@ -27,41 +27,6 @@ export const logoutUser = () => dispatch => {
   dispatch(setCurrentUser({}));
 };
 
-export const loginUser = () => dispatch => {
-  const CancelToken = axios.CancelToken;
-  let source = CancelToken.source();
-  setTimeout(() => {
-    source.cancel("ERROR: Timeout");
-  }, TIMEOUT_DURATION);
-
-  const instance = axios.create({
-    baseURL: `${apiurl}`
-  });
-  instance.defaults.withCredentials = true;
-  instance.defaults.crossDomain = true;
-  instance
-    .post(
-      "/login/",
-      {
-        username: 'widgetaccount',
-        password: 'AJ542#^@%4thw!!9y5829!'
-      },
-      { cancelToken: source.token }
-    )
-    .then(res => {
-      dispatch(setCurrentUser('widgetaccount'));
-    })
-    .catch(err => {
-      dispatch({
-        type: types.GET_ERRORS,
-        payload: (err.response || {}).data
-      });
-      dispatch({
-        type: types.GET_STATUS_CODE,
-        payload: (err.response || {}).status
-      });
-    });
-};
 
 export const resetErrors = () => {
   return {
@@ -906,7 +871,12 @@ export const getCurrentProfile = () => dispatch => {
     source.cancel("ERROR: Timeout");
   }, TIMEOUT_DURATION);
   return axios
-    .get(`${apiurl}/user_info/`, { cancelToken: source.token })
+    .get(`${apiurl}/user_info/`, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
+      }
+    }, { cancelToken: source.token })
     .then(res => dispatch({ type: types.GET_PROFILE, payload: res.data }))
     .catch(err => {
       dispatch({
