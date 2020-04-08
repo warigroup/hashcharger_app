@@ -517,7 +517,7 @@ class Marketplace extends React.Component {
     return (
       <PublicRoute>
         <Head>
-            <title>Marketplace | WariHash</title>
+            <title>WariHash</title>
             <meta name="description" content="" />
             <meta name="keywords" content="" />
             <meta name="author" content="" />
