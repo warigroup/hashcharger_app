@@ -41,7 +41,7 @@ export const loginUser = () => dispatch => {
   instance.defaults.crossDomain = true;
   instance
     .post(
-      "/token_get/",
+      "/login/",
       {
         username: 'widgetaccount',
         password: 'AJ542#^@%4thw!!9y5829!'

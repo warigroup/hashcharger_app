@@ -97,7 +97,7 @@ class Marketplace extends React.Component {
     };
     
     this.props.loginUser();
-
+    this.props.getCurrentProfile();
     this.props.timeoutReset();
     this.props.marketplacePage();
     this.props.getConfigs();
