@@ -1,5 +1,5 @@
 import React from "react";
-import AdminRoute from "../components/routes/AdminRoute";
+import PublicRoute from "../components/routes/PublicRoute";
 import {
   getCurrentProfile,
   getBidInfo, 
@@ -88,7 +88,7 @@ class OrderDetails extends React.Component {
 
 
       return (
-          <AdminRoute>
+          <PublicRoute>
             <Head>
             <title>WariHash</title>
             <meta name="description" content="" />
@@ -407,7 +407,7 @@ class OrderDetails extends React.Component {
                   </div>
               </div>
           </div>
-      </AdminRoute>
+      </PublicRoute>
       )
     }
   }
