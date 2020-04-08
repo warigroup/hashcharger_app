@@ -8,183 +8,11 @@ axios.defaults.withCredentials = true;
 axios.defaults.crossDomain = true;
 
 //////// AUTH ACTIONS ////////////////////////////////
-export const logoutUser = () => dispatch => {
-  const csrftoken = getCookie(`${csrfcookie}`);
-  const instance = axios.create({
-    baseURL: `${apiurl}`,
-    timeout: TIMEOUT_DURATION
-  });
-  instance.defaults.withCredentials = true;
-  instance.defaults.crossDomain = true;
-
-  instance.post(
-    "/logout/",
-    { [`${csrfcookie}`]: csrftoken },
-    {
-      headers: { "Content-Type": "application/json", "X-CSRFToken": csrftoken }
-    }
-  );
-  dispatch(setCurrentUser({}));
-};
-
 
 export const resetErrors = () => {
   return {
     type: types.RESET_ERRORS
   };
-};
-
-// set logged in user
-export const setCurrentUser = username => {
-  return {
-    type: types.SET_CURRENT_USER,
-    payload: username
-  };
-};
-
-export const registerUser = (username, email, password) => dispatch => {
-  const CancelToken = axios.CancelToken;
-  let source = CancelToken.source();
-  setTimeout(() => {
-    source.cancel("ERROR: Timeout");
-  }, TIMEOUT_DURATION);
-  return axios
-    .post(
-      `${apiurl}/auth/users/`,
-      {
-        username: username,
-        email: email,
-        password: password
-      },
-      { cancelToken: source.token }
-    )
-    .then(res => {
-      dispatch({
-        type: types.CLEAR_ERRORS_SHOW_ALERT
-      });
-      if (googleAnalytics === "on") {
-        window.gtag('event', 'conversion', {'send_to': 'AW-693268366/kN-yCOO-3rQBEI7fycoC'});
-        window.ga('send', {
-          hitType: 'event',
-          eventCategory: 'marketplace',
-          eventAction: 'registration',
-          eventLabel: 'Marketplace Events'
-        });
-      };
-      if (facebookPixel === "on") {
-        window.fbq('track', 'CompleteRegistration');
-      };
-    })
-    .catch(err => {
-        dispatch({
-          type: types.GET_ERRORS,
-          payload: (err.response || {}).data
-        });
-        dispatch({
-          type: types.GET_STATUS_CODE,
-          payload: (err.response || {}).status
-        });
-    });
-};
-
-export const registerWithReferralCode = (username, email, password, referrer_code) => dispatch => {
-  const CancelToken = axios.CancelToken;
-  let source = CancelToken.source();
-  setTimeout(() => {
-    source.cancel("ERROR: Timeout");
-  }, TIMEOUT_DURATION);
-  return axios
-    .post(
-      `${apiurl}/auth/users/`,
-      {
-        username: username,
-        email: email,
-        password: password,
-        referrer_code: referrer_code
-      },
-      { cancelToken: source.token }
-    )
-    .then(res => {
-      dispatch({
-        type: types.CLEAR_ERRORS_SHOW_ALERT
-      });
-      if (googleAnalytics === "on") {
-        window.gtag('event', 'conversion', {'send_to': 'AW-693268366/kN-yCOO-3rQBEI7fycoC'});
-      };
-      if (facebookPixel === "on") {
-        window.fbq('track', 'CompleteRegistration');
-      };
-    })
-    .catch(err => {
-        dispatch({
-          type: types.GET_ERRORS,
-          payload: (err.response || {}).data
-        });
-        dispatch({
-          type: types.GET_STATUS_CODE,
-          payload: (err.response || {}).status
-        });
-    });
-};
-
-export const resendActivation = email => dispatch => {
-  const CancelToken = axios.CancelToken;
-  let source = CancelToken.source();
-  setTimeout(() => {
-    source.cancel("ERROR: Timeout");
-  }, TIMEOUT_DURATION);
-  return axios
-    .post(
-      `${apiurl}/auth/users/resend_activation/`,
-      { email: email },
-      { cancelToken: source.token }
-    )
-    .then(res => {
-      dispatch({
-        type: types.CLEAR_ERRORS_SHOW_ALERT
-      });
-    })
-    .catch(err => {
-      dispatch({
-        type: types.GET_ERRORS,
-        payload: (err.response || {}).data
-      });
-      dispatch({
-        type: types.GET_STATUS_CODE,
-        payload: (err.response || {}).status
-      });
-    });
-};
-
-export const sendResetEmail = email => dispatch => {
-  const CancelToken = axios.CancelToken;
-  let source = CancelToken.source();
-  setTimeout(() => {
-    source.cancel("ERROR: Timeout");
-  }, TIMEOUT_DURATION);
-  return axios
-    .post(
-      `${apiurl}/auth/users/reset_password/`,
-      {
-        email: email
-      },
-      { cancelToken: source.token }
-    )
-    .then(res => {
-      dispatch({
-        type: types.CLEAR_ERRORS_SHOW_ALERT
-      });
-    })
-    .catch(err => {
-      dispatch({
-        type: types.GET_ERRORS,
-        payload: (err.response || {}).data
-      });
-      dispatch({
-        type: types.GET_STATUS_CODE,
-        payload: (err.response || {}).status
-      });
-    });
 };
 
 export const redirectErrorMessage = () => {
@@ -227,7 +55,7 @@ export const cancelOffer = offerId => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "X-CSRFToken": csrftoken
+          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
         }
       },
       { cancelToken: source.token }
@@ -258,7 +86,7 @@ export const cancelOrder = offerId => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "X-CSRFToken": csrftoken
+          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
         }
       },
       { cancelToken: source.token }
@@ -373,7 +201,8 @@ export const getOffers = (pagenumber) => dispatch => {
       `${apiurl}/get_offers/?page=${pagenumber}`,
       {
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
         }
       },
       { cancelToken: source.token }
@@ -474,7 +303,8 @@ export const getSettlements = (offer_take_id) => dispatch => {
       `${apiurl}/get_settlements/?offer_take_id=${offer_take_id}`,
       {
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
         }
       },
       { cancelToken: source.token }
@@ -490,144 +320,7 @@ export const getSettlements = (offer_take_id) => dispatch => {
     });
 };
 
-/////// POST ACTIVATION DATA /////////////////////////
-
-export const postActivationData = (uid, token) => dispatch => {
-  const CancelToken = axios.CancelToken;
-  let source = CancelToken.source();
-  setTimeout(() => {
-    source.cancel("ERROR: Timeout");
-  }, TIMEOUT_DURATION);
-  return axios
-    .post(
-      `${apiurl}/auth/users/activation/`,
-      {
-        uid: uid,
-        token: token
-      },
-      { cancelToken: source.token }
-    )
-    .then(res =>
-      dispatch({
-        type: types.ACTIVATION_SUCCESSFUL,
-        payload: res.data
-      })
-    )
-    .catch(err =>
-      dispatch({
-        type: types.ACTIVATION_FAILED,
-        payload: (err.response || {}).data
-      })
-    );
-};
-
-export const resetActivationStatus = () => {
-  return {
-    type: types.RESET_ACTIVATION_STATUS
-  };
-};
-
-/////// PASSWORD RESET ///////////////////////////////
-
-export const postPasswordResetData = (
-  uid,
-  token,
-  password,
-  passwordconfirm
-) => dispatch => {
-  const CancelToken = axios.CancelToken;
-  let source = CancelToken.source();
-  setTimeout(() => {
-    source.cancel("ERROR: Timeout");
-  }, TIMEOUT_DURATION);
-  return axios
-    .post(
-      `${apiurl}/auth/users/reset_password_confirm/`,
-      {
-        uid: uid,
-        token: token,
-        new_password: password,
-        re_new_password: passwordconfirm
-      },
-      { cancelToken: source.token }
-    )
-    .then(res =>
-      dispatch({
-        type: types.RESET_PASSWORD_SUCCESSFUL,
-        payload: res.data
-      })
-    )
-    .catch(err =>
-      dispatch({
-        type: types.RESET_PASSWORD_FAILED,
-        payload: (err.response || {}).data
-      })
-    );
-};
-
-export const nullResetStatus = () => {
-  return {
-    type: types.NULL_RESET_STATUS
-  };
-};
-
 //////// MAKE OFFER ACTIONS //////////////////////////
-
-export const makeOffer = (
-  miner_id,
-  price,
-  mining_algo,
-  host,
-  port,
-  username,
-  password
-) => dispatch => {
-  const csrftoken = getCookie(`${csrfcookie}`);
-  var data = {
-    miner_id: miner_id,
-    price: price,
-    mining_algo: mining_algo
-  };
-  if (host) {
-    data["host"] = host;
-    data["port"] = port;
-    data["username"] = username;
-    data["password"] = password;
-  }
-  const CancelToken = axios.CancelToken;
-  let source = CancelToken.source();
-  setTimeout(() => {
-    source.cancel("ERROR: Timeout");
-  }, TIMEOUT_DURATION);
-  return axios
-    .post(
-      `${apiurl}/offer_make/`,
-      data,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRFToken": csrftoken
-        }
-      },
-      { cancelToken: source.token }
-    )
-    .then(res => {
-      dispatch({
-        type: types.CLEAR_ERRORS_SHOW_ALERT
-      });
-    }
-    )
-    .catch(err => {
-      dispatch({
-        type: types.GET_ERRORS,
-        payload: (err.response || {}).data
-      });
-      dispatch({
-        type: types.GET_STATUS_CODE,
-        payload: (err.response || {}).status
-      });
-    });
-};
 
 export const clearPaymentInfo = () => {
   return {
@@ -636,123 +329,6 @@ export const clearPaymentInfo = () => {
 };
 
 ///// MINERS FORM ///////////////////////////////////
-
-export const getMinersList = algorithm => dispatch => {
-  const CancelToken = axios.CancelToken;
-  let source = CancelToken.source();
-  setTimeout(() => {
-    source.cancel("ERROR: Timeout");
-  }, TIMEOUT_DURATION);
-  return axios
-    .get(
-      `${apiurl}/get_miners/?mining_algo=${algorithm}`,
-      {
-        headers: {
-          "Content-Type": "application/json"
-        }
-      },
-      { cancelToken: source.token }
-    )
-    .then(res => {
-        dispatch({
-          type: types.GET_MINERS_LIST,
-          payload: res.data
-        });
-    })
-    .catch(err => {
-      console.log(err);
-    });
-};
-
-export const addMiners = (
-  name,
-  declared_hashrate,
-  hashrate_units,
-  mining_algo,
-  location,
-  triggered
-) => dispatch => {
-  const csrftoken = getCookie(`${csrfcookie}`);
-  const CancelToken = axios.CancelToken;
-  let source = CancelToken.source();
-  setTimeout(() => {
-    source.cancel("ERROR: Timeout");
-  }, TIMEOUT_DURATION);
-  return axios
-    .post(
-      `${apiurl}/add_miner/`,
-      {
-        name: name,
-        declared_hashrate: declared_hashrate,
-        hashrate_units: hashrate_units,
-        mining_algo: mining_algo,
-        location: location,
-        triggered: triggered
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRFToken": csrftoken
-        }
-      },
-      { cancelToken: source.token }
-    )
-    .then(res =>
-      dispatch({
-        type: types.CLEAR_ERRORS_SHOW_ALERT
-      })
-    )
-    .catch(err => {
-      dispatch({
-        type: types.GET_ERRORS,
-        payload: (err.response || {}).data
-      });
-      dispatch({
-        type: types.GET_STATUS_CODE,
-        payload: (err.response || {}).status
-      });
-    });
-};
-
-export const removeMiners = miner_id => dispatch => {
-  const csrftoken = getCookie(`${csrfcookie}`);
-  const CancelToken = axios.CancelToken;
-  let source = CancelToken.source();
-  setTimeout(() => {
-    source.cancel("ERROR: Timeout");
-  }, TIMEOUT_DURATION);
-  return axios
-    .post(
-      `${apiurl}/remove_miner/`,
-      {
-        miner_id: miner_id
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRFToken": csrftoken
-        }
-      },
-      { cancelToken: source.token }
-    )
-    .then(res => dispatch({ type: types.MINERS_REMOVED }))
-    .catch(err => {
-      dispatch({
-        type: types.GET_ERRORS,
-        payload: (err.response || {}).data
-      });
-      dispatch({
-        type: types.GET_STATUS_CODE,
-        payload: (err.response || {}).status
-      });
-    });
-};
-
-export const resetMinerStatus = () => {
-  return {
-    type: types.RESET_MINER_STATUS
-  };
-};
 
 export const getErrorStatus = err => {
   return {
@@ -932,7 +508,7 @@ export const takeOffer = (
       {
         headers: {
           "Content-Type": "application/json",
-          "X-CSRFToken": csrftoken
+          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
         }
       },
       { cancelToken: source.token }
@@ -972,7 +548,7 @@ export const getBids = (number) => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "X-CSRFToken": csrftoken
+          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
         }
       },
       { cancelToken: source.token }
@@ -1008,7 +584,7 @@ export const getBidInfo = (
       {
         headers: {
           "Content-Type": "application/json",
-          "X-CSRFToken": csrftoken
+          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
         }
       },
       { cancelToken: source.token }
@@ -1076,7 +652,7 @@ export const getHashrateInfo = idnumber => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "X-CSRFToken": csrftoken
+          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
         }
       },
       { cancelToken: source.token }
@@ -1107,7 +683,7 @@ export const getHashrateHistory = idnumber => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "X-CSRFToken": csrftoken
+          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
         }
       },
       { cancelToken: source.token }
@@ -1138,7 +714,7 @@ export const getBidHashrateChart = idnumber => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "X-CSRFToken": csrftoken
+          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
         }
       },
       { cancelToken: source.token }
@@ -1391,89 +967,6 @@ export const editOffers = (offer_id, host, port, username, password) => dispatch
     });
 };
 
-///////// FIAT ORDER ////////////////////////////////////////
-
-export const fiatOrder = (mining_algo, email, name_or_company, phone_number, duration_days, hashrate_fiat, hashrate_units_fiat) => dispatch => {
-  const csrftoken = getCookie(`${csrfcookie}`);
-  const CancelToken = axios.CancelToken;
-  let source = CancelToken.source();
-  setTimeout(() => {
-    source.cancel("ERROR: Timeout");
-  }, TIMEOUT_DURATION);
-  return axios
-    .post(
-      `${apiurl}/email_fiat_purchase/`,
-      {
-        mining_algo: mining_algo,
-        email: email,
-        name_or_company: name_or_company,
-        phone_number: phone_number,
-        duration_days: duration_days,
-        hashrate: hashrate_fiat,
-        hashrate_units: hashrate_units_fiat
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRFToken": csrftoken
-        }
-      },
-      { cancelToken: source.token }
-    )
-    .then(res => dispatch({ type: types.CLEAR_ERRORS_FIAT_FORM }))
-    .catch(err => {
-      dispatch({
-        type: types.GET_ERRORS,
-        payload: (err.response || {}).data
-      });
-      dispatch({
-        type: types.GET_STATUS_CODE,
-        payload: (err.response || {}).status
-      });
-    });
-};
-
-///////////// SET BTC ADDRESS /////////////////////////
-
-export const setBTCAddress = (
-  address
-) => dispatch => {
-  const csrftoken = getCookie(`${csrfcookie}`);
-  const CancelToken = axios.CancelToken;
-  let source = CancelToken.source();
-  setTimeout(() => {
-    source.cancel("ERROR: Timeout");
-  }, TIMEOUT_DURATION);
-  return axios
-    .post(
-      `${apiurl}/withdrawal_address_set/`,
-      {
-        address: address
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRFToken": csrftoken
-        }
-      },
-      { cancelToken: source.token }
-    )
-    .then(res => {
-      dispatch({ type: types.SET_PAYMENT_ADDRESS });
-    }
-    )
-    .catch(err => {
-      dispatch({
-        type: types.GET_ERRORS,
-        payload: (err.response || {}).data
-      });
-      dispatch({
-        type: types.GET_STATUS_CODE,
-        payload: (err.response || {}).status
-      });
-    });
-};
-
 ///////////// CANCEL INVOICE /////////////////////////
 
 export const cancelInvoice = (
@@ -1494,7 +987,7 @@ export const cancelInvoice = (
       {
         headers: {
           "Content-Type": "application/json",
-          "X-CSRFToken": csrftoken
+          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
         }
       },
       { cancelToken: source.token }

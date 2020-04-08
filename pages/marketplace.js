@@ -3,7 +3,6 @@ import PublicRoute from "../components/routes/PublicRoute";
 import { connect } from "react-redux";
 import {
   resetErrors,
-  logoutUser,
   takeOffer,
   clearNetwork,
   clearCurrentProfile,
@@ -17,9 +16,7 @@ import {
   enableNavigation,
   timeoutError,
   timeoutReset,
-  algoSelect, 
-  getStratumList, 
-  fiatOrder } from "../actions/warihashApiCalls";
+  algoSelect } from "../actions/warihashApiCalls";
 import { FaRegClock, FaPhone, FaEnvelope, FaPen, FaBitcoin, FaQuestionCircle } from "react-icons/fa";
 import { TiFlash } from "react-icons/ti";
 import { Router } from "../routes";
@@ -170,7 +167,6 @@ class Marketplace extends React.Component {
       this.props.enableNavigation();
       this.props.redirectErrorMessage();
       this.props.clearCurrentProfile();
-      this.props.logoutUser();
     };
     if (
       (this.props.network.networkstatus === 500) &
@@ -189,7 +185,6 @@ class Marketplace extends React.Component {
     ) {
       this.props.redirectErrorMessage();
       this.props.clearCurrentProfile();
-      this.props.logoutUser();
     };
     // clean up settimeout function
     clearTimeout(this.timer);
@@ -261,92 +256,6 @@ class Marketplace extends React.Component {
     this.selectStratumSetting(event.target.value);
   };
 
-  selectStratumSetting = stratum_id => {
-     const filteredStratum = this.props.stratum.stratum_list.find((stratum_setting) => {
-        return stratum_setting.stratum_id == stratum_id;
-      });
-      if (filteredStratum !== undefined) {
-      this.setState({ 
-        host: filteredStratum.stratum_host,
-        port: filteredStratum.stratum_port,
-        username: filteredStratum.stratum_username,
-        password: filteredStratum.stratum_password
-      });
-      }
-      if (filteredStratum === undefined) {
-        this.setState({ 
-          host: "",
-          port: "",
-          username: "",
-          password: ""
-        });
-       }
-  };
-
-    /// SUBMIT FIAT ORDER //////////////////////
-    submitFiatOrder = event => {
-      event.preventDefault();
-      this.setState({ formloading: true });
-      NProgress.start();
-      this.props.resetErrors();
-      this.props.formSubmission();
-      this.props.timeoutReset();
-      this.props.fiatOrder(
-        this.state.mining_algo, 
-        this.state.email, 
-        this.state.name_or_company, 
-        this.state.phone_number, 
-        this.state.duration_days, 
-        this.state.hashrate_fiat, 
-        this.state.hashrate_units_fiat
-      );
-      this.timer = setTimeout(() => {
-        NProgress.done();
-        this.setState({ formloading: false });
-        this.props.enableNavigation();
-        if (!this.props.errors) {
-          this.props.timeoutError();
-        }
-      }, TIMEOUT_DURATION);
-      Cookies.remove("saved_data");
-    };
-
-      /// SUCCESS ALERT ////////////////////////////
-      successAlert = () => {
-        const successAlert = (
-          <SweetAlert
-            success
-            confirmBtnText="Confirm"
-            confirmBtnBsStyle="default"
-            title=""
-            style={{borderRadius: "0px"}}
-            onConfirm={this.onConfirm}
-          >
-            <p style={{ fontSize: "0.7em" }}>
-              <br />
-              We have received your order!
-              <br />
-              We'll get in touch with you shortly.
-              <br />
-              <br />
-            </p>
-          </SweetAlert>
-        );
-        this.setState({ successAlert: successAlert });
-      };
-
-      onConfirm = () => {
-        this.setState({ 
-          email: "", 
-          name_or_company: "", 
-          phone_number: "", 
-          duration_days: "", 
-          hashrate_fiat: "", 
-          hashrate_units_fiat: ""
-        });
-        this.props.clearAlert();
-        this.setState({ successAlert: null });
-      };
 
     /// ALGORITHM SELECTOR /////////////////////
 
@@ -810,7 +719,6 @@ class Marketplace extends React.Component {
             }
           `}
         </style>
-        {this.state.successAlert}
         <div
           className="container"
           style={{ marginBottom: "150px" }}
@@ -828,14 +736,6 @@ class Marketplace extends React.Component {
                 {/******* MINING ALGORITHM SELECTOR END *********/}
              </div>
 
-             {this.state.currency === "USD" ?  <div className="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12" style={{paddingBottom: "0px"}}>
-              <p style={{fontSize: "0.8em", color: "rgba(0,0,0,0.6)", paddingTop: "12px", paddingBottom: "10px"}}>
-              Purchases with USD must be processed manually and may take several business days to process.{" "}
-              We also reserve the right to reject the request for any reason.{" "}
-              Please fill out the form below and we will get back to you with further instructions.{" "}
-              For automated and immediate purchases, please buy hashing power with BTC.
-              </p>
-             </div> : null}
 
 { this.checkNestedAvailable() &&
   this.props.stats.available[this.props.miningalgo.algorithm].hashrate !== undefined &&
@@ -879,7 +779,7 @@ style={{ marginBottom: "150px" }}>
        </div>
 </div> : 
             <div style={{width: "100%"}}>
-              {this.state.currency === "BTC" ?  
+            
             <form
               className="formstyles"
               onSubmit={this.handleSubmit}
@@ -1425,334 +1325,7 @@ style={{ marginBottom: "150px" }}>
                     
                        
                       </div>
-                        </form> : 
-                        
-                        
-                        <form className="formstyles"
-              onSubmit={this.submitFiatOrder}
-              autoComplete="off"
-              id="buy-form">
-                          <div className="container-fluid">
-                            <div className="row">
-                          <div className="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
-                          <div className="form-group">
-                        <label htmlFor="name_or_company" className="inputlabel">
-                        Name or Company [optional]:
-                        </label>
-                        <div
-                          className={
-                            nameorcompanyfocus === true
-                              ? "input-group input-group-md focused"
-                              : "input-group input-group-md"
-                          }
-                          style={{maxWidth: "285px"}}
-                        >
-                          <div className="input-group-prepend">
-                            <span
-                              className="input-group-text"
-                              style={{
-                                background: "white",
-                                border: "none",
-                                color: "rgba(0,0,0,0.5)"
-                              }}
-                            >
-                              <FaPen style={nameorcompanyfocus === true ? 
-                                { fontSize: "1.26em", opacity: "1" } : 
-                                { fontSize: "1.26em", opacity: "0.8" }} />
-                            </span>
-                          </div>
-                          <input
-                            type="text"
-                            name="name_or_company"
-                            value={this.state.name_or_company}
-                            placeholder="Example: Bitmain"
-                            className="form-control inputstyles2"
-                            style={{
-                              border: "none",
-                              borderRadius: "7px",
-                              fontSize: "0.82em"
-                            }}
-                            onChange={this.handleChange}
-                            onFocus={this.handleNameOrCompanyFocus}
-                            onBlur={this.handleNameOrCompanyBlur}
-                            autoComplete="off"
-                            required
-                          />
-                          <br />
-                        </div>
-                        </div> 
-
-                        </div>
-
-                        <div className="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">    
-                          <div className="form-group">
-                        <label htmlFor="email" className="inputlabel">
-                        Email:
-                        </label>
-                        <div
-                          className={
-                            emailfocus === true
-                              ? "input-group input-group-md focused"
-                              : "input-group input-group-md"
-                          }
-                          style={{maxWidth: "285px"}}
-                        >
-                          <div className="input-group-prepend">
-                            <span
-                              className="input-group-text"
-                              style={{
-                                background: "white",
-                                border: "none",
-                                color: "rgba(0,0,0,0.5)"
-                              }}
-                            >
-                              <FaEnvelope style={emailfocus === true ? 
-                                { fontSize: "1.26em", opacity: "1" } : 
-                                { fontSize: "1.26em", opacity: "0.8" }} />
-                            </span>
-                          </div>
-                          <input
-                            type="text"
-                            name="email"
-                            value={this.state.email}
-                            placeholder="Example: example@abc.com"
-                            className="form-control inputstyles2"
-                            style={{
-                              border: "none",
-                              borderRadius: "7px",
-                              fontSize: "0.82em"
-                            }}
-                            onChange={this.handleChange}
-                            onFocus={this.handleEmailFocus}
-                            onBlur={this.handleEmailBlur}
-                            autoComplete="off"
-                            required
-                          />
-                          <br />
-                        </div>
-                        </div>   
-                        </div>
-
-                        <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" />
-                        <div className="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">     
-                        <div className="form-group">
-                        <label htmlFor="phone_number" className="inputlabel">
-                        Phone Number [optional]:
-                        </label>
-                        <div
-                          className={
-                            phonenumberfocus === true
-                              ? "input-group input-group-md focused"
-                              : "input-group input-group-md"
-                          }
-                          style={{maxWidth: "285px"}}
-                        >
-                          <div className="input-group-prepend">
-                            <span
-                              className="input-group-text"
-                              style={{
-                                background: "white",
-                                border: "none",
-                                color: "rgba(0,0,0,0.5)"
-                              }}
-                            >
-                              <FaPhone style={phonenumberfocus === true ? 
-                                { fontSize: "1.11em", opacity: "1", transform: "rotate(90deg)" } : 
-                                { fontSize: "1.11em", opacity: "0.8", transform: "rotate(90deg)" }} />
-                            </span>
-                          </div>
-                          <input
-                            type="text"
-                            name="phone_number"
-                            value={this.state.phone_number}
-                            placeholder="Example: 888-888-1234"
-                            className="form-control inputstyles2"
-                            style={{
-                              border: "none",
-                              borderRadius: "7px",
-                              fontSize: "0.82em"
-                            }}
-                            onChange={this.handleChange}
-                            onFocus={this.handlePhoneNumberFocus}
-                            onBlur={this.handlePhoneNumberBlur}
-                            autoComplete="off"
-                            required
-                          />
-                          <br />
-                        </div>
-                        </div>   
-                            </div>
-
-
-                            <div className="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">   
-                       <div className="form-group">
-                        <label htmlFor="duration_days" className="inputlabel">
-                        Order Duration (Days):
-                        </label>
-                        <div
-                          className={
-                            durationdaysfocus === true
-                              ? "input-group input-group-md focused"
-                              : "input-group input-group-md"
-                          }
-                          style={{maxWidth: "285px"}}
-                        >
-                          <div className="input-group-prepend">
-                            <span
-                              className="input-group-text"
-                              style={{
-                                background: "white",
-                                border: "none",
-                                color: "rgba(0,0,0,0.5)"
-                              }}
-                            >
-                              <FaRegClock style={durationdaysfocus === true ? 
-                                { fontSize: "1.26em", opacity: "1" } : 
-                                { fontSize: "1.26em", opacity: "0.8" }} />
-                            </span>
-                          </div>
-                          <input
-                            type="text"
-                            name="duration_days"
-                            value={this.state.duration_days}
-                            placeholder="Example: 15"
-                            className="form-control inputstyles2"
-                            style={{
-                              border: "none",
-                              borderRadius: "7px",
-                              fontSize: "0.82em"
-                            }}
-                            onChange={this.handleChange}
-                            onFocus={this.handleDurationDaysFocus}
-                            onBlur={this.handleDurationDaysBlur}
-                            autoComplete="off"
-                            required
-                          />
-                          <p style={{paddingTop: "0px", 
-                          paddingBottom: "0px", 
-                          marginBottom: "0px",
-                          position: "relative",
-                          fontSize: "0.88em",
-                          top: "6.2px",
-                          right: "13px", 
-                          zIndex: "99"}}>
-                          Days
-                          </p>
-                          <br />
-                        </div>
-                        </div>
-                            </div>
-
-
-                    <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" />
-                    <div className="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12"> 
-                        <div className="form-group">
-                        <label htmlFor="hashrate_fiat" className="inputlabel">
-                         Hashrate to Purchase:
-                        </label>
-                        <div
-                          className={
-                            hashratefocus === true
-                              ? "input-group input-group-md focused"
-                              : "input-group input-group-md"
-                          }
-                          style={{maxWidth: "285px"}}
-                        >
-                          <div className="input-group-prepend">
-                            <span
-                              className="input-group-text"
-                              style={{
-                                background: "white",
-                                border: "none",
-                                color: "rgba(0,0,0,0.5)"
-                              }}
-                            >
-                              <TiFlash style={hashratefocus === true ? 
-                              { fontSize: "1.4em", opacity: "1" } : 
-                              { fontSize: "1.4em", opacity: "0.8" }} />
-                            </span>
-                          </div>
-                          <input
-                            type="text"
-                            name="hashrate_fiat"
-                            value={this.state.hashrate_fiat}
-                            placeholder={hashrateExampleText}
-                            className="form-control inputstyles2"
-                            style={{
-                              border: "none",
-                              borderRadius: "7px",
-                              fontSize: "0.82em"
-                            }}
-                            onChange={this.handleChange}
-                            onFocus={this.handleHashrateFocus}
-                            onBlur={this.handleHashrateBlur}
-                            autoComplete="off"
-                            required
-                          />   
-                          <br />
-                        </div>
-                        </div>
-                        </div>
-
-                        <div className="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12"> 
-                        <div className="form-group">   
-                         
-                          <label htmlFor="hashrate_units" className="inputlabel">
-                          Hashrate unit:
-                        </label> <br/>
-                    
-                          <select
-                            className="form-control selectstyles miningalgoselect"
-                            name="hashrate_units"
-                            placeholder="Select hashrate unit"
-                            style={{
-                              display: "inline-block",
-                              width: "200px",
-                              height: "41.5px"
-                            }}
-                            value={this.state.hashrate_units_fiat}
-                            onChange={this.handleUnitSelect}
-                          >
-                            <option className="selectstyles" value="">
-                              Select hashrate unit
-                            </option>
-                            <option className="selectstyles" value="K">
-                              KH/s
-                            </option>
-                            <option className="selectstyles" value="M">
-                              MH/s
-                            </option>
-                            <option className="selectstyles" value="G">
-                              GH/s
-                            </option>
-                            <option className="selectstyles" value="T">
-                              TH/s
-                            </option>
-                          </select>
-
-                        </div>
-                        </div> 
-
-                         <div className="col-xl-12 col-lg-12 col-md-12 col-12 col-sm-12">
-
-                        
-                            <button
-                            disabled={this.state.formloading}
-                            className="btn btn-info nooutline buybtn"
-                            id="submit-fiat-order"
-                            type="submit"
-                          >
-                            {this.state.formloading === true
-                              ? <ThreeDotsLoading />
-                              : <p style={{ paddingBottom: "0px", marginBottom: "0px" }}>Submit Order</p>}
-    
-                          </button>
-
-                          </div>
-
-                          </div>
-                          </div>
-                          </form> }
+                        </form> 
             </div>   }
           </div>
          </div> 
@@ -1771,7 +1344,6 @@ Marketplace.defaultProps = {
 Marketplace.propTypes = {
   takeOffer: PropTypes.func,
   resetErrors: PropTypes.func,
-  logoutUser: PropTypes.func,
   redirectErrorMessage: PropTypes.func,
   marketplacePage: PropTypes.func,
   getCurrentProfile: PropTypes.func,
@@ -1785,8 +1357,6 @@ Marketplace.propTypes = {
   timeoutError: PropTypes.func,
   timeoutReset: PropTypes.func,
   algoSelect: PropTypes.func,
-  getStratumList: PropTypes.func,
-  fiatOrder: PropTypes.func,
   errors: PropTypes.object,
   configs: PropTypes.object,
   network: PropTypes.object,
@@ -1815,7 +1385,6 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    logoutUser,
     redirectErrorMessage,
     takeOffer,
     clearCurrentProfile,
@@ -1830,8 +1399,6 @@ export default connect(
     enableNavigation,
     timeoutError,
     timeoutReset,
-    algoSelect,
-    getStratumList,
-    fiatOrder
+    algoSelect
   }
 )(Marketplace);
