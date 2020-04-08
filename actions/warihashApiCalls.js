@@ -1,9 +1,10 @@
 import axios from "axios";
 import * as types from "./types";
 import getCookie from "../utils/getCookie";
-import { apiurl, googleAnalytics, facebookPixel } from "../settings";
+import { apiurl } from "../settings";
 import { TIMEOUT_DURATION } from "../utils/timeout-config";
 import { csrfcookie } from "../utils/cookieNames";
+import { authToken } from "../settings/dev.settings";
 axios.defaults.withCredentials = true;
 axios.defaults.crossDomain = true;
 
@@ -55,7 +56,7 @@ export const cancelOffer = offerId => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
+          "Authorization": authToken
         }
       },
       { cancelToken: source.token }
@@ -86,7 +87,7 @@ export const cancelOrder = offerId => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
+          "Authorization": authToken
         }
       },
       { cancelToken: source.token }
@@ -202,7 +203,7 @@ export const getOffers = (pagenumber) => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
+          "Authorization": authToken
         }
       },
       { cancelToken: source.token }
@@ -304,7 +305,7 @@ export const getSettlements = (offer_take_id) => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
+          "Authorization": authToken
         }
       },
       { cancelToken: source.token }
@@ -450,7 +451,7 @@ export const getCurrentProfile = () => dispatch => {
     .get(`${apiurl}/user_info/`, {
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
+        "Authorization": authToken
       }
     }, { cancelToken: source.token })
     .then(res => dispatch({ type: types.GET_PROFILE, payload: res.data }))
@@ -508,7 +509,7 @@ export const takeOffer = (
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
+          "Authorization": authToken
         }
       },
       { cancelToken: source.token }
@@ -548,7 +549,7 @@ export const getBids = (number) => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
+          "Authorization": authToken
         }
       },
       { cancelToken: source.token }
@@ -584,7 +585,7 @@ export const getBidInfo = (
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
+          "Authorization": authToken
         }
       },
       { cancelToken: source.token }
@@ -652,7 +653,7 @@ export const getHashrateInfo = idnumber => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
+          "Authorization": authToken
         }
       },
       { cancelToken: source.token }
@@ -683,7 +684,7 @@ export const getHashrateHistory = idnumber => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
+          "Authorization": authToken
         }
       },
       { cancelToken: source.token }
@@ -714,7 +715,7 @@ export const getBidHashrateChart = idnumber => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
+          "Authorization": authToken
         }
       },
       { cancelToken: source.token }
@@ -770,122 +771,6 @@ export const getStats = () => dispatch => {
 
 /////// STRATUM FORM ////////////////////////////////
 
-export const getStratumList = () => dispatch => {
-  const CancelToken = axios.CancelToken;
-  let source = CancelToken.source();
-  setTimeout(() => {
-    source.cancel("ERROR: Timeout");
-  }, TIMEOUT_DURATION);
-  return axios
-    .get(
-      `${apiurl}/stratum_get/`,
-      {
-        headers: {
-          "Content-Type": "application/json"
-        }
-      },
-      { cancelToken: source.token }
-    )
-    .then(res => {
-        dispatch({
-          type: types.GET_STRATUM_LIST,
-          payload: res.data
-        });
-    })
-    .catch(err => {
-      console.log(err);
-    });
-};
-
-export const addStratumInfo = (
-  tag,
-  mining_algo,
-  host,
-  port,
-  username,
-  password
-) => dispatch => {
-  const csrftoken = getCookie(`${csrfcookie}`);
-  const CancelToken = axios.CancelToken;
-  let source = CancelToken.source();
-  setTimeout(() => {
-    source.cancel("ERROR: Timeout");
-  }, TIMEOUT_DURATION);
-  return axios
-    .post(
-      `${apiurl}/stratum_add/`,
-      {
-        tag: tag,
-        mining_algo: mining_algo,
-        host: host,
-        port: port,
-        username: username,
-        password: password
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRFToken": csrftoken
-        }
-      },
-      { cancelToken: source.token }
-    )
-    .then(res =>
-      dispatch({
-        type: types.CLEAR_ERRORS_SHOW_ALERT
-      })
-    )
-    .catch(err => {
-      dispatch({
-        type: types.GET_ERRORS,
-        payload: (err.response || {}).data
-      });
-      dispatch({
-        type: types.GET_STATUS_CODE,
-        payload: (err.response || {}).status
-      });
-    });
-};
-
-export const removeStratumInfo = stratum_id => dispatch => {
-  const csrftoken = getCookie(`${csrfcookie}`);
-  const CancelToken = axios.CancelToken;
-  let source = CancelToken.source();
-  setTimeout(() => {
-    source.cancel("ERROR: Timeout");
-  }, TIMEOUT_DURATION);
-  return axios
-    .post(
-      `${apiurl}/stratum_remove/`,
-      {
-        stratum_id: stratum_id
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRFToken": csrftoken
-        }
-      },
-      { cancelToken: source.token }
-    )
-    .then(res => dispatch({ type: types.STRATUM_REMOVED }))
-    .catch(err => {
-      dispatch({
-        type: types.GET_ERRORS,
-        payload: (err.response || {}).data
-      });
-      dispatch({
-        type: types.GET_STATUS_CODE,
-        payload: (err.response || {}).status
-      });
-    });
-};
-
-export const resetStratumStatus = () => {
-  return {
-    type: types.RESET_STRATUM_STATUS
-  };
-};
 
 ///////// EDIT BIDS ////////////////////////////////////////
 
@@ -987,7 +872,7 @@ export const cancelInvoice = (
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
+          "Authorization": authToken
         }
       },
       { cancelToken: source.token }

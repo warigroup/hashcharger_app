@@ -32,6 +32,12 @@ export const hashrateUnits = [
 ];
 
 ///#########
+///#########  Authentication Token 
+///#########
+
+export const authToken = 'Token abc92e1b66edecf39095f8b6c6c32143754d6454'
+
+///#########
 ///#########  Maintenance Mode. Setting maintenanceMode to "true" will create a maintenance version build.
 ///#########  Make sure to leave apiurl selected while using maintenance build.
 ///#########

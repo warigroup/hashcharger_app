@@ -43,7 +43,6 @@ import MyOffersList from "../components/profile/MyOffersList";
 import BidsList from "../components/profile/BidsList";
 import BuyOrderModal from "../components/profile/BuyOrderModal";
 import SellOrderModal from "../components/profile/SellOrderModal";
-import PaymentAddressModal from "../components/profile/PaymentAddressModal";
 import CancelOrderModal from "../components/profile/CancelModal";
 import { WAIT_ALERT } from "../utils/timeout-config";
 var Scroll = require('react-scroll');
@@ -949,13 +948,6 @@ class MyProfile extends React.Component {
                    offerCancel={this.offerCancel}
                    showCancelOrderModal={this.state.showCancelOrderModal}
                    />
-
-                   {/**************** PAYMENT ADDRESS MODAL ****************/}                
-                   <PaymentAddressModal
-                   handleCloseModal={this.handleCloseModal}
-                   showPaymentAddressModal={this.state.showPaymentAddressModal}
-                   />
-
 
                   <div className="clearfix" />
                 </div>
