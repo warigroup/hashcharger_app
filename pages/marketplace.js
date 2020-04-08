@@ -88,7 +88,6 @@ class Marketplace extends React.Component {
   };    
 
   componentDidMount() {
-    this.props.loginUser();
     this.props.getCurrentProfile();
     this.props.timeoutReset();
     this.props.marketplacePage();
