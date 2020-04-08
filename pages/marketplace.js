@@ -3,7 +3,6 @@ import PublicRoute from "../components/routes/PublicRoute";
 import { connect } from "react-redux";
 import {
   resetErrors,
-  loginUser,
   logoutUser,
   takeOffer,
   clearNetwork,
@@ -96,7 +95,6 @@ class Marketplace extends React.Component {
       this.props.logoutUser();
     };
     
-    this.props.loginUser();
     this.props.getCurrentProfile();
     this.props.timeoutReset();
     this.props.marketplacePage();
@@ -1773,7 +1771,6 @@ Marketplace.defaultProps = {
 Marketplace.propTypes = {
   takeOffer: PropTypes.func,
   resetErrors: PropTypes.func,
-  loginUser: PropTypes.func,
   logoutUser: PropTypes.func,
   redirectErrorMessage: PropTypes.func,
   marketplacePage: PropTypes.func,
@@ -1818,7 +1815,6 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    loginUser,
     logoutUser,
     redirectErrorMessage,
     takeOffer,
