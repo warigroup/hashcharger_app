@@ -10,6 +10,42 @@ axios.defaults.crossDomain = true;
 
 //////// AUTH ACTIONS ////////////////////////////////
 
+export const loginUser = (username, password) => dispatch => {
+  const CancelToken = axios.CancelToken;
+  let source = CancelToken.source();
+  setTimeout(() => {
+    source.cancel("ERROR: Timeout");
+  }, TIMEOUT_DURATION);
+
+  const instance = axios.create({
+    baseURL: `${apiurl}`
+  });
+  instance.defaults.withCredentials = true;
+  instance.defaults.crossDomain = true;
+  instance
+    .post(
+      "/login/",
+      {
+        username: username,
+        password: password
+      },
+      { cancelToken: source.token }
+    )
+    .then(res => {
+      dispatch(setCurrentUser(username));
+    })
+    .catch(err => {
+      dispatch({
+        type: types.GET_ERRORS,
+        payload: (err.response || {}).data
+      });
+      dispatch({
+        type: types.GET_STATUS_CODE,
+        payload: (err.response || {}).status
+      });
+    });
+};
+
 export const resetErrors = () => {
   return {
     type: types.RESET_ERRORS

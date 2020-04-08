@@ -2,6 +2,7 @@ import React from "react";
 import PublicRoute from "../components/routes/PublicRoute";
 import { connect } from "react-redux";
 import {
+  loginUser,
   resetErrors,
   takeOffer,
   clearNetwork,
@@ -17,7 +18,7 @@ import {
   timeoutError,
   timeoutReset,
   algoSelect } from "../actions/warihashApiCalls";
-import { FaRegClock, FaPhone, FaEnvelope, FaPen, FaBitcoin, FaQuestionCircle } from "react-icons/fa";
+import { FaRegClock, FaBitcoin, FaQuestionCircle } from "react-icons/fa";
 import { TiFlash } from "react-icons/ti";
 import { Router } from "../routes";
 import MiningAlgoDropDown from "../components/tools/MiningAlgoDropDown";
@@ -25,7 +26,7 @@ import PropTypes from "prop-types";
 import NProgress from "nprogress";
 import CSRFToken from "../utils/csrftoken";
 import Cookies from "js-cookie";
-import { maintenanceMode, googleAnalytics, minerLocations } from "../settings";
+import { googleAnalytics, minerLocations } from "../settings";
 import PaymentRate from "../components/tools/PaymentRate";
 import Head from "next/head";
 import {
@@ -34,7 +35,6 @@ import {
 } from "../utils/timeout-config";
 import { csrfcookie } from "../utils/cookieNames";
 import ThreeDotsLoading from "../components/tools/ThreeDotsLoading";
-import SweetAlert from "react-bootstrap-sweetalert";
 var Scroll = require('react-scroll');
 var scroll = Scroll.animateScroll;
 
@@ -88,6 +88,7 @@ class Marketplace extends React.Component {
   };    
 
   componentDidMount() {
+    this.props.loginUser();
     this.props.getCurrentProfile();
     this.props.timeoutReset();
     this.props.marketplacePage();
@@ -1338,6 +1339,7 @@ Marketplace.defaultProps = {
 };
 
 Marketplace.propTypes = {
+  loginUser: PropTypes.func,
   takeOffer: PropTypes.func,
   resetErrors: PropTypes.func,
   redirectErrorMessage: PropTypes.func,
@@ -1381,6 +1383,7 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
+    loginUser,
     redirectErrorMessage,
     takeOffer,
     clearCurrentProfile,
