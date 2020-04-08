@@ -899,19 +899,7 @@ style={{ marginBottom: "150px" }}>
                     <div className="row formcontainer-price">
                         <div className="buy-info-container">
                        <div style={{display: "block", width: "100%", marginBottom: "10px"}}>
-                        <p className="buypage-details">
-                          <span className="detail-title">Best available rate:</span> 
-                          {this.props.configs.server_time === undefined ? 
-                          <img src="/static/three-dots.svg"
-                            style={{width: "45px", marginLeft: "20px", position: "relative", top: "-1px"}} 
-                            alt="Loading ..."
-                            /> : 
-                          <span> {this.bestAvailableRate()}
-                          {" "}
-                          <PaymentRate />
-                          </span>
-                          }
-                        </p>
+                      
                         </div>
                         {/* <div style={{display: "block", width: "100%", marginBottom: "10px", paddingTop: "2px",
                       paddingBottom: "2px"}}>
