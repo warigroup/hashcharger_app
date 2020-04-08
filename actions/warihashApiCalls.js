@@ -10,7 +10,7 @@ axios.defaults.crossDomain = true;
 
 //////// AUTH ACTIONS ////////////////////////////////
 
-export const loginUser = () => {
+export const loginUser = () => dispatch => {
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();
   setTimeout(() => {
@@ -32,7 +32,7 @@ export const loginUser = () => {
       { cancelToken: source.token }
     )
     .then(res => {
-      dispatch(setCurrentUser(res.key));
+      dispatch(setCurrentUser('widgetaccount'));
     })
     .catch(err => {
       dispatch({
