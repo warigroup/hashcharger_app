@@ -88,10 +88,6 @@ class Marketplace extends React.Component {
   };    
 
   componentDidMount() {
-    if (maintenanceMode === "true") {
-      this.props.logoutUser();
-    };
-    
     this.props.getCurrentProfile();
     this.props.timeoutReset();
     this.props.marketplacePage();

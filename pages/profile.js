@@ -35,7 +35,7 @@ import {
   cancelOffer
 } from "../actions/warihashApiCalls";
 import Cookies from "js-cookie";
-import { maintenanceMode, alphaURL } from "../settings";
+import { alphaURL } from "../settings";
 import { csrfcookie } from "../utils/cookieNames";
 import SweetAlert from "react-bootstrap-sweetalert";
 import Paginator from "../components/tools/Paginator";
@@ -72,14 +72,6 @@ class MyProfile extends React.Component {
   };    
 
   componentDidMount() {
-    if (!this.props.auth.isAuthenticated) {
-      this.props.redirectErrorMessage();
-      this.props.clearCurrentProfile();
-      Router.pushRoute("/login");
-    };
-    if (maintenanceMode === "true") {
-      this.props.logoutUser();
-    };
     if (this.props.auth.isAuthenticated === true) {
       this.props.getCurrentProfile();
       this.props.clearHashrateData();
@@ -147,7 +139,6 @@ class MyProfile extends React.Component {
       this.props.enableNavigation();
       this.props.redirectErrorMessage();
       this.props.clearCurrentProfile();
-      this.props.logoutUser();
     };
     if (
       this.props.network.networkstatus === 401 &&
@@ -155,7 +146,6 @@ class MyProfile extends React.Component {
     ) {
       this.props.redirectErrorMessage();
       this.props.clearCurrentProfile();
-      this.props.logoutUser();
     };
   }
 
