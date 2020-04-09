@@ -120,7 +120,7 @@ class InvoicePage extends React.Component {
       if (this._isMounted && 
         this.state.isSent === false && 
         this.state.isFailed === false) {
-        this.props.getBidInfo(this.props.bidid);
+        this.props.getBidInfo(this.props.payment.bid_id);
       }
     }, 5000);
   }
@@ -151,7 +151,7 @@ class InvoicePage extends React.Component {
   stopRefreshAndCheck = () => {
     clearInterval(this.countdownTimer, this.getbidsTimer);
     this.setState({ isFailed: true });
-    this.props.getBidInfo(this.props.bidid);
+    this.props.getBidInfo(this.props.payment.bid_id);
     this._isMounted = false;
   };
 
@@ -191,7 +191,7 @@ class InvoicePage extends React.Component {
   };
 
   onFocus = () => {
-    this.props.getBidInfo(this.props.bidid);
+    this.props.getBidInfo(this.props.payment.bid_id);
     this.setCountdown();
     this.automaticRefresh();
   };
@@ -364,7 +364,7 @@ class InvoicePage extends React.Component {
 
 
                   {this.props.bids.bid_info.result.map(bid => {  
-              if (bid.bid_id == this.props.bidid) {
+              if (bid.bid_id == this.props.payment.bid_id) {
                 return (
                 <div key={bid.bid_id}>
                 <h4 className="invoice-title" id="invoice-order-id">Invoice for order #{bid.bid_id}</h4>

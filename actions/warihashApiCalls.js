@@ -572,7 +572,6 @@ export const takeOffer = (
 //////// GET BIDS ACTIONS //////////////////////////
 
 export const getBids = (number) => dispatch => {
-  const csrftoken = getCookie(`${csrfcookie}`);
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();
   setTimeout(() => {
