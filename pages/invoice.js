@@ -19,7 +19,8 @@ import copy from 'copy-to-clipboard';
 import { googleAnalytics, invoiceExpMin } from "../settings";
 import { WAIT_ALERT } from "../utils/timeout-config";
 import SweetAlert from "react-bootstrap-sweetalert";
-import Cookies from "js-cookie";
+import ThreeDotsLoading from "../components/tools/ThreeDotsLoading";
+
 const moment = require('moment-timezone');
 var Scroll = require('react-scroll');
 var scroll = Scroll.animateScroll;
@@ -560,7 +561,8 @@ class InvoicePage extends React.Component {
                         className="btn cancelbid-btn" 
                         style={{marginRight: "25px", position: "relative", top: "-2px"}}
                         disabled={this.state.cancelLoading}>
-                          Cancel order
+                          {this.state.cancelLoading === true ? <ThreeDotsLoading /> : "Cancel order"}
+                          
                         </button>
                         : null }
 
