@@ -21,7 +21,6 @@ import {
 import { FaRegClock, FaBitcoin, FaQuestionCircle } from "react-icons/fa";
 import { TiFlash } from "react-icons/ti";
 import { Router } from "../routes";
-import MiningAlgoDropDown from "../components/tools/MiningAlgoDropDown";
 import PropTypes from "prop-types";
 import NProgress from "nprogress";
 import CSRFToken from "../utils/csrftoken";
@@ -723,10 +722,7 @@ class Marketplace extends React.Component {
              <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"> 
               {/******* MINING ALGORITHM SELECTOR *********/}
                <div className="miningalgo-selector-container">
-                  <h4 className="marketplacetitle">Buy Hashing Power for</h4>
-                  <MiningAlgoDropDown 
-                    selectAlgorithm={this.selectAlgorithm}
-                    />
+                  <h4 className="marketplacetitle">Buy Hashing Power</h4>
                    
                 </div>
                 {/******* MINING ALGORITHM SELECTOR END *********/}
