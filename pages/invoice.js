@@ -237,12 +237,12 @@ class InvoicePage extends React.Component {
                         <br />
                         <br />
                         <br />
-                        <Link prefetch route="/profile">
+                        <Link prefetch route="/">
                           <a className="gotomain-btn">
                             <span>
                               <FaArrowLeft />
                             </span>{" "}
-                            Go to profile page
+                            Go to order page
                           </a>
                         </Link>
                         <br />
@@ -620,9 +620,9 @@ class InvoicePage extends React.Component {
                         </button>
                         : null }
 
-                         <Link prefetch route="/profile">
+                         <Link prefetch route="/orderdetails">
                           <a className="gotomain-btn">
-                            Go to profile page{"  "}
+                            Go to order details{"  "}
                           </a>
                         </Link>
                         
