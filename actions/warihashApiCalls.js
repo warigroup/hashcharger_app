@@ -893,8 +893,10 @@ export const cancelInvoice = (
   return axios
     .post(
       `${apiurl}/bid_cancel/`,
-      { 
-        bid_id: bid_id,
+      {
+        bid_id: bid_id
+      },
+      {
         headers: {
           "Content-Type": "application/json",
           "Authorization": "Token 73c9c1bbe9be697964651a9d407ab8964677cd1d"
