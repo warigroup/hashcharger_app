@@ -782,37 +782,9 @@ style={{ marginBottom: "150px" }}>
               autoComplete="off"
               id="buy-form"
             >
-                  <div className="col-xl-6 col-lg-8 col-md-12 col-sm-12 col-12">
+                  <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div className="row formcontainer-price">
-                        <div className="buy-info-container">
-                       <div style={{display: "block", width: "100%", marginBottom: "10px"}}>
-                      
-                        </div>
-                        {/* <div style={{display: "block", width: "100%", marginBottom: "10px", paddingTop: "2px",
-                      paddingBottom: "2px"}}>
-                          <p className="buypage-details">
-                          <span className="detail-title">Last trade rate:</span> 
-                            {" "}{this.props.stats && 
-                            this.props.stats.last_trade &&
-                            this.props.stats.last_trade[this.props.miningalgo.algorithm] !== null ?
-                            <span>{this.props.stats.last_trade[this.props.miningalgo.algorithm]}{" "}
-                            <PaymentRate /></span>: 
-                            " "}
-                          </p>
-                        </div>
-
-                        <div style={{display: "block", width: "100%"}}>
-                        <p className="buypage-details">
-                        <span className="detail-title">Total available hashrate:</span> 
-                        {this.props.configs.server_time === undefined ? <span></span> :
-                        <span> {this.safeNestedCheck(() => this.props.stats.available[this.props.miningalgo.algorithm].hashrate) }
-                        {" "}
-                        {this.safeNestedCheck(() => this.props.stats.available[this.props.miningalgo.algorithm].hashrate_units) }H/s
-                        </span>
-                        }
-                        </p>
-                        </div> */}
-                      </div>
+                  
 
                       <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" 
                       style={{ marginTop: "35px", marginBottom: "32px", paddingLeft: "3px" }}>
@@ -822,12 +794,9 @@ style={{ marginBottom: "150px" }}>
                         </h4>
                       </div>
 
-                      <div><p className="description-texts">
-                      Upon submission, we will provide you with hashrate equal to or slightly less than what you requested. Order duration will be provided exactly after payment has completed. If you need more hashing power or longer duration orders, please 
-                      {" "}contact <a href="mailto:support@warihash.com">support@warihash.com</a>.
-                        </p></div>
+                     
 
-                        <div className="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12" style={{paddingLeft: "0px", paddingRight: "0px"}}>
+                  <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12" style={{paddingLeft: "0px", paddingRight: "0px"}}>
                       
                       <div className="form-group">
                       <label htmlFor="location" className="inputlabel">
@@ -851,9 +820,11 @@ style={{ marginBottom: "150px" }}>
                           </div>
                           </div>
 
-                      <div className="col-xl-7 col-lg-7 col-md-8 col-sm-12 col-12" style={{paddingLeft: "0px", paddingRight: "0px"}}>
-                      
-                      <div className="form-group">
+                      <div className="col-xl-4 col-lg-4 col-md-8 col-sm-12 col-12" 
+                      style={{paddingLeft: "0px", paddingRight: "0px"}}>
+                        <div className="row">
+                        <div className="col-xl-12 col-lg-12">
+                        <div className="form-group">
                         <label htmlFor="duration" className="inputlabel">
                         Order Duration:
                         </label>
@@ -942,7 +913,6 @@ style={{ marginBottom: "150px" }}>
                   </p> : null}
                          
                       </div>
-                      </div>
 
                       <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
                       style={{paddingLeft: "0px", paddingRight: "0px", paddingTop: "0px"}}
@@ -967,9 +937,15 @@ style={{ marginBottom: "150px" }}>
                     </span>
                       </p> 
                       </div>
+                        </div>
+                        </div>
+                      </div>
 
-                      <div className="col-xl-7 col-lg-7 col-md-8 col-sm-12 col-12" 
+                     
+
+                      <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12" 
                       style={{paddingLeft: "0px", paddingRight: "0px"}}>
+                      <div className="row">
                       <div className="form-group">
                         <label htmlFor="hashrate" className="inputlabel">
                          Hashrate to Purchase:
@@ -1094,13 +1070,10 @@ style={{ marginBottom: "150px" }}>
   </p> : null}                       
 
 
-
-                        </div>
-                        </div>
-
-                        <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
-                      style={{paddingLeft: "0px", paddingRight: "0px", paddingTop: "0px"}}
+                    <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
+                      style={{paddingLeft: "0px", paddingRight: "0px", paddingTop: "0px", marginTop: "16px"}}
                       >
+                    
                      
                       <p
                       style={{
@@ -1134,10 +1107,65 @@ style={{ marginBottom: "150px" }}>
                    
                       </div>
 
+                    </div>
+                        </div>
+                        </div>
+
+                       
+
 
                       <div>
 
+                      
+                    </div>
+
+
+
+                    
+
+
+
+
+
+                    </div>
+                  </div>
+                  
+             <div className="clearfix" />
+  
+            
+
+          <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-right">
                       <div
+                          className="text-center"
+                            style={{ paddingTop: "0px", paddingBottom: "0px" }}
+                          >
+
+                           {this.props.time.message !== null ? 
+                           <p className="is-invalid-error add-padding-left">{this.props.time.message}</p> : null}
+                           
+                           {this.state.networkerror !== "" ? 
+                           <p className="is-invalid-error add-padding-left">{this.state.networkerror}</p> : null}
+                           {this.props.errors.errors !== null &&
+                           this.props.errors !== undefined &&
+                           this.props.payment.bid_id === undefined &&
+                           this.state.networkerror === "" &&
+                                fielderrors != "hashrate" &&
+                                fielderrors != "duration" &&
+                                fielderrors != "username" &&
+                                fielderrors != "password" &&
+                                fielderrors != "discount_code" &&
+                                fielderrors != "price" &&
+                               this.props.errors.host === undefined &&
+                               this.props.errors.port === undefined 
+                                ? <p className="is-invalid-error add-padding-left">
+                               {fielderrorsReason} </p>
+                                : null}
+                          </div>
+
+                
+                      <div className="container-fluid">
+                        <div className="row" style={{paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px"}}>
+                        <div
                   className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
                   style={{ marginTop: "8px", marginLeft: "0px", paddingLeft: "0px" }}
                 >
@@ -1192,8 +1220,6 @@ style={{ marginBottom: "150px" }}>
                     </div>
                   </div>
                     </div>
-                    </div>
-
                {this.state.checked === true ? 
                 <div
                   className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
@@ -1257,52 +1283,9 @@ style={{ marginBottom: "150px" }}>
                       {this.props.errors.price}</p> : null}
                   </div>
                   </div> : null}
-
-
-
-
-
-                    </div>
-                  </div>
                   
-             <div className="clearfix" />
-  
-            
 
-          <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 text-right">
-                      <div
-                          className="text-center"
-                            style={{ paddingTop: "0px", paddingBottom: "0px" }}
-                          >
-
-                           {this.props.time.message !== null ? 
-                           <p className="is-invalid-error add-padding-left">{this.props.time.message}</p> : null}
-                           
-                           {this.state.networkerror !== "" ? 
-                           <p className="is-invalid-error add-padding-left">{this.state.networkerror}</p> : null}
-                           {this.props.errors.errors !== null &&
-                           this.props.errors !== undefined &&
-                           this.props.payment.bid_id === undefined &&
-                           this.state.networkerror === "" &&
-                                fielderrors != "hashrate" &&
-                                fielderrors != "duration" &&
-                                fielderrors != "username" &&
-                                fielderrors != "password" &&
-                                fielderrors != "discount_code" &&
-                                fielderrors != "price" &&
-                               this.props.errors.host === undefined &&
-                               this.props.errors.port === undefined 
-                                ? <p className="is-invalid-error add-padding-left">
-                               {fielderrorsReason} </p>
-                                : null}
-                          </div>
-
-                
-                      <div className="container-fluid">
-                        <div className="row" style={{paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px"}}>
-                       
-
-                           <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 text-right" 
+                           <div className="offset-xl-7 col-xl-4 col-lg-12 text-right" 
                            style={{paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px"}}>
                            <CSRFToken />
                        <button
