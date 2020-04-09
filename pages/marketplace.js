@@ -222,7 +222,7 @@ class Marketplace extends React.Component {
     this.props.takeOffer(
       this.state.hashrate,
       this.state.hashrate_units,
-      this.state.mining_algo,
+      this.props.miningalgo.algorithm,
       durationInMinutes,
       this.state.host,
       this.state.port,
@@ -353,10 +353,6 @@ class Marketplace extends React.Component {
     const {
       hashratefocus,
       durationfocus,
-      nameorcompanyfocus,
-      durationdaysfocus,
-      emailfocus,
-      phonenumberfocus,
       durationClicked,
       pricefocus
     } = this.state;
