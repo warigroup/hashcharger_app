@@ -605,7 +605,6 @@ export const getBids = (number) => dispatch => {
 export const getBidInfo = (
   bid_id
 ) => dispatch => {
-  const csrftoken = getCookie(`${csrfcookie}`);
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();
   setTimeout(() => {

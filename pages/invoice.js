@@ -12,7 +12,6 @@ import {
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import MarketNav from "../components/common/MarketNav";
-import { FaArrowLeft } from "react-icons/fa";
 import { Link, Router } from "../routes";
 import { convertDuration } from "../utils/convertDuration";
 import Head from "next/head";
@@ -59,7 +58,7 @@ class InvoicePage extends React.Component {
       this.props.clearAlert();
       window.addEventListener("focus", this.onFocus);
       //// get invoice info 
-      this.props.getBidInfo(this.props.bidid);
+      this.props.getBidInfo(this.props.payment.bid_id);
       this.automaticRefresh();
       if (/*@cc_on!@*/false || !!document.documentMode === true) {
         this.setState({ msIE: true });
