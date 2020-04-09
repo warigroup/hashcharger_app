@@ -207,9 +207,6 @@ class InvoicePage extends React.Component {
   };
 
   render() {
-    const filteredInvoice = this.props.bids.bid_info.result.findIndex(
-      bid => bid.bid_id == this.props.bidid
-    );
     let utctime = moment().tz('UTC').valueOf() / 1000;
       return (
           <PublicRoute>
@@ -225,59 +222,9 @@ class InvoicePage extends React.Component {
                   <div className="row">
                   
                       <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style={{marginTop: "56px"}}>   
-                      { filteredInvoice === -1 &&
-                      this.state.bidsLoaded === true ? (         
-                        <div className="text-center">
-                        <br />
-                        <br />
-                        <br />
-                        <h6>
-                          <strong>ERROR: Invalid URL</strong>
-                        </h6>
-                        <br />
-                        <br />
-                        <br />
-                        <Link prefetch route="/">
-                          <a className="gotomain-btn">
-                            <span>
-                              <FaArrowLeft />
-                            </span>{" "}
-                            Go to order page
-                          </a>
-                        </Link>
-                        <br />
-                        <br />
-                        <br />
-                      </div>
-                        ) : null }
-                 
-                 {this.state.isLoading === true && 
-                 this.state.bidsLoaded === false &&
-                 this.props.bids.bid_info.result.length === 0 ?
-                 (<div style={{width: "100%", textAlign: "center"}}>
-                   <br />
-                   <br />
-                   <img
-                    src="/static/spinner.gif"
-                    style={{
-                      width: "170px",
-                      paddingBottom: "90px",
-                      display: "block",
-                      margin: "0 auto",
-                      opacity: "0.6"
-                    }}
-                    alt="Loading..."
-                  />
-                 <br />
-                 <br />
-                 <br />
-                 <br />
-                 </div>) : ( <br /> )
-                }
-              {this.state.isLoading === false &&  
-              this.props.bids.bid_info.result.length !== 0 &&
-              this.state.bidsLoaded === true ?
-                
+
+ 
+       
                 <div>
                 <style jsx>
                     {`
@@ -419,7 +366,7 @@ class InvoicePage extends React.Component {
                     `}
                   </style>
                           
-          {this.props.bids.bid_info.result.map(bid => {  
+          {this.props.payment.map(bid => {  
               if (bid.bid_id == this.props.bidid) {
                 return (
                 <div key={bid.bid_id}>
@@ -638,23 +585,7 @@ class InvoicePage extends React.Component {
 
                     </div>
                    
-                      : 
-                      
-                      <div>
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        
-                      </div>
-                      
-                      }
+                  
 
                         <br />
                         <br />
