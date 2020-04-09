@@ -1,7 +1,7 @@
 const routes = require('next-routes')
 
 module.exports = routes()
-.add('marketplace', '/(|marketplace?)/:algorithm?')
-.add('addminers', '/addminers')
+.add('marketplace', '/:stratumconfig?/:algorithm?')
 .add('invoice', '/invoice/id/:bidid')
-.add('profile', '/profile/:sellorders?')
+.add('orderdetails', '/orderdetails/id/:bidid')
+.add('profile', '/profile')
