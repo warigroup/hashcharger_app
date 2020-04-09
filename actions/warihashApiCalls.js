@@ -601,9 +601,7 @@ export const getBids = (number) => dispatch => {
     });
 };
 
-export const getBidInfo = (
-  bid_id
-) => dispatch => {
+export const getBidInfo = bid_id => dispatch => {
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();
   setTimeout(() => {
