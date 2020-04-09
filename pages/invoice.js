@@ -559,7 +559,7 @@ class InvoicePage extends React.Component {
                 moment(bid.invoice_expiration_time).valueOf() / 1000 > utctime ?
                         <button onClick={() => this.cancelBid(bid.bid_id)}
                         className="btn cancelbid-btn" 
-                        style={{marginRight: "25px", position: "relative", top: "-2px"}}
+                        style={{marginRight: "25px", position: "relative", top: "-2px", width: "250px", textAlign: "center"}}
                         disabled={this.state.cancelLoading}>
                           {this.state.cancelLoading === true ? <ThreeDotsLoading /> : "Cancel order"}
                           
