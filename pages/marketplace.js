@@ -1164,11 +1164,10 @@ style={{ marginBottom: "150px" }}>
 
                 
                       <div className="container-fluid">
-                        <div className="row" style={{paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px"}}>
-                        <div
-                  className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
-                  style={{ marginTop: "8px", marginLeft: "0px", paddingLeft: "0px" }}
-                >
+                        <div className="row" 
+                        style={{paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px"}}>
+                        <div className="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12 text-right"
+                          style={{ marginTop: "8px", marginLeft: "0px", paddingLeft: "0%" }}>
                       <label>
                         <span
                           style={{
@@ -1219,12 +1218,10 @@ style={{ marginBottom: "150px" }}>
                       </svg>
                     </div>
                   </div>
-                    </div>
-               {this.state.checked === true ? 
-                <div
-                  className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
-                  style={{ marginTop: "8px", marginLeft: "0px", paddingLeft: "0px" }}
-                >
+                  {this.state.checked === true ? 
+                
+                <div style={{ marginTop: "8px", 
+                marginLeft: "0px", paddingLeft: "0px", textAlign: "right" }}>
                   <div className="form-group">
                     <label htmlFor="limit_price" className="inputlabel">
                       Limit Price in <PaymentRate /> [optional]{" "}
@@ -1236,7 +1233,7 @@ style={{ marginBottom: "150px" }}>
                           ? "input-group input-group-md focused"
                           : "input-group input-group-md"
                       }
-                      style={{maxWidth: "285px"}}
+                      style={{maxWidth: "285px", marginLeft: "57%"}}
                     >
                       <div className="input-group-prepend">
                         <span
@@ -1283,9 +1280,13 @@ style={{ marginBottom: "150px" }}>
                       {this.props.errors.price}</p> : null}
                   </div>
                   </div> : null}
+
+
+                    </div>
+              
                   
 
-                           <div className="offset-xl-7 col-xl-4 col-lg-12 text-right" 
+                           <div className="col-xl-4 col-lg-12 text-right" 
                            style={{paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px"}}>
                            <CSRFToken />
                        <button
