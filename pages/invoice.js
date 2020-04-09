@@ -363,7 +363,10 @@ class InvoicePage extends React.Component {
                           
 
 
-                <div>
+                  {this.props.bids.bid_info.result.map(bid => {  
+              if (bid.bid_id == this.props.bidid) {
+                return (
+                <div key={bid.bid_id}>
                 <h4 className="invoice-title" id="invoice-order-id">Invoice for order #{bid.bid_id}</h4>
                 <br /><br />
                 
