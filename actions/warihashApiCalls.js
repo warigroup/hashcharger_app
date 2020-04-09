@@ -91,7 +91,7 @@ export const cancelOffer = offerId => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
+          "Authorization": "Token 73c9c1bbe9be697964651a9d407ab8964677cd1d"
         }
       },
       { cancelToken: source.token }
@@ -122,7 +122,7 @@ export const cancelOrder = offerId => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
+          "Authorization": "Token 73c9c1bbe9be697964651a9d407ab8964677cd1d"
         }
       },
       { cancelToken: source.token }
@@ -238,7 +238,7 @@ export const getOffers = (pagenumber) => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
+          "Authorization": "Token 73c9c1bbe9be697964651a9d407ab8964677cd1d"
         }
       },
       { cancelToken: source.token }
@@ -340,7 +340,7 @@ export const getSettlements = (offer_take_id) => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
+          "Authorization": "Token 73c9c1bbe9be697964651a9d407ab8964677cd1d"
         }
       },
       { cancelToken: source.token }
@@ -486,7 +486,7 @@ export const getCurrentProfile = () => dispatch => {
     .get(`${apiurl}/user_info/`, {
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
+        "Authorization": "Token 73c9c1bbe9be697964651a9d407ab8964677cd1d"
       }
     }, { cancelToken: source.token })
     .then(res => dispatch({ type: types.GET_PROFILE, payload: res.data }))
@@ -544,7 +544,7 @@ export const takeOffer = (
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
+          "Authorization": "Token 73c9c1bbe9be697964651a9d407ab8964677cd1d"
         }
       },
       { cancelToken: source.token }
@@ -584,7 +584,7 @@ export const getBids = (number) => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
+          "Authorization": "Token 73c9c1bbe9be697964651a9d407ab8964677cd1d"
         }
       },
       { cancelToken: source.token }
@@ -620,7 +620,7 @@ export const getBidInfo = (
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
+          "Authorization": "Token 73c9c1bbe9be697964651a9d407ab8964677cd1d"
         }
       },
       { cancelToken: source.token }
@@ -688,7 +688,7 @@ export const getHashrateInfo = idnumber => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
+          "Authorization": "Token 73c9c1bbe9be697964651a9d407ab8964677cd1d"
         }
       },
       { cancelToken: source.token }
@@ -719,7 +719,7 @@ export const getHashrateHistory = idnumber => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
+          "Authorization": "Token 73c9c1bbe9be697964651a9d407ab8964677cd1d"
         }
       },
       { cancelToken: source.token }
@@ -750,7 +750,7 @@ export const getBidHashrateChart = idnumber => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
+          "Authorization": "Token 73c9c1bbe9be697964651a9d407ab8964677cd1d"
         }
       },
       { cancelToken: source.token }
@@ -907,7 +907,7 @@ export const cancelInvoice = (
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Token abc92e1b66edecf39095f8b6c6c32143754d6454"
+          "Authorization": "Token 73c9c1bbe9be697964651a9d407ab8964677cd1d"
         }
       },
       { cancelToken: source.token }
