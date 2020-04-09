@@ -885,7 +885,6 @@ export const editOffers = (offer_id, host, port, username, password) => dispatch
 export const cancelInvoice = (
   bid_id
 ) => dispatch => {
-  const csrftoken = getCookie(`${csrfcookie}`);
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();
   setTimeout(() => {
