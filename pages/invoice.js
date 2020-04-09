@@ -50,10 +50,8 @@ class InvoicePage extends React.Component {
 
   componentDidMount() {
     this._isMounted = true;
-    if (this.props.auth.isAuthenticated === false) {
-      this.props.redirectErrorMessage();
-    };
-    if (this.props.auth.isAuthenticated === true) {
+
+
       this.props.getCurrentProfile();
       this.props.clearAlert();
       window.addEventListener("focus", this.onFocus);
@@ -65,9 +63,7 @@ class InvoicePage extends React.Component {
       };
       scroll.scrollToTop({ duration: 200 });
       this.setState({ isLoading: false });
-      Cookies.remove("markethistory_page");
-      Cookies.remove("page_number");
-    };
+
   };
 
   componentDidUpdate(prevProps) {
@@ -365,10 +361,9 @@ class InvoicePage extends React.Component {
                     `}
                   </style>
                           
-          {this.props.payment.map(bid => {  
-              if (bid.bid_id == this.props.bidid) {
-                return (
-                <div key={bid.bid_id}>
+
+
+                <div>
                 <h4 className="invoice-title" id="invoice-order-id">Invoice for order #{bid.bid_id}</h4>
                 <br /><br />
                 
@@ -603,7 +598,6 @@ class InvoicePage extends React.Component {
   }
 
   InvoicePage.defaultProps = {
-    auth: [],
     payment: [],
     bids: [],
     network: []
@@ -617,7 +611,6 @@ class InvoicePage extends React.Component {
     clearNetwork: PropTypes.func,
     clearAlert: PropTypes.func,
     cancelInvoice: PropTypes.func,
-    auth: PropTypes.object,
     network: PropTypes.object,
     payment: PropTypes.object,
     errors: PropTypes.object,
@@ -626,7 +619,6 @@ class InvoicePage extends React.Component {
   };
 
   const mapStateToProps = state => ({
-    auth: state.auth,
     payment: state.payment,
     network: state.network,
     errors: state.errors,
