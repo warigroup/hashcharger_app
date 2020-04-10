@@ -517,9 +517,9 @@ export const takeOffer = (
   password,
   location,
   discount_code,
-  limit_price
+  limit_price,
+  sub_user
 ) => dispatch => {
-  const csrftoken = getCookie(`${csrfcookie}`);
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();
   setTimeout(() => {
