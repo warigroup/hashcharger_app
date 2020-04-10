@@ -232,6 +232,7 @@ class Marketplace extends React.Component {
       this.state.username,
       this.state.password,
       this.state.location,
+      this.state.limit_price,
       this.state.sub_user
     );
     this.timer = setTimeout(() => {
