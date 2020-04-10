@@ -212,7 +212,7 @@ class InvoicePage extends React.Component {
               <meta name="keywords" content="" />
              
             </Head>
-            <MarketNav />
+            
             {this.state.successAlert}
               <div className="container">
                   <div className="row">
@@ -597,6 +597,7 @@ class InvoicePage extends React.Component {
                   </div>
               </div>
           </div>
+          <MarketNav />
       </PublicRoute>
       )
     }
