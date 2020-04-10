@@ -17,7 +17,6 @@ import { FaArrowLeft } from "react-icons/fa";
 import Head from "next/head";
 import moment from "moment";
 import AreaChart from "../components/tools/AreaChart";
-import Cookies from "js-cookie";
 var Scroll = require('react-scroll');
 var scroll = Scroll.animateScroll;
 
@@ -38,18 +37,11 @@ class OrderDetails extends React.Component {
   };
 
   componentDidMount() {
-    if (this.props.auth.isAuthenticated === false) {
-      this.props.redirectErrorMessage();
-    };
-    if (this.props.auth.isAuthenticated === true ) {
       this.props.getCurrentProfile();
       this.props.getBidInfo(this.props.bidid);
       this.props.getBidHashrateChart(this.props.bidid);
       scroll.scrollToTop({ duration: 200 });
       this.setState({ pageLoading: false });
-      Cookies.remove("markethistory_page");
-      Cookies.remove("page_number");
-    };
   };
 
   componentDidUpdate(prevProps) {
@@ -413,7 +405,6 @@ class OrderDetails extends React.Component {
   }
 
   OrderDetails.defaultProps = {
-    auth: [],
     errors: [],
     profile: [],
     payment: [],
@@ -430,7 +421,6 @@ class OrderDetails extends React.Component {
     clearHashrateData: PropTypes.func,
     clearPaymentInfo: PropTypes.func,
     clearNetwork: PropTypes.func,
-    auth: PropTypes.object,
     errors: PropTypes.object,
     profile: PropTypes.object,
     network: PropTypes.object,
@@ -441,7 +431,6 @@ class OrderDetails extends React.Component {
   };
 
   const mapStateToProps = state => ({
-    auth: state.auth,
     errors: state.errors,
     profile: state.profile,
     payment: state.payment,

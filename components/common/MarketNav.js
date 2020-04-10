@@ -26,7 +26,7 @@ const MarketNav = ({ nav }) => (
                     : "marketplacenav"
                 }
               >
-                Buy Hashing Power
+                Place an order
               </a>
             </Link>
 
@@ -38,7 +38,7 @@ const MarketNav = ({ nav }) => (
                     : "marketplacenav"
                 }
               >
-                Invoice
+               Pay for your order
               </a>
             </Link>
 
@@ -50,7 +50,7 @@ const MarketNav = ({ nav }) => (
                     : "marketplacenav"
                 }
               >
-                Search Orders
+                Order details / Search orders
               </a>
             </Link>
 
