@@ -527,7 +527,7 @@ export const takeOffer = (
   }, TIMEOUT_DURATION);
   return axios
     .post(
-      `${apiurl}/bid_make/`,
+      `${apiurl}/sub_user/`,
       {
         hashrate: hashrate,
         hashrate_units: hashrate_units,

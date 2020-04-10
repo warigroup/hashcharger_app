@@ -252,6 +252,31 @@ class Marketplace extends React.Component {
     this.selectStratumSetting(event.target.value);
   };
 
+        //// ERROR ALERT ///////////////////////////////
+        errorAlert = () => {
+          const errorAlert = (
+            <SweetAlert
+              danger
+              //  showCancel
+              confirmBtnText="Confirm"
+              //  cancelBtnText="Go to marketplace"
+              confirmBtnBsStyle="warning"
+              //  cancelBtnBsStyle="default btn-sm"
+              title=""
+              style={{ borderRadius: "0px" }}
+              onConfirm={this.confirmError}
+            //  onCancel={this.onCancel}
+            >
+               <p style={{ fontSize: "0.7em" }}>
+                <br />
+                {this.state.error_message}
+                <br />
+                <br />
+              </p>
+            </SweetAlert>
+          );
+          this.setState({ errorAlert: errorAlert });
+        };
 
     /// ALGORITHM SELECTOR /////////////////////
 
@@ -284,8 +309,6 @@ class Marketplace extends React.Component {
     };
 
     handleUnitSelect = event => this.setState({ hashrate_units_fiat: event.target.value });
-
-    selectCurrency = value => this.setState({ currency: value });
 
     selectLocation = event => {
       this.setState({ location: event.target.value });
