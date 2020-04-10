@@ -57,6 +57,7 @@ class Marketplace extends React.Component {
       durationClicked: false,
       username: "",
       password: "",
+      sub_user: "widgetaccount",
       stratum_id: "",
       currency: "BTC",
       location: "NA East",

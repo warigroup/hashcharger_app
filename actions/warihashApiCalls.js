@@ -539,7 +539,8 @@ export const takeOffer = (
         password: password,
         location: location,
         discount_code: discount_code,
-        limit_price: limit_price
+        limit_price: limit_price,
+        sub_user: sub_user
       },
       {
         headers: {
