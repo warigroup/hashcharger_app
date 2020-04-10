@@ -1244,8 +1244,8 @@ style={{ marginBottom: "150px" }}>
                   </div>
                   {this.state.checked === true ? 
                 
-                <div style={{ marginTop: "8px", 
-                marginLeft: "0px", paddingLeft: "0px", textAlign: "right" }}>
+                <div style={{ marginTop: "8px", marginLeft: "0px", 
+                paddingLeft: "0px", textAlign: "right" }}>
                   <div className="form-group">
                     <label htmlFor="limit_price" className="inputlabel">
                       Limit Price in <PaymentRate /> [optional]{" "}
