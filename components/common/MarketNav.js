@@ -35,7 +35,7 @@ const MarketNav = ({ nav }) => (
             <Link route="/invoice">
               <a
                 className={
-                  nav.page === "marketplacepage"
+                  nav.page === "invoicepage"
                     ? "marketplacenav selected"
                     : "marketplacenav"
                 }
@@ -47,7 +47,7 @@ const MarketNav = ({ nav }) => (
             <Link route="/searchorders">
               <a
                 className={
-                  nav.page === "marketplacepage"
+                  nav.page === "searchpage"
                     ? "marketplacenav selected"
                     : "marketplacenav"
                 }
