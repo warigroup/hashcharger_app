@@ -536,13 +536,8 @@ class InvoicePage extends React.Component {
                   <Link route="/profile"><a className="link-items">profile page</a></Link>. Please contact{" "}
                   <a href="mailto:support@warihash.com" className="link-items boldtexts">support@warihash.com</a> if you need assistance.</p>
                      </div>
-
-                         </div>
-                        </div>
-                      </div>
-                                        
-                    <div className="col-md-12 text-right">  
-                         <div>
+                     <br /><br />         
+                     <div>
                             
                          {bid.payment_success === false && bid.payment_fail === false && 
                 moment(bid.invoice_expiration_time).valueOf() / 1000 > utctime ?
@@ -563,8 +558,11 @@ class InvoicePage extends React.Component {
                         
                         </div>
 
-
+                         </div>
                         </div>
+                      </div>
+                                        
+                
                   </div>
                 );
               }
