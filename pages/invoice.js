@@ -359,7 +359,7 @@ class InvoicePage extends React.Component {
               if (bid.bid_id == this.props.payment.bid_id) {
                 return (
                 <div key={bid.bid_id}>
-                <br /><br />
+               
                   <div className="container-fluid">
                     <div className="row">
                       <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 invoice-left invoice-container" 
@@ -542,7 +542,7 @@ class InvoicePage extends React.Component {
                       </div>
                                         
                     <div className="col-md-12 text-right">  
-                         <div><br /><br />
+                         <div>
                             
                          {bid.payment_success === false && bid.payment_fail === false && 
                 moment(bid.invoice_expiration_time).valueOf() / 1000 > utctime ?
