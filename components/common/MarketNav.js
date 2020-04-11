@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Link } from "../../routes";
+import { TiDocumentText, TiPencil } from "react-icons/ti";
+import { FaSearchPlus } from "react-icons/fa";
 
 const MarketNav = ({ nav }) => (
   <div className="row marketnav-row" style={{ padding: "0px" }}>
@@ -26,7 +28,7 @@ const MarketNav = ({ nav }) => (
                     : "marketplacenav"
                 }
               >
-                Place an order
+               <TiPencil /> Place an order
               </a>
             </Link>
 
@@ -38,7 +40,7 @@ const MarketNav = ({ nav }) => (
                     : "marketplacenav"
                 }
               >
-               Pay for your order
+             <TiDocumentText />  Pay for your order
               </a>
             </Link>
 
@@ -50,7 +52,7 @@ const MarketNav = ({ nav }) => (
                     : "marketplacenav"
                 }
               >
-                Order details / Search orders
+              <FaSearchPlus /> Order details / Search orders
               </a>
             </Link>
 
