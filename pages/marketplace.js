@@ -770,10 +770,9 @@ class Marketplace extends React.Component {
   this.props.configs[this.props.miningalgo.algorithm]['EU West'].min_order_hashrate[0].min === null &&
   this.props.configs[this.props.miningalgo.algorithm]['EU West'].min_order_hashrate[1].min === null
   ? 
-<div className="container"
-style={{ marginBottom: "150px" }}>
+<div className="container">
 <div className="row">
-           <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-left">
+           <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center">
                 <br /><br /><br /><br />
                 <div className="container">
                    <div className="row">
@@ -792,6 +791,7 @@ style={{ marginBottom: "150px" }}>
               <p style={{fontWeight: "bold",
               fontSize: "0.85em"}}>Currently, no hashing power is available for this algorithm. Please check again later.
               <br /> You can still buy hashing power for different mining algorithms.</p>
+              <br /><br />
               </div> 
            </div>
        </div>
