@@ -11,7 +11,6 @@ import {
 } from "../actions/warihashApiCalls";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import MarketNav from "../components/common/MarketNav";
 import { Link, Router } from "../routes";
 import { convertDuration } from "../utils/convertDuration";
 import Head from "next/head";
@@ -591,7 +590,6 @@ class InvoicePage extends React.Component {
                   </div>
               </div>
           </div>
-          <MarketNav />
       </PublicRoute>
       )
     }

@@ -35,7 +35,6 @@ import {
 } from "../utils/timeout-config";
 import { csrfcookie } from "../utils/cookieNames";
 import ThreeDotsLoading from "../components/tools/ThreeDotsLoading";
-import MarketNav from "../components/common/MarketNav";
 
 var Scroll = require('react-scroll');
 var scroll = Scroll.animateScroll;
@@ -1308,7 +1307,7 @@ style={{ marginBottom: "150px" }}>
             </div>   }
           </div>
          </div> 
-         <MarketNav />
+         
       </PublicRoute>
     );
   }

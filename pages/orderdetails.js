@@ -11,7 +11,6 @@ import {
 } from "../actions/warihashApiCalls";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import MarketNav from "../components/common/MarketNav";
 import { Link } from "../routes";
 import { FaArrowLeft } from "react-icons/fa";
 import Head from "next/head";
@@ -86,7 +85,6 @@ class OrderDetails extends React.Component {
             <meta name="description" content="" />
             <meta name="keywords" content="" />
             </Head>
-            <MarketNav />
               <div className="container">
                   <div className="row">
                       <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style={{marginTop: "56px"}}>   
