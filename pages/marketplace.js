@@ -773,7 +773,6 @@ class Marketplace extends React.Component {
   ? 
 <div className="container"
 style={{ marginBottom: "150px" }}>
-
 <div className="row">
            <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-left">
                 <br /><br /><br /><br />
@@ -787,19 +786,18 @@ style={{ marginBottom: "150px" }}>
                    </div>
                 </div>
                 <br />
-                <br /><br />
+                <br />
+                <br />
       
-     <div>
-        <p style={{fontWeight: "bold",
+              <div>
+              <p style={{fontWeight: "bold",
               fontSize: "0.85em"}}>Currently, no hashing power is available for this algorithm. Please check again later.
               <br /> You can still buy hashing power for different mining algorithms.</p>
               </div> 
-                <br />
            </div>
        </div>
 </div> : 
             <div style={{width: "100%"}}>
-            
             <form
               className="formstyles"
               onSubmit={this.handleSubmit}
@@ -808,8 +806,6 @@ style={{ marginBottom: "150px" }}>
             >
                   <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div className="row formcontainer-price">
-                  
-
                       <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" 
                       style={{ marginTop: "35px", marginBottom: "32px", paddingLeft: "3px" }}>
                         <h4 className="number-circle">1</h4>
@@ -817,9 +813,6 @@ style={{ marginBottom: "150px" }}>
                         Order Details
                         </h4>
                       </div>
-
-                     
-
                   <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12" style={{paddingLeft: "0px", paddingRight: "0px"}}>
                       
                       <div className="form-group">
@@ -1097,8 +1090,6 @@ style={{ marginBottom: "150px" }}>
                     <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
                       style={{paddingLeft: "0px", paddingRight: "0px", paddingTop: "0px", marginTop: "16px"}}
                       >
-                    
-                     
                       <p
                       style={{
                         fontSize: "0.7em",
@@ -1134,30 +1125,14 @@ style={{ marginBottom: "150px" }}>
                     </div>
                         </div>
                         </div>
-
-                       
-
-
                       <div>
-
-                      
                     </div>
-
-
-
-                    
-
-
-
 
 
                     </div>
                   </div>
                   
              <div className="clearfix" />
-  
-            
-
           <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-right">
                       <div
                           className="text-center"
