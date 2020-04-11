@@ -13,6 +13,9 @@ const MarketNav = ({ nav }) => (
           <div className="row" style={{ padding: "10px 20px 10px 20px" }}>
              <style jsx>
                {`
+               .marketplacenav {
+                 width: 30%;
+               }
                @media (max-width: 650px) {
                  .marketplacenav {
                    width: 100%;

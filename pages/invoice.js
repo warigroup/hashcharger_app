@@ -536,7 +536,7 @@ class InvoicePage extends React.Component {
                   <Link route="/profile"><a className="link-items">profile page</a></Link>. Please contact{" "}
                   <a href="mailto:support@warihash.com" className="link-items boldtexts">support@warihash.com</a> if you need assistance.</p>
                      </div>
-                     <br /><br />         
+                     <br />        
                      <div>
                             
                          {bid.payment_success === false && bid.payment_fail === false && 
