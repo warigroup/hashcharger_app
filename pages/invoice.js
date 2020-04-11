@@ -50,8 +50,6 @@ class InvoicePage extends React.Component {
 
   componentDidMount() {
     this._isMounted = true;
-
-
       this.props.getCurrentProfile();
       this.props.clearAlert();
       window.addEventListener("focus", this.onFocus);
@@ -63,7 +61,6 @@ class InvoicePage extends React.Component {
       };
       scroll.scrollToTop({ duration: 200 });
       this.setState({ isLoading: false });
-
   };
 
   componentDidUpdate(prevProps) {
@@ -215,11 +212,8 @@ class InvoicePage extends React.Component {
             {this.state.successAlert}
               <div className="container">
                   <div className="row">
-                  
                       <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style={{marginTop: "56px"}}>   
 
- 
-       
                 <div>
                 <style jsx>
                     {`
@@ -361,18 +355,14 @@ class InvoicePage extends React.Component {
                     `}
                   </style>
                           
-
-
                   {this.props.bids.bid_info.result.map(bid => {  
               if (bid.bid_id == this.props.payment.bid_id) {
                 return (
                 <div key={bid.bid_id}>
-                <h4 className="invoice-title" id="invoice-order-id">Invoice for order #{bid.bid_id}</h4>
                 <br /><br />
-                
-                  <div className="container-fluid invoice-container">
+                  <div className="container-fluid">
                     <div className="row">
-                      <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 invoice-left" 
+                      <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 invoice-left invoice-container" 
                       style={{paddingLeft: "0px", paddingRight: "0px"}}>
                         <div style={{paddingLeft: "30px", paddingRight: "25px", paddingTop: "25px", paddingBottom: "13px"}}>
                         <br />
@@ -491,9 +481,9 @@ class InvoicePage extends React.Component {
                         </div>
 
                          <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 invoice-section">
-                           <br/>
+                           <br />
                            <h5 className="invoice-section-title" 
-                           style={{marginTop: "28px", paddingBottom: "17px"}}>Order Summary</h5>
+                           style={{marginTop: "28px", paddingBottom: "17px"}}>Invoice for order #{bid.bid_id}</h5>
                            <div className="invoice-info">
                            <p><span className="invoice-label">Hashrate Reserved:</span> {bid.reserved_hashrate}{" "}{bid.hashrate_units}H/s</p>
                             </div>

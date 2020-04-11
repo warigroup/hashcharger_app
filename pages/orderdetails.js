@@ -77,7 +77,6 @@ class OrderDetails extends React.Component {
     let overlayMessage = "overlay-message";
     let noOverlayMessage = "overlay-message-hidden";
 
-
       return (
           <PublicRoute>
             <Head>
