@@ -515,11 +515,7 @@ class InvoicePage extends React.Component {
                           <div className="invoice-info">
                             <p><span className="invoice-label">Stratum Port:</span> {bid.stratum_port}</p>
                           </div>
-                          <div className="invoice-info">
-                           <p>
-                             <span className="invoice-label">Stratum Username:</span> {bid.stratum_username}
-                           </p>
-                           </div>
+                       
                            </div>
                          
                            <div style={{paddingBottom: "25px", paddingTop: "25px"}}>    
