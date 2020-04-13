@@ -35,7 +35,6 @@ import {
 } from "../utils/timeout-config";
 import { csrfcookie } from "../utils/cookieNames";
 import ThreeDotsLoading from "../components/tools/ThreeDotsLoading";
-import MarketNav from "../components/common/MarketNav";
 
 var Scroll = require('react-scroll');
 var scroll = Scroll.animateScroll;
@@ -376,6 +375,9 @@ class Marketplace extends React.Component {
     };
 
     revealDiscount = () => this.setState({ hideDiscount: true });
+
+    openHelp = () => Router.push('/help');
+    openSearchPage = () => Router.push(`/search/${this.props.payment.bid_id}`);
 
   render() {
     const {
@@ -744,7 +746,7 @@ class Marketplace extends React.Component {
           style={{ marginBottom: "150px" }}
         >
           <div className="row">
-             <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"> 
+             <div className="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12"> 
               {/******* MINING ALGORITHM SELECTOR *********/}
                <div className="miningalgo-selector-container">
                   <h4 className="marketplacetitle">Buy Hashing Power for</h4>
@@ -754,6 +756,10 @@ class Marketplace extends React.Component {
                    
                 </div>
                 {/******* MINING ALGORITHM SELECTOR END *********/}
+             </div>
+             <div className="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12">
+             <button onClick={() => this.openHelp()}><h4>Help</h4></button>{" "}|{" "} 
+             <button onClick={() => this.openSearchPage()}><h4>Search Previous Orders</h4></button>
              </div>
 
 { this.checkNestedAvailable() &&
