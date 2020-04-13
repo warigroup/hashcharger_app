@@ -13,7 +13,6 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Link, Router } from "../routes";
 import { convertDuration } from "../utils/convertDuration";
-import Head from "next/head";
 import copy from 'copy-to-clipboard';
 import { googleAnalytics, invoiceExpMin } from "../settings";
 import { WAIT_ALERT } from "../utils/timeout-config";
@@ -202,13 +201,6 @@ class InvoicePage extends React.Component {
     let utctime = moment().tz('UTC').valueOf() / 1000;
       return (
           <PublicRoute>
-            <Head>
-              <title>WariHash | Invoice</title>
-              <meta name="description" content="" />
-              <meta name="keywords" content="" />
-             
-            </Head>
-            
             {this.state.successAlert}
               <div className="container">
                   <div className="row">

@@ -28,7 +28,6 @@ import CSRFToken from "../utils/csrftoken";
 import Cookies from "js-cookie";
 import { googleAnalytics, minerLocations } from "../settings";
 import PaymentRate from "../components/tools/PaymentRate";
-import Head from "next/head";
 import {
   WAIT_ALERT,
   TIMEOUT_DURATION
@@ -36,8 +35,6 @@ import {
 import { csrfcookie } from "../utils/cookieNames";
 import ThreeDotsLoading from "../components/tools/ThreeDotsLoading";
 
-var Scroll = require('react-scroll');
-var scroll = Scroll.animateScroll;
 
 class Marketplace extends React.Component {
   constructor() {
@@ -379,7 +376,6 @@ class Marketplace extends React.Component {
       durationClicked,
       pricefocus
     } = this.state;
-
     let hashrateExampleText = "";
     
     if (this.checkDurationBelowDay() && 
@@ -438,12 +434,6 @@ class Marketplace extends React.Component {
 
     return (
       <PublicRoute>
-        <Head>
-            <title>WariHash</title>
-            <meta name="description" content="" />
-            <meta name="keywords" content="" />
-            <meta name="author" content="" />
-        </Head>
         <style jsx>
           {`
 

@@ -13,7 +13,6 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Link } from "../routes";
 import { FaArrowLeft } from "react-icons/fa";
-import Head from "next/head";
 import moment from "moment";
 import AreaChart from "../components/tools/AreaChart";
 var Scroll = require('react-scroll');
@@ -79,11 +78,6 @@ class OrderDetails extends React.Component {
 
       return (
           <PublicRoute>
-            <Head>
-            <title>WariHash</title>
-            <meta name="description" content="" />
-            <meta name="keywords" content="" />
-            </Head>
               <div className="container">
                   <div className="row">
                       <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style={{marginTop: "56px"}}>   

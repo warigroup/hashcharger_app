@@ -1,5 +1,4 @@
 import React from "react";
-import Head from "next/head";
 import {
   notFoundPage,
   clearCurrentProfile,
@@ -73,12 +72,6 @@ class NotFound extends React.Component {
 
     return (
       <PublicRoute>
-        <Head>
-          <title>WariHash | 404</title>
-          <meta name="description" content="" />
-          <meta name="keywords" content="" />
-          <meta name="author" content="" />
-        </Head>
         <div style={{ width: "100%", marginBottom: "150px" }}>
           <div className="container">
             <style jsx>

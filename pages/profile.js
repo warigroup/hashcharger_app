@@ -14,7 +14,6 @@ import {
 } from "react-icons/fa";
 import { IoLogoBitcoin } from "react-icons/io";
 import { GoTag } from "react-icons/go";
-import Head from "next/head";
 import {
   getCurrentProfile,
   clearCurrentProfile,
@@ -316,12 +315,6 @@ class MyProfile extends React.Component {
 
     return (
       <PublicRoute>
-        <Head>
-          <title>WariHash | My Profile</title>
-          <meta name="description" content="" />
-          <meta name="keywords" content="" />
-          <meta name="author" content="" />
-        </Head>
         <div
           className="container-fluid"
           style={{ marginTop: "20px", marginBottom: "150px" }}
