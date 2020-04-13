@@ -35,6 +35,7 @@ import {
 } from "../utils/timeout-config";
 import { csrfcookie } from "../utils/cookieNames";
 import ThreeDotsLoading from "../components/tools/ThreeDotsLoading";
+import MarketNav from "../components/common/MarketNav";
 
 var Scroll = require('react-scroll');
 var scroll = Scroll.animateScroll;
@@ -754,7 +755,6 @@ class Marketplace extends React.Component {
                 </div>
                 {/******* MINING ALGORITHM SELECTOR END *********/}
              </div>
-
 
 { this.checkNestedAvailable() &&
   this.props.stats.available[this.props.miningalgo.algorithm].hashrate !== undefined &&

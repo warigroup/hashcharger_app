@@ -16,6 +16,24 @@ const MarketNav = ({ nav }) => (
                .marketplacenav {
                  width: 30%;
                }
+               .number-circle {
+                border: 2.5px solid #fff;
+                border-radius: 50%;
+                padding: 1px 7px 1px 7px;
+                color: #fff;
+                display: inline-block;
+                font-size: 0.95em;
+                font-weight: bold;
+                position: relative;
+                top: -1px;
+              }
+              
+              .offerformlabel {
+                display: inline-block; 
+                margin-left: 15px;
+                font-weight: bold;
+                font-size: 1.11em;
+              }
                @media (max-width: 650px) {
                  .marketplacenav {
                    width: 100%;
@@ -31,7 +49,10 @@ const MarketNav = ({ nav }) => (
                     : "marketplacenav"
                 }
               >
-               <TiPencil /> Place an order
+               <h4 className="number-circle">1</h4>
+                <h4 className="offerformlabel">
+                Place an order
+                </h4> 
               </a>
             </Link>
 
@@ -43,7 +64,10 @@ const MarketNav = ({ nav }) => (
                     : "marketplacenav"
                 }
               >
-             <TiDocumentText />  Pay for your order
+                <h4 className="number-circle">2</h4>
+                <h4 className="offerformlabel">
+                Pay for your order
+                </h4> 
               </a>
             </Link>
 
@@ -55,7 +79,10 @@ const MarketNav = ({ nav }) => (
                     : "marketplacenav"
                 }
               >
-              <FaSearchPlus /> Order details / Search orders
+                <h4 className="number-circle">3</h4>
+                <h4 className="offerformlabel">
+                Order details
+                </h4> 
               </a>
             </Link>
 
