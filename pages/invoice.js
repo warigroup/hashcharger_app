@@ -524,9 +524,9 @@ class InvoicePage extends React.Component {
                          
                            <div style={{paddingBottom: "25px", paddingTop: "25px"}}>    
                    <p className="invoice-contents">
-                  This invoice can be accessed again through your{" "}
-                  <Link route="/profile"><a className="link-items">profile page</a></Link>. Please contact{" "}
-                  <a href="mailto:support@warihash.com" className="link-items boldtexts">support@warihash.com</a> if you need assistance.</p>
+                  This invoice can be accessed again through{" "}
+                  <Link route="/profile"><a className="link-items">search page</a></Link>.
+                  </p>
                      </div>
                      <br />        
                      <div>
