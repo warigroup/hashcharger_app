@@ -95,12 +95,8 @@ class Marketplace extends React.Component {
     this.props.marketplacePage();
     this.props.getConfigs();
     this.props.clearPaymentInfo();
- 
-    scroll.scrollToTop({ duration: 200 });
     this.props.clearNetwork();
     this.props.resetErrors();
-    Cookies.remove("markethistory_page");
-    Cookies.remove("page_number");
   };
 
   componentDidUpdate(prevProps) {
@@ -162,9 +158,6 @@ class Marketplace extends React.Component {
       "CSRF Failed: CSRF token missing or incorrect."
     ) {
       Cookies.remove(csrfcookie);
-      this.props.enableNavigation();
-      this.props.redirectErrorMessage();
-      this.props.clearCurrentProfile();
     };
     if (
       (this.props.network.networkstatus === 500) &
@@ -376,8 +369,8 @@ class Marketplace extends React.Component {
 
     revealDiscount = () => this.setState({ hideDiscount: true });
 
-    openHelp = () => Router.push('/help');
-    openSearchPage = () => Router.push(`/search/${this.props.payment.bid_id}`);
+    openHelp = () => Router.pushRoute('/help');
+    openSearchPage = () => Router.pushRoute(`/search/${this.props.payment.bid_id}`);
 
   render() {
     const {
