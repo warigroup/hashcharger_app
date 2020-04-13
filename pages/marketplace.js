@@ -442,6 +442,19 @@ class Marketplace extends React.Component {
             margin-top: 77px;
           }
 
+          .nav-buttons {
+            background: none;
+            display: inline-block;
+            border: none;
+            box-shadow: none;
+            outline: none;
+            font-size: 13px;
+          }
+
+          .nav-bar {
+            display: inline-block;
+          }
+
           .number-circle {
             border: 2.5px solid #3626a5;
             border-radius: 50%;
@@ -741,9 +754,9 @@ class Marketplace extends React.Component {
              </div>
              <div className="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12">
              <button className="nav-buttons"
-             onClick={() => this.openHelp()}><h4>Help</h4></button>{" "}|{" "} 
+             onClick={() => this.openHelp()}><p>Help</p></button>{" "}<p className="nav-bar">|</p>{" "} 
              <button className="nav-buttons"
-             onClick={() => this.openSearchPage()}><h4>Search Previous Orders</h4></button>
+             onClick={() => this.openSearchPage()}><p>Search Previous Orders</p></button>
              </div>
 
 { this.checkNestedAvailable() &&
