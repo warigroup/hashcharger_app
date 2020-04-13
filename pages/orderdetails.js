@@ -15,8 +15,6 @@ import { Link } from "../routes";
 import { FaArrowLeft } from "react-icons/fa";
 import moment from "moment";
 import AreaChart from "../components/tools/AreaChart";
-var Scroll = require('react-scroll');
-var scroll = Scroll.animateScroll;
 
 class OrderDetails extends React.Component {
   constructor() {
@@ -38,7 +36,6 @@ class OrderDetails extends React.Component {
       this.props.getCurrentProfile();
       this.props.getBidInfo(this.props.bidid);
       this.props.getBidHashrateChart(this.props.bidid);
-      scroll.scrollToTop({ duration: 200 });
       this.setState({ pageLoading: false });
   };
 
