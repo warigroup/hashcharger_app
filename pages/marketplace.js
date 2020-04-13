@@ -931,7 +931,7 @@ class Marketplace extends React.Component {
                     {this.checkNestedConfigs() && 
                     this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location].min_order_hashrate[0].min) === null ? "25 hours" :
                     parseInt((this.props.configs[this.props.miningalgo.algorithm] || {}).min_order_duration_min / 60) + " hours"}</span>
-                    <span className="max-min-bar">|</span>
+                    <br />
                     <span className="max-value">Maximum duration:{" "}
                     {this.checkNestedConfigs() && 
                     this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location].min_order_hashrate[1].min) === null ? "24 hours" :
@@ -1093,7 +1093,7 @@ class Marketplace extends React.Component {
                    this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1].min)
                    } 
                    {" "}{this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].hashrate_units)}H/s</span>
-                    <span className="max-min-bar">|</span>
+                   <br />
                     <span className="max-value">Maximum hashrate:{" "}{
                       this.checkNestedConfigs() && 
                       this.checkDurationBelowDay() ?
