@@ -35,7 +35,6 @@ import {
 import { csrfcookie } from "../utils/cookieNames";
 import ThreeDotsLoading from "../components/tools/ThreeDotsLoading";
 
-
 class Marketplace extends React.Component {
   constructor() {
     super();
@@ -726,7 +725,7 @@ class Marketplace extends React.Component {
         </style>
         <div
           className="container"
-          style={{ marginBottom: "150px" }}
+          style={{ marginBottom: "100px" }}
         >
           <div className="row">
              <div className="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12"> 
@@ -741,8 +740,10 @@ class Marketplace extends React.Component {
                 {/******* MINING ALGORITHM SELECTOR END *********/}
              </div>
              <div className="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12">
-             <button onClick={() => this.openHelp()}><h4>Help</h4></button>{" "}|{" "} 
-             <button onClick={() => this.openSearchPage()}><h4>Search Previous Orders</h4></button>
+             <button className="nav-buttons"
+             onClick={() => this.openHelp()}><h4>Help</h4></button>{" "}|{" "} 
+             <button className="nav-buttons"
+             onClick={() => this.openSearchPage()}><h4>Search Previous Orders</h4></button>
              </div>
 
 { this.checkNestedAvailable() &&
@@ -792,13 +793,7 @@ class Marketplace extends React.Component {
             >
                   <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div className="row formcontainer-price">
-                      <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" 
-                      style={{ marginTop: "35px", marginBottom: "32px", paddingLeft: "3px" }}>
-                        <h4 className="number-circle">1</h4>
-                        <h4 className="offerformlabel">
-                        Order Details
-                        </h4>
-                      </div>
+                  
                   <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12" style={{paddingLeft: "0px", paddingRight: "0px"}}>
                       
                       <div className="form-group">
