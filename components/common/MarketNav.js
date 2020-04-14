@@ -2,8 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Link } from "../../routes";
-import { TiDocumentText, TiPencil } from "react-icons/ti";
-import { FaSearchPlus } from "react-icons/fa";
 
 const MarketNav = ({ nav }) => (
   <div className="row marketnav-row" style={{ padding: "0px" }}>
