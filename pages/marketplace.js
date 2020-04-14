@@ -753,10 +753,18 @@ class Marketplace extends React.Component {
                 {/******* MINING ALGORITHM SELECTOR END *********/}
              </div>
              <div className="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12">
+               <br />
+               <br />
+               <br />
+               <br />
              <button className="nav-buttons"
-             onClick={() => this.openHelp()}><p>Help</p></button>{" "}<p className="nav-bar">|</p>{" "} 
+             onClick={() => this.openHelp()}><p>Help</p>
+             </button>
+             {" "}<p className="nav-bar">|</p>{" "} 
              <button className="nav-buttons"
-             onClick={() => this.openSearchPage()}><p>Search Previous Orders</p></button>
+             onClick={() => this.openSearchPage()}><p>Search Previous Orders</p>
+             </button>
+               <br />
              </div>
 
 { this.checkNestedAvailable() &&
@@ -807,7 +815,8 @@ class Marketplace extends React.Component {
                   <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div className="row formcontainer-price">
                   
-                  <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12" style={{paddingLeft: "0px", paddingRight: "0px"}}>
+                  <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12" 
+                  style={{paddingLeft: "0px", paddingRight: "0px"}}>
                       
                       <div className="form-group">
                       <label htmlFor="location" className="inputlabel">
