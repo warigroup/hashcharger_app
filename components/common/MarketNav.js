@@ -4,11 +4,9 @@ import PropTypes from "prop-types";
 import { Link } from "../../routes";
 
 const MarketNav = ({ nav }) => (
-  <div className="row marketnav-row" style={{ padding: "0px" }}>
-    <div className="col-lg-12 col-md-12 col-12 col-xs-12 text-lg-left text-md-left text-sm-left text-left offerbtncontainer">
       <div className="marketplace-menu" style={{ background: "#3626A5" }}>
         <div className="container">
-          <div className="row" style={{ padding: "10px 20px 10px 20px" }}>
+          <div className="row" style={{ padding: "13px 20px 13px 20px" }}>
              <style jsx>
                {`
                .marketplacenav {
@@ -38,6 +36,8 @@ const MarketNav = ({ nav }) => (
                }
                `}
              </style>
+            
+            <div className="col-xl-4 col-lg-4 col-md-12">
             <Link route="/">
               <a
                 className={
@@ -52,7 +52,10 @@ const MarketNav = ({ nav }) => (
                 </h4> 
               </a>
             </Link>
+            </div>
 
+           
+            <div className="col-xl-4 col-lg-4 col-md-12">
             <Link route="/invoice">
               <a
                 className={
@@ -67,7 +70,9 @@ const MarketNav = ({ nav }) => (
                 </h4> 
               </a>
             </Link>
+            </div>
 
+            <div className="col-xl-4 col-lg-4 col-md-12">     
             <Link route="/searchorders">
               <a
                 className={
@@ -82,12 +87,11 @@ const MarketNav = ({ nav }) => (
                 </h4> 
               </a>
             </Link>
+            </div>
 
           </div>
         </div>
       </div>
-    </div>
-  </div>
 );
 
 MarketNav.propTypes = {
