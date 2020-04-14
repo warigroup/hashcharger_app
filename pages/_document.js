@@ -58,8 +58,6 @@ class MyDocument extends Document {
             }} />
           </Fragment> : null}
 
-         
-          
           <meta
             name="format-detection"
             content="telephone=no,email=no,address=no"

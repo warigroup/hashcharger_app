@@ -35,6 +35,7 @@ import {
 import { csrfcookie } from "../utils/cookieNames";
 import ThreeDotsLoading from "../components/tools/ThreeDotsLoading";
 import Head from "next/head";
+import MarketNav from "../components/common/MarketNav";
 
 class Marketplace extends React.Component {
   constructor() {
@@ -138,7 +139,6 @@ class Marketplace extends React.Component {
         window.gtag('event', 'conversion', 
         { 'send_to': 'AW-693268366/0QwACN7PnrYBEI7fycoC', 
         'transaction_id': `${this.props.payment.bid_id}` });
-
         window.ga('send', {
           hitType: 'event',
           eventCategory: 'marketplace',
@@ -745,10 +745,7 @@ class Marketplace extends React.Component {
         <Head>
           <title>WariHash</title>
         </Head>
-        <div
-          className="container"
-          style={{ marginBottom: "100px" }}
-        >
+        <div className="container">
           <div className="row">
              <div className="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12"> 
               {/******* MINING ALGORITHM SELECTOR *********/}
@@ -776,6 +773,20 @@ class Marketplace extends React.Component {
                <br />
              </div>
 
+              </div>
+            </div>
+            
+            <div className="container-fluid">
+              <div className="row" style={{ padding: "0px" }}>
+                <div className="col-xl-12 col-lg-12 col-md-12" style={{ padding: "0px" }}>
+                  <MarketNav />
+                  <br />
+                </div>
+              </div>
+            </div>
+
+            <div className="container">
+              <div className="row">
 { this.checkNestedAvailable() &&
   this.props.stats.available[this.props.miningalgo.algorithm].hashrate !== undefined &&
   this.props.stats.available[this.props.miningalgo.algorithm].hashrate === "0.0000" ||

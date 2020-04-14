@@ -25,7 +25,6 @@ const MarketNav = ({ nav }) => (
                 position: relative;
                 top: -1px;
               }
-              
               .offerformlabel {
                 display: inline-block; 
                 margin-left: 15px;
@@ -84,7 +83,6 @@ const MarketNav = ({ nav }) => (
               </a>
             </Link>
 
-          
           </div>
         </div>
       </div>
