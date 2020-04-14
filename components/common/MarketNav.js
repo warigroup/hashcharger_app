@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Link } from "../../routes";
 
-const MarketNav = ({ nav }) => (
+const MarketNav = ({ nav, payment }) => (
       <div className="marketplace-menu" style={{ background: "#3626A5" }}>
         <div className="container">
           <div className="row" style={{ padding: "13px 20px 13px 20px" }}>
@@ -56,10 +56,11 @@ const MarketNav = ({ nav }) => (
 
            
             <div className="col-xl-4 col-lg-4 col-md-12">
-            <Link route="/invoice">
+            <Link route={`/invoice/id/${payment.bid_id}`}>
               <a
                 className={
-                  nav.page === "invoicepage"
+                  nav.page === "invoicepage" &&
+                  payment.bid_id !== undefined
                     ? "marketplacenav selected"
                     : "marketplacenav"
                 }
@@ -95,11 +96,13 @@ const MarketNav = ({ nav }) => (
 );
 
 MarketNav.propTypes = {
-  nav: PropTypes.object
+  nav: PropTypes.object,
+  payment: PropTypes.object
 };
 
 const mapStateToProps = state => ({
-  nav: state.nav
+  nav: state.nav,
+  payment: state.payment
 });
 
 export default connect(
