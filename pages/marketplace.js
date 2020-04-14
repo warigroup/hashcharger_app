@@ -449,10 +449,15 @@ class Marketplace extends React.Component {
             box-shadow: none;
             outline: none;
             font-size: 13px;
+            transition: 0.5s ease all;
+          }
+          .nav-buttons:hover {
+            color: #3626a5;
           }
 
           .nav-bar {
             display: inline-block;
+            font-size: 13px;
           }
 
           .number-circle {
