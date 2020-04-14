@@ -34,6 +34,7 @@ import {
 } from "../utils/timeout-config";
 import { csrfcookie } from "../utils/cookieNames";
 import ThreeDotsLoading from "../components/tools/ThreeDotsLoading";
+import Head from "next-head";
 
 class Marketplace extends React.Component {
   constructor() {
@@ -741,6 +742,9 @@ class Marketplace extends React.Component {
             }
           `}
         </style>
+        <Head>
+          <title>WariHash</title>
+        </Head>
         <div
           className="container"
           style={{ marginBottom: "100px" }}
