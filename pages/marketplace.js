@@ -34,7 +34,7 @@ import {
 } from "../utils/timeout-config";
 import { csrfcookie } from "../utils/cookieNames";
 import ThreeDotsLoading from "../components/tools/ThreeDotsLoading";
-import Head from "next-head";
+import Head from "next/head";
 
 class Marketplace extends React.Component {
   constructor() {
