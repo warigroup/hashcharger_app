@@ -80,7 +80,7 @@ const MarketNav = ({ nav, payment }) => (
             </div>
 
             <div className="col-xl-4 col-lg-4 col-md-12">     
-            <Link route="/searchorders">
+            <Link route="/search">
               <a
                 className={
                   nav.page === "searchpage"

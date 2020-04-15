@@ -28,7 +28,6 @@ import { csrfcookie } from "../utils/cookieNames";
 import Paginator from "../components/tools/Paginator";
 import BidsList from "../components/profile/BidsList";
 import BuyOrderModal from "../components/profile/BuyOrderModal";
-import MarketNav from "../components/common/MarketNav";
 
 class SearchPage extends React.Component {
   constructor() {
@@ -303,38 +302,6 @@ class SearchPage extends React.Component {
                         className="tableheader"
                         style={{ color: "gray", width: "100%" }}
                       >
-                        <div className="container-fluid" style={{ border: "1px solid rgba(0,0,0,0.3)" }}>
-                          <div className="row">
-                            <div className="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-                              <br />
-                              <h5 style={{paddingBottom: "15px"}}>
-                                <strong>My Buy Orders</strong>
-                              </h5>
-                            </div>
-
-                            <div
-                              className="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12 hideonmobile"
-                              style={{ paddingTop: "17px" }}
-                            >
-                          {/****   Show pagination when total_pages is greater than 1 ******/}
-                          {this.state.menuOne === true && this.props.bids.bids.total_pages > 1 &&
-                          this.props.bids.bids.result.length > 15 ? 
-                          <Paginator 
-                              itemslist={this.props.bids.bids}
-                              nextPage={this.nextPage}
-                              prevPage={this.prevPage}
-                              firstPage={this.firstPage}
-                              lastPage={this.lastPage}
-                              selectNewPage={this.selectNewPage}
-                              pageSix={this.pageSix}
-                              minusSix={this.minusSix}
-                              textSize="small"
-                            />
-                          : null}
-                            </div>
-                          </div>
-                        </div>
-
                         <table id="tableT" className="table table-borderless myorders-table-styles container-fluid">
                           <thead className="text-white"
                             style={{ background: "#3626a5" }}>
