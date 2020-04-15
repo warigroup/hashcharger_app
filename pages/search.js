@@ -53,11 +53,14 @@ class SearchPage extends React.Component {
   };    
 
   componentDidMount() {
-    this.props.getBids(pagenumber);
+    
     this.props.clearHashrateData();
     this.props.clearAlert();
     this.props.clearHashrateData();
     this.props.searchPage();
+    setTimeout(() => {
+      this.props.getBids(pagenumber);
+    }, 10000)
   };
 
   componentDidUpdate(prevProps) {
