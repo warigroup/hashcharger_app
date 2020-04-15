@@ -14,10 +14,10 @@ const MarketNav = ({ nav, payment }) => (
              <style jsx>
                {`
                .number-circle {
-                border: 2.5px solid rgba(255,255,255,0.3);
+                border: 2.5px solid rgba(255,255,255,0.6);
                 border-radius: 50%;
                 padding: 1px 7px 1px 7px;
-                color: #fff;
+                color: rgba(255,255,255,0.6);
                 display: inline-block;
                 font-size: 0.95em;
                 font-weight: bold;
@@ -31,12 +31,12 @@ const MarketNav = ({ nav, payment }) => (
                 font-size: 1.11em;
               }
                .marketplacenav  {
-                color: rgba(255,255,255,0.3);
+                color: rgba(255,255,255,0.6);
                }
                .marketplacenav.selected {
                 color: #fff;
                }
-               .marketplacenav.selected.number-circle {
+               .marketplacenav.selected .number-circle {
                 color: #fff;
                 border: 2.5px solid #fff;
                }
