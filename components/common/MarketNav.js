@@ -6,7 +6,7 @@ import { Link } from "../../routes";
 const MarketNav = ({ nav, payment }) => (
       <div className="marketplace-menu" 
       style={{ background: "#3626A5", 
-      position: "relative", 
+      position: "absolute", 
       bottom: "0px",
       width: "100vw", 
       display: "block" }}>
@@ -22,7 +22,7 @@ const MarketNav = ({ nav, payment }) => (
                 display: inline-block;
                 font-size: 0.95em;
                 font-weight: bold;
-                position: absolute;
+                position: relative;
                 top: -1px;
               }
               .offerformlabel {
