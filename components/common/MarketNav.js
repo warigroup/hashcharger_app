@@ -6,7 +6,7 @@ import { Link } from "../../routes";
 const MarketNav = ({ nav, payment }) => (
       <div className="marketplace-menu" 
       style={{ background: "#3626A5", 
-      position: "absolute", 
+      position: "relative", 
       bottom: "0px",
       width: "100vw", 
       display: "block" }}>
@@ -50,7 +50,7 @@ const MarketNav = ({ nav, payment }) => (
              </style>
             
             <div className="col-xl-4 col-lg-4 col-md-12">
-            <Link route="/">
+            <Link route="/marketplace">
               <a
                 className={
                   nav.page === "marketplacepage"
