@@ -66,7 +66,6 @@ class OrderDetails extends React.Component {
 
   goToInvoice = () => Router.pushRoute(`/invoice/id/${payment.bid_id}`);
 
-
   render() {
     const filteredBid = this.props.bids.bid_info.result.findIndex(
       bid => bid.bid_id == this.props.bidid
