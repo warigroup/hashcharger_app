@@ -226,7 +226,7 @@ export const loadActiveOffers = (miningalgorithm, pagenumber) => dispatch => {
 
 //////// GET OFFERS (PROFILE PAGE) //////////////////////////
 
-export const getOffers = (pagenumber, sub_id) => dispatch => {
+export const getOffers = (pagenumber) => dispatch => {
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();
   setTimeout(() => {
