@@ -60,7 +60,6 @@ class OrderDetails extends React.Component {
   };
   
   componentWillUnmount() {
-    this.props.clearPaymentInfo();
     this.props.clearNetwork();
     this.props.clearHashrateData();
   };
