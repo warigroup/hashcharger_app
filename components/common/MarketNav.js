@@ -51,7 +51,7 @@ const MarketNav = ({ nav, payment }) => (
              </style>
             
             <div className="col-xl-4 col-lg-4 col-md-12">
-            <Link route="/marketplace">
+            <Link route="/market">
               <a
                 className={
                   nav.page === "marketplacepage"

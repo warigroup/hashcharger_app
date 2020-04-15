@@ -110,7 +110,7 @@ class InvoicePage extends React.Component {
     onConfirm = () => {
       this.setState({ successAlert: null });
       this.props.clearAlert();
-      Router.pushRoute('/')
+      Router.pushRoute('/market')
     };
 
   automaticRefresh = () => {
