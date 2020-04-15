@@ -28,6 +28,7 @@ import { csrfcookie } from "../utils/cookieNames";
 import Paginator from "../components/tools/Paginator";
 import BidsList from "../components/profile/BidsList";
 import BuyOrderModal from "../components/profile/BuyOrderModal";
+import { FaEnvelope } from "react-icons/fa";
 
 class SearchPage extends React.Component {
   constructor() {
@@ -37,12 +38,13 @@ class SearchPage extends React.Component {
       modaloffers: [{ bid_id: "" }],
       menuOpen: false,
       showBuyOrderModal: false,
-      emailaddress: "",
+      email: "",
       sub_id: "",
       modalLoading: true,
       pagenumber: 0,
       menuOne: true,
-      menuTwo: false
+      menuTwo: false,
+      emailfocus: false
     };
   };
 
@@ -178,6 +180,9 @@ class SearchPage extends React.Component {
     };
   };
 
+  handleEmailFocus = () => this.setState({ emailfocus: true });
+  handleEmailBlur = () => this.setState({ emailfocus: false });
+
   render() {
     const modalcontents = this.state.modaloffers;
 
@@ -186,6 +191,8 @@ class SearchPage extends React.Component {
       this.props.getBidInfo(bid.bid_id);
       this.setState({ showBuyOrderModal: true, menuOpen: false });
     };
+
+    const { emailfocus } = this.state;
 
     const goToInvoicePage = bid_id => Router.pushRoute(`/invoice/id/${bid_id}`);
 
@@ -279,6 +286,54 @@ class SearchPage extends React.Component {
 
                         <div style={{ width: "100%", paddingTop: "15px" }}>
 
+                        <div className="form-group">
+                        <label htmlFor="email" className="inputlabel">
+                        Email:
+                        </label>
+                        <div
+                          className={
+                            emailfocus === true
+                              ? "input-group input-group-md focused"
+                              : "input-group input-group-md"
+                          }
+                          style={{maxWidth: "285px"}}
+                        >
+                          <div className="input-group-prepend">
+                            <span
+                              className="input-group-text"
+                              style={{
+                                background: "white",
+                                border: "none",
+                                color: "rgba(0,0,0,0.5)"
+                              }}
+                            >
+                              <FaEnvelope style={emailfocus === true ? 
+                                { fontSize: "1.26em", opacity: "1" } : 
+                                { fontSize: "1.26em", opacity: "0.8" }} />
+                            </span>
+                          </div>
+                          <input
+                            type="text"
+                            name="email"
+                            value={this.state.email}
+                            placeholder="example@email.com"
+                            className="form-control inputstyles2"
+                            style={{
+                              border: "none",
+                              borderRadius: "7px",
+                              fontSize: "0.82em"
+                            }}
+                            onChange={event => this.setState({email: event.target.value})}
+                            onFocus={this.handleEmailFocus}
+                            onBlur={this.handleEmailBlur}
+                            autoComplete="off"
+                            required
+                          />
+                          <br />
+                        </div>
+
+                         
+                      </div>
                         
                         </div>
                                         

@@ -373,7 +373,7 @@ class Marketplace extends React.Component {
     revealDiscount = () => this.setState({ hideDiscount: true });
 
     openHelp = () => Router.pushRoute('/help');
-    openSearchPage = () => Router.pushRoute(`/search/${this.props.payment.bid_id}`);
+    openSearchPage = () => Router.pushRoute(`/search`);
 
   render() {
     const {
