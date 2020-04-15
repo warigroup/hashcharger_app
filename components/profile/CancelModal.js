@@ -12,7 +12,6 @@ class CancelModal extends React.Component {
                 ariaHideApp={false}
                 onRequestClose={this.props.handleCloseModal}
             >
-              
                 <p style={{fontSize: "0.88em", 
                 marginTop: "35px", 
                 marginBottom: "35px",
@@ -24,6 +23,7 @@ class CancelModal extends React.Component {
                 style={{borderRadius: "0px", marginRight: "15px", fontSize: "0.8em"}}
                 onClick={() => this.props.offerCancel(this.props.modalcontents.offer_id)}
                 >Yes, cancel my order</button> 
+                
                 <button className="btn btn-sm btn-secondary"
                 style={{borderRadius: "0px", fontSize: "0.8em"}}
                 onClick={this.props.handleCloseModal}>No</button>

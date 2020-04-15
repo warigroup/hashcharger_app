@@ -316,7 +316,6 @@ class OrderDetails extends React.Component {
                          <br />
                          <br />
                          <br />
-                         <br />
                          <Link prefetch route={`/invoice/id/${this.props.payment.bid_id}`}>
                           <a className="gotomain-btn">
                             View invoice{"  "}
@@ -361,21 +360,25 @@ class OrderDetails extends React.Component {
                       : 
                       
                       <div>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <br/>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
                         
                       </div>
                       
                       }
 
+                        <br />
+                        <br />
+                        <br />
+                        <br />
                   </div>
               </div>
           </div>
