@@ -64,6 +64,9 @@ class OrderDetails extends React.Component {
     this.props.clearHashrateData();
   };
 
+  goToInvoice = () => Router.pushRoute(`/invoice/id/${payment.bid_id}`);
+
+
   render() {
     const filteredBid = this.props.bids.bid_info.result.findIndex(
       bid => bid.bid_id == this.props.bidid
@@ -309,8 +312,15 @@ class OrderDetails extends React.Component {
                             {pagecontents.hashrate_units}
                             H/s
                            </p>
+                           <Link prefetch route={`/invoice/id/${this.props.payment.bid_id}`}>
+                          <a className="gotomain-btn">
+                            View invoice{"  "}
+                          </a>
+                        </Link>
+                         <br />
+                         <br />
+                         <br />
 
-                         
                         </div>
 
                         <div className="col-xl-7 col-lg-7 d-xl-inline-block d-lg-inline-block d-md-none d-sm-none d-none divboxes">
