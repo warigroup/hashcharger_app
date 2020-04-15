@@ -511,7 +511,7 @@ export const takeOffer = (
 
 //////// GET BIDS ACTIONS //////////////////////////
 
-export const getBids = (number) => dispatch => {
+export const getBids = (number, sub_user) => dispatch => {
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();
   setTimeout(() => {
@@ -525,6 +525,9 @@ export const getBids = (number) => dispatch => {
           "Content-Type": "application/json",
           "Authorization": "Token 73c9c1bbe9be697964651a9d407ab8964677cd1d"
         }
+      },
+      {
+        sub_user: sub_user
       },
       { cancelToken: source.token }
     )

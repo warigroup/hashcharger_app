@@ -100,7 +100,7 @@ class SearchPage extends React.Component {
     this.props.clearAlert();
   };
 
-  searchOrders = () => this.props.getOffers(this.state.pagenumber);
+  searchOrders = () => this.props.getOffers(this.state.pagenumber, this.state.sub_user);
 
   /// VIEW INFO MODAL ////////////////////
 
