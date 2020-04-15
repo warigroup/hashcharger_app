@@ -183,6 +183,12 @@ class SearchPage extends React.Component {
   handleEmailFocus = () => this.setState({ emailfocus: true });
   handleEmailBlur = () => this.setState({ emailfocus: false });
 
+  handleChange = event => {
+    const itemName = event.target.name;
+    const itemValue = event.target.value;
+    this.setState({ [itemName]: itemValue });
+  };
+
   render() {
     const modalcontents = this.state.modaloffers;
 
@@ -318,8 +324,8 @@ class SearchPage extends React.Component {
                           </div>
                           <input
                             type="text"
-                            name="email"
-                            value={this.state.email}
+                            name="sub_id"
+                            value={this.state.sub_id}
                             placeholder="example@email.com"
                             className="form-control inputstyles2"
                             style={{
@@ -327,11 +333,10 @@ class SearchPage extends React.Component {
                               borderRadius: "7px",
                               fontSize: "0.82em"
                             }}
-                            onChange={event => this.setState({sub_id: event.target.value})}
+                            onChange={this.handleChange}
                             onFocus={this.handleEmailFocus}
                             onBlur={this.handleEmailBlur}
                             autoComplete="off"
-                            required
                           />
                            <button className="btn btn-primary search-btn"
                            onClick={() => this.searchOrders()}>
