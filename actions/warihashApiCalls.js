@@ -385,93 +385,27 @@ export const algoSelect = algorithm_name => {
 
 //////// NAVIGATION ACTIONS //////////////////////////
 
-export const loginPage = () => {
-  return {
-    type: types.LOGIN_PAGE
-  };
-};
-
-export const signUpPage = () => {
-  return {
-    type: types.SIGNUP_PAGE
-  };
-};
-
 export const marketplacePage = () => {
   return {
     type: types.MARKETPLACE_PAGE
   };
 };
 
-export const marketHistoryPage = () => {
+export const invoicePage = () => {
   return {
-    type: types.MARKETHISTORY_PAGE
+    type: types.INVOICE_PAGE
   };
 };
 
-export const myProfilePage = () => {
+export const searchPage = () => {
   return {
-    type: types.MYPROFILE_PAGE
+    type: types.SEARCH_PAGE
   };
 };
 
-export const passwordResetPage = () => {
+export const orderDetailsPage = () => {
   return {
-    type: types.PASSWORD_RESET_PAGE
-  };
-};
-
-export const accountActivationPage = () => {
-  return {
-    type: types.ACCOUNT_ACTIVATION_PAGE
-  };
-};
-
-export const resetPage = () => {
-  return {
-    type: types.RESET_PAGE
-  };
-};
-
-export const notFoundPage = () => {
-  return {
-    type: types.NOT_FOUND_PAGE
-  };
-};
-
-export const logOutPage = () => {
-  return {
-    type: types.LOGOUT_PAGE
-  };
-};
-
-export const termsOfUsePage = () => {
-  return {
-    type: types.TERMS_OF_USE_PAGE
-  };
-};
-
-export const newsPage = () => {
-  return {
-    type: types.NEWS_PAGE
-  };
-};
-
-export const sellPage = () => {
-  return {
-    type: types.SELL_PAGE
-  };
-};
-
-export const aboutUsPage = () => {
-  return {
-    type: types.ABOUT_US_PAGE
-  };
-};
-
-export const referralPage = () => {
-  return {
-    type: types.REFERRAL_PAGE
+    type: types.ORDER_DETAILS_PAGE
   };
 };
 

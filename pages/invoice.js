@@ -7,7 +7,8 @@ import {
   clearPaymentInfo,
   clearAlert,
   clearNetwork,
-  cancelInvoice
+  cancelInvoice,
+  invoicePage
 } from "../actions/warihashApiCalls";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -18,7 +19,6 @@ import { googleAnalytics, invoiceExpMin } from "../settings";
 import { WAIT_ALERT } from "../utils/timeout-config";
 import SweetAlert from "react-bootstrap-sweetalert";
 import ThreeDotsLoading from "../components/tools/ThreeDotsLoading";
-import MarketNav from "../components/common/MarketNav";
 
 const moment = require('moment-timezone');
 var Scroll = require('react-scroll');
@@ -52,6 +52,7 @@ class InvoicePage extends React.Component {
     this._isMounted = true;
       this.props.getCurrentProfile();
       this.props.clearAlert();
+      this.props.invoicePage();
       window.addEventListener("focus", this.onFocus);
       //// get invoice info 
       this.props.getBidInfo(this.props.payment.bid_id);
@@ -586,6 +587,7 @@ class InvoicePage extends React.Component {
     clearNetwork: PropTypes.func,
     clearAlert: PropTypes.func,
     cancelInvoice: PropTypes.func,
+    invoicePage: PropTypes.func,
     network: PropTypes.object,
     payment: PropTypes.object,
     errors: PropTypes.object,
@@ -608,4 +610,5 @@ class InvoicePage extends React.Component {
       clearNetwork,
       clearAlert,
       clearPaymentInfo,
-      cancelInvoice})(InvoicePage);
+      cancelInvoice,
+    invoicePage})(InvoicePage);

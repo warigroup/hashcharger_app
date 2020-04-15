@@ -7,7 +7,8 @@ import {
   redirectErrorMessage,
   clearHashrateData,
   clearPaymentInfo,
-  clearNetwork
+  clearNetwork,
+  orderDetailsPage
 } from "../actions/warihashApiCalls";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -34,6 +35,7 @@ class OrderDetails extends React.Component {
 
   componentDidMount() {
       this.props.getCurrentProfile();
+      this.props.orderDetailsPage();
       this.props.getBidInfo(this.props.bidid);
       this.props.getBidHashrateChart(this.props.bidid);
       this.setState({ pageLoading: false });
@@ -395,6 +397,7 @@ class OrderDetails extends React.Component {
     clearHashrateData: PropTypes.func,
     clearPaymentInfo: PropTypes.func,
     clearNetwork: PropTypes.func,
+    orderDetailsPage: PropTypes.func,
     errors: PropTypes.object,
     profile: PropTypes.object,
     network: PropTypes.object,
@@ -420,5 +423,6 @@ class OrderDetails extends React.Component {
       getBidHashrateChart,
       clearHashrateData,
       redirectErrorMessage, 
+      orderDetailsPage,
       clearNetwork,
       clearPaymentInfo})(OrderDetails);

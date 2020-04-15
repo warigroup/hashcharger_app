@@ -20,7 +20,8 @@ import {
   getBidInfo,
   getBidHashrateChart,
   getHashrateInfo,
-  cancelOffer
+  cancelOffer,
+  searchPage
 } from "../actions/warihashApiCalls";
 import Cookies from "js-cookie";
 import { csrfcookie } from "../utils/cookieNames";
@@ -51,13 +52,11 @@ class SearchPage extends React.Component {
   };    
 
   componentDidMount() {
-    if (this.props.auth.isAuthenticated === true) {
-      this.props.getCurrentProfile();
-      this.props.clearHashrateData();
-      this.props.clearPaymentInfo();
-      this.props.clearAlert();
-    };
+
     this.props.clearHashrateData();
+    this.props.clearAlert();
+    this.props.clearHashrateData();
+    this.props.searchPage();
   };
 
   componentDidUpdate(prevProps) {
@@ -514,6 +513,7 @@ SearchPage.propTypes = {
   getHashrateInfo: PropTypes.func,
   redirectErrorMessage: PropTypes.func,
   cancelOffer: PropTypes.func,
+  searchPage: PropTypes.func,
   auth: PropTypes.object,
   profile: PropTypes.object,
   configs: PropTypes.object,
@@ -562,6 +562,7 @@ export default connect(
     getOfferInfo,
     getBidInfo,
     getHashrateInfo,
-    cancelOffer
+    cancelOffer,
+    searchPage
   }
 )(SearchPage);
