@@ -40,6 +40,10 @@ const MarketNav = ({ nav, payment }) => (
                 color: #fff;
                 border: 2.5px solid #fff;
                }
+
+              .disabled-link {
+                pointer-events: none;
+              }
                `}
              </style>
             
@@ -68,7 +72,7 @@ const MarketNav = ({ nav, payment }) => (
                   nav.page === "invoicepage" &&
                   payment.bid_id !== undefined
                     ? "marketplacenav selected"
-                    : "marketplacenav"
+                    : "marketplacenav disabled-link"
                 }
               >
                 <h4 className="number-circle">2</h4>
@@ -80,20 +84,24 @@ const MarketNav = ({ nav, payment }) => (
             </div>
 
             <div className="col-xl-4 col-lg-4 col-md-12">     
-            <Link route={`/orderdetails/id/${payment.bid_id}`}>
-              <a
-                className={
-                  nav.page === "searchpage"
-                    ? "marketplacenav selected"
-                    : "marketplacenav"
-                }
-              >
-                <h4 className="number-circle">3</h4>
-                <h4 className="offerformlabel">
-                Order details
-                </h4> 
-              </a>
-            </Link>
+
+             <Link route={`/orderdetails/id/${payment.bid_id}`}>
+             <a
+               className={
+                 nav.page === "searchpage" &&
+                 payment.bid_id !== undefined 
+                   ? "marketplacenav selected"
+                   : "marketplacenav disabled-link"
+               }
+             >
+               <h4 className="number-circle">3</h4>
+               <h4 className="offerformlabel">
+               Order details
+               </h4> 
+             </a>
+           </Link>
+       
+           
             </div>
 
           </div>
