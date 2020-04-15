@@ -39,7 +39,7 @@ class SearchPage extends React.Component {
       menuOpen: false,
       showBuyOrderModal: false,
       email: "",
-      sub_id: "",
+      sub_user: "",
       modalLoading: true,
       pagenumber: 0,
       menuOne: true,
@@ -100,7 +100,7 @@ class SearchPage extends React.Component {
     this.props.clearAlert();
   };
 
-  searchOrders = () => this.props.getOffers(this.state.pagenumber, this.state.sub_id);
+  searchOrders = () => this.props.getOffers(this.state.pagenumber, this.state.sub_user);
 
   /// VIEW INFO MODAL ////////////////////
 
@@ -324,8 +324,8 @@ class SearchPage extends React.Component {
                           </div>
                           <input
                             type="text"
-                            name="sub_id"
-                            value={this.state.sub_id}
+                            name="sub_user"
+                            value={this.state.sub_user}
                             placeholder="example@email.com"
                             className="form-control inputstyles2"
                             style={{
