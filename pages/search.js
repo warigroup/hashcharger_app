@@ -58,9 +58,6 @@ class SearchPage extends React.Component {
     this.props.clearAlert();
     this.props.clearHashrateData();
     this.props.searchPage();
-    setTimeout(() => {
-      this.props.getBids(pagenumber);
-    }, 10000)
   };
 
   componentDidUpdate(prevProps) {
@@ -330,7 +327,7 @@ class SearchPage extends React.Component {
                               borderRadius: "7px",
                               fontSize: "0.82em"
                             }}
-                            onChange={event => this.setState({email: event.target.value})}
+                            onChange={event => this.setState({sub_id: event.target.value})}
                             onFocus={this.handleEmailFocus}
                             onBlur={this.handleEmailBlur}
                             autoComplete="off"
