@@ -3,12 +3,10 @@ import { convertDuration } from "../../utils/convertDuration";
 import { capitalizeFirstLetter } from "../../utils/capitalizeFirstLetter";
 
 class BidsList extends React.Component {
-
     render() {
         let invoicePage = bid_id => this.props.goToInvoicePage(bid_id);
         let openModal = bid => this.props.openBuyOrderModal(bid);
-        let editPage = bid => this.props.goToEditPage(bid);
-        
+
         const bidsList = this.props.bids.map(
             function (bid, index) {
               return (
@@ -83,15 +81,7 @@ class BidsList extends React.Component {
                       >
                         Details
                   </button>
-                  <button className="btn btn-sm btn-info orderstable-btn2 editbtn"
-                    disabled={bid.settlement_is_finished === true || bid.payment_fail === true}
-                    title={bid.settlement_is_finished === true || bid.payment_fail === true ? "Disabled" : null}
-                    id="editbtn"
-                      onClick={() => editPage(bid)}
-                      >
-                        Edit
-                    </button>
-        
+                
                   </td>
                 </tr>
               )
@@ -105,10 +95,6 @@ class BidsList extends React.Component {
            
         )
     }
-
-
 }
 
-
-
-  export default BidsList;
+export default BidsList;
