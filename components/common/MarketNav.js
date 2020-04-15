@@ -9,7 +9,8 @@ const MarketNav = ({ nav, payment }) => (
       position: "absolute", 
       bottom: "0px",
       width: "100vw", 
-      display: "block" }}>
+      display: "block",
+      marginTop: "80px" }}>
         <div className="container">
           <div className="row" style={{ padding: "13px 20px 13px 20px" }}>
              <style jsx>
