@@ -4,7 +4,11 @@ import PropTypes from "prop-types";
 import { Link } from "../../routes";
 
 const MarketNav = ({ nav, payment }) => (
-      <div className="marketplace-menu" style={{ background: "#3626A5" }}>
+      <div className="marketplace-menu" 
+      style={{ background: "#3626A5", 
+      position: "absolute", 
+      bottom: "0px",
+      width: "100vw" }}>
         <div className="container">
           <div className="row" style={{ padding: "13px 20px 13px 20px" }}>
              <style jsx>

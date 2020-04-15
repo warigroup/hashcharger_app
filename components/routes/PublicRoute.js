@@ -1,4 +1,4 @@
-import MarketNav from "../components/common/MarketNav";
+import MarketNav from "../common/MarketNav";
 
 const PublicRoute = ({ children }) => (
   <main style={{padding: "0px"}}>
