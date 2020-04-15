@@ -22,7 +22,7 @@ const MarketNav = ({ nav, payment }) => (
                 display: inline-block;
                 font-size: 0.95em;
                 font-weight: bold;
-                position: relative;
+                position: absolute;
                 top: -1px;
               }
               .offerformlabel {
