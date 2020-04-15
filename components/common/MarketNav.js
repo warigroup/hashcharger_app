@@ -50,7 +50,7 @@ const MarketNav = ({ nav, payment }) => (
                `}
              </style>
             
-            <div className="col-xl-4 col-lg-4 col-md-12">
+            <div className="col-xl-4 col-lg-4 col-md-12 text-center">
             <Link route="/market">
               <a
                 className={
@@ -68,7 +68,7 @@ const MarketNav = ({ nav, payment }) => (
             </div>
 
            
-            <div className="col-xl-4 col-lg-4 col-md-12">
+            <div className="col-xl-4 col-lg-4 col-md-12 text-center">
             <Link route={`/invoice/id/${payment.bid_id}`}>
               <a
                 className={
@@ -86,7 +86,7 @@ const MarketNav = ({ nav, payment }) => (
             </Link>
             </div>
 
-            <div className="col-xl-4 col-lg-4 col-md-12">     
+            <div className="col-xl-4 col-lg-4 col-md-12 text-center">     
 
              <Link route={`/orderdetails/id/${payment.bid_id}`}>
              <a
