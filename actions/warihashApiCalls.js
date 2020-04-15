@@ -526,9 +526,6 @@ export const getBids = (number, sub_user) => dispatch => {
           "Authorization": "Token 73c9c1bbe9be697964651a9d407ab8964677cd1d"
         }
       },
-      {
-        sub_user: sub_user
-      },
       { cancelToken: source.token }
     )
     .then(res => dispatch({
