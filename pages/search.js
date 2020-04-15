@@ -208,11 +208,7 @@ class SearchPage extends React.Component {
             <div className="container" style={{ padding: "0px" }}>
               <div className="container-fluid">
                 <div className="row" style={{ padding: "0px" }}>
-                  <div className="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12 infocontainer">
-                  <h4 className="marketplacetitle">Search Previous Orders</h4>
-                  </div>
-
-                  <style jsx>
+                <style jsx>
                     {`
                       .marketplace-menu {
                         margin-right: 27px;
@@ -286,18 +282,25 @@ class SearchPage extends React.Component {
                       }
                     `}
                   </style>
-                  <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 text-right">
 
-                        <div style={{ width: "100%", paddingTop: "15px" }}>
+                  <div className="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12">
+                      <br />
+                      <br />
+                  <h4 className="marketplacetitle">Search Previous Orders</h4>
+                  </div>
 
-                        <div className="form-group">
+                  <div className="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12 text-right">
+
+                        <div style={{ width: "100%", paddingTop: "45px" }}>
+                        <div className="form-group" 
+                        style={{ display: "inline-block" }}>
                         <div
                           className={
                             emailfocus === true
                               ? "input-group input-group-md focused"
                               : "input-group input-group-md"
                           }
-                          style={{maxWidth: "285px"}}
+                          style={{width: "400px"}}
                         >
                           <div className="input-group-prepend">
                             <span
@@ -330,14 +333,12 @@ class SearchPage extends React.Component {
                             autoComplete="off"
                             required
                           />
-                          <br />
+                           <button className="btn btn-primary search-btn"
+                           onClick={() => this.searchOrders()}>
+                                <p style={{ marginBottom: "0px", fontSize: "0.9em" }}>Search Orders</p>
+                            </button> 
                         </div>
-                           <button className="search-btn">
-                               Search Orders
-                            </button>     
-                         
                       </div>
-                        
                         </div>
                                         
                   </div>
