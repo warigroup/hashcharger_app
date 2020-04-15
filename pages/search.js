@@ -562,7 +562,7 @@ class SearchPage extends React.Component {
   }
 }
 
-MyProfile.defaultProps = {
+SearchPage.defaultProps = {
   profile: [],
   network: [],
   errors: [],
@@ -573,7 +573,7 @@ MyProfile.defaultProps = {
   offers: []
 };
 
-MyProfile.propTypes = {
+SearchPage.propTypes = {
   getCurrentProfile: PropTypes.func,
   getBidHashrateChart: PropTypes.func,
   clearCurrentProfile: PropTypes.func,

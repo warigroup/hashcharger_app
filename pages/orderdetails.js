@@ -202,12 +202,6 @@ class OrderDetails extends React.Component {
                 return (
                 <div key={bid.bid_id}>
 
-               
-               
-
-
-
-
 
                 <div className="container-fluid">
                       <div className="row">
@@ -323,27 +317,19 @@ class OrderDetails extends React.Component {
                             <br />
                             <br />
                           </div>
-                          <div
-                            className={
-                              this.props.hashrate.times.length === 0 &&
+                          <div className={ this.props.hashrate.times.length === 0 &&
                                 this.state.hashrateLoading === false &&
                                 this.props.hashrate.hashrate_units != ""
                                 ? overlayMessage
-                                : noOverlayMessage
-                            }
-                          >
+                                : noOverlayMessage } >
                             <p style={{ fontSize: "0.85em", marginTop: "20px" }}>
                               <strong>No mining reported</strong>
                             </p>
                           </div>
-                          <div
-                            className={
-                              this.props.hashrate.times.length === 0 &&
+                          <div className={ this.props.hashrate.times.length === 0 &&
                                 this.state.hashrateLoading === false
                                 ? overLayError
-                                : noOverLayError
-                            }
-                          >
+                                : noOverLayError } >
                           <AreaChart hashrate={this.props.hashrate} />
                           </div>
 
