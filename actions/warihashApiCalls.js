@@ -525,7 +525,7 @@ export const getBids = (number, sub_id) => dispatch => {
           "Content-Type": "application/json",
           "Authorization": "Token 73c9c1bbe9be697964651a9d407ab8964677cd1d"
         },
-        sub_id: sub_id
+        sub_user: sub_id
       },
       { cancelToken: source.token }
     )
