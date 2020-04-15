@@ -409,6 +409,12 @@ export const orderDetailsPage = () => {
   };
 };
 
+export const notFoundPage = () => {
+  return {
+    type: types.NOT_FOUND_PAGE
+  };
+};
+
 //////// PROFILE ACTIONS /////////////////////////////
 
 export const getCurrentProfile = () => dispatch => {

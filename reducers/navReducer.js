@@ -2,7 +2,8 @@ import {
   MARKETPLACE_PAGE,
   ORDER_DETAILS_PAGE,
   INVOICE_PAGE,
-  SEARCH_PAGE
+  SEARCH_PAGE,
+  NOT_FOUND_PAGE
 } from "../actions/types";
 
 const initialState = {
@@ -27,6 +28,10 @@ export default function(state = initialState, action) {
       return {
         page: "orderdetailspage"
       };
+      case NOT_FOUND_PAGE:
+        return {
+          page: "notfoundpage"
+        };
     default:
       return state;
   }
