@@ -46,8 +46,8 @@ class Marketplace extends React.Component {
       hashrate_units_fiat: "",
       mining_algo: "",
       tag: "",
-      host: this.props.stratumaddress,
-      port: this.props.port,
+      host: "stratum.slushpool.com",
+      port: "3333",
       duration: "",
       duration_example: "",
       discount_code: "",
@@ -94,6 +94,13 @@ class Marketplace extends React.Component {
     this.props.clearPaymentInfo();
     this.props.clearNetwork();
     this.props.resetErrors();
+
+    if ( this.props.stratumaddress !== undefined ) {
+      this.setState({ host: this.props.stratumaddress });
+    };
+    if ( this.props.port !== undefined ) {
+      this.setState({ port: this.props.port });
+    };
   };
 
   componentDidUpdate(prevProps) {
