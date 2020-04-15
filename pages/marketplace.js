@@ -107,6 +107,7 @@ class Marketplace extends React.Component {
     if ( this.props.password !== undefined ) {
       this.setState({ password: this.props.password });
     };
+    
   };
 
   componentDidUpdate(prevProps) {
