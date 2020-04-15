@@ -37,6 +37,7 @@ class SearchPage extends React.Component {
       menuOpen: false,
       showBuyOrderModal: false,
       emailaddress: "",
+      sub_id: "",
       modalLoading: true,
       pagenumber: 0,
       menuOne: true,
@@ -54,16 +55,6 @@ class SearchPage extends React.Component {
       this.props.clearHashrateData();
       this.props.clearPaymentInfo();
       this.props.clearAlert();
-      if (this.props.sellorders === undefined || 
-        this.props.sellorders !== "sellorders") {
-        this.props.getBids(this.state.pagenumber);
-        this.props.getOffers(this.state.pagenumber);
-      }
-      if (this.props.sellorders === "sellorders") {
-        this.setState({ menuOne: false, menuTwo: true });
-        this.props.getOffers(this.state.pagenumber);
-        this.props.getBids(this.state.pagenumber);
-      }
     };
     this.props.clearHashrateData();
   };
@@ -108,11 +99,7 @@ class SearchPage extends React.Component {
     this.props.clearAlert();
   };
 
-
-  onConfirm = () => {
-    this.setState({ successAlert: null, paymentAddressSuccess: null });
-    this.props.clearAlert();
-  };
+  searchOrders = () => this.props.getOffers(this.state.pagenumber, this.state.sub_id);
 
   /// VIEW INFO MODAL ////////////////////
 
@@ -126,11 +113,6 @@ class SearchPage extends React.Component {
     showPaymentAddressModal: false });
     this.setState({ modaloffers: [{ bid_id: { result: {} } }] });
   };
-
-  /// TAB MENU ////////////////////////////
-
-  openMenuOne = () => this.setState({ menuOne: true, menuTwo: false });
-  openMenuTwo = () => this.setState({ menuOne: false, menuTwo: true });
 
   /// PAGINATION //////////////////////////
 
@@ -197,9 +179,6 @@ class SearchPage extends React.Component {
     };
   };
 
-  offerCancel = offerId => this.props.cancelOffer(offerId);
-  openPaymentAddressModal = () => this.setState({ showPaymentAddressModal: true, menuOpen: false });
-
   render() {
     const modalcontents = this.state.modaloffers;
 
@@ -225,8 +204,6 @@ class SearchPage extends React.Component {
                 <div className="row" style={{ padding: "0px" }}>
                   <div className="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12 infocontainer">
 
-
-  
                   </div>
 
                   <style jsx>

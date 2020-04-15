@@ -226,7 +226,7 @@ export const loadActiveOffers = (miningalgorithm, pagenumber) => dispatch => {
 
 //////// GET OFFERS (PROFILE PAGE) //////////////////////////
 
-export const getOffers = (pagenumber) => dispatch => {
+export const getOffers = (pagenumber, sub_id) => dispatch => {
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();
   setTimeout(() => {
@@ -239,7 +239,8 @@ export const getOffers = (pagenumber) => dispatch => {
         headers: {
           "Content-Type": "application/json",
           "Authorization": "Token 73c9c1bbe9be697964651a9d407ab8964677cd1d"
-        }
+        },
+        sub_id: sub_id
       },
       { cancelToken: source.token }
     )
