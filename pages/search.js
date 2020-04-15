@@ -209,7 +209,7 @@ class SearchPage extends React.Component {
               <div className="container-fluid">
                 <div className="row" style={{ padding: "0px" }}>
                   <div className="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12 infocontainer">
-
+                  <h4 className="marketplacetitle">Search Previous Orders</h4>
                   </div>
 
                   <style jsx>
@@ -227,6 +227,10 @@ class SearchPage extends React.Component {
                       .th {
                         padding-top: 7px;
                         padding-bottom: 7px;
+                      }
+                      .search-btn {
+                          display: inline-block;
+                          border: none;
                       }
 
                       .stratum-btn-container {
@@ -282,14 +286,11 @@ class SearchPage extends React.Component {
                       }
                     `}
                   </style>
-                  <div className="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12 text-right">
+                  <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 text-right">
 
                         <div style={{ width: "100%", paddingTop: "15px" }}>
 
                         <div className="form-group">
-                        <label htmlFor="email" className="inputlabel">
-                        Email:
-                        </label>
                         <div
                           className={
                             emailfocus === true
@@ -331,7 +332,9 @@ class SearchPage extends React.Component {
                           />
                           <br />
                         </div>
-
+                           <button className="search-btn">
+                               Search Orders
+                            </button>     
                          
                       </div>
                         
