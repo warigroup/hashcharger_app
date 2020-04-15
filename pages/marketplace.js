@@ -101,6 +101,12 @@ class Marketplace extends React.Component {
     if ( this.props.port !== undefined ) {
       this.setState({ port: this.props.port });
     };
+    if ( this.props.username !== undefined ) {
+      this.setState({ username: this.props.username });
+    };
+    if ( this.props.password !== undefined ) {
+      this.setState({ password: this.props.password });
+    };
   };
 
   componentDidUpdate(prevProps) {
