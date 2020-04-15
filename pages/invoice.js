@@ -178,7 +178,6 @@ class InvoicePage extends React.Component {
     this._isMounted = false;
     clearInterval(this.countdownTimer, this.getbidsTimer);
     window.removeEventListener("focus", this.onFocus);
-    this.props.clearPaymentInfo();
     this.props.clearNetwork();
     this.props.clearAlert();
   };
