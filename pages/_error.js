@@ -33,15 +33,7 @@ class NotFound extends React.Component {
         Cookies.remove("testcookie06");
       }
     }, COOKIE_TIMEOUT);
-    if (this.props.auth.isAuthenticated === false) {
-      this.props.clearCurrentProfile();
-    };
-    if (
-      this.props.auth.isAuthenticated === true &&
-      ((this.props.profile || {}).profile || {}).username === ""
-    ) {
-      this.props.getCurrentProfile();
-    };
+
   }
 
   componentWillUnmount() {
@@ -162,12 +154,10 @@ NotFound.propTypes = {
   notFoundPage: PropTypes.func,
   clearCurrentProfile: PropTypes.func,
   getCurrentProfile: PropTypes.func,
-  auth: PropTypes.object,
   profile: PropTypes.object
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth,
   profile: state.profile
 });
 
