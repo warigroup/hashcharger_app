@@ -91,7 +91,7 @@ const MarketNav = ({ nav, payment }) => (
              <Link route={`/orderdetails/id/${payment.bid_id}`}>
              <a
                className={
-                 nav.page === "searchpage" &&
+                 nav.page === "orderdetailspage" &&
                  payment.bid_id !== undefined 
                    ? "marketplacenav selected"
                    : "marketplacenav disabled-link"

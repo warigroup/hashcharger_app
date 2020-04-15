@@ -312,14 +312,17 @@ class OrderDetails extends React.Component {
                             {pagecontents.hashrate_units}
                             H/s
                            </p>
-                           <Link prefetch route={`/invoice/id/${this.props.payment.bid_id}`}>
+                          
+                         <br />
+                         <br />
+                         <br />
+                         <br />
+                         <Link prefetch route={`/invoice/id/${this.props.payment.bid_id}`}>
                           <a className="gotomain-btn">
                             View invoice{"  "}
                           </a>
                         </Link>
-                         <br />
-                         <br />
-                         <br />
+                       
 
                         </div>
 
@@ -373,14 +376,6 @@ class OrderDetails extends React.Component {
                       
                       }
 
-                        <br/>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <br/>
                   </div>
               </div>
           </div>
