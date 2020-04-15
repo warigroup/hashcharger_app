@@ -35,6 +35,7 @@ const MarketNav = ({ nav, payment }) => (
                }
                .marketplacenav.selected {
                 color: #fff;
+                pointer: cursor;
                }
                .marketplacenav.selected .number-circle {
                 color: #fff;
