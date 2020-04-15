@@ -1,19 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { Link, Router } from "../routes";
+import { Router } from "../routes";
 //// COMPONENTS /////////////////
 import PublicRoute from "../components/routes/PublicRoute";
-import {
-  FaBitcoin,
-  FaWallet,
-  FaRegEnvelope,
-  FaCogs,
-  FaExternalLinkSquareAlt,
-  FaUserPlus
-} from "react-icons/fa";
-import { IoLogoBitcoin } from "react-icons/io";
-import { GoTag } from "react-icons/go";
 import {
   getCurrentProfile,
   clearCurrentProfile,
@@ -33,15 +23,10 @@ import {
   cancelOffer
 } from "../actions/warihashApiCalls";
 import Cookies from "js-cookie";
-import { alphaURL } from "../settings";
 import { csrfcookie } from "../utils/cookieNames";
-import SweetAlert from "react-bootstrap-sweetalert";
 import Paginator from "../components/tools/Paginator";
-import MyOffersList from "../components/profile/MyOffersList";
 import BidsList from "../components/profile/BidsList";
 import BuyOrderModal from "../components/profile/BuyOrderModal";
-import SellOrderModal from "../components/profile/SellOrderModal";
-import CancelOrderModal from "../components/profile/CancelModal";
 import { WAIT_ALERT } from "../utils/timeout-config";
 
 class SearchPage extends React.Component {
@@ -51,10 +36,8 @@ class SearchPage extends React.Component {
       loading: true,
       modaloffers: [{ bid_id: "" }],
       menuOpen: false,
-      showPaymentAddressModal: false,
       showBuyOrderModal: false,
-      showSellOrderModal: false,
-      showCancelOrderModal: false,
+      emailaddress: "",
       modalLoading: true,
       pagenumber: 0,
       menuOne: true,
@@ -98,27 +81,6 @@ class SearchPage extends React.Component {
     };
     if (prevProps.bids.bids.result !== this.props.bids.bids.result) {
       this.setState({ loading: false });
-    };
-    if (
-      this.props.errors.alertnow === "alertnow" &&
-      prevProps.errors.alertnow !== "alertnow"
-    ) {
-      this.handleCloseModal();
-      setTimeout(() => {
-        this.successAlert();
-        this.props.getOffers(this.state.pagenumber);
-      }, WAIT_ALERT);
-      this.openMenuTwo();
-    };
-    if (
-      this.props.errors.alertnow === "set_address_success" &&
-      prevProps.errors.alertnow !== "set_address_success"
-    ) {
-      this.handleCloseModal();
-      this.props.getCurrentProfile();
-      setTimeout(() => {
-        this.paymentAddressSuccess();
-      }, WAIT_ALERT);
     };
     if (
       this.props.errors.detail ===
@@ -248,20 +210,7 @@ class SearchPage extends React.Component {
       this.setState({ showBuyOrderModal: true, menuOpen: false });
     };
 
-    const openSellOrderModal = offer => {
-      this.props.getHashrateInfo(offer.offer_id);
-      this.props.getOfferInfo(offer.offer_id);
-      this.setState({ showSellOrderModal: true, menuOpen: false });
-    };
-
-    const openCancelOrderModal = offer => {
-      this.props.getOfferInfo(offer.offer_id);
-      this.setState({ showCancelOrderModal: true, menuOpen: false });
-    };
-
     const goToInvoicePage = bid_id => Router.pushRoute(`/invoice/id/${bid_id}`);
-    const goToEditPage = bid => Router.pushRoute(`/editstratum/id/${bid.bid_id}`);
-    const offerEditPage = offer => Router.pushRoute(`/editoffer/id/${offer.offer_id}`);
 
     return (
       <PublicRoute>
@@ -548,8 +497,6 @@ class SearchPage extends React.Component {
                      handleCloseModal={this.handleCloseModal}
                      showBuyOrderModal={this.state.showBuyOrderModal}
                      />
-
-                 
 
                   <div className="clearfix" />
                 </div>
