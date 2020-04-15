@@ -35,7 +35,6 @@ import {
 import { csrfcookie } from "../utils/cookieNames";
 import ThreeDotsLoading from "../components/tools/ThreeDotsLoading";
 import Head from "next/head";
-import MarketNav from "../components/common/MarketNav";
 
 class Marketplace extends React.Component {
   constructor() {
@@ -776,14 +775,7 @@ class Marketplace extends React.Component {
               </div>
             </div>
             
-            <div className="container-fluid">
-              <div className="row" style={{ padding: "0px" }}>
-                <div className="col-xl-12 col-lg-12 col-md-12" style={{ padding: "0px" }}>
-                  <MarketNav />
-                  <br />
-                </div>
-              </div>
-            </div>
+
 
             <div className="container">
               <div className="row">

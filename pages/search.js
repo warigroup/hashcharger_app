@@ -27,6 +27,7 @@ import { csrfcookie } from "../utils/cookieNames";
 import Paginator from "../components/tools/Paginator";
 import BidsList from "../components/profile/BidsList";
 import BuyOrderModal from "../components/profile/BuyOrderModal";
+import MarketNav from "../components/common/MarketNav";
 
 class SearchPage extends React.Component {
   constructor() {

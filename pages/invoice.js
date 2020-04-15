@@ -18,6 +18,7 @@ import { googleAnalytics, invoiceExpMin } from "../settings";
 import { WAIT_ALERT } from "../utils/timeout-config";
 import SweetAlert from "react-bootstrap-sweetalert";
 import ThreeDotsLoading from "../components/tools/ThreeDotsLoading";
+import MarketNav from "../components/common/MarketNav";
 
 const moment = require('moment-timezone');
 var Scroll = require('react-scroll');

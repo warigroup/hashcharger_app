@@ -9,11 +9,8 @@ const MarketNav = ({ nav, payment }) => (
           <div className="row" style={{ padding: "13px 20px 13px 20px" }}>
              <style jsx>
                {`
-               .marketplacenav {
-                 width: 30%;
-               }
                .number-circle {
-                border: 2.5px solid #fff;
+                border: 2.5px solid rgba(255,255,255,0.3);
                 border-radius: 50%;
                 padding: 1px 7px 1px 7px;
                 color: #fff;
@@ -29,10 +26,15 @@ const MarketNav = ({ nav, payment }) => (
                 font-weight: bold;
                 font-size: 1.11em;
               }
-               @media (max-width: 650px) {
-                 .marketplacenav {
-                   width: 100%;
-                 }
+               .marketplacenav  {
+                color: rgba(255,255,255,0.3);
+               }
+               .marketplacenav.selected {
+                color: #fff;
+               }
+               .marketplacenav.selected.number-circle {
+                color: #fff;
+                border: 2.5px solid #fff;
                }
                `}
              </style>
