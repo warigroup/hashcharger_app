@@ -121,7 +121,7 @@ class InvoicePage extends React.Component {
         this.props.getBidInfo(this.props.payment.bid_id);
       }
     }, 5000);
-  }
+  };
  
   setCountdown = invoice_expiration_time => {
     this.countdownTimer = setInterval(() => {
@@ -211,7 +211,6 @@ class InvoicePage extends React.Component {
                 <div>
                 <style jsx>
                     {`
-                    
                       .invoice-title {
                         font-weight: 600;
                       }
@@ -540,7 +539,7 @@ class InvoicePage extends React.Component {
                         </button>
                         : null }
 
-                         <Link prefetch route="/orderdetails">
+                         <Link prefetch route={`/orderdetails/id/${bid.bid_id}`}>
                           <a className="gotomain-btn">
                             Go to order details{"  "}
                           </a>
