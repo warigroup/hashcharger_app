@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Head from "next/head";
 import MarketNav from "../components/common/MarketNav";
 
-class Help extends Component {
+class HelpPage extends Component {
 
     render() {
         return (
@@ -13,4 +13,4 @@ class Help extends Component {
     }
 }
 
-export default Help;
+export default HelpPage;
