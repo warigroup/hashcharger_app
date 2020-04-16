@@ -54,7 +54,7 @@ class Marketplace extends React.Component {
       limit_price: "",
       durationClicked: false,
       username: "",
-      password: "",
+      password: "123123",
       sub_user: "widgetaccount",
       stratum_id: "",
       currency: "BTC",
@@ -91,7 +91,6 @@ class Marketplace extends React.Component {
     this.props.timeoutReset();
     this.props.marketplacePage();
     this.props.getConfigs();
-    this.props.clearPaymentInfo();
     this.props.clearNetwork();
     this.props.resetErrors();
 
