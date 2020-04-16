@@ -17,7 +17,11 @@ import {
   enableNavigation,
   timeoutError,
   timeoutReset,
-  algoSelect } from "../actions/warihashApiCalls";
+  algoSelect,
+  setStratumHost,
+  setStratumPort,
+  setStratumUsername,
+  setStratumPassword } from "../actions/warihashApiCalls";
 import { FaRegClock, FaBitcoin, FaQuestionCircle } from "react-icons/fa";
 import { TiFlash } from "react-icons/ti";
 import { Router } from "../routes";
@@ -94,17 +98,19 @@ class Marketplace extends React.Component {
     this.props.clearNetwork();
     this.props.resetErrors();
 
+    // set global stratum configs here
     if ( this.props.stratumaddress !== undefined ) {
-      this.setState({ host: this.props.stratumaddress });
+      this.props.setStartumHost(this.props.stratumaddress);
     };
     if ( this.props.stratumport !== undefined ) {
-      this.setState({ port: this.props.stratumport });
+      this.props.setStartumPort(this.props.stratumport);
     };
     if ( this.props.username !== undefined ) {
-      this.setState({ username: this.props.username, sub_user: this.props.username });
+      this.props.setStratumUsername(this.props.username);
+      this.setState({ sub_user: this.props.username })
     };
     if ( this.props.password !== undefined ) {
-      this.setState({ password: this.props.password });
+      this.props.setStratumPassword(this.props.password);
     };
     
   };
@@ -1371,6 +1377,10 @@ Marketplace.propTypes = {
   timeoutError: PropTypes.func,
   timeoutReset: PropTypes.func,
   algoSelect: PropTypes.func,
+  setStratumHost: PropTypes.func,
+  setStratumPort: PropTypes.func,
+  setStratumUsername: PropTypes.func,
+  setStratumPassword: PropTypes.func,
   errors: PropTypes.object,
   configs: PropTypes.object,
   network: PropTypes.object,
@@ -1414,6 +1424,10 @@ export default connect(
     enableNavigation,
     timeoutError,
     timeoutReset,
-    algoSelect
+    algoSelect,
+    setStratumHost,
+    setStratumPort,
+    setStratumUsername,
+    setStratumPassword
   }
 )(Marketplace);

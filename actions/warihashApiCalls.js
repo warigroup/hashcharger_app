@@ -863,9 +863,33 @@ export const cancelInvoice = (
 
 ///////// SET GLOBAL STRATUM, USER CONFIGS /////////////////////
 
-export const setUserConfigs = (host, port, username, password) => {
+export const setStratumHost = host => {
   return {
-    type: types.SET_USER_CONFIGS,
-    payload: host, port, username, password
+    type: types.SET_STRATUM_HOST,
+    payload: host
+  };
+};
+
+
+export const setStratumPort = port => {
+  return {
+    type: types.SET_STRATUM_PORT,
+    payload: port
+  };
+};
+
+
+export const setStratumUsername = username => {
+  return {
+    type: types.SET_STRATUM_USERNAME,
+    payload: username
+  };
+};
+
+
+export const setStratumPassword = password => {
+  return {
+    type: types.SET_STRATUM_PASSWORD,
+    payload: password
   };
 };
