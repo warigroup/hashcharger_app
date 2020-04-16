@@ -97,8 +97,8 @@ class Marketplace extends React.Component {
     if ( this.props.stratumaddress !== undefined ) {
       this.setState({ host: this.props.stratumaddress });
     };
-    if ( this.props.port !== undefined ) {
-      this.setState({ port: this.props.port });
+    if ( this.props.stratumport !== undefined ) {
+      this.setState({ port: this.props.stratumport });
     };
     if ( this.props.username !== undefined ) {
       this.setState({ username: this.props.username, sub_user: this.props.username });
