@@ -234,10 +234,10 @@ class Marketplace extends React.Component {
       this.state.hashrate_units,
       this.props.miningalgo.algorithm,
       durationInMinutes,
-      this.state.host,
-      this.state.port,
-      this.state.username,
-      this.state.password,
+      this.props.stratumconfigs.host,
+      this.props.stratumconfigs.port,
+      this.props.stratumconfigs.username,
+      this.props.stratumconfigs.password,
       this.state.location,
       this.state.limit_price,
       this.state.sub_user
@@ -1390,7 +1390,8 @@ Marketplace.propTypes = {
   profile: PropTypes.object,
   stats: PropTypes.object,
   payment: PropTypes.object,
-  stratum: PropTypes.object
+  stratum: PropTypes.object,
+  stratumconfigs: PropTypes.object
 };
 
 const mapStateToProps = state => ({
@@ -1403,7 +1404,8 @@ const mapStateToProps = state => ({
   profile: state.profile,
   stats: state.stats,
   payment: state.payment,
-  stratum: state.stratum
+  stratum: state.stratum,
+  stratumconfigs: state.stratumconfigs
 });
 
 export default connect(
