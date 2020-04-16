@@ -860,3 +860,12 @@ export const cancelInvoice = (
       });
     });
 };
+
+///////// SET STRATUM, USER CONFIGS /////////////////////
+
+export const setUserConfigs = (host, port, username, password) => {
+  return {
+    type: types.SET_USER_CONFIGS,
+    payload: host, port, username, password
+  };
+};
