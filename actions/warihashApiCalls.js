@@ -861,7 +861,7 @@ export const cancelInvoice = (
     });
 };
 
-///////// SET STRATUM, USER CONFIGS /////////////////////
+///////// SET GLOBAL STRATUM, USER CONFIGS /////////////////////
 
 export const setUserConfigs = (host, port, username, password) => {
   return {
