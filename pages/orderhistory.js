@@ -177,9 +177,6 @@ class orderHistoryPage extends React.Component {
     };
   };
 
-  handleEmailFocus = () => this.setState({ emailfocus: true });
-  handleEmailBlur = () => this.setState({ emailfocus: false });
-
   handleChange = event => {
     const itemName = event.target.name;
     const itemValue = event.target.value;
@@ -195,8 +192,6 @@ class orderHistoryPage extends React.Component {
       this.setState({ showBuyOrderModal: true, menuOpen: false });
     };
 
-    const { emailfocus } = this.state;
-
     const goToInvoicePage = bid_id => Router.pushRoute(`/invoice/id/${bid_id}`);
 
     return (
@@ -206,8 +201,6 @@ class orderHistoryPage extends React.Component {
           style={{ marginTop: "20px", marginBottom: "150px" }}
         >
           <div className="row">
-          {this.state.successAlert}
-          {this.state.paymentAddressSuccess}
             <div className="container" style={{ padding: "0px" }}>
               <div className="container-fluid">
                 <div className="row" style={{ padding: "0px" }}>
