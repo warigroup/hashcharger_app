@@ -10,13 +10,7 @@ import PropTypes from "prop-types";
 import PublicRoute from "../components/routes/PublicRoute";
 
 class NotFound extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      cookiemodal: ""
-    };
-  }
-
+  
   componentDidMount() {
     this.props.notFoundPage();
   }
@@ -68,6 +62,7 @@ class NotFound extends React.Component {
                 <br />
                 <br />
                 <br />
+
                   <a className="gotomain-btn" 
                   href="https://www.warihash.com"
                   itemProp="url">
