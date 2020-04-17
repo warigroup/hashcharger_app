@@ -23,7 +23,6 @@ export const cancelOrder = offerId => dispatch => {
   setTimeout(() => {
     source.cancel("ERROR: Timeout");
   }, TIMEOUT_DURATION);
-  const csrftoken = getCookie(`${csrfcookie}`);
   return axios
     .post(
       `${apiurl}/offer_take_cancel/`,
@@ -457,7 +456,6 @@ export const timeoutReset = () => {
 /////// GET HASHRATE INFO ///////////////////////////////
 
 export const getHashrateInfo = idnumber => dispatch => {
-  const csrftoken = getCookie(`${csrfcookie}`);
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();
   setTimeout(() => {
@@ -488,7 +486,6 @@ export const getHashrateInfo = idnumber => dispatch => {
 };
 
 export const getHashrateHistory = idnumber => dispatch => {
-  const csrftoken = getCookie(`${csrfcookie}`);
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();
   setTimeout(() => {
@@ -519,7 +516,6 @@ export const getHashrateHistory = idnumber => dispatch => {
 };
 
 export const getBidHashrateChart = idnumber => dispatch => {
-  const csrftoken = getCookie(`${csrfcookie}`);
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();
   setTimeout(() => {

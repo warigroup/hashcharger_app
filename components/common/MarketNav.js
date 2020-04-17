@@ -86,8 +86,7 @@ const MarketNav = ({ nav, payment }) => (
             </Link>
             </div>
 
-            <div className="col-xl-4 col-lg-4 col-md-12 text-center">     
-
+            <div className="col-xl-4 col-lg-4 col-md-12 text-center">
              <Link route={`/orderdetails/id/${payment.bid_id}`}>
              <a
                className={
