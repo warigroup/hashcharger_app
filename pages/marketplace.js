@@ -95,10 +95,10 @@ class Marketplace extends React.Component {
 
     // set global stratum configs here
     if ( this.props.stratumaddress !== undefined ) {
-      this.props.setStartumHost(this.props.stratumaddress);
+      this.props.setStratumHost(this.props.stratumaddress);
     };
     if ( this.props.stratumport !== undefined ) {
-      this.props.setStartumPort(this.props.stratumport);
+      this.props.setStratumPort(this.props.stratumport);
     };
     if ( this.props.username !== undefined ) {
       this.props.setStratumUsername(this.props.username);
