@@ -1,7 +1,6 @@
 import React from "react";
 import {
   notFoundPage,
-  clearCurrentProfile,
   getCurrentProfile
 } from "../actions/warihashApiCalls";
 import { connect } from "react-redux";
@@ -91,7 +90,6 @@ class NotFound extends React.Component {
 
 NotFound.propTypes = {
   notFoundPage: PropTypes.func,
-  clearCurrentProfile: PropTypes.func,
   getCurrentProfile: PropTypes.func,
   profile: PropTypes.object
 };
@@ -102,5 +100,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { notFoundPage, clearCurrentProfile, getCurrentProfile }
+  { notFoundPage, getCurrentProfile }
 )(NotFound);

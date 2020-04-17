@@ -1,7 +1,6 @@
 import {
   CLEAR_CURRENT_PROFILE,
   GET_PROFILE,
-  GET_MINERS_LIST,
   GET_SETTLEMENTS_PROFILE
 } from "../actions/types";
 
@@ -29,12 +28,6 @@ export default function(state = initialState, action) {
         miners: [],
         miners_loaded: false
       };
-    case GET_MINERS_LIST:
-      return {
-        ...state,
-        miners: action.payload,
-        miners_loaded: true
-    };
     case GET_SETTLEMENTS_PROFILE:
       return {
         ...state,

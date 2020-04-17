@@ -6,8 +6,7 @@ import {
   RESET_ERRORS,
   CLEAR_ERRORS_ORDER_CANCEL,
   ORDER_CANCEL_FAIL,
-  GET_ERRORS_CANCEL_OFFER,
-  SET_PAYMENT_ADDRESS
+  GET_ERRORS_CANCEL_OFFER
 } from "../actions/types";
 
 const initialState = {
@@ -23,11 +22,6 @@ export default function(state = initialState, action) {
     case CLEAR_ERRORS_SHOW_ALERT:
       return {
         alertnow: "alertnow",
-        cancelfail: null
-      };
-    case SET_PAYMENT_ADDRESS:
-      return {
-        alertnow: "set_address_success",
         cancelfail: null
       };
     case CLEAR_ERRORS_FIAT_FORM:

@@ -5,8 +5,6 @@ import {
   resetErrors,
   takeOffer,
   clearNetwork,
-  clearCurrentProfile,
-  clearPaymentInfo,
   clearAlert,
   getCurrentProfile,
   getConfigs,
@@ -168,12 +166,6 @@ class Marketplace extends React.Component {
         networkerror: "Failed for unknown reason. Contact info@warihash.com",
         formloading: false
       });
-    };
-    if (
-      this.props.network.networkstatus === 401 &&
-      prevProps.network.networkstatus !== 401
-    ) {
-      this.props.clearCurrentProfile();
     };
     // clean up settimeout function
     clearTimeout(this.timer);
@@ -1348,8 +1340,6 @@ Marketplace.propTypes = {
   marketplacePage: PropTypes.func,
   getCurrentProfile: PropTypes.func,
   getConfigs: PropTypes.func,
-  clearCurrentProfile: PropTypes.func,
-  clearPaymentInfo: PropTypes.func,
   clearNetwork: PropTypes.func,
   clearAlert: PropTypes.func,
   formSubmission: PropTypes.func,
@@ -1388,8 +1378,6 @@ export default connect(
   mapStateToProps,
   {
     takeOffer,
-    clearCurrentProfile,
-    clearPaymentInfo,
     clearNetwork,
     clearAlert,
     getCurrentProfile,

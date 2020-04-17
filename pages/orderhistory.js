@@ -6,7 +6,6 @@ import { Router } from "../routes";
 import PublicRoute from "../components/routes/PublicRoute";
 import {
   getCurrentProfile,
-  clearCurrentProfile,
   clearHashrateData,
   clearPaymentInfo,
   clearBids,
@@ -19,7 +18,6 @@ import {
   getBidInfo,
   getBidHashrateChart,
   getHashrateInfo,
-  cancelOffer,
   orderHistoryPage,
   resetProfileLoading
 } from "../actions/warihashApiCalls";
@@ -77,13 +75,6 @@ class myOrderHistory extends React.Component {
     ) {
       Cookies.remove(csrfcookie);
       this.props.enableNavigation();
-      this.props.clearCurrentProfile();
-    };
-    if (
-      this.props.network.networkstatus === 401 &&
-      prevProps.network.networkstatus !== 401
-    ) {
-      this.props.clearCurrentProfile();
     };
   };
 
@@ -432,7 +423,6 @@ myOrderHistory.defaultProps = {
 myOrderHistory.propTypes = {
   getCurrentProfile: PropTypes.func,
   getBidHashrateChart: PropTypes.func,
-  clearCurrentProfile: PropTypes.func,
   clearHashrateData: PropTypes.func,
   clearPaymentInfo: PropTypes.func,
   clearNetwork: PropTypes.func,
@@ -444,7 +434,6 @@ myOrderHistory.propTypes = {
   getOfferInfo: PropTypes.func,
   getBidInfo: PropTypes.func,
   getHashrateInfo: PropTypes.func,
-  cancelOffer: PropTypes.func,
   orderHistoryPage: PropTypes.func,
   resetProfileLoading: PropTypes.func,
   auth: PropTypes.object,
@@ -484,7 +473,6 @@ export default connect(
   {
     getCurrentProfile,
     getBidHashrateChart,
-    clearCurrentProfile,
     clearHashrateData,
     clearPaymentInfo,
     clearBids,
@@ -496,7 +484,6 @@ export default connect(
     getOfferInfo,
     getBidInfo,
     getHashrateInfo,
-    cancelOffer,
     orderHistoryPage,
     resetProfileLoading
   }
