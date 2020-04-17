@@ -28,7 +28,6 @@ import { csrfcookie } from "../utils/cookieNames";
 import Paginator from "../components/tools/Paginator";
 import BidsList from "../components/profile/BidsList";
 import BuyOrderModal from "../components/profile/BuyOrderModal";
-import { FaEnvelope } from "react-icons/fa";
 
 class orderHistoryPage extends React.Component {
   constructor() {
@@ -41,8 +40,6 @@ class orderHistoryPage extends React.Component {
       email: "",
       modalLoading: true,
       pagenumber: 0,
-      menuOne: true,
-      menuTwo: false,
       emailfocus: false
     };
   };
@@ -90,7 +87,7 @@ class orderHistoryPage extends React.Component {
       this.props.redirectErrorMessage();
       this.props.clearCurrentProfile();
     };
-  }
+  };
 
   componentWillUnmount() {
     this.props.clearNetwork();
@@ -332,7 +329,6 @@ class orderHistoryPage extends React.Component {
                               bids={this.props.bids.bids.result}
                               goToInvoicePage={goToInvoicePage}
                               openBuyOrderModal={openBuyOrderModal}
-                              goToEditPage={goToEditPage}
                               />
                               : null}
                             {this.state.loading === false &&
