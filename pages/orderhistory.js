@@ -116,65 +116,38 @@ class orderHistoryPage extends React.Component {
 
   selectNewPage = number => {
     let pagenumber = number - 1;
-    if (this.state.menuOne === true) {
-      this.props.getBids(pagenumber);
-    } else {
-      this.props.getOffers(pagenumber);
-    };
+    this.props.getBids(pagenumber, this.props.settings.username);
   };
 
   prevPage = number => {
     let pagenumber = number - 1;
-    if (this.state.menuOne === true) {
-      this.props.getBids(pagenumber);
-    } else {
-      this.props.getOffers(pagenumber);
-    };
+    this.props.getBids(pagenumber, this.props.settings.username);
   };
 
   nextPage = number => {
     let pagenumber = number + 1;
-    if (this.state.menuOne === true) {
-      this.props.getBids(pagenumber);
-    } else {
-      this.props.getOffers(pagenumber);
-    };
+    this.props.getBids(pagenumber, this.props.settings.username);
   };
 
   firstPage = () => {
     let pagenumber = 0;
-    if (this.state.menuOne === true) {
-      this.props.getBids(pagenumber);
-    } else {
-      this.props.getOffers(pagenumber);;
-    };
+    this.props.getBids(pagenumber, this.props.settings.username);
   };
 
   lastPage = number => {
     let pagenumber = number;
-    if (this.state.menuOne === true) {
-      this.props.getBids(pagenumber);
-    } else {
-      this.props.getOffers(pagenumber);
-    };
+    this.props.getBids(pagenumber, this.props.settings.username);
   };
 
   pageSix = () => {
     let pagenumber = 5;
-    if (this.state.menuOne === true) {
-      this.props.getBids(pagenumber);
-    } else {
-      this.props.getOffers(pagenumber);
-    };
+    this.props.getBids(pagenumber, this.props.settings.username);
+
   };
 
   minusSix = number => {
     let pagenumber = number - 6;
-    if (this.state.menuOne === true) {
-      this.props.getBids(pagenumber);
-    } else {
-      this.props.getOffers(pagenumber);
-    };
+    this.props.getBids(pagenumber, this.props.settings.username);
   };
 
   handleChange = event => {
@@ -284,8 +257,6 @@ class orderHistoryPage extends React.Component {
                       <br />
                   <h4 className="marketplacetitle">My Order History</h4>
                   </div>
-
-                 
 
                   <div className="col-md-12 clearfix mb-2" />
                   <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 tablecontainer">
@@ -407,7 +378,7 @@ class orderHistoryPage extends React.Component {
                     </div>
 
                           {/****   Show pagination when total_pages is greater than 1 ******/}
-                          {this.state.menuOne === true && this.props.bids.bids.total_pages > 1 ? 
+                          {this.props.bids.bids.total_pages > 1 ? 
                                   <div className="col-xl-12 col-md-12 col-12 pagination-container" 
                                   style={{paddingRight: "20px", paddingLeft: "20px"}}>
                                                   <Paginator 
