@@ -4,7 +4,6 @@ import {
   getCurrentProfile,
   getBidInfo, 
   getBidHashrateChart,
-  redirectErrorMessage,
   clearHashrateData,
   clearPaymentInfo,
   clearNetwork,
@@ -399,7 +398,6 @@ class OrderDetails extends React.Component {
     getCurrentProfile: PropTypes.func,
     getBidInfo: PropTypes.func,
     getBidHashrateChart: PropTypes.func,
-    redirectErrorMessage: PropTypes.func,
     clearHashrateData: PropTypes.func,
     clearPaymentInfo: PropTypes.func,
     clearNetwork: PropTypes.func,
@@ -428,7 +426,6 @@ class OrderDetails extends React.Component {
       getBidInfo, 
       getBidHashrateChart,
       clearHashrateData,
-      redirectErrorMessage, 
       orderDetailsPage,
       clearNetwork,
       clearPaymentInfo})(OrderDetails);

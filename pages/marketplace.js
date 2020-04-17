@@ -8,7 +8,6 @@ import {
   clearCurrentProfile,
   clearPaymentInfo,
   clearAlert,
-  redirectErrorMessage,
   getCurrentProfile,
   getConfigs,
   marketplacePage,
@@ -174,7 +173,6 @@ class Marketplace extends React.Component {
       this.props.network.networkstatus === 401 &&
       prevProps.network.networkstatus !== 401
     ) {
-      this.props.redirectErrorMessage();
       this.props.clearCurrentProfile();
     };
     // clean up settimeout function
@@ -1347,7 +1345,6 @@ Marketplace.defaultProps = {
 Marketplace.propTypes = {
   takeOffer: PropTypes.func,
   resetErrors: PropTypes.func,
-  redirectErrorMessage: PropTypes.func,
   marketplacePage: PropTypes.func,
   getCurrentProfile: PropTypes.func,
   getConfigs: PropTypes.func,
@@ -1392,7 +1389,6 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    redirectErrorMessage,
     takeOffer,
     clearCurrentProfile,
     clearPaymentInfo,

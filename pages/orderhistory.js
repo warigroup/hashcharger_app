@@ -13,7 +13,6 @@ import {
   clearOffers,
   clearNetwork,
   clearAlert,
-  redirectErrorMessage,
   getBids,
   getOffers,
   getOfferInfo,
@@ -78,14 +77,12 @@ class myOrderHistory extends React.Component {
     ) {
       Cookies.remove(csrfcookie);
       this.props.enableNavigation();
-      this.props.redirectErrorMessage();
       this.props.clearCurrentProfile();
     };
     if (
       this.props.network.networkstatus === 401 &&
       prevProps.network.networkstatus !== 401
     ) {
-      this.props.redirectErrorMessage();
       this.props.clearCurrentProfile();
     };
   };
@@ -447,7 +444,6 @@ myOrderHistory.propTypes = {
   getOfferInfo: PropTypes.func,
   getBidInfo: PropTypes.func,
   getHashrateInfo: PropTypes.func,
-  redirectErrorMessage: PropTypes.func,
   cancelOffer: PropTypes.func,
   orderHistoryPage: PropTypes.func,
   resetProfileLoading: PropTypes.func,
@@ -495,7 +491,6 @@ export default connect(
     clearOffers,
     clearNetwork,
     clearAlert,
-    redirectErrorMessage,
     getBids,
     getOffers,
     getOfferInfo,

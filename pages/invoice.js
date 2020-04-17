@@ -3,7 +3,6 @@ import PublicRoute from "../components/routes/PublicRoute";
 import {
   getCurrentProfile,
   getBidInfo, 
-  redirectErrorMessage,
   clearPaymentInfo,
   clearAlert,
   clearNetwork,
@@ -580,7 +579,6 @@ class InvoicePage extends React.Component {
   InvoicePage.propTypes = {
     getCurrentProfile: PropTypes.func,
     getBidInfo: PropTypes.func,
-    redirectErrorMessage: PropTypes.func,
     clearPaymentInfo: PropTypes.func,
     clearNetwork: PropTypes.func,
     clearAlert: PropTypes.func,
@@ -604,7 +602,6 @@ class InvoicePage extends React.Component {
   export default connect(mapStateToProps, 
     {getCurrentProfile, 
       getBidInfo, 
-      redirectErrorMessage, 
       clearNetwork,
       clearAlert,
       clearPaymentInfo,

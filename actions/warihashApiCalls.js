@@ -113,38 +113,6 @@ export const getConfigs = () => dispatch => {
 };
 
 
-/////// GET OFFERS (MARKET MONITOR PAGE) /////
-
-export const loadActiveOffers = (miningalgorithm, pagenumber) => dispatch => {
-  const CancelToken = axios.CancelToken;
-  let source = CancelToken.source();
-  setTimeout(() => {
-    source.cancel("ERROR: Timeout");
-  }, TIMEOUT_DURATION);
-  return axios
-    .get(
-      `${apiurl}/get_offers/?mining_algo=${miningalgorithm}&page=${pagenumber}&active=true&all=true`,
-      {
-        headers: {
-          "Content-Type": "application/json"
-        }
-      },
-      { cancelToken: source.token }
-    )
-    .then(res =>
-      dispatch({
-        type: types.LOAD_ACTIVE_OFFERS,
-        payload: res.data
-      })
-    )
-    .catch(err =>
-      dispatch({
-        type: types.GET_STATUS_CODE,
-        payload: (err.response || {}).status
-      })
-    );
-};
-
 //////// GET OFFERS (PROFILE PAGE) //////////////////////////
 
 export const getOffers = (pagenumber) => dispatch => {
@@ -705,7 +673,7 @@ export const cancelInvoice = (
 export const setStratumHostPort = (host, port) => {
   return {
     type: types.SET_STRATUM_HOST_PORT,
-    payload: [{ host: host } , { port: port} ]
+    payload: [{ host: host }, { port: port}]
   };
 };
 
