@@ -56,7 +56,7 @@ class SearchPage extends React.Component {
     this.props.clearAlert();
     this.props.clearHashrateData();
     this.props.searchPage();
-    this.props.getBids(this.state.pagenumber, this.props.startumconfigs.sub_user);
+    this.props.getBids(this.state.pagenumber, this.props.settings.sub_user);
   };
 
   componentDidUpdate(prevProps) {
@@ -501,7 +501,8 @@ SearchPage.propTypes = {
   bids: PropTypes.object,
   payment: PropTypes.object,
   hashrate: PropTypes.object,
-  miningalgo: PropTypes.object
+  miningalgo: PropTypes.object,
+  settings: PropTypes.object
 };
 
 const mapStateToProps = state => ({
@@ -515,7 +516,8 @@ const mapStateToProps = state => ({
   bids: state.bids,
   payment: state.payment,
   hashrate: state.hashrate,
-  miningalgo: state.miningalgo
+  miningalgo: state.miningalgo,
+  settings: state.settings
 });
 
 export default connect(

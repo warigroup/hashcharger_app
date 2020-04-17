@@ -15,7 +15,7 @@ import paymentReducer from './paymentReducer';
 import bidsReducer from './bidsReducer';
 import statsReducer from './statsReducer';
 import stratumReducer from './stratumReducer';
-import stratumConfigsReducer from './stratumConfigsReducer';
+import globalStratumConfigs from './globalStratumConfigs';
 import marketmonitorReducer from './marketmonitorReducer';
 
 export default combineReducers({
@@ -36,5 +36,5 @@ export default combineReducers({
   stats: statsReducer,
   stratum: stratumReducer,
   marketdata: marketmonitorReducer,
-  stratumconfigs: stratumConfigsReducer
+  settings: globalStratumConfigs
 });

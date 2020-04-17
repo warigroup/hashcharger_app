@@ -18,10 +18,8 @@ import {
   timeoutError,
   timeoutReset,
   algoSelect,
-  setStratumHost,
-  setStratumPort,
-  setStratumUsername,
-  setStratumPassword } from "../actions/warihashApiCalls";
+  setStratumHostPort,
+  setStratumUsernamePass } from "../actions/warihashApiCalls";
 import { FaRegClock, FaBitcoin, FaQuestionCircle } from "react-icons/fa";
 import { TiFlash } from "react-icons/ti";
 import { Router } from "../routes";
@@ -94,19 +92,13 @@ class Marketplace extends React.Component {
     this.props.resetErrors();
 
     // set global stratum configs here
-    if ( this.props.stratumaddress !== undefined ) {
-      this.props.setStratumHost(this.props.stratumaddress);
+    if ( this.props.stratumaddress !== undefined || this.props.stratumport !== undefined ) {
+      this.props.setStratumHostPort(this.props.stratumaddress, this.props.stratumport);
     };
-    if ( this.props.stratumport !== undefined ) {
-      this.props.setStratumPort(this.props.stratumport);
-    };
-    if ( this.props.username !== undefined ) {
-      this.props.setStratumUsername(this.props.username);
-    };
-    if ( this.props.password !== undefined ) {
-      this.props.setStratumPassword(this.props.password);
-    };
-    
+    if ( this.props.username !== undefined || this.props.password !== undefined) {
+      this.props.setStratumUsernamePass(this.props.username, this.props.password);
+    }; 
+
   };
 
   componentDidUpdate(prevProps) {
@@ -228,13 +220,13 @@ class Marketplace extends React.Component {
       this.state.hashrate_units,
       this.props.miningalgo.algorithm,
       durationInMinutes,
-      this.props.stratumconfigs.host,
-      this.props.stratumconfigs.port,
-      this.props.stratumconfigs.username,
-      this.props.stratumconfigs.password,
+      this.props.settings.host,
+      this.props.settings.port,
+      this.props.settings.username,
+      this.props.settings.password,
       this.state.location,
       this.state.limit_price,
-      this.state.stratumconfigs.sub_user
+      this.props.settings.sub_user
     );
     this.timer = setTimeout(() => {
       NProgress.done();
@@ -1371,10 +1363,8 @@ Marketplace.propTypes = {
   timeoutError: PropTypes.func,
   timeoutReset: PropTypes.func,
   algoSelect: PropTypes.func,
-  setStratumHost: PropTypes.func,
-  setStratumPort: PropTypes.func,
-  setStratumUsername: PropTypes.func,
-  setStratumPassword: PropTypes.func,
+  setStratumHostPort: PropTypes.func,
+  setStratumUsernamePass: PropTypes.func,
   errors: PropTypes.object,
   configs: PropTypes.object,
   network: PropTypes.object,
@@ -1385,7 +1375,7 @@ Marketplace.propTypes = {
   stats: PropTypes.object,
   payment: PropTypes.object,
   stratum: PropTypes.object,
-  stratumconfigs: PropTypes.object
+  settings: PropTypes.object
 };
 
 const mapStateToProps = state => ({
@@ -1399,7 +1389,7 @@ const mapStateToProps = state => ({
   stats: state.stats,
   payment: state.payment,
   stratum: state.stratum,
-  stratumconfigs: state.stratumconfigs
+  settings: state.settings
 });
 
 export default connect(
@@ -1421,9 +1411,7 @@ export default connect(
     timeoutError,
     timeoutReset,
     algoSelect,
-    setStratumHost,
-    setStratumPort,
-    setStratumUsername,
-    setStratumPassword
+    setStratumHostPort,
+    setStratumUsernamePass
   }
 )(Marketplace);
