@@ -57,6 +57,7 @@ class NotFound extends React.Component {
                 <br />
                 <br />
                 <br />
+                <br />
                 <h5 className="notfoundtitle">
                   <strong>An error has occurred :(</strong>
                 </h5>
