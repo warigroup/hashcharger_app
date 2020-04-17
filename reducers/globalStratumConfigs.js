@@ -21,7 +21,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         username: action.payload[0].username,
-        sub_user: action.payload[0].username,
+        sub_user: action.payload[0].username + action.payload[1].port,
         password: action.payload[1].password
       };
     default:
