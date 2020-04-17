@@ -1368,7 +1368,6 @@ Marketplace.propTypes = {
   profile: PropTypes.object,
   stats: PropTypes.object,
   payment: PropTypes.object,
-  stratum: PropTypes.object,
   settings: PropTypes.object
 };
 
@@ -1382,7 +1381,6 @@ const mapStateToProps = state => ({
   profile: state.profile,
   stats: state.stats,
   payment: state.payment,
-  stratum: state.stratum,
   settings: state.settings
 });
 
