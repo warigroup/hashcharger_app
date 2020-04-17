@@ -15,18 +15,6 @@ export const resetErrors = () => {
   };
 };
 
-export const redirectErrorMessage = () => {
-  return {
-    type: types.REDIRECT_MESSAGE
-  };
-};
-
-export const notFoundMessage = () => {
-  return {
-    type: types.NOT_FOUND_MESSAGE
-  };
-};
-
 //////// CANCEL OFFER ACTIONS ////////////////////////
 
 export const cancelOrder = offerId => dispatch => {
@@ -185,36 +173,6 @@ export const clearOffers = () => {
     type: types.CLEAR_OFFERS
   };
 };
-
-/////// LOAD TAKEN OFFERS (OLD) ////////////////////////////
-
-export const loadTakenOffers = algorithm => dispatch => {
-  const CancelToken = axios.CancelToken;
-  let source = CancelToken.source();
-  setTimeout(() => {
-    source.cancel("ERROR: Timeout");
-  }, TIMEOUT_DURATION);
-  return axios
-    .get(
-      `${apiurl}/get_settlements/?mining_algo=${algorithm}`,
-      {
-        headers: {
-          "Content-Type": "application/json"
-        }
-      },
-      { cancelToken: source.token }
-    )
-    .then(res =>
-      dispatch({
-        type: types.LOAD_TAKEN_OFFERS,
-        payload: res.data
-      })
-    )
-    .catch(err => {
-      console.log(err);
-    });
-};
-
 
 /////// LOAD SETTLEMENTS (USER PROFILE PAGE) //////////
 
