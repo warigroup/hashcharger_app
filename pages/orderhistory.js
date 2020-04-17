@@ -29,7 +29,7 @@ import Paginator from "../components/tools/Paginator";
 import BidsList from "../components/profile/BidsList";
 import BuyOrderModal from "../components/profile/BuyOrderModal";
 
-class orderHistoryPage extends React.Component {
+class myOrderHistory extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -419,7 +419,7 @@ class orderHistoryPage extends React.Component {
   }
 }
 
-orderHistoryPage.defaultProps = {
+myOrderHistory.defaultProps = {
   profile: [],
   network: [],
   errors: [],
@@ -430,7 +430,7 @@ orderHistoryPage.defaultProps = {
   offers: []
 };
 
-orderHistoryPage.propTypes = {
+myOrderHistory.propTypes = {
   getCurrentProfile: PropTypes.func,
   getBidHashrateChart: PropTypes.func,
   clearCurrentProfile: PropTypes.func,
@@ -501,4 +501,4 @@ export default connect(
     cancelOffer,
     orderHistoryPage
   }
-)(orderHistoryPage);
+)(myOrderHistory);
