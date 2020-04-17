@@ -1,6 +1,5 @@
 import {
   CLEAR_ERRORS_SHOW_ALERT,
-  CLEAR_ERRORS_FIAT_FORM,
   CLEAR_ALERT,
   GET_ERRORS,
   RESET_ERRORS,
@@ -22,11 +21,6 @@ export default function(state = initialState, action) {
     case CLEAR_ERRORS_SHOW_ALERT:
       return {
         alertnow: "alertnow",
-        cancelfail: null
-      };
-    case CLEAR_ERRORS_FIAT_FORM:
-      return {
-        alertnow: "fiat_form_submitted",
         cancelfail: null
       };
     case CLEAR_ERRORS_ORDER_CANCEL:
