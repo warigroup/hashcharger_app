@@ -866,7 +866,7 @@ export const cancelInvoice = (
 export const setStratumHostPort = (host, port) => {
   return {
     type: types.SET_STRATUM_HOST_PORT,
-    payload: host, port
+    payload: [{ host: host } , { port: port} ]
   };
 };
 
@@ -874,6 +874,6 @@ export const setStratumHostPort = (host, port) => {
 export const setStratumUsernamePass = (username, password) => {
   return {
     type: types.SET_STRATUM_USERNAME_PASS,
-    payload: username, password
+    payload: [{username: username}, {password: password}]
   };
 };
