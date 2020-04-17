@@ -1,5 +1,5 @@
 import { Line } from "react-chartjs-2";
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import moment from "moment";
 
 class AreaChart extends Component {
