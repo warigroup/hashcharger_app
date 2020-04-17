@@ -1,9 +1,7 @@
 import axios from "axios";
 import * as types from "./types";
-import getCookie from "../utils/getCookie";
 import { apiurl } from "../settings";
 import { TIMEOUT_DURATION } from "../utils/timeout-config";
-import { csrfcookie } from "../utils/cookieNames";
 axios.defaults.withCredentials = true;
 axios.defaults.crossDomain = true;
 
