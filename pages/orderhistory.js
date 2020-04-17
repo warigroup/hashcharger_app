@@ -436,7 +436,6 @@ myOrderHistory.propTypes = {
   getHashrateInfo: PropTypes.func,
   orderHistoryPage: PropTypes.func,
   resetProfileLoading: PropTypes.func,
-  auth: PropTypes.object,
   profile: PropTypes.object,
   configs: PropTypes.object,
   errors: PropTypes.oneOfType([
@@ -454,7 +453,6 @@ myOrderHistory.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth,
   profile: state.profile,
   configs: state.configs,
   errors: state.errors,

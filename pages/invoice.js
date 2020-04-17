@@ -592,8 +592,8 @@ class InvoicePage extends React.Component {
   };
 
   const mapStateToProps = state => ({
-    payment: state.payment,
     network: state.network,
+    payment: state.payment,
     errors: state.errors,
     bids: state.bids,
     configs: state.configs
