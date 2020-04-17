@@ -8,6 +8,7 @@ const initialState = {
   port: "",
   username: "",
   password: "",
+  sub_user: ""
 };
 
 export default function(state = initialState, action) {
@@ -25,7 +26,8 @@ export default function(state = initialState, action) {
     case SET_STRATUM_USERNAME: 
       return {
         ...state,
-        username: action.payload
+        username: action.payload,
+        sub_user: action.payload
       };
     case SET_STRATUM_PASSWORD: 
       return {

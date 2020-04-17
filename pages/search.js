@@ -39,7 +39,6 @@ class SearchPage extends React.Component {
       menuOpen: false,
       showBuyOrderModal: false,
       email: "",
-      sub_user: "",
       modalLoading: true,
       pagenumber: 0,
       menuOne: true,
@@ -57,6 +56,7 @@ class SearchPage extends React.Component {
     this.props.clearAlert();
     this.props.clearHashrateData();
     this.props.searchPage();
+    this.props.getBids(this.state.pagenumber, this.props.startumconfigs.sub_user);
   };
 
   componentDidUpdate(prevProps) {
@@ -98,8 +98,6 @@ class SearchPage extends React.Component {
     this.props.clearHashrateData();
     this.props.clearAlert();
   };
-
-  searchOrders = () => this.props.getBids(this.state.pagenumber, this.state.sub_user);
 
   /// VIEW INFO MODAL ////////////////////
 
@@ -294,66 +292,12 @@ class SearchPage extends React.Component {
                   <h4 className="marketplacetitle">Search Previous Orders</h4>
                   </div>
 
-                  <div className="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12 text-right">
-
-                        <div style={{ width: "100%", paddingTop: "45px" }}>
-                        <div className="form-group" 
-                        style={{ display: "inline-block" }}>
-                        <div
-                          className={
-                            emailfocus === true
-                              ? "input-group input-group-md focused"
-                              : "input-group input-group-md"
-                          }
-                          style={{width: "400px"}}
-                        >
-                          <div className="input-group-prepend">
-                            <span
-                              className="input-group-text"
-                              style={{
-                                background: "white",
-                                border: "none",
-                                color: "rgba(0,0,0,0.5)"
-                              }}
-                            >
-                              <FaEnvelope style={emailfocus === true ? 
-                                { fontSize: "1.26em", opacity: "1" } : 
-                                { fontSize: "1.26em", opacity: "0.8" }} />
-                            </span>
-                          </div>
-                          <input
-                            type="text"
-                            name="sub_user"
-                            value={this.state.sub_user}
-                            placeholder="example@email.com"
-                            className="form-control inputstyles2"
-                            style={{
-                              border: "none",
-                              borderRadius: "7px",
-                              fontSize: "0.82em"
-                            }}
-                            onChange={this.handleChange}
-                            onFocus={this.handleEmailFocus}
-                            onBlur={this.handleEmailBlur}
-                            autoComplete="off"
-                          />
-                           <button className="btn btn-primary search-btn"
-                           onClick={() => this.searchOrders()}>
-                                <p style={{ marginBottom: "0px", fontSize: "0.9em" }}>Search Orders</p>
-                            </button> 
-                        </div>
-                      </div>
-                        </div>
-                                        
-                  </div>
+                 
 
                   <div className="col-md-12 clearfix mb-2" />
                   <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 tablecontainer">
 
-                    <div className="buy-orders-table" 
-                    style={this.state.menuOne === true ? {width: "100%"} : {display: "none"}}>
-                          {/******* BUY ORDERS TABLE ******/}
-
+                    <div className="buy-orders-table" style={{width: "100%"}}>
                           <div
                       className="board"
                       style={{

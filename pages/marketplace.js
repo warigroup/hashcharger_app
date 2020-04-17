@@ -50,16 +50,11 @@ class Marketplace extends React.Component {
       hashrate_units_fiat: "",
       mining_algo: "",
       tag: "",
-      host: "stratum.slushpool.com",
-      port: "3333",
       duration: "",
       duration_example: "",
       discount_code: "",
       limit_price: "",
       durationClicked: false,
-      username: "",
-      password: "123123",
-      sub_user: "widgetaccount",
       stratum_id: "",
       currency: "BTC",
       location: "NA East",
@@ -107,7 +102,6 @@ class Marketplace extends React.Component {
     };
     if ( this.props.username !== undefined ) {
       this.props.setStratumUsername(this.props.username);
-      this.setState({ sub_user: this.props.username })
     };
     if ( this.props.password !== undefined ) {
       this.props.setStratumPassword(this.props.password);
@@ -240,7 +234,7 @@ class Marketplace extends React.Component {
       this.props.stratumconfigs.password,
       this.state.location,
       this.state.limit_price,
-      this.state.sub_user
+      this.state.stratumconfigs.sub_user
     );
     this.timer = setTimeout(() => {
       NProgress.done();
