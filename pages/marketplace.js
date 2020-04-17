@@ -2,7 +2,6 @@ import React from "react";
 import PublicRoute from "../components/routes/PublicRoute";
 import { connect } from "react-redux";
 import {
-  loginUser,
   resetErrors,
   takeOffer,
   clearNetwork,
@@ -1346,7 +1345,6 @@ Marketplace.defaultProps = {
 };
 
 Marketplace.propTypes = {
-  loginUser: PropTypes.func,
   takeOffer: PropTypes.func,
   resetErrors: PropTypes.func,
   redirectErrorMessage: PropTypes.func,
@@ -1394,7 +1392,6 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    loginUser,
     redirectErrorMessage,
     takeOffer,
     clearCurrentProfile,

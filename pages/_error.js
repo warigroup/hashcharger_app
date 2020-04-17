@@ -7,8 +7,6 @@ import {
 import { connect } from "react-redux";
 import { FaArrowLeft } from "react-icons/fa";
 import PropTypes from "prop-types";
-import Cookies from "js-cookie";
-import { COOKIE_TIMEOUT } from "../utils/timeout-config";
 import PublicRoute from "../components/routes/PublicRoute";
 
 class NotFound extends React.Component {
@@ -21,47 +19,9 @@ class NotFound extends React.Component {
 
   componentDidMount() {
     this.props.notFoundPage();
-
-    /// TEST BROWER'S COOKIE SETTING /////////////////
-    var inMinute = 1 / 1440;
-    Cookies.set("testcookie06", "cookie-test", { expires: inMinute });
-    setTimeout(() => {
-      const cookievalue = Cookies.get("testcookie06");
-      if (cookievalue !== "cookie-test") {
-        this.openCookieModal();
-      } else if (cookievalue === "cookie-test") {
-        Cookies.remove("testcookie06");
-      }
-    }, COOKIE_TIMEOUT);
-
   }
 
-  componentWillUnmount() {
-    Cookies.remove("testcookie06");
-  };
-
-  openCookieModal = () => {
-    this.setState({ cookiemodal: "openup" });
-  };
-
-  closeCookieModal = () => {
-    this.setState({ cookiemodal: "closenow" });
-  };
-
   render() {
-    let cookiemodalClass = "hidethis";
-    let modalcontentClass = "hidethis";
-    if (this.state.cookiemodal === "") {
-      cookiemodalClass = "hidethis";
-      modalcontentClass = "hidethis";
-    } else if (this.state.cookiemodal === "closenow") {
-      cookiemodalClass = "hidethis";
-      modalcontentClass = "hidethis";
-    } else if (this.state.cookiemodal === "openup") {
-      cookiemodalClass = "container showthis";
-      modalcontentClass = "col-md-8 text-center cookie-error-modal";
-    };
-
     return (
       <PublicRoute>
         <div style={{ width: "100%", marginBottom: "150px" }}>
@@ -103,7 +63,7 @@ class NotFound extends React.Component {
                 <br />
                 <br />
                 <h5 className="notfoundtitle">
-                  <strong>ERROR: Page Not Found</strong>
+                  <strong>An error has occurred :(</strong>
                 </h5>
                 <br />
                 <br />
@@ -123,24 +83,6 @@ class NotFound extends React.Component {
                 <br />
                 <br />
                 <br />
-              </div>
-              <div
-                className={cookiemodalClass}
-                style={{ position: "fixed", bottom: "0", zIndex: "234234134" }}
-              >
-                <div className="row">
-                  <div className={modalcontentClass}>
-                    <h5>
-                      <strong>
-                        WariHash.com makes heavy use of browser cookies.
-                      </strong>
-                    </h5>
-                    <p>
-                      Please enable cookies in your browser setting before
-                      loggin in.
-                    </p>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

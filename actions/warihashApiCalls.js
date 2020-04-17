@@ -9,42 +9,6 @@ axios.defaults.crossDomain = true;
 
 //////// AUTH ACTIONS ////////////////////////////////
 
-export const loginUser = () => dispatch => {
-  const CancelToken = axios.CancelToken;
-  let source = CancelToken.source();
-  setTimeout(() => {
-    source.cancel("ERROR: Timeout");
-  }, TIMEOUT_DURATION);
-
-  const instance = axios.create({
-    baseURL: `${apiurl}`
-  });
-  instance.defaults.withCredentials = true;
-  instance.defaults.crossDomain = true;
-  instance
-    .post(
-      "/login/",
-      {
-        username: 'widgetaccount',
-        password: 'AJ542#^@%4thw!!9y5829!'
-      },
-      { cancelToken: source.token }
-    )
-    .then(res => {
-      dispatch(setCurrentUser('widgetaccount'));
-    })
-    .catch(err => {
-      dispatch({
-        type: types.GET_ERRORS,
-        payload: (err.response || {}).data
-      });
-      dispatch({
-        type: types.GET_STATUS_CODE,
-        payload: (err.response || {}).status
-      });
-    });
-};
-
 export const resetErrors = () => {
   return {
     type: types.RESET_ERRORS
@@ -63,50 +27,7 @@ export const notFoundMessage = () => {
   };
 };
 
-export const cantTakeOwnOffer = () => {
-  return {
-    type: types.CANT_TAKE_OWN_OFFER
-  };
-};
-
-export const removeToast = () => {
-  return {
-    type: types.NULL_TOAST
-  };
-};
-
 //////// CANCEL OFFER ACTIONS ////////////////////////
-
-export const cancelOffer = offerId => dispatch => {
-  const CancelToken = axios.CancelToken;
-  let source = CancelToken.source();
-  setTimeout(() => {
-    source.cancel("ERROR: Timeout");
-  }, TIMEOUT_DURATION);
-  const csrftoken = getCookie(`${csrfcookie}`);
-  return axios
-    .post(
-      `${apiurl}/offer_cancel/`,
-      { offer_id: offerId },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Token 73c9c1bbe9be697964651a9d407ab8964677cd1d"
-        }
-      },
-      { cancelToken: source.token }
-    )
-    .then(res => {
-      dispatch({ type: types.CLEAR_ERRORS_SHOW_ALERT });
-    })
-    .catch(err => {
-      dispatch({
-        type: types.GET_ERRORS_CANCEL_OFFER,
-        payload: (err.response || {}).data
-      });
-      console.log(err);
-    });
-};
 
 export const cancelOrder = offerId => dispatch => {
   const CancelToken = axios.CancelToken;
@@ -437,12 +358,6 @@ export const getCurrentProfile = () => dispatch => {
         payload: (err.response || {}).status
       });
     });
-};
-
-export const clearCurrentProfile = () => {
-  return {
-    type: types.CLEAR_CURRENT_PROFILE
-  };
 };
 
 export const resetProfileLoading = () => {
