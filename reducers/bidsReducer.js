@@ -1,4 +1,4 @@
-import { GET_BIDS, GET_BID_INFO, CLEAR_BIDS } from "../actions/types";
+import { GET_BIDS, GET_BID_INFO, CLEAR_BIDS, RESET_PROFILE_LOADING } from "../actions/types";
 
 const initialState = {
     bids: { result:[ {
@@ -25,6 +25,8 @@ export default function(state = initialState, action) {
       return { ...state, bid_info: action.payload }
     case CLEAR_BIDS:
       return { ...state, bid_info: INITIALIZE_BID_INFO };
+    case RESET_PROFILE_LOADING:
+      return { ...state, bid_loaded: false };
     default:
       return state;
   }

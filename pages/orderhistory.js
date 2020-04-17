@@ -21,7 +21,8 @@ import {
   getBidHashrateChart,
   getHashrateInfo,
   cancelOffer,
-  orderHistoryPage
+  orderHistoryPage,
+  resetProfileLoading
 } from "../actions/warihashApiCalls";
 import Cookies from "js-cookie";
 import { csrfcookie } from "../utils/cookieNames";
@@ -94,6 +95,7 @@ class myOrderHistory extends React.Component {
     this.props.clearPaymentInfo();
     this.props.clearHashrateData();
     this.props.clearAlert();
+    this.props.resetProfileLoading();
   };
 
   /// VIEW INFO MODAL ////////////////////
@@ -448,6 +450,7 @@ myOrderHistory.propTypes = {
   redirectErrorMessage: PropTypes.func,
   cancelOffer: PropTypes.func,
   orderHistoryPage: PropTypes.func,
+  resetProfileLoading: PropTypes.func,
   auth: PropTypes.object,
   profile: PropTypes.object,
   configs: PropTypes.object,
@@ -499,6 +502,7 @@ export default connect(
     getBidInfo,
     getHashrateInfo,
     cancelOffer,
-    orderHistoryPage
+    orderHistoryPage,
+    resetProfileLoading
   }
 )(myOrderHistory);

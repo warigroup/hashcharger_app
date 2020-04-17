@@ -445,6 +445,12 @@ export const clearCurrentProfile = () => {
   };
 };
 
+export const resetProfileLoading = () => {
+  return {
+    type: types.RESET_PROFILE_LOADING
+  };
+};
+
 //////// TAKE OFFER ACTIONS //////////////////////////
 
 export const takeOffer = (
@@ -738,88 +744,6 @@ export const getStats = () => dispatch => {
     .catch(err => console.log(err));
 };
 
-/////// STRATUM FORM ////////////////////////////////
-
-
-///////// EDIT BIDS ////////////////////////////////////////
-
-export const editBids = (bid_id, host, port, username, password) => dispatch => {
-  const csrftoken = getCookie(`${csrfcookie}`);
-  const CancelToken = axios.CancelToken;
-  let source = CancelToken.source();
-  setTimeout(() => {
-    source.cancel("ERROR: Timeout");
-  }, TIMEOUT_DURATION);
-  return axios
-    .post(
-      `${apiurl}/bid_edit/`,
-      {
-        bid_id: bid_id,
-        host: host,
-        port: port,
-        username: username,
-        password: password
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRFToken": csrftoken
-        }
-      },
-      { cancelToken: source.token }
-    )
-    .then(res => dispatch({ type: types.CLEAR_ERRORS_SHOW_ALERT }))
-    .catch(err => {
-      dispatch({
-        type: types.GET_ERRORS,
-        payload: (err.response || {}).data
-      });
-      dispatch({
-        type: types.GET_STATUS_CODE,
-        payload: (err.response || {}).status
-      });
-    });
-};
-
-///////// EDIT OFFERS ////////////////////////////////////////
-
-export const editOffers = (offer_id, host, port, username, password) => dispatch => {
-  const csrftoken = getCookie(`${csrfcookie}`);
-  const CancelToken = axios.CancelToken;
-  let source = CancelToken.source();
-  setTimeout(() => {
-    source.cancel("ERROR: Timeout");
-  }, TIMEOUT_DURATION);
-  return axios
-    .post(
-      `${apiurl}/offer_edit/`,
-      {
-        offer_id: offer_id,
-        host: host,
-        port: port,
-        username: username,
-        password: password
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRFToken": csrftoken
-        }
-      },
-      { cancelToken: source.token }
-    )
-    .then(res => dispatch({ type: types.CLEAR_ERRORS_SHOW_ALERT }))
-    .catch(err => {
-      dispatch({
-        type: types.GET_ERRORS,
-        payload: (err.response || {}).data
-      });
-      dispatch({
-        type: types.GET_STATUS_CODE,
-        payload: (err.response || {}).status
-      });
-    });
-};
 
 ///////////// CANCEL INVOICE /////////////////////////
 
@@ -869,7 +793,6 @@ export const setStratumHostPort = (host, port) => {
     payload: [{ host: host } , { port: port} ]
   };
 };
-
 
 export const setStratumUsernamePass = (username, password) => {
   return {
