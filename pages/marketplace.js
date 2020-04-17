@@ -369,9 +369,8 @@ class Marketplace extends React.Component {
     };
 
     revealDiscount = () => this.setState({ hideDiscount: true });
-
     openHelp = () => Router.pushRoute('/help');
-    openSearchPage = () => Router.pushRoute(`/search`);
+    openOrderHistoryPage = () => Router.pushRoute(`/orderhistory`);
 
   render() {
     const {
@@ -772,7 +771,7 @@ class Marketplace extends React.Component {
              </button>
              {" "}<p className="nav-bar">|</p>{" "} 
              <button className="nav-buttons"
-             onClick={() => this.openSearchPage()}><p>Search Previous Orders</p>
+             onClick={() => this.openOrderHistoryPage()}><p>My Order History</p>
              </button>
                <br />
              </div>

@@ -21,7 +21,7 @@ import {
   getBidHashrateChart,
   getHashrateInfo,
   cancelOffer,
-  searchPage
+  orderHistoryPage
 } from "../actions/warihashApiCalls";
 import Cookies from "js-cookie";
 import { csrfcookie } from "../utils/cookieNames";
@@ -30,7 +30,7 @@ import BidsList from "../components/profile/BidsList";
 import BuyOrderModal from "../components/profile/BuyOrderModal";
 import { FaEnvelope } from "react-icons/fa";
 
-class SearchPage extends React.Component {
+class orderHistoryPage extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -55,7 +55,7 @@ class SearchPage extends React.Component {
     this.props.clearHashrateData();
     this.props.clearAlert();
     this.props.clearHashrateData();
-    this.props.searchPage();
+    this.props.orderHistoryPage();
     this.props.getBids(this.state.pagenumber, this.props.settings.sub_user);
   };
 
@@ -289,7 +289,7 @@ class SearchPage extends React.Component {
                   <div className="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12">
                       <br />
                       <br />
-                  <h4 className="marketplacetitle">Search Previous Orders</h4>
+                  <h4 className="marketplacetitle">My Order History</h4>
                   </div>
 
                  
@@ -459,7 +459,7 @@ class SearchPage extends React.Component {
   }
 }
 
-SearchPage.defaultProps = {
+orderHistoryPage.defaultProps = {
   profile: [],
   network: [],
   errors: [],
@@ -470,7 +470,7 @@ SearchPage.defaultProps = {
   offers: []
 };
 
-SearchPage.propTypes = {
+orderHistoryPage.propTypes = {
   getCurrentProfile: PropTypes.func,
   getBidHashrateChart: PropTypes.func,
   clearCurrentProfile: PropTypes.func,
@@ -487,7 +487,7 @@ SearchPage.propTypes = {
   getHashrateInfo: PropTypes.func,
   redirectErrorMessage: PropTypes.func,
   cancelOffer: PropTypes.func,
-  searchPage: PropTypes.func,
+  orderHistoryPage: PropTypes.func,
   auth: PropTypes.object,
   profile: PropTypes.object,
   configs: PropTypes.object,
@@ -539,6 +539,6 @@ export default connect(
     getBidInfo,
     getHashrateInfo,
     cancelOffer,
-    searchPage
+    orderHistoryPage
   }
-)(SearchPage);
+)(orderHistoryPage);

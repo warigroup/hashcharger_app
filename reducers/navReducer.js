@@ -2,7 +2,7 @@ import {
   MARKETPLACE_PAGE,
   ORDER_DETAILS_PAGE,
   INVOICE_PAGE,
-  SEARCH_PAGE,
+  ORDER_HISTORY_PAGE,
   NOT_FOUND_PAGE
 } from "../actions/types";
 
@@ -16,22 +16,22 @@ export default function(state = initialState, action) {
       return {
         page: "marketplacepage"
       };
-    case SEARCH_PAGE:
+    case ORDER_HISTORY_PAGE:
       return {
-        page: "searchpage"
+        page: "orderhistorypage"
       };
-      case INVOICE_PAGE:
-    return {
-      page: "invoicepage"
-    };
+    case INVOICE_PAGE:
+      return {
+        page: "invoicepage"
+      };
     case ORDER_DETAILS_PAGE:
       return {
         page: "orderdetailspage"
       };
-      case NOT_FOUND_PAGE:
-        return {
-          page: "notfoundpage"
-        };
+    case NOT_FOUND_PAGE:
+      return {
+        page: "notfoundpage"
+      };
     default:
       return state;
   }

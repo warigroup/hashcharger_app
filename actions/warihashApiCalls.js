@@ -397,9 +397,9 @@ export const invoicePage = () => {
   };
 };
 
-export const searchPage = () => {
+export const orderHistoryPage = () => {
   return {
-    type: types.SEARCH_PAGE
+    type: types.ORDER_HISTORY_PAGE
   };
 };
 
