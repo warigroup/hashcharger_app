@@ -6,11 +6,12 @@ import {
 } from "../actions/warihashApiCalls";
 import { connect } from "react-redux";
 import { FaArrowLeft } from "react-icons/fa";
+import { Link } from "../routes";
 import PropTypes from "prop-types";
 import PublicRoute from "../components/routes/PublicRoute";
 
 class NotFound extends React.Component {
-  
+
   componentDidMount() {
     this.props.notFoundPage();
   }
@@ -63,14 +64,14 @@ class NotFound extends React.Component {
                 <br />
                 <br />
 
-                  <a className="gotomain-btn" 
-                  href="https://www.warihash.com"
-                  itemProp="url">
+                  <Link route="/market">
+                  <a className="gotomain-btn">
                     <span>
                       <FaArrowLeft />
                     </span>{" "}
                     Go to main page
                   </a>
+                  </Link>
                 <br />
                 <br />
                 <br />
