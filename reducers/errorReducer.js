@@ -4,8 +4,7 @@ import {
   GET_ERRORS,
   RESET_ERRORS,
   CLEAR_ERRORS_ORDER_CANCEL,
-  ORDER_CANCEL_FAIL,
-  GET_ERRORS_CANCEL_OFFER
+  ORDER_CANCEL_FAIL
 } from "../actions/types";
 
 const initialState = {
@@ -42,10 +41,6 @@ export default function(state = initialState, action) {
       return {
         errors: null,
         alertnow: null
-      };
-    case GET_ERRORS_CANCEL_OFFER:
-      return {
-        errors: action.payload
       };
     default:
       return state;
