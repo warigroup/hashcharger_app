@@ -520,7 +520,7 @@ class InvoicePage extends React.Component {
                            <div style={{paddingBottom: "25px", paddingTop: "25px"}}>    
                    <p className="invoice-contents">
                   This invoice can be accessed again through{" "}
-                  <Link route="/profile"><a className="link-items">search page</a></Link>.
+                  <Link route="/orderhistory"><a className="link-items">order hisotry page</a></Link>.
                   </p>
                      </div>
                      <br />        
