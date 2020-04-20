@@ -84,21 +84,22 @@ class OrderDetails extends React.Component {
                       filteredBid === -1 &&
                       this.state.bidsLoaded === true ? (         
                         <div className="text-center">
-                        <br/>
-                        <br/>
-                        <br/>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
                         <h6>
                           <strong>ERROR: Invalid URL</strong>
                         </h6>
                         <br />
                         <br />
                         <br />
-                        <Link prefetch route="/profile">
+                        <Link prefetch route="/orderhistory">
                           <a className="gotomain-btn">
                             <span>
                               <FaArrowLeft />
                             </span>{" "}
-                            Go to profile page
+                            Go to order history page
                           </a>
                         </Link>
                         <br />
