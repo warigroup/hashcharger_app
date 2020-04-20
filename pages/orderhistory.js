@@ -19,7 +19,8 @@ import {
   getBidHashrateChart,
   getHashrateInfo,
   orderHistoryPage,
-  resetProfileLoading
+  resetProfileLoading,
+  setOldInvoiceId
 } from "../actions/warihashApiCalls";
 import Cookies from "js-cookie";
 import { csrfcookie } from "../utils/cookieNames";
@@ -153,6 +154,7 @@ class myOrderHistory extends React.Component {
     };
 
     const goToInvoicePage = bid_id => { 
+      this.props.setOldInvoiceId(bid_id);
       Router.pushRoute(`/invoice/id/${bid_id}`) 
     };
 
@@ -438,6 +440,7 @@ myOrderHistory.propTypes = {
   getHashrateInfo: PropTypes.func,
   orderHistoryPage: PropTypes.func,
   resetProfileLoading: PropTypes.func,
+  setOldInvoiceId: PropTypes.func,
   profile: PropTypes.object,
   configs: PropTypes.object,
   errors: PropTypes.oneOfType([
@@ -485,6 +488,7 @@ export default connect(
     getBidInfo,
     getHashrateInfo,
     orderHistoryPage,
-    resetProfileLoading
+    resetProfileLoading,
+    setOldInvoiceId
   }
 )(myOrderHistory);
