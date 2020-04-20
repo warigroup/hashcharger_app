@@ -209,6 +209,15 @@ export const clearPaymentInfo = () => {
   };
 };
 
+///// OPEN INVOIEC FROM PROFILE PAGE ////////////////
+
+export const setOldInvoiceId = invoice_id => {
+  return {
+    type: types.SET_OLD_INVOICE_ID,
+    payload: invoice_id
+  };
+};
+
 ///// MINERS FORM ///////////////////////////////////
 
 export const getErrorStatus = err => {
@@ -352,6 +361,8 @@ export const takeOffer = (
       });
     });
 };
+
+
 
 //////// GET BIDS ACTIONS //////////////////////////
 

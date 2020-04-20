@@ -152,7 +152,9 @@ class myOrderHistory extends React.Component {
       this.setState({ showBuyOrderModal: true, menuOpen: false });
     };
 
-    const goToInvoicePage = bid_id => Router.pushRoute(`/invoice/id/${bid_id}`);
+    const goToInvoicePage = bid_id => { 
+      Router.pushRoute(`/invoice/id/${bid_id}`) 
+    };
 
     return (
       <PublicRoute>
