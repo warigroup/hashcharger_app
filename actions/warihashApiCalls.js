@@ -211,10 +211,10 @@ export const clearPaymentInfo = () => {
 
 ///// OPEN INVOIEC FROM PROFILE PAGE ////////////////
 
-export const setOldInvoiceId = invoice_id => {
+export const setOldInvoiceId = (invoice_id) => {
   return {
     type: types.SET_OLD_INVOICE_ID,
-    payload: invoice_id
+    payload: [{ invoice_id: invoice_id }]
   };
 };
 
