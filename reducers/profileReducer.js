@@ -1,7 +1,8 @@
 import {
   CLEAR_CURRENT_PROFILE,
   GET_PROFILE,
-  GET_SETTLEMENTS_PROFILE
+  GET_SETTLEMENTS_PROFILE,
+  SET_RECENT_INVOICE_ID
 } from "../actions/types";
 
 const initialState = {
@@ -9,7 +10,8 @@ const initialState = {
   profile_loaded: false,
   miners: [],
   miners_loaded: false,
-  settlements: []
+  settlements: [],
+  recent_invoice_id: ""
 };
 
 export default function(state = initialState, action) {
@@ -32,6 +34,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         settlements: action.payload
+      }; 
+    case SET_RECENT_INVOICE_ID:
+      return {
+        ...state,
+        recent_invoice_id: action.payload
       }; 
     default:
       return state;
