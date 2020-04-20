@@ -359,6 +359,7 @@ class InvoicePage extends React.Component {
                         <br />
                         <h5 className="invoice-section-title">Payment Total</h5>
                         <h2>{bid.payment_amount} BTC</h2>
+                        <p>{this.props.payment.bid_id}</p>
                      </div>
                    
                 {/*********** PAYMENT FAIL  *********************/}
