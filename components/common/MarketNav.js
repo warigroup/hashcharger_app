@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Link } from "../../routes";
 
-const MarketNav = ({ nav, payment }) => (
+const MarketNav = ({ nav, profile }) => (
       <div className="marketplace-menu" 
       style={{ background: "#3626A5", 
       position: "absolute", 
@@ -66,14 +66,13 @@ const MarketNav = ({ nav, payment }) => (
               </a>
             </Link>
             </div>
-
            
             <div className="col-xl-4 col-lg-4 col-md-12 text-center">
-            <Link route={`/invoice/id/${payment.bid_id}`}>
+            <Link route={`/invoice/id/${profile.profile.recent_invoice_id}`}>
               <a
                 className={
                   nav.page === "invoicepage" &&
-                  payment.bid_id !== undefined
+                  profile.profile.recent_invoice_id !== undefined
                     ? "marketplacenav selected"
                     : "marketplacenav disabled-link"
                 }
@@ -87,11 +86,11 @@ const MarketNav = ({ nav, payment }) => (
             </div>
 
             <div className="col-xl-4 col-lg-4 col-md-12 text-center">
-             <Link route={`/orderdetails/id/${payment.bid_id}`}>
+             <Link route={`/orderdetails/id/${profile.profile.recent_invoice_id}`}>
              <a
                className={
                  nav.page === "orderdetailspage" &&
-                 payment.bid_id !== undefined 
+                 profile.profile.recent_invoice_id !== undefined 
                    ? "marketplacenav selected"
                    : "marketplacenav disabled-link"
                }
@@ -101,9 +100,7 @@ const MarketNav = ({ nav, payment }) => (
                Order details
                </h4> 
              </a>
-           </Link>
-       
-           
+             </Link>
             </div>
 
           </div>
@@ -113,12 +110,12 @@ const MarketNav = ({ nav, payment }) => (
 
 MarketNav.propTypes = {
   nav: PropTypes.object,
-  payment: PropTypes.object
+  profile: PropTypes.object
 };
 
 const mapStateToProps = state => ({
   nav: state.nav,
-  payment: state.payment
+  profile: state.profile
 });
 
 export default connect(

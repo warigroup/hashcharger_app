@@ -15,7 +15,8 @@ import {
   timeoutReset,
   algoSelect,
   setStratumHostPort,
-  setStratumUsernamePass } from "../actions/warihashApiCalls";
+  setStratumUsernamePass,
+  setRecentInvoiceId } from "../actions/warihashApiCalls";
 import { FaRegClock, FaBitcoin, FaQuestionCircle } from "react-icons/fa";
 import { TiFlash } from "react-icons/ti";
 import { Router } from "../routes";
@@ -146,6 +147,7 @@ class Marketplace extends React.Component {
           eventLabel: 'Marketplace Events'
         });
       };
+      this.props.setRecentInvoiceId(this.props.payment.bid_id);
       Router.pushRoute(`/invoice/id/${this.props.payment.bid_id}`);
     };
     if (
@@ -1349,6 +1351,7 @@ Marketplace.propTypes = {
   algoSelect: PropTypes.func,
   setStratumHostPort: PropTypes.func,
   setStratumUsernamePass: PropTypes.func,
+  setRecentInvoiceId: PropTypes.func,
   errors: PropTypes.object,
   configs: PropTypes.object,
   network: PropTypes.object,
@@ -1390,6 +1393,7 @@ export default connect(
     timeoutReset,
     algoSelect,
     setStratumHostPort,
-    setStratumUsernamePass
+    setStratumUsernamePass,
+    setRecentInvoiceId
   }
 )(Marketplace);

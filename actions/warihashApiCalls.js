@@ -218,7 +218,7 @@ export const setOldInvoiceId = (invoice_id) => {
   };
 };
 
-export const setRecentBidId = (invoice_id) => {
+export const setRecentInvoiceId = (invoice_id) => {
   return {
     type: types.SET_RECENT_INVOICE_ID,
     payload: invoice_id
