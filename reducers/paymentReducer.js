@@ -12,7 +12,7 @@ export default function(state = initialState, action) {
       return action.payload;
     case SET_OLD_INVOICE_ID:
       return {
-        bid_id: action.payload[0].bid_id
+        bid_id: action.payload[0]
       };
     case CLEAR_PAYMENT_INFO:
       return {
