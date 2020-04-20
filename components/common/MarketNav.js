@@ -68,11 +68,11 @@ const MarketNav = ({ nav, profile }) => (
             </div>
            
             <div className="col-xl-4 col-lg-4 col-md-12 text-center">
-            <Link route={`/invoice/id/${profile.profile.recent_invoice_id}`}>
+            <Link route={`/invoice/id/${profile.recent_invoice_id}`}>
               <a
                 className={
                   nav.page === "invoicepage" &&
-                  profile.profile.recent_invoice_id !== undefined
+                  profile.recent_invoice_id !== undefined
                     ? "marketplacenav selected"
                     : "marketplacenav disabled-link"
                 }
@@ -86,11 +86,11 @@ const MarketNav = ({ nav, profile }) => (
             </div>
 
             <div className="col-xl-4 col-lg-4 col-md-12 text-center">
-             <Link route={`/orderdetails/id/${profile.profile.recent_invoice_id}`}>
+             <Link route={`/orderdetails/id/${profile.recent_invoice_id}`}>
              <a
                className={
                  nav.page === "orderdetailspage" &&
-                 profile.profile.recent_invoice_id !== undefined 
+                 profile.recent_invoice_id !== undefined 
                    ? "marketplacenav selected"
                    : "marketplacenav disabled-link"
                }
