@@ -81,7 +81,6 @@ class myOrderHistory extends React.Component {
 
   componentWillUnmount() {
     this.props.clearNetwork();
-    this.props.clearPaymentInfo();
     this.props.clearHashrateData();
     this.props.clearAlert();
     this.props.resetProfileLoading();
