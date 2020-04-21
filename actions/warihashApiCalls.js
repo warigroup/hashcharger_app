@@ -381,7 +381,7 @@ export const getBids = (number, sub_user) => dispatch => {
   }, TIMEOUT_DURATION);
   return axios
     .get(
-      `${apiurl}/get_bids/?page=${number}/?sub_user=${sub_user}`,
+      `${apiurl}/get_bids/?page=${number}&sub_user=${sub_user}`,
       {
         headers: {
           "Content-Type": "application/json",
