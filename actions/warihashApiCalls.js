@@ -381,13 +381,12 @@ export const getBids = (number, sub_user) => dispatch => {
   }, TIMEOUT_DURATION);
   return axios
     .get(
-      `${apiurl}/get_bids/?page=${number}`,
+      `${apiurl}/get_bids/?page=${number}/?sub_user=${sub_user}`,
       {
         headers: {
           "Content-Type": "application/json",
           "Authorization": "Token 73c9c1bbe9be697964651a9d407ab8964677cd1d"
-        },
-        sub_user: sub_user
+        }
       },
       { cancelToken: source.token }
     )
