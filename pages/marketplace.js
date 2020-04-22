@@ -1149,10 +1149,8 @@ class Marketplace extends React.Component {
                   
              <div className="clearfix" />
           <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-right">
-                      <div
-                          className="text-center"
-                            style={{ paddingTop: "0px", paddingBottom: "0px" }}
-                          >
+                      <div className="text-center"
+                            style={{ paddingTop: "0px", paddingBottom: "0px" }}>
 
                            {this.props.time.message !== null ? 
                            <p className="is-invalid-error add-padding-left">{this.props.time.message}</p> : null}
@@ -1181,7 +1179,8 @@ class Marketplace extends React.Component {
                         <div className="row" 
                         style={{paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px"}}>
                         <div className="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12 text-right"
-                          style={{ marginTop: "8px", marginLeft: "0px", paddingLeft: "0%" }}>
+                          style={{ marginTop: "8px", marginLeft: "0px", 
+                          paddingLeft: "0%", position: "relative", left: "-10px"}}>
                       <label>
                         <span
                           style={{
@@ -1234,12 +1233,13 @@ class Marketplace extends React.Component {
                   </div>
                   {this.state.checked === true ? 
                 
-                <div style={{ marginTop: "8px", marginLeft: "0px", 
-                paddingLeft: "0px", textAlign: "right" }}>
+                <div style={{ marginTop: "8px", marginLeft: "20px", 
+                paddingLeft: "0px", textAlign: "right", position: "relative", left: "15px" }}>
                   <div className="form-group">
-                    <label htmlFor="limit_price" className="inputlabel">
+                    <label htmlFor="limit_price" 
+                    className="inputlabel"
+                    style={{ position: "relative", left: "10px"}}>
                       Limit Price in <PaymentRate /> [optional]{" "}
-                     
                     </label>
                     <div
                       className={
@@ -1290,8 +1290,10 @@ class Marketplace extends React.Component {
                         </p>
                     </div>
 
-                    {this.props.errors.price !== undefined ? <p className="is-invalid-error add-padding-left">
-                      {this.props.errors.price}</p> : null}
+                        {this.props.errors.price !== undefined ? 
+                        <p className="is-invalid-error add-padding-left">
+                          {this.props.errors.price}
+                        </p> : null}
                   </div>
                   </div> : null}
 
