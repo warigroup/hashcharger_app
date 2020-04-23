@@ -739,7 +739,8 @@ class Marketplace extends React.Component {
         <Head>
           <title>WariHash</title>
         </Head>
-   
+
+        
 
         <div className="container">
           <div className="row">
