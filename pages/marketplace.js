@@ -1244,7 +1244,7 @@ class Marketplace extends React.Component {
                   <div className="form-group">
                     <label htmlFor="limit_price" 
                     className="inputlabel"
-                    style={{ position: "relative", left: "10px"}}>
+                    style={{ position: "relative", left: "23px"}}>
                       Limit Price in <PaymentRate /> [optional]{" "}
                     </label>
                     <div
