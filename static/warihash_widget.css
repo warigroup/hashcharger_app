@@ -15,7 +15,7 @@
 
 .widget-fadeout {
   animation-name: fadeout-animation;
-  animation-duration: 0.6s;
+  animation-duration: 0.5s;
   animation-iteration-count: 1;
   transition-timing-function: ease-out;
 }
