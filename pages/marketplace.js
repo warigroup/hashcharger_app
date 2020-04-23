@@ -740,8 +740,11 @@ class Marketplace extends React.Component {
           <title>WariHash</title>
         </Head>
 
-        
-
+        {this.checkNestedConfigs() &&
+      this.props.configs[this.props.miningalgo.algorithm] !== undefined &&
+      this.props.configs[this.props.miningalgo.algorithm][minerLocations[0].value] !== undefined ?
+                     
+        <div>
         <div className="container">
           <div className="row">
              <div className="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12"> 
@@ -1329,6 +1332,32 @@ class Marketplace extends React.Component {
           </div>
          </div> 
          
+
+
+         </div> : 
+         
+         <div 
+         style={{width: "100vw", height: "100vh", 
+         textAlign: "center", position: "absolute", 
+         top: "0"}}>
+            
+         
+            <img
+              src="/static/spinner.gif"
+              style={{
+                width: "170px",
+                margin: "0 auto",
+                marginTop: "12%",
+                paddingBottom: "20px",
+                display: "block",
+                opacity: "0.6"
+              }}
+              alt="Loading..."
+            />
+            <h6>Loading ...</h6>
+         
+         </div>
+        }   
       </PublicRoute>
     );
   }
