@@ -25,7 +25,7 @@ import PropTypes from "prop-types";
 import NProgress from "nprogress";
 import CSRFToken from "../utils/csrftoken";
 import Cookies from "js-cookie";
-import { googleAnalytics, minerLocations } from "../settings";
+import { googleAnalytics, minerLocations, algorithms } from "../settings";
 import PaymentRate from "../components/tools/PaymentRate";
 import {
   WAIT_ALERT,
@@ -97,8 +97,13 @@ class Marketplace extends React.Component {
     }; 
 
     // select algorithm
-    if ( this.props.algorithm !== undefined ) {
+    if ( this.props.algorithm !== undefined && algorithms.includes(this.props.algorithm) === true ) {
       this.selectAlgorithm(this.props.algorithm);
+    };
+
+    // set default algorithm
+    if ( this.props.algorithm === undefined || algorithms.includes(this.props.algorithm) === false ) {
+      this.selectAlgorithm("sha256d");
     };
 
   };
