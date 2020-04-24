@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Link } from "../../routes";
 
-const MarketNav = ({ nav, profile }) => (
+const MarketNav = ({ nav, profile, settings, miningalgo }) => (
       <div className="marketplace-menu" 
       style={{ background: "#3626A5", 
       position: "absolute", 
@@ -51,7 +51,7 @@ const MarketNav = ({ nav, profile }) => (
              </style>
             
             <div className="col-xl-4 col-lg-4 col-md-12 text-center">
-            <Link route="/market">
+            <Link route={`/market/${settings.host}/${settings.port}/${settings.username}/${settings.password}/${miningalgo.algorithm}`}>
               <a
                 className={
                   nav.page === "marketplacepage"
@@ -110,12 +110,16 @@ const MarketNav = ({ nav, profile }) => (
 
 MarketNav.propTypes = {
   nav: PropTypes.object,
-  profile: PropTypes.object
+  profile: PropTypes.object,
+  settings: PropTypes.object,
+  miningalgo: PropTypes.object
 };
 
 const mapStateToProps = state => ({
   nav: state.nav,
-  profile: state.profile
+  profile: state.profile,
+  settings: state.settings,
+  miningalgo: state.miningalgo
 });
 
 export default connect(
