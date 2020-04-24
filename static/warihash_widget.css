@@ -20,6 +20,11 @@
   transition-timing-function: ease-out;
 }
 
+.disable-scroll-overflow {
+  overflow-y: hidden !important;
+  overflow-x: hidden !important;
+}
+
 @keyframes fadein-animation {
   0% {
     position: absolute;
