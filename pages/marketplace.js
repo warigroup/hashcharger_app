@@ -92,9 +92,14 @@ class Marketplace extends React.Component {
     if ( this.props.stratumaddress !== undefined || this.props.stratumport !== undefined ) {
       this.props.setStratumHostPort(this.props.stratumaddress, this.props.stratumport);
     };
-    if ( this.props.username !== undefined || this.props.password !== undefined) {
+    if ( this.props.username !== undefined || this.props.password !== undefined ) {
       this.props.setStratumUsernamePass(this.props.username, this.props.password);
     }; 
+
+    // select algorithm
+    if ( this.props.algorithm !== undefined ) {
+      this.selectAlgorithm(this.props.algorithm);
+    };
 
   };
 
