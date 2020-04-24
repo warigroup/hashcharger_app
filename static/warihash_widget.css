@@ -7,7 +7,7 @@
   height: 100vh; 
   background: white;
   z-index: 58458348948340; 
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   overflow-x: hidden !important;
@@ -33,7 +33,7 @@
     opacity: 0;
   }
   100% {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     opacity: 1;
@@ -42,7 +42,7 @@
 
 @keyframes fadeout-animation {
   0% {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     opacity: 1;
