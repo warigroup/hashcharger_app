@@ -25,7 +25,7 @@ class MiningAlgoDropDown extends React.Component {
     render() {
         return (
             <WatchClickOutside onClickOutside={this.collapseAlgoMenu}>
-            <div className="miningalgorithm-dropdown">
+            <div className="miningalgorithm-dropdown" style={{marginTop: "26px"}}>
             <div className="dropdown-btn"
             id="miningalgorithm-selector">
               <h4>
