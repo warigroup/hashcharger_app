@@ -26,30 +26,13 @@ class MiningAlgoDropDown extends React.Component {
         return (
             <WatchClickOutside onClickOutside={this.collapseAlgoMenu}>
             <div className="miningalgorithm-dropdown">
-            <button onClick={this.toggleAlgoMenu} className="dropdown-btn"
-            id="miningalgorithm-selector"><h4>
+            <div className="dropdown-btn"
+            id="miningalgorithm-selector">
+              <h4>
                 {this.props.miningalgo.algorithm === "sha256d" ? "SHA256d" : capitalizeFirstLetter(this.props.miningalgo.algorithm)}
-                {" "}
-                <FaCaretDown className="facaretdown" />
-              </h4></button><div className="displayblockdiv"></div>
-              <div className={this.state.menuOpen === true ? "algorithm-menu-display" : "algorithm-menu-hidden"}>
-                <div className="triangle-shape2" />
-                <ul>
-                { 
-                    algorithms.map((item, i) => (
-                        <li className={
-                          this.props.miningalgo.algorithm === item
-                            ? "listitem selected"
-                            : "listitem"
-                        } key={i}
-                        onClick={() => this.props.selectAlgorithm(item)}>
-                            {item === "sha256d" ? "SHA256d" : capitalizeFirstLetter(item)}
-                        </li>
-                    ))
-                }  
-                
-                </ul>
-              </div>
+              </h4>
+            </div>
+              <div className="displayblockdiv"></div>
             </div>
             </WatchClickOutside>
         )
