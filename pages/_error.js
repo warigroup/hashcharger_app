@@ -5,7 +5,7 @@ import {
 } from "../actions/warihashApiCalls";
 import { connect } from "react-redux";
 import { FaArrowLeft } from "react-icons/fa";
-import { Link } from "../routes";
+import { Router } from "../routes";
 import PropTypes from "prop-types";
 import PublicRoute from "../components/routes/PublicRoute";
 
@@ -14,8 +14,11 @@ class NotFound extends React.Component {
     this.props.notFoundPage();
   }
 
+ gotomainpage = () => {
+   Router.pushRoute(`/market/${this.props.settings.host}/${this.props.settings.port}/${this.props.settings.username}/${this.props.settings.password}/${this.props.miningalgo.algorithm}`);
+ };
+
   render() {
-    const {settings, miningalgo} = this.props;
     return (
       <PublicRoute>
         <div style={{ width: "100%", marginBottom: "150px" }}>
@@ -64,14 +67,13 @@ class NotFound extends React.Component {
                 <br />
                 <br />
 
-                <Link route={`/market/${settings.host}/${settings.port}/${settings.username}/${settings.password}/${miningalgo.algorithm}`}>
-                  <a className="gotomain-btn">
+                <button className="gotomain-btn" onClick={this.gotomainpage}>
                     <span>
                       <FaArrowLeft />
                     </span>{" "}
                     Go to main page
-                  </a>
-                  </Link>
+                 </button>
+                 
                 <br />
                 <br />
                 <br />
