@@ -51,7 +51,7 @@ const MarketNav = ({ nav, profile, settings, miningalgo }) => (
              </style>
             
             <div className="col-xl-4 col-lg-4 col-md-12 text-center">
-            <Link route={`/market/${this.props.settings.host}/${this.props.settings.port}/${this.props.settings.username}/${this.props.settings.password}/${this.props.miningalgo.algorithm}`}>
+            <Link route={`/market/${settings.host}/${settings.port}/${settings.username}/${settings.password}/${miningalgo.algorithm}`}>
               <a
                 className={
                   nav.page === "marketplacepage"
