@@ -588,6 +588,7 @@ class InvoicePage extends React.Component {
     payment: PropTypes.object,
     errors: PropTypes.object,
     bids: PropTypes.object,
+    settings: PropTypes.object,
     configs: PropTypes.object
   };
 
@@ -596,6 +597,7 @@ class InvoicePage extends React.Component {
     payment: state.payment,
     errors: state.errors,
     bids: state.bids,
+    settings: state.settings,
     configs: state.configs
   });
 
