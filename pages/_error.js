@@ -10,12 +10,12 @@ import PropTypes from "prop-types";
 import PublicRoute from "../components/routes/PublicRoute";
 
 class NotFound extends React.Component {
-
   componentDidMount() {
     this.props.notFoundPage();
   }
 
   render() {
+    const {settings, miningalgo} = this.props;
     return (
       <PublicRoute>
         <div style={{ width: "100%", marginBottom: "150px" }}>
@@ -64,7 +64,7 @@ class NotFound extends React.Component {
                 <br />
                 <br />
 
-                  <Link route={`/market/${this.props.settings.host}/${this.props.settings.port}/${this.props.settings.username}/${this.props.settings.password}/${this.props.miningalgo.algorithm}`}>
+                <Link route={`/market/${settings.host}/${settings.port}/${settings.username}/${settings.password}/${miningalgo.algorithm}`}>
                   <a className="gotomain-btn">
                     <span>
                       <FaArrowLeft />
