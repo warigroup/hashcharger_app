@@ -64,7 +64,7 @@ class NotFound extends React.Component {
                 <br />
                 <br />
 
-                  <Link route="/market">
+                  <Link route={`/market/${this.props.settings.host}/${this.props.settings.port}/${this.props.settings.username}/${this.props.settings.password}/${this.props.miningalgo.algorithm}`}>
                   <a className="gotomain-btn">
                     <span>
                       <FaArrowLeft />
@@ -91,11 +91,15 @@ class NotFound extends React.Component {
 NotFound.propTypes = {
   notFoundPage: PropTypes.func,
   getCurrentProfile: PropTypes.func,
-  profile: PropTypes.object
+  profile: PropTypes.object,
+  settings: PropTypes.object,
+  miningalgo: PropTypes.object
 };
 
 const mapStateToProps = state => ({
-  profile: state.profile
+  profile: state.profile,
+  settings: state.settings,
+  miningalgo: state.miningalgo
 });
 
 export default connect(
