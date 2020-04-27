@@ -28,7 +28,7 @@ export const cancelOrder = offerId => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Wz4okAcgswSbB7rm5XD2kf"
+          "Authorization": "Token Wz4okAcgswSbB7rm5XD2kf"
         }
       },
       { cancelToken: source.token }
@@ -112,7 +112,7 @@ export const getOffers = (pagenumber) => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Wz4okAcgswSbB7rm5XD2kf"
+          "Authorization": "Token Wz4okAcgswSbB7rm5XD2kf"
         },
         sub_id: "widgetaccount@protonmail.com"
       },
@@ -185,7 +185,7 @@ export const getSettlements = (offer_take_id) => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Wz4okAcgswSbB7rm5XD2kf"
+          "Authorization": "Token Wz4okAcgswSbB7rm5XD2kf"
         }
       },
       { cancelToken: source.token }
@@ -287,7 +287,7 @@ export const getCurrentProfile = () => dispatch => {
     .get(`${apiurl}/user_info/`, {
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "Wz4okAcgswSbB7rm5XD2kf"
+        "Authorization": "Token Wz4okAcgswSbB7rm5XD2kf"
       }
     }, { cancelToken: source.token })
     .then(res => dispatch({ type: types.GET_PROFILE, payload: res.data }))
@@ -346,7 +346,7 @@ export const takeOffer = (
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Wz4okAcgswSbB7rm5XD2kf"
+          "Authorization": "Token Wz4okAcgswSbB7rm5XD2kf"
         }
       },
       { cancelToken: source.token }
@@ -384,7 +384,7 @@ export const getBids = (number, sub_user) => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Wz4okAcgswSbB7rm5XD2kf"
+          "Authorization": "Token Wz4okAcgswSbB7rm5XD2kf"
         }
       },
       { cancelToken: source.token }
@@ -414,7 +414,7 @@ export const getBidInfo = bid_id => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Wz4okAcgswSbB7rm5XD2kf"
+          "Authorization": "Token Wz4okAcgswSbB7rm5XD2kf"
         }
       },
       { cancelToken: source.token }
@@ -481,7 +481,7 @@ export const getHashrateInfo = idnumber => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Wz4okAcgswSbB7rm5XD2kf"
+          "Authorization": "Token Wz4okAcgswSbB7rm5XD2kf"
         }
       },
       { cancelToken: source.token }
@@ -511,7 +511,7 @@ export const getHashrateHistory = idnumber => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Wz4okAcgswSbB7rm5XD2kf"
+          "Authorization": "Token Wz4okAcgswSbB7rm5XD2kf"
         }
       },
       { cancelToken: source.token }
@@ -541,7 +541,7 @@ export const getBidHashrateChart = idnumber => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Wz4okAcgswSbB7rm5XD2kf"
+          "Authorization": "Token Wz4okAcgswSbB7rm5XD2kf"
         }
       },
       { cancelToken: source.token }
@@ -615,7 +615,7 @@ export const cancelInvoice = (
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Wz4okAcgswSbB7rm5XD2kf"
+          "Authorization": "Token Wz4okAcgswSbB7rm5XD2kf"
         }
       },
       { cancelToken: source.token }
