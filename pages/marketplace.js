@@ -372,7 +372,6 @@ class Marketplace extends React.Component {
     };
 
     revealDiscount = () => this.setState({ hideDiscount: true });
-    openHelp = () => Router.pushRoute('/help');
     openOrderHistoryPage = () => Router.pushRoute(`/orderhistory`);
 
   render() {
@@ -776,12 +775,17 @@ class Marketplace extends React.Component {
                <br />
                <br />
                <br />
-             <button className="nav-buttons"
-             onClick={() => this.openHelp()}><p>Help</p>
-             </button>
+             <a href="https://warihash.zendesk.com/hc/en-us/requests/new" 
+             target="_blank"
+             rel="noopener noreferrer">
+               <button className="nav-buttons">
+                 <p>Help</p>
+                </button>
+              </a>
              {" "}<p className="nav-bar">|</p>{" "} 
              <button className="nav-buttons"
-             onClick={() => this.openOrderHistoryPage()}><p>My Order History</p>
+             onClick={() => this.openOrderHistoryPage()}>
+               <p>My Order History</p>
              </button>
                <br />
              </div>

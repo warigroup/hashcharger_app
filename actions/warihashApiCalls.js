@@ -357,8 +357,7 @@ export const takeOffer = (
         payload: res.data
       });
       dispatch({ type: types.CLEAR_ERRORS_SHOW_ALERT });
-    }
-    )
+    })
     .catch(err => {
       dispatch({
         type: types.GET_ERRORS,
@@ -370,8 +369,6 @@ export const takeOffer = (
       });
     });
 };
-
-
 
 //////// GET BIDS ACTIONS //////////////////////////
 
