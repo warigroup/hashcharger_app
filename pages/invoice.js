@@ -1,12 +1,10 @@
 import React from "react";
 import PublicRoute from "../components/routes/PublicRoute";
 import {
-  getCurrentProfile,
   getBidInfo, 
   clearPaymentInfo,
   clearAlert,
   clearNetwork,
-  cancelInvoice,
   invoicePage
 } from "../actions/warihashApiCalls";
 import { connect } from "react-redux";
@@ -49,7 +47,6 @@ class InvoicePage extends React.Component {
 
   componentDidMount() {
     this._isMounted = true;
-      this.props.getCurrentProfile();
       this.props.clearAlert();
       this.props.invoicePage();
       window.addEventListener("focus", this.onFocus);
@@ -190,11 +187,6 @@ class InvoicePage extends React.Component {
     this.props.getBidInfo(this.props.bidid);
     this.setCountdown();
     this.automaticRefresh();
-  };
-
-  cancelBid = bid_id => {
-    this.setState({ cancelLoading: true });
-    this.props.cancelInvoice(bid_id);
   };
 
   render() {
@@ -526,16 +518,7 @@ class InvoicePage extends React.Component {
                      <br />        
                      <div>
                             
-                         {bid.payment_success === false && bid.payment_fail === false && 
-                moment(bid.invoice_expiration_time).valueOf() / 1000 > utctime ?
-                        <button onClick={() => this.cancelBid(bid.bid_id)}
-                        className="btn cancelbid-btn" 
-                        style={{marginRight: "25px", position: "relative", top: "-2px", width: "153px", textAlign: "center"}}
-                        disabled={this.state.cancelLoading}>
-                          {this.state.cancelLoading === true ? <ThreeDotsLoading /> : "Cancel order"}
-                          
-                        </button>
-                        : null }
+                     
 
                          <Link prefetch route={`/orderdetails/id/${bid.bid_id}`}>
                           <a className="gotomain-btn">
@@ -577,12 +560,10 @@ class InvoicePage extends React.Component {
   };
   
   InvoicePage.propTypes = {
-    getCurrentProfile: PropTypes.func,
     getBidInfo: PropTypes.func,
     clearPaymentInfo: PropTypes.func,
     clearNetwork: PropTypes.func,
     clearAlert: PropTypes.func,
-    cancelInvoice: PropTypes.func,
     invoicePage: PropTypes.func,
     network: PropTypes.object,
     payment: PropTypes.object,
@@ -602,10 +583,8 @@ class InvoicePage extends React.Component {
   });
 
   export default connect(mapStateToProps, 
-    {getCurrentProfile, 
-      getBidInfo, 
+    {getBidInfo, 
       clearNetwork,
       clearAlert,
       clearPaymentInfo,
-      cancelInvoice,
     invoicePage})(InvoicePage);
