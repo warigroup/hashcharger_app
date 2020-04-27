@@ -6,7 +6,6 @@ import {
   takeOffer,
   clearNetwork,
   clearAlert,
-  getCurrentProfile,
   getConfigs,
   marketplacePage,
   formSubmission,
@@ -81,8 +80,7 @@ class Marketplace extends React.Component {
     return props.query;
   };    
 
-  componentDidMount() {
-    this.props.getCurrentProfile();
+  componentDidMount() {g
     this.props.timeoutReset();
     this.props.marketplacePage();
     this.props.getConfigs();
@@ -1456,7 +1454,6 @@ Marketplace.propTypes = {
   takeOffer: PropTypes.func,
   resetErrors: PropTypes.func,
   marketplacePage: PropTypes.func,
-  getCurrentProfile: PropTypes.func,
   getConfigs: PropTypes.func,
   clearNetwork: PropTypes.func,
   clearAlert: PropTypes.func,
@@ -1499,7 +1496,6 @@ export default connect(
     takeOffer,
     clearNetwork,
     clearAlert,
-    getCurrentProfile,
     getConfigs,
     marketplacePage,
     resetErrors,
