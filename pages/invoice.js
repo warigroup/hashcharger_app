@@ -3,19 +3,15 @@ import PublicRoute from "../components/routes/PublicRoute";
 import {
   getBidInfo, 
   clearPaymentInfo,
-  clearAlert,
   clearNetwork,
   invoicePage
 } from "../actions/warihashApiCalls";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { Link, Router } from "../routes";
+import { Link } from "../routes";
 import { convertDuration } from "../utils/convertDuration";
 import copy from 'copy-to-clipboard';
 import { googleAnalytics, invoiceExpMin } from "../settings";
-import { WAIT_ALERT } from "../utils/timeout-config";
-import SweetAlert from "react-bootstrap-sweetalert";
-import ThreeDotsLoading from "../components/tools/ThreeDotsLoading";
 
 const moment = require('moment-timezone');
 var Scroll = require('react-scroll');
@@ -47,7 +43,6 @@ class InvoicePage extends React.Component {
 
   componentDidMount() {
     this._isMounted = true;
-      this.props.clearAlert();
       this.props.invoicePage();
       window.addEventListener("focus", this.onFocus);
       //// get invoice info 
@@ -70,44 +65,9 @@ class InvoicePage extends React.Component {
     ) {
       this.setState({ bidsLoaded: true });
     };
-    if (
-      this.props.errors.alertnow === "alertnow" &&
-      prevProps.errors.alertnow !== "alertnow"
-    ) {
-      setTimeout(() => {
-        this.successAlert();
-        this.setState({ cancelLoading: false });
-      }, WAIT_ALERT);
-    };
   };
 
     /// SUCCESS ALERT ////////////////////////////
-    successAlert = () => {
-      const successAlert = (
-        <SweetAlert
-          success
-          confirmBtnText="Confirm"
-          confirmBtnBsStyle="default"
-          title=""
-          style={{borderRadius: "0px"}}
-          onConfirm={this.onConfirm}
-        >
-          <p style={{ fontSize: "0.74em" }}>
-            <br />
-            Your order has been cancelled!
-            <br />
-            <br />
-          </p>
-        </SweetAlert>
-      );
-      this.setState({ successAlert: successAlert });
-    };
-
-    onConfirm = () => {
-      this.setState({ successAlert: null });
-      this.props.clearAlert();
-      Router.pushRoute('/market')
-    };
 
   automaticRefresh = () => {
     this.getbidsTimer = setInterval(() => {
@@ -175,7 +135,6 @@ class InvoicePage extends React.Component {
     clearInterval(this.countdownTimer, this.getbidsTimer);
     window.removeEventListener("focus", this.onFocus);
     this.props.clearNetwork();
-    this.props.clearAlert();
   };
 
   copyAndShowAlert = payment_address => {
@@ -193,7 +152,6 @@ class InvoicePage extends React.Component {
     let utctime = moment().tz('UTC').valueOf() / 1000;
       return (
           <PublicRoute>
-            {this.state.successAlert}
               <div className="container">
                   <div className="row">
                       <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style={{marginTop: "56px"}}>   
@@ -563,7 +521,6 @@ class InvoicePage extends React.Component {
     getBidInfo: PropTypes.func,
     clearPaymentInfo: PropTypes.func,
     clearNetwork: PropTypes.func,
-    clearAlert: PropTypes.func,
     invoicePage: PropTypes.func,
     network: PropTypes.object,
     payment: PropTypes.object,
@@ -585,6 +542,5 @@ class InvoicePage extends React.Component {
   export default connect(mapStateToProps, 
     {getBidInfo, 
       clearNetwork,
-      clearAlert,
       clearPaymentInfo,
     invoicePage})(InvoicePage);
