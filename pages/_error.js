@@ -1,7 +1,6 @@
 import React from "react";
 import {
-  notFoundPage,
-  getCurrentProfile
+  notFoundPage
 } from "../actions/warihashApiCalls";
 import { connect } from "react-redux";
 import { FaArrowLeft } from "react-icons/fa";
@@ -92,7 +91,6 @@ class NotFound extends React.Component {
 
 NotFound.propTypes = {
   notFoundPage: PropTypes.func,
-  getCurrentProfile: PropTypes.func,
   profile: PropTypes.object,
   settings: PropTypes.object,
   miningalgo: PropTypes.object
@@ -106,5 +104,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { notFoundPage, getCurrentProfile }
+  { notFoundPage }
 )(NotFound);
