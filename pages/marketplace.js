@@ -1318,6 +1318,63 @@ class Marketplace extends React.Component {
               
                   
 
+                    {this.state.hideDiscount === false ? 
+                            <button onClick={this.revealDiscount} 
+                            className="discount-code-btn">
+                               <IoIosPricetags 
+                               style={{marginRight: "12px", fontSize: "1.1em", display: "inline-block"}}/>  
+                               <p style={{fontSize: "0.85em", display: "inline-block", fontWeight: "bold"}}>Apply a discount code</p>
+                            </button>
+                            :
+                            <div style={{width: "100%"}}>
+                            <div
+                          className={
+                            discountfocus === true
+                              ? "input-group input-group-md borderbottomfocus"
+                              : "input-group input-group-md borderbottomadj"
+                          }
+                          style={{maxWidth: "220px", position: "relative", 
+                          top: "13px", marginLeft: "0px", borderRadius: "0px",
+                        borderRight: "none", borderTop: "none", borderLeft: "none"}}
+                        >
+                          <div className="input-group-prepend">
+                            <span
+                              className="input-group-text"
+                              style={{
+                                background: "white",
+                                border: "none",
+                                color: "rgba(0,0,0,0.5)"
+                              }}
+                            >
+                              <IoIosPricetags style={discountfocus === true ? 
+                              { fontSize: "1.4em", opacity: "1" } : 
+                              { fontSize: "1.4em", opacity: "0.8" }} />
+                            </span>
+                          </div>
+                          <input
+                            type="text"
+                            name="discount_code"
+                            value={this.state.discount_code}
+                            placeholder="Enter discount code"
+                            className="form-control inputstyles2"
+                            style={{
+                              border: "none",
+                              borderRadius: "7px",
+                              fontSize: "0.82em"
+                            }}
+                            onChange={this.handleChange}
+                            onFocus={this.handleDiscountFocus}
+                            onBlur={this.handleDiscountBlur}
+                            autoComplete="off"
+                          />   
+                        </div>
+                        <br />
+                        {this.props.errors.discount_code !== undefined ? 
+                          <p className="is-invalid-error add-padding-left" style={{maxWidth: "210px"}}>
+                              {this.props.errors.discount_code}</p> : null}
+                          </div>
+                    }
+
                            <div className="col-xl-4 col-lg-12 text-right" 
                            style={{paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px"}}>
                            <CSRFToken />
