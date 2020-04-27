@@ -1,7 +1,6 @@
 import React from "react";
 import PublicRoute from "../components/routes/PublicRoute";
 import {
-  getCurrentProfile,
   getBidInfo, 
   getBidHashrateChart,
   clearHashrateData,
@@ -33,7 +32,6 @@ class OrderDetails extends React.Component {
   };
 
   componentDidMount() {
-      this.props.getCurrentProfile();
       this.props.orderDetailsPage();
       this.props.getBidInfo(this.props.bidid);
       this.props.getBidHashrateChart(this.props.bidid);
@@ -396,7 +394,6 @@ class OrderDetails extends React.Component {
   };
   
   OrderDetails.propTypes = {
-    getCurrentProfile: PropTypes.func,
     getBidInfo: PropTypes.func,
     getBidHashrateChart: PropTypes.func,
     clearHashrateData: PropTypes.func,
@@ -423,8 +420,7 @@ class OrderDetails extends React.Component {
   });
 
   export default connect(mapStateToProps, 
-    {getCurrentProfile, 
-      getBidInfo, 
+    {getBidInfo, 
       getBidHashrateChart,
       clearHashrateData,
       orderDetailsPage,
