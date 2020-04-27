@@ -227,6 +227,7 @@ class Marketplace extends React.Component {
       this.props.settings.username,
       this.props.settings.password,
       this.state.location,
+      this.state.discount_code,
       this.state.limit_price,
       this.props.settings.sub_user
     );

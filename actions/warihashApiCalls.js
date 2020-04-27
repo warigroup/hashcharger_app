@@ -317,6 +317,7 @@ export const takeOffer = (
   username,
   password,
   location,
+  discount_code,
   limit_price,
   sub_user
 ) => dispatch => {
@@ -338,6 +339,7 @@ export const takeOffer = (
         username: username,
         password: password,
         location: location,
+        discount_code: discount_code,
         limit_price: limit_price,
         sub_user: sub_user
       },
