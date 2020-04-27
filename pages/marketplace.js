@@ -80,7 +80,7 @@ class Marketplace extends React.Component {
     return props.query;
   };    
 
-  componentDidMount() {g
+  componentDidMount() {
     this.props.timeoutReset();
     this.props.marketplacePage();
     this.props.getConfigs();
