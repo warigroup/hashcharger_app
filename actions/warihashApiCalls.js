@@ -595,47 +595,6 @@ export const getStats = () => dispatch => {
     .catch(err => console.log(err));
 };
 
-
-///////////// CANCEL INVOICE /////////////////////////
-
-export const cancelInvoice = (
-  bid_id
-) => dispatch => {
-  const CancelToken = axios.CancelToken;
-  let source = CancelToken.source();
-  setTimeout(() => {
-    source.cancel("ERROR: Timeout");
-  }, TIMEOUT_DURATION);
-  return axios
-    .post(
-      `${apiurl}/bid_cancel/`,
-      {
-        bid_id: bid_id
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "CustomToken Wz4okAcgswSbB7rm5XD2kf"
-        }
-      },
-      { cancelToken: source.token }
-    )
-    .then(res => {
-      dispatch({ type: types.CLEAR_ERRORS_SHOW_ALERT });
-    }
-    )
-    .catch(err => {
-      dispatch({
-        type: types.GET_ERRORS,
-        payload: (err.response || {}).data
-      });
-      dispatch({
-        type: types.GET_STATUS_CODE,
-        payload: (err.response || {}).status
-      });
-    });
-};
-
 ///////// SET GLOBAL STRATUM, USER CONFIGS /////////////////////
 
 export const setStratumHostPort = (host, port) => {
