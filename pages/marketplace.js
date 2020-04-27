@@ -18,6 +18,7 @@ import {
   setStratumUsernamePass,
   setRecentInvoiceId } from "../actions/warihashApiCalls";
 import { FaRegClock, FaBitcoin, FaQuestionCircle } from "react-icons/fa";
+import { IoIosPricetags } from "react-icons/io";
 import { TiFlash } from "react-icons/ti";
 import { Router } from "../routes";
 import MiningAlgoDropDown from "../components/tools/MiningAlgoDropDown";
@@ -378,6 +379,7 @@ class Marketplace extends React.Component {
       hashratefocus,
       durationfocus,
       durationClicked,
+      discountfocus,
       pricefocus
     } = this.state;
     let hashrateExampleText = "";
@@ -1318,12 +1320,32 @@ class Marketplace extends React.Component {
               
                   
 
-                    {this.state.hideDiscount === false ? 
+                    
+
+                           <div className="col-xl-4 col-lg-12 text-right" 
+                           style={{paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px"}}>
+                           <CSRFToken />
+                       <button
+                        disabled={this.state.formloading}
+                        className="btn btn-info nooutline buybtn"
+                        type="submit"
+                      >
+                        {this.state.formloading === true
+                          ? <ThreeDotsLoading />
+                          : <p style={{ paddingBottom: "0px", marginBottom: "0px" }}>Continue to Payment</p>}
+
+                      </button>
+
+
+                      {this.state.hideDiscount === false ? 
                             <button onClick={this.revealDiscount} 
-                            className="discount-code-btn">
+                            className="discount-code-btn"
+                            style={{marginTop: "16px"}}>
                                <IoIosPricetags 
                                style={{marginRight: "12px", fontSize: "1.1em", display: "inline-block"}}/>  
-                               <p style={{fontSize: "0.85em", display: "inline-block", fontWeight: "bold"}}>Apply a discount code</p>
+                               <p style={{fontSize: "0.85em", display: "inline-block", fontWeight: "bold"}}>
+                                 Apply a discount code
+                                </p>
                             </button>
                             :
                             <div style={{width: "100%"}}>
@@ -1334,7 +1356,7 @@ class Marketplace extends React.Component {
                               : "input-group input-group-md borderbottomadj"
                           }
                           style={{maxWidth: "220px", position: "relative", 
-                          top: "13px", marginLeft: "0px", borderRadius: "0px",
+                          top: "25px", marginLeft: "160px", borderRadius: "0px",
                         borderRight: "none", borderTop: "none", borderLeft: "none"}}
                         >
                           <div className="input-group-prepend">
@@ -1375,19 +1397,7 @@ class Marketplace extends React.Component {
                           </div>
                     }
 
-                           <div className="col-xl-4 col-lg-12 text-right" 
-                           style={{paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px"}}>
-                           <CSRFToken />
-                       <button
-                        disabled={this.state.formloading}
-                        className="btn btn-info nooutline buybtn"
-                        type="submit"
-                      >
-                        {this.state.formloading === true
-                          ? <ThreeDotsLoading />
-                          : <p style={{ paddingBottom: "0px", marginBottom: "0px" }}>Continue to Payment</p>}
 
-                      </button>
                            </div>
                         </div>
                       </div>
