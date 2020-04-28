@@ -187,7 +187,6 @@ class myOrderHistory extends React.Component {
                           display: inline-block;
                           border: none;
                       }
-
                       .stratum-btn-container {
                         width: 100%;
                         padding-right: 33px;
@@ -388,11 +387,9 @@ class myOrderHistory extends React.Component {
 
                     </div>    
 
-
-
                   </div>
 
-                  {/**************** BUY ORDER MODAL ****************/}             
+                    {/**************** BUY ORDER MODAL ****************/}             
                      <BuyOrderModal 
                      hashrate={this.props.hashrate}
                      modalcontents={modalcontents}
