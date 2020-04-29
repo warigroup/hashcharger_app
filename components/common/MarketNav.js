@@ -10,13 +10,7 @@ const MarketNav = ({ nav, profile, settings, miningalgo, theme }) => (
           <div className="row" style={{ padding: "13px 20px 13px 20px" }}>
              <style jsx>
                {`
-               .marketplace-menu {
-                position: absolute; 
-                bottom: 0px;
-                width: 100vw; 
-                display: block;
-                margin-top: 80px;
-               }
+               
                .number-circle {
                 border: 2.5px solid rgba(255,255,255,0.6);
                 border-radius: 50%;
