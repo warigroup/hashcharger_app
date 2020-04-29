@@ -788,6 +788,7 @@ class Marketplace extends React.Component {
                <br />
                <br />
                <br />
+               <br />
              <a href="https://warihash.zendesk.com/hc/en-us/requests/new" 
              target="_blank"
              rel="noopener noreferrer">
