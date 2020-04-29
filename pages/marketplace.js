@@ -15,7 +15,8 @@ import {
   algoSelect,
   setStratumHostPort,
   setStratumUsernamePass,
-  setRecentInvoiceId } from "../actions/warihashApiCalls";
+  setRecentInvoiceId,
+  setThemeColors } from "../actions/warihashApiCalls";
 import { FaRegClock, FaBitcoin, FaQuestionCircle } from "react-icons/fa";
 import { IoIosPricetags } from "react-icons/io";
 import { TiFlash } from "react-icons/ti";
@@ -32,6 +33,7 @@ import {
   TIMEOUT_DURATION
 } from "../utils/timeout-config";
 import { csrfcookie } from "../utils/cookieNames";
+import { alphaNumericCheck } from "../utils/alphaNumericCheck";
 import ThreeDotsLoading from "../components/tools/ThreeDotsLoading";
 import Head from "next/head";
 
@@ -103,6 +105,20 @@ class Marketplace extends React.Component {
     // set default algorithm
     if ( this.props.algorithm === undefined || algorithms.includes(this.props.algorithm) === false ) {
       this.selectAlgorithm("sha256d");
+    };
+
+    // set theme colors
+    if ( this.props.navbg !== undefined && 
+      alphaNumericCheck(this.props.navbg) === true ) {
+      this.props.setThemeColors(
+        this.props.navbg, 
+        this.props.navtexts, 
+        this.props.btn1color, 
+        this.props.btn1texts, 
+        this.props.btn2color, 
+        this.props.btn2texts, 
+        this.props.nightmode
+      );
     };
 
   };
@@ -1465,6 +1481,7 @@ Marketplace.propTypes = {
   setStratumHostPort: PropTypes.func,
   setStratumUsernamePass: PropTypes.func,
   setRecentInvoiceId: PropTypes.func,
+  setThemeColors: PropTypes.func,
   errors: PropTypes.object,
   configs: PropTypes.object,
   network: PropTypes.object,
@@ -1474,7 +1491,8 @@ Marketplace.propTypes = {
   profile: PropTypes.object,
   stats: PropTypes.object,
   payment: PropTypes.object,
-  settings: PropTypes.object
+  settings: PropTypes.object,
+  theme: PropTypes.object
 };
 
 const mapStateToProps = state => ({
@@ -1487,7 +1505,8 @@ const mapStateToProps = state => ({
   profile: state.profile,
   stats: state.stats,
   payment: state.payment,
-  settings: state.settings
+  settings: state.settings,
+  theme: state.theme
 });
 
 export default connect(
@@ -1506,6 +1525,7 @@ export default connect(
     algoSelect,
     setStratumHostPort,
     setStratumUsernamePass,
-    setRecentInvoiceId
+    setRecentInvoiceId,
+    setThemeColors
   }
 )(Marketplace);
