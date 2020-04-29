@@ -780,8 +780,6 @@ class Marketplace extends React.Component {
              onClick={() => this.openOrderHistoryPage()}>
                <p>My Order History</p>
              </button>
-               <br />
-               <br />
              </div>
 
              <div className="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12"> 
@@ -795,7 +793,7 @@ class Marketplace extends React.Component {
                 </div>
                 {/******* MINING ALGORITHM SELECTOR END *********/}
              </div>
-             <div className="col-xl-5 col-lg-5 col-md-5 d-xl-inline d-lg-inline d-md-inline d-sm-none" 
+             <div className="col-xl-5 col-lg-5 col-md-5 d-xl-inline d-lg-inline d-md-inline d-sm-none d-none" 
              style={{paddingTop: "11.5px"}}>
                <br />
                <br />
@@ -816,7 +814,7 @@ class Marketplace extends React.Component {
                <br />
              </div>
 
-             <div className="col-xl-12 col-lg-12 col-md-12">
+             <div className="col-xl-12 col-lg-12 col-md-12 d-xl-inline d-lg-inline d-md-inline d-sm-none d-none">
                <br />
                <br />
              </div>
