@@ -14,16 +14,22 @@ if (!document.getElementById(cssId)) {
 
 window.addEventListener("load", () => {
 
-var widgetOpenBtn = document.getElementsByClassName("open-warihash");
+var widgetOpenBtn = document.getElementsByClassName("open-hashcharger");
 
 var createModal = function() {
     document.body.classList.add("disable-scroll-overflow");
     // get data param
-    var myScript = document.getElementById('script-widget');
+    var myScript = document.getElementById('hashcharger');
     var host = (myScript.getAttribute('host') || '');
     var port = (myScript.getAttribute('port') || '');
     var username = (myScript.getAttribute('username') || '');
     var password = (myScript.getAttribute('password') || '');
+    var algorithm = (myScript.getAttribute('algorithm') || '');
+    var navbg = (myScript.getAttribute('navbg') || '');
+    var navtexts = (myScript.getAttribute('navtexts') || '');
+    var btncolor = (myScript.getAttribute('btncolor') || '');
+    var btntexts = (myScript.getAttribute('btntexts') || '');
+    var nightmode = (myScript.getAttribute('nightmode') || '');
 
     // modal window div
     var modalWindow = document.createElement('div');
@@ -34,7 +40,9 @@ var createModal = function() {
     // append iframe to modalWindow
     var iframe = document.createElement('iframe');
     // eslint-disable-next-line no-useless-concat
-    iframe.src = 'https://app.warihash.org/market' + '/' + host + '/' + port + '/' + username + '/' + password;
+    iframe.src = 'https://app.warihash.org/market' + '/' + host + '/' + port + '/' + 
+    username + '/' + password + '/' + algorithm + '/' + navbg + '/' + navtexts + '/' + 
+    btncolor + '/' + btntexts + '/' + nightmode;
     iframe.style.width = "100vw";
     iframe.style.height = "100vh";
     iframe.style.border = "none";
@@ -52,7 +60,7 @@ var createModal = function() {
     widgetCloseBtn.addEventListener("click", function () {
         var elem = document.getElementById('warihash-widget');
         elem.classList.add('widget-fadeout');
-        // remove modal after 1 second
+        // remove modal after 0.45 sec
         setTimeout(function(){ 
             elem.parentNode.removeChild(elem); 
             document.body.classList.remove("disable-scroll-overflow");
