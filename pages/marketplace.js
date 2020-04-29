@@ -108,8 +108,7 @@ class Marketplace extends React.Component {
     };
 
     // set theme colors
-    if ( this.props.navbg !== undefined && 
-      alphaNumericCheck(this.props.navbg) === true ) {
+    if ( this.props.navbg !== undefined ) {
       this.props.setThemeColors(
         this.props.navbg, 
         this.props.navtexts, 
