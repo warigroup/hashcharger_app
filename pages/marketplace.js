@@ -783,7 +783,7 @@ class Marketplace extends React.Component {
                 </div>
                 {/******* MINING ALGORITHM SELECTOR END *********/}
              </div>
-             <div className="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12" style={{paddingTop: "3px"}}>
+             <div className="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12" style={{paddingTop: "0px"}}>
                <br />
                <br />
                <br />
