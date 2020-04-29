@@ -763,6 +763,27 @@ class Marketplace extends React.Component {
         <div>
         <div className="container">
           <div className="row">
+          <div className="col-sm-12 col-12 d-xl-none d-lg-none d-md-none d-sm-inline d-inline" 
+             style={{paddingTop: "11.5px"}}>
+               <br />
+               <br />
+            
+             <a href="https://warihash.zendesk.com/hc/en-us/requests/new" 
+             target="_blank"
+             rel="noopener noreferrer">
+               <button className="nav-buttons">
+                 <p>Help</p>
+                </button>
+              </a>
+             {" "}<p className="nav-bar">|</p>{" "} 
+             <button className="nav-buttons"
+             onClick={() => this.openOrderHistoryPage()}>
+               <p>My Order History</p>
+             </button>
+               <br />
+               <br />
+             </div>
+
              <div className="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12"> 
               {/******* MINING ALGORITHM SELECTOR *********/}
                <div className="miningalgo-selector-container">
@@ -774,7 +795,8 @@ class Marketplace extends React.Component {
                 </div>
                 {/******* MINING ALGORITHM SELECTOR END *********/}
              </div>
-             <div className="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12" style={{paddingTop: "11.5px"}}>
+             <div className="col-xl-5 col-lg-5 col-md-5 d-xl-inline d-lg-inline d-md-inline d-sm-none" 
+             style={{paddingTop: "11.5px"}}>
                <br />
                <br />
                <br />
