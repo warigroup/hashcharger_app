@@ -607,6 +607,19 @@ export const setStratumHostPort = (host, port) => {
 export const setStratumUsernamePass = (username, password) => {
   return {
     type: types.SET_STRATUM_USERNAME_PASS,
-    payload: [{username: username}, {password: password}]
+    payload: [{ username: username }, { password: password }]
+  };
+};
+
+export const setThemeColors = (navbg, navtexts, btncolor, btntexts, nightmode) => {
+  return {
+    type: types.SET_THEME_COLORS,
+    payload: [ 
+      { navbg: navbg }, 
+      { navtexts: navtexts }, 
+      { btncolor: btncolor }, 
+      { btntexts: btntexts },
+      { nightmode: nightmode }
+    ]
   };
 };
