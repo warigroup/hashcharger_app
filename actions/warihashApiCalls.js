@@ -611,14 +611,16 @@ export const setStratumUsernamePass = (username, password) => {
   };
 };
 
-export const setThemeColors = (navbg, navtexts, btncolor, btntexts, nightmode) => {
+export const setThemeColors = (navbg, navtexts, btn1color, btn1texts, btn2color, btn2texts, nightmode) => {
   return {
     type: types.SET_THEME_COLORS,
     payload: [ 
       { navbg: navbg }, 
       { navtexts: navtexts }, 
-      { btncolor: btncolor }, 
-      { btntexts: btntexts },
+      { btn1color: btn1color }, 
+      { btn1texts: btn1texts },
+      { btn2color: btn2color }, 
+      { btn2texts: btn2texts },
       { nightmode: nightmode }
     ]
   };
