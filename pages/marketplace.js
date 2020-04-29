@@ -18,7 +18,6 @@ import {
   setRecentInvoiceId,
   setThemeColors } from "../actions/warihashApiCalls";
 import { FaRegClock, FaBitcoin, FaQuestionCircle } from "react-icons/fa";
-import { IoIosPricetags } from "react-icons/io";
 import { TiFlash } from "react-icons/ti";
 import { Router } from "../routes";
 import MiningAlgoDropDown from "../components/tools/MiningAlgoDropDown";
@@ -33,7 +32,7 @@ import {
   TIMEOUT_DURATION
 } from "../utils/timeout-config";
 import { csrfcookie } from "../utils/cookieNames";
-import { alphaNumericCheck } from "../utils/alphaNumericCheck";
+// import { alphaNumericCheck } from "../utils/alphaNumericCheck";
 import ThreeDotsLoading from "../components/tools/ThreeDotsLoading";
 import Head from "next/head";
 
@@ -70,7 +69,6 @@ class Marketplace extends React.Component {
       nameorcompanyfocus: false,
       durationdaysfocus: false,
       phonenumberfocus: false,
-      discountfocus: false,
       formloading: false,
       menuOpen: false,
       checked: false
@@ -215,8 +213,6 @@ class Marketplace extends React.Component {
   handleNameOrCompanyBlur = () => this.setState({ nameorcompanyfocus: false });
   handlePhoneNumberFocus = () => this.setState({ phonenumberfocus: true });
   handlePhoneNumberBlur = () => this.setState({ phonenumberfocus: false });
-  handleDiscountFocus = () => this.setState({ discountfocus: true });
-  handleDiscountBlur = () => this.setState({ discountfocus: false });
   handlePriceFocus = () => this.setState({ pricefocus: true });
   handlePriceBlur = () => this.setState({ pricefocus: false });  
 
@@ -240,7 +236,6 @@ class Marketplace extends React.Component {
       this.props.settings.username,
       this.props.settings.password,
       this.state.location,
-      this.state.discount_code,
       this.state.limit_price,
       this.props.settings.sub_user
     );
@@ -384,7 +379,6 @@ class Marketplace extends React.Component {
       }
     };
 
-    revealDiscount = () => this.setState({ hideDiscount: true });
     openOrderHistoryPage = () => Router.pushRoute(`/orderhistory`);
 
   render() {
@@ -392,7 +386,6 @@ class Marketplace extends React.Component {
       hashratefocus,
       durationfocus,
       durationClicked,
-      discountfocus,
       pricefocus
     } = this.state;
     let hashrateExampleText = "";
@@ -1214,6 +1207,129 @@ class Marketplace extends React.Component {
                       <div className="container-fluid">
                         <div className="row" 
                         style={{paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px"}}>
+                        <div className="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12 text-right"
+                          style={{ marginTop: "8px", marginLeft: "0px", 
+                          paddingLeft: "0%", position: "relative", left: "-10px"}}>
+                      <label>
+                        <span
+                          style={{
+                            fontSize: "0.83em",
+                            marginLeft: "0px",
+                            marginRight: "2.5px",
+                            position: "relative",
+                            top: "-2px",
+                            zIndex: "1423",
+                            display: "inline-block"
+                          }}
+                        >
+                         Specify limit price
+                        </span>
+                        <a href="https://warihash.zendesk.com/hc/en-us/articles/360040612232-What-is-a-limit-price-" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="link-icon">
+                        <FaQuestionCircle />
+                      </a>
+                      </label>
+
+                      <div className="pretty p-svg p-curve">
+                    <input
+                      type="checkbox"
+                      onChange={this.handleCheck}
+                      defaultChecked={this.state.checked}
+                    
+                    />
+                    <div className="state p-success">
+                      <label>
+                        <span
+                          style={{
+                            fontSize: "0.83em",
+                            marginLeft: "7px",
+                            position: "relative",
+                            top: "-2px",
+                            zIndex: "1423"
+                          }}
+                        >
+                        </span>
+                      </label>
+                      <svg className="svg svg-icon" viewBox="0 0 20 20" >
+                        <path
+                          d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"
+                          style={{ stroke: "white", fill: "white" }}
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  {this.state.checked === true ? 
+                
+                <div style={{ marginTop: "8px", marginLeft: "20px", 
+                paddingLeft: "0px", textAlign: "right", position: "relative", left: "15px" }}>
+                  <div className="form-group">
+                    <label htmlFor="limit_price" 
+                    className="inputlabel"
+                    style={{ position: "relative", left: "23px"}}>
+                      Limit Price in <PaymentRate /> [optional]{" "}
+                    </label>
+                    <div
+                      className={
+                        pricefocus === true
+                          ? "input-group input-group-md focused"
+                          : "input-group input-group-md"
+                      }
+                      style={{maxWidth: "285px", marginLeft: "57%"}}
+                    >
+                      <div className="input-group-prepend">
+                        <span
+                          className="input-group-text"
+                          style={{
+                            background: "white",
+                            border: "none",
+                            color: "rgba(0,0,0,0.5)"
+                          }}
+                        >
+                          <FaBitcoin style={pricefocus === true ?
+                           { fontSize: "1.3em", opacity: "1" } : 
+                           { fontSize: "1.3em", opacity: "0.8" }} />
+                        </span>
+                      </div>
+                      <input
+                        type="text"
+                        placeholder="Example: 0.0015"
+                        name="limit_price"
+                        value={this.state.limit_price}
+                        onChange={this.handleChange}
+                        className="form-control inputstyles2"
+                        style={{
+                          border: "none",
+                          borderRadius: "7px",
+                          fontSize: "0.82em"
+                        }}
+                        onFocus={this.handlePriceFocus}
+                        onBlur={this.handlePriceBlur}
+                        autoComplete="off"
+                      /><p style={{paddingTop: "0px", 
+                      paddingBottom: "0px", 
+                      marginBottom: "0px",
+                      position: "relative",
+                      fontSize: "0.92em",
+                      top: "5.9px",
+                      right: "13px", 
+                      zIndex: "222"}}>
+                        BTC
+                        </p>
+                    </div>
+
+                        {this.props.errors.price !== undefined ? 
+                        <p className="is-invalid-error add-padding-left">
+                          {this.props.errors.price}
+                        </p> : null}
+                  </div>
+                  </div> : null}
+
+
+                    </div>
+              
+                  
 
                     
 
@@ -1232,65 +1348,7 @@ class Marketplace extends React.Component {
                       </button>
 
 
-                      {this.state.hideDiscount === false ? 
-                            <button onClick={this.revealDiscount} 
-                            className="discount-code-btn"
-                            style={{marginTop: "16px"}}>
-                               <IoIosPricetags 
-                               style={{marginRight: "12px", fontSize: "1.1em", display: "inline-block"}}/>  
-                               <p style={{fontSize: "0.85em", display: "inline-block", fontWeight: "bold"}}>
-                                 Apply a discount code
-                                </p>
-                            </button>
-                            :
-                            <div style={{width: "100%"}}>
-                            <div
-                          className={
-                            discountfocus === true
-                              ? "input-group input-group-md borderbottomfocus"
-                              : "input-group input-group-md borderbottomadj"
-                          }
-                          style={{maxWidth: "220px", position: "relative", 
-                          top: "25px", marginLeft: "160px", borderRadius: "0px",
-                        borderRight: "none", borderTop: "none", borderLeft: "none"}}
-                        >
-                          <div className="input-group-prepend">
-                            <span
-                              className="input-group-text"
-                              style={{
-                                background: "white",
-                                border: "none",
-                                color: "rgba(0,0,0,0.5)"
-                              }}
-                            >
-                              <IoIosPricetags style={discountfocus === true ? 
-                              { fontSize: "1.4em", opacity: "1" } : 
-                              { fontSize: "1.4em", opacity: "0.8" }} />
-                            </span>
-                          </div>
-                          <input
-                            type="text"
-                            name="discount_code"
-                            value={this.state.discount_code}
-                            placeholder="Enter discount code"
-                            className="form-control inputstyles2"
-                            style={{
-                              border: "none",
-                              borderRadius: "7px",
-                              fontSize: "0.82em"
-                            }}
-                            onChange={this.handleChange}
-                            onFocus={this.handleDiscountFocus}
-                            onBlur={this.handleDiscountBlur}
-                            autoComplete="off"
-                          />   
-                        </div>
-                        <br />
-                        {this.props.errors.discount_code !== undefined ? 
-                          <p className="is-invalid-error add-padding-left" style={{maxWidth: "210px"}}>
-                              {this.props.errors.discount_code}</p> : null}
-                          </div>
-                    }
+                     
 
 
                            </div>
