@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Link } from "../../routes";
 
-const MarketNav = ({ nav, profile, settings, miningalgo }) => (
+const MarketNav = ({ nav, profile, settings, miningalgo, theme }) => (
       <div className="marketplace-menu" 
-      style={{ background: "#3626A5", 
+      style={{ background: theme.navbg, 
       position: "absolute", 
       bottom: "0px",
       width: "100vw", 
@@ -36,12 +36,12 @@ const MarketNav = ({ nav, profile, settings, miningalgo }) => (
                 color: rgba(255,255,255,0.6);
                }
                .marketplacenav.selected {
-                color: #fff;
+                color: ${theme.navtexts};
                 pointer: cursor;
                }
                .marketplacenav.selected .number-circle {
-                color: #fff;
-                border: 2.5px solid #fff;
+                color: ${theme.navtexts};
+                border: 2.5px solid ${theme.navtexts};
                }
 
               .disabled-link {
@@ -112,14 +112,16 @@ MarketNav.propTypes = {
   nav: PropTypes.object,
   profile: PropTypes.object,
   settings: PropTypes.object,
-  miningalgo: PropTypes.object
+  miningalgo: PropTypes.object,
+  theme: PropTypes.object
 };
 
 const mapStateToProps = state => ({
   nav: state.nav,
   profile: state.profile,
   settings: state.settings,
-  miningalgo: state.miningalgo
+  miningalgo: state.miningalgo,
+  theme: state.theme
 });
 
 export default connect(
