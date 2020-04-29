@@ -2952,11 +2952,6 @@ select:-moz-focusring {
 }
 
 @media (max-width: 770px) {
-  .marketplacetitle {
-    font-size: 1.1em !important;
-    margin-left: 0px;
-  }
-
   .algorithm-menu-display {
     margin-left: -65px !important;
   }
@@ -3050,26 +3045,16 @@ select:-moz-focusring {
 
 @media (max-width: 577px) {
   .marketplacetitle {
-    font-size: 0.97em !important;
+    font-size: 1em !important;
     margin-left: 0px;
   }
-  .miningalgorithm-dropdown h4 {
-    font-size: 1em !important;
-  }
-  
+
   .infocontainer {
     margin-bottom: 25px;
   }
 }
 
 @media (max-width: 340px) {
-  .marketplacetitle {
-    font-size: 0.9em !important;
-    margin-left: 0px;
-  }
-  .miningalgorithm-dropdown h4 {
-    font-size: 0.9em !important;
-  }
   .createofferbtn {
     font-size: 0.7em;
     margin-top: 6px;
