@@ -13,6 +13,7 @@ import paymentReducer from './paymentReducer';
 import bidsReducer from './bidsReducer';
 import statsReducer from './statsReducer';
 import globalStratumConfigs from './globalStratumConfigs';
+import themeReducer from './themeReducer';
 
 export default combineReducers({
   errors: errorReducer,
@@ -28,5 +29,6 @@ export default combineReducers({
   payment: paymentReducer,
   bids: bidsReducer,
   stats: statsReducer,
-  settings: globalStratumConfigs
+  settings: globalStratumConfigs,
+  theme: themeReducer
 });
