@@ -779,7 +779,7 @@ class Marketplace extends React.Component {
                   <MiningAlgoDropDown 
                     selectAlgorithm={this.selectAlgorithm}
                     />
-                   
+                
                 </div>
                 {/******* MINING ALGORITHM SELECTOR END *********/}
              </div>

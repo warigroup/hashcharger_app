@@ -5078,3 +5078,11 @@ select:-moz-focusring {
     margin-bottom: 10px;
   }
 }
+
+.marketplace-menu {
+  position: absolute; 
+  bottom: 0px;
+  width: 100vw; 
+  display: block;
+  margin-top: 80px;
+ }
