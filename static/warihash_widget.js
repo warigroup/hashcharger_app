@@ -56,6 +56,7 @@ var createModal = function() {
     widgetCloseBtn.id = 'warihash-close-button';
     widgetCloseBtn.title = 'Close window';
     widgetCloseBtn.innerHTML = '<h4>&times;</h4>';
+    widgetCloseBtn.style.fontSize = '27px';
     widgetCloseBtn.style.color = closebtn;
 
     // add widget close function
