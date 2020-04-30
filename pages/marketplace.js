@@ -1026,8 +1026,7 @@ class Marketplace extends React.Component {
 
                      
 
-                      <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12" 
-                      style={{paddingLeft: "0px", paddingRight: "0px"}}>
+                      <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
                       <div className="row">
                       <div className="form-group">
                         <label htmlFor="hashrate" className="inputlabel">
