@@ -1226,8 +1226,15 @@ class Marketplace extends React.Component {
                         <div className="row" style={{ paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px" }}>
                         <div className="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12 text-right"
                           style={{ marginTop: "8px", marginLeft: "0px", 
-                          paddingLeft: "0%", position: "relative", left: "127px", top: "16px"}}>
+                          paddingLeft: "0%", position: "relative", left: "137px", top: "16px"}}>
                       <label>
+                      <a href="https://warihash.zendesk.com/hc/en-us/articles/360040612232-What-is-a-limit-price-" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="link-icon">
+                        <FaQuestionCircle />
+                      </a>
+
                         <span style={{
                             fontSize: "0.83em",
                             marginLeft: "0px",
@@ -1240,12 +1247,7 @@ class Marketplace extends React.Component {
                         >
                          Specify limit price
                         </span>
-                        <a href="https://warihash.zendesk.com/hc/en-us/articles/360040612232-What-is-a-limit-price-" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="link-icon">
-                        <FaQuestionCircle />
-                      </a>
+                       
                       </label>
 
                   <div className="pretty p-svg p-curve">
