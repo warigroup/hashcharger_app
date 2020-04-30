@@ -713,6 +713,9 @@ class Marketplace extends React.Component {
               .pagetitle-container {
                 margin-top: 0px;
               }
+              .miningalgo-selector-container {
+                margin-top: 13px;
+              }
             }
 
             @media (max-width: 620px) {
