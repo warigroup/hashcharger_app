@@ -1252,7 +1252,7 @@ class Marketplace extends React.Component {
                        
                       </label>
 
-                  <div className="pretty p-svg p-curve">
+                  <div className="pretty p-svg p-curve" style={{position: "relative", top: "3px"}}>
                     <input
                       type="checkbox"
                       onChange={this.handleCheck}
