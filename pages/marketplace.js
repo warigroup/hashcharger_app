@@ -1223,15 +1223,12 @@ class Marketplace extends React.Component {
 
                 
                       <div className="container-fluid">
-                        <div className="row" style={{ paddingRight: "0px", 
-                        paddingLeft: "0px", 
-                        paddingTop: "0px" }}>
+                        <div className="row" style={{ paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px" }}>
                         <div className="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12 text-right"
                           style={{ marginTop: "8px", marginLeft: "0px", 
-                          paddingLeft: "0%", position: "relative", left: "77px", top: "15px"}}>
+                          paddingLeft: "0%", position: "relative", left: "88px", top: "16px"}}>
                       <label>
-                        <span
-                          style={{
+                        <span style={{
                             fontSize: "0.83em",
                             marginLeft: "0px",
                             marginRight: "2.5px",
@@ -1251,7 +1248,7 @@ class Marketplace extends React.Component {
                       </a>
                       </label>
 
-                      <div className="pretty p-svg p-curve">
+                  <div className="pretty p-svg p-curve">
                     <input
                       type="checkbox"
                       onChange={this.handleCheck}
