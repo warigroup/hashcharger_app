@@ -1228,7 +1228,7 @@ class Marketplace extends React.Component {
                         paddingTop: "0px" }}>
                         <div className="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12 text-right"
                           style={{ marginTop: "8px", marginLeft: "0px", 
-                          paddingLeft: "0%", position: "relative", left: "77px", top: "10px"}}>
+                          paddingLeft: "0%", position: "relative", left: "77px", top: "15px"}}>
                       <label>
                         <span
                           style={{
