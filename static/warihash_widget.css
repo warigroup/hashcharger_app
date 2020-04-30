@@ -61,23 +61,20 @@
   top: 0;
   right: 0;
   padding:0;
-  margin-right: 55px;
-  margin-top: 10px;
+  margin-right: 55px !important;
+  margin-top: 10px !important;
   background: none;
   border: none;
   cursor: pointer;
   transition: 0.5s ease all;
 }
-
 .warihash-close-button {
   font-size: 27px !important;
 }
-
 .warihash-close-button h4 {
   font-size: 27px !important;
 }
-
-.warihash-close-button:hover {
+.warihash-close-button:hover h4{
   opacity: 0.7;
 }
 
