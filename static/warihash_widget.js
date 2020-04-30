@@ -7,7 +7,7 @@ if (!document.getElementById(cssId)) {
    link.rel  = 'stylesheet';
    link.type = 'text/css';
    // use cloudflare CDN
-   link.href = 'https://app.warihash.org/static/warihash_widget.css';
+   link.href = 'https://devmarket.warihash.org/static/warihash_widget.css';
    link.media = 'all';
    head.appendChild(link);
 };
