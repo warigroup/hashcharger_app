@@ -306,8 +306,8 @@ class Marketplace extends React.Component {
         if (this.safeNestedCheck(() => (this.props.configs[algorithm_name] || {})[firstAvailableLocation.value].min_order_hashrate[0].min) === null) {
           this.setState({ duration: 25, duration_example: 25 });
         } else { 
-          this.setState({ duration:  parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name].min_order_duration_min) / 60), 
-            duration_example:  parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name].min_order_duration_min) / 60) });
+          this.setState({ duration: parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name].min_order_duration_min) / 60), 
+            duration_example: parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name].min_order_duration_min) / 60) });
         };
       };
       if (firstAvailableLocation === undefined) {
@@ -322,8 +322,8 @@ class Marketplace extends React.Component {
       if (this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[event.target.value].min_order_hashrate[0].min) === null) {
         this.setState({ duration: 25, duration_example: 25 });
       } else { 
-        this.setState({ duration:  parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].min_order_duration_min) / 60), 
-          duration_example:  parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].min_order_duration_min) / 60) });
+        this.setState({ duration: parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].min_order_duration_min) / 60), 
+          duration_example: parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].min_order_duration_min) / 60) });
       };
     };
 
