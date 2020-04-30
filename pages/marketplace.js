@@ -1238,7 +1238,7 @@ class Marketplace extends React.Component {
                         <span style={{
                             fontSize: "0.83em",
                             marginLeft: "0px",
-                            marginRight: "2.5px",
+                            marginRight: "10px",
                             position: "relative",
                             top: "-2px",
                             zIndex: "1423",
