@@ -1237,13 +1237,12 @@ class Marketplace extends React.Component {
                       className="link-icon">
                         <FaQuestionCircle />
                       </a>
-
                         <span style={{
                             fontSize: "0.83em",
                             marginLeft: "0px",
                             marginRight: "10px",
                             position: "relative",
-                            top: "-2.9px",
+                            top: "-3.3px",
                             zIndex: "1423",
                             display: "inline-block"
                           }}
