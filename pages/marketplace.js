@@ -1226,7 +1226,7 @@ class Marketplace extends React.Component {
                         <div className="row" style={{ paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px" }}>
                         <div className="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12 text-right"
                           style={{ marginTop: "8px", marginLeft: "0px", 
-                          paddingLeft: "0%", position: "relative", left: "110px", top: "16px"}}>
+                          paddingLeft: "0%", position: "relative", left: "127px", top: "16px"}}>
                       <label>
                         <span style={{
                             fontSize: "0.83em",
@@ -1282,7 +1282,7 @@ class Marketplace extends React.Component {
                   <div className="form-group">
                     <label htmlFor="limit_price" 
                     className="inputlabel"
-                    style={{ position: "relative", left: "26px"}}>
+                    style={{ position: "relative", left: "30px"}}>
                       Limit Price in <PaymentRate /> [optional]{" "}
                     </label>
                     <div
