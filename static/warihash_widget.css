@@ -61,7 +61,6 @@
   top: 0;
   right: 0;
   padding:0;
-  color: #013898;
   font-size: 27px;
   margin-right: 55px;
   margin-top: 10px;
@@ -72,7 +71,7 @@
 }
 
 .warihash-close-button:hover {
-  color: #0e4fc0;
+  opacity: 0.8;
 }
 
 :focus { outline:none; }
