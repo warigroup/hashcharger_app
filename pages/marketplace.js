@@ -1243,7 +1243,7 @@ class Marketplace extends React.Component {
                             marginLeft: "0px",
                             marginRight: "10px",
                             position: "relative",
-                            top: "-2px",
+                            top: "-2.3px",
                             zIndex: "1423",
                             display: "inline-block"
                           }}
