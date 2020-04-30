@@ -57,6 +57,7 @@ var createModal = function() {
     widgetCloseBtn.title = 'Close window';
     widgetCloseBtn.innerHTML = '<h4>&times;</h4>';
     widgetCloseBtn.style.color = closebtn;
+    widgetCloseBtn.style.fontSize = "14px";
 
     // add widget close function
     widgetCloseBtn.addEventListener("click", function () {
