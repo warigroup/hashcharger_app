@@ -29,6 +29,7 @@ var createModal = function() {
     var navtexts = (myScript.getAttribute('navtexts') || '');
     var btncolor = (myScript.getAttribute('btncolor') || '');
     var btntexts = (myScript.getAttribute('btntexts') || '');
+    var closebtn = (myScript.getAttribute('closebtn') || '');
     var nightmode = (myScript.getAttribute('nightmode') || '');
 
     // modal window div
@@ -55,6 +56,7 @@ var createModal = function() {
     widgetCloseBtn.id = 'warihash-close-button';
     widgetCloseBtn.title = 'Close window';
     widgetCloseBtn.innerHTML = '<h4>&times;</h4>';
+    widgetCloseBtn.style.color = closebtn;
 
     // add widget close function
     widgetCloseBtn.addEventListener("click", function () {
