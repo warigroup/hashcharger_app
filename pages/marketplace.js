@@ -653,6 +653,7 @@ class Marketplace extends React.Component {
               left: 6px;
               top: -2px;
               margin-right: 14px;
+              font-size: 11px;
             }
 
             .link-icon:hover {
