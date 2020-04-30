@@ -67,8 +67,6 @@
   border: none;
   cursor: pointer;
   transition: 0.5s ease all;
-}
-.warihash-close-button {
   font-size: 27px !important;
 }
 .warihash-close-button h4 {
