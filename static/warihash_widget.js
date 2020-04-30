@@ -52,11 +52,11 @@ var createModal = function() {
 
     // append close button to modalwindow
     var widgetCloseBtn = document.createElement('button');
+    widgetCloseBtn.type = 'button';
     widgetCloseBtn.className = 'warihash-close-button';
     widgetCloseBtn.id = 'warihash-close-button';
     widgetCloseBtn.title = 'Close window';
     widgetCloseBtn.innerHTML = '<h4>&times;</h4>';
-    widgetCloseBtn.style.fontSize = "27px !important";
     widgetCloseBtn.style.color = closebtn;
 
     // add widget close function
