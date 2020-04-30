@@ -1265,7 +1265,7 @@ class Marketplace extends React.Component {
                             fontSize: "0.83em",
                             marginLeft: "7px",
                             position: "relative",
-                            top: "-2px",
+                            top: "0px",
                             zIndex: "1423"
                           }}
                         >
