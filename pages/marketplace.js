@@ -1340,7 +1340,7 @@ class Marketplace extends React.Component {
                   {this.state.checked === true ? 
                 <div style={{ marginTop: "8px", marginLeft: "20px", 
                 paddingLeft: "0px", textAlign: "right", 
-                position: "relative", left: "0px" }}>
+                position: "relative", left: "30px" }}>
                   <div className="form-group">
                     <label htmlFor="limit_price" 
                     className="inputlabel"
