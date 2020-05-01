@@ -83,10 +83,10 @@ const MarketNav = ({ nav, profile, settings, miningalgo, theme }) => (
             </div>
 
             <div className="col-xl-4 col-lg-4 col-md-12 text-center">
-             <Link route={`/orderdetails/id/${profile.recent_invoice_id}`}>
+             <Link route={`/orderhistory`}>
              <a
                className={
-                 nav.page === "orderdetailspage" &&
+                 nav.page === "orderhistorypage" &&
                  profile.recent_invoice_id !== undefined 
                    ? "marketplacenav selected"
                    : "marketplacenav disabled-link"
@@ -94,7 +94,7 @@ const MarketNav = ({ nav, profile, settings, miningalgo, theme }) => (
              >
                <h4 className="number-circle">3</h4>
                <h4 className="offerformlabel">
-               Order details
+               Order History
                </h4> 
              </a>
              </Link>

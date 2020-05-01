@@ -477,12 +477,6 @@ class InvoicePage extends React.Component {
                      <div>
                             
                      
-
-                         <Link prefetch route={`/orderdetails/id/${bid.bid_id}`}>
-                          <a className="gotomain-btn">
-                            Go to order details{"  "}
-                          </a>
-                        </Link>
                         
                         </div>
 
