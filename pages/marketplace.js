@@ -1283,11 +1283,10 @@ class Marketplace extends React.Component {
                            style={{paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px"}}>
 
                           <div className="container-fluid">
-
                           <div className="row">
                           <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 text-right"
                           style={{ marginTop: "8px", marginLeft: "0px", 
-                          paddingLeft: "0%", position: "relative", left: "80px", top: "22px"}}>
+                          paddingLeft: "0%", position: "relative", left: "0px", top: "30px"}}>
                       <label>
                       <a href="https://warihash.zendesk.com/hc/en-us/articles/360040612232-What-is-a-limit-price-" 
                       target="_blank" 
@@ -1340,12 +1339,13 @@ class Marketplace extends React.Component {
 
                   {this.state.checked === true ? 
                 <div style={{ marginTop: "8px", marginLeft: "20px", 
-                paddingLeft: "0px", textAlign: "right", position: "relative", left: "15px" }}>
+                paddingLeft: "0px", textAlign: "right", 
+                position: "relative", left: "0px" }}>
                   <div className="form-group">
                     <label htmlFor="limit_price" 
                     className="inputlabel"
-                    style={{ position: "relative", left: "30px"}}>
-                      Limit Price in <PaymentRate /> [optional]{" "}
+                    style={{ position: "relative" }}>
+                      Limit Price in <PaymentRate />
                     </label>
                     <div
                       className={
@@ -1353,7 +1353,7 @@ class Marketplace extends React.Component {
                           ? "input-group input-group-md focused"
                           : "input-group input-group-md"
                       }
-                      style={{maxWidth: "285px", marginLeft: "57%"}}
+                      style={{maxWidth: "285px"}}
                     >
                       <div className="input-group-prepend">
                         <span
@@ -1411,6 +1411,7 @@ class Marketplace extends React.Component {
                        <button
                         disabled={this.state.formloading}
                         className="btn btn-info nooutline buybtn"
+                        style={{ position: "relative", left: "-25px", top: "15px" }}
                         type="submit"
                       >
                         {this.state.formloading === true
