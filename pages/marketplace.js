@@ -1190,6 +1190,78 @@ class Marketplace extends React.Component {
                     </div>
                         </div>
                         </div>
+
+
+                        <div
+                  className="col-md-5 col-sm-12 col-12"
+                  style={{ marginTop: "7px" }}
+                >
+                  <div className="form-group">
+                    <label htmlFor="price" className="inputlabel">
+                      Bitcoin Refund Address:
+                    </label>
+                    <div
+                      className={
+                        pricefocus === true
+                          ? "input-group input-group-md focused"
+                          : "input-group input-group-md"
+                      }
+                      style={{maxWidth: "285px"}}
+                    >
+                      <div className="input-group-prepend">
+                        <span
+                          className="input-group-text"
+                          style={{
+                            background: "white",
+                            border: "none",
+                            color: "rgba(0,0,0,0.5)"
+                          }}
+                        >
+                          <FaBitcoin style={pricefocus === true ?
+                           { fontSize: "1.3em", opacity: "1" } : 
+                           { fontSize: "1.3em", opacity: "0.8" }} />
+                        </span>
+                      </div>
+                      <input
+                        type="text"
+                        placeholder="Example: 0.0015"
+                        name="price"
+                        value={this.state.price}
+                        onChange={this.handleChange}
+                        className="form-control inputstyles2"
+                        style={{
+                          border: "none",
+                          borderRadius: "7px",
+                          fontSize: "0.82em"
+                        }}
+                        onFocus={this.handlePriceFocus}
+                        onBlur={this.handlePriceBlur}
+                        autoComplete="off"
+                        required
+                      />
+                      <p style={{paddingTop: "0px", 
+                          paddingBottom: "0px", 
+                          marginBottom: "0px",
+                          position: "relative",
+                          fontSize: "0.92em",
+                          top: "5.9px",
+                          right: "13px", 
+                          zIndex: "222"}}>
+                           BTC
+                          </p>
+                    </div>
+
+                    {this.props.errors.price !== undefined ? <p className="is-invalid-error add-padding-left">
+                      {this.props.errors.price}</p> : null}
+                  </div>
+
+                  <br />
+                  <br />
+                </div>
+
+
+
+
                       <div>
                     </div>
 
