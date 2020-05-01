@@ -64,13 +64,13 @@ class BidsList extends React.Component {
                   </td>
         
                   <td
-                    className="orders-table-buttons text-right"
+                    className="orders-table-buttons text-center"
                   >
                     <button
                       className="btn btn-sm btn-secondary orderstable-btn invoice-btn"
                       onClick={() => invoicePage(bid.bid_id)}
                     >
-                      Invoice
+                      View Invoice
                   </button>
                 
                   </td>
