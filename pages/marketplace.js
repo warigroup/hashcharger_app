@@ -1434,7 +1434,7 @@ class Marketplace extends React.Component {
                         </div>
                       </div>
 
-                      <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-right">
+                      <div className="offset-xl-5 col-xl-7 col-lg-12 col-md-12 col-sm-12 col-12 text-right">
                       <div className="text-center"
                             style={{ paddingTop: "0px", paddingBottom: "0px" }}>
 
