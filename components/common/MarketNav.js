@@ -92,7 +92,7 @@ const MarketNav = ({ nav, profile, settings, miningalgo, theme }) => (
              >
                <h4 className="number-circle">3</h4>
                <h4 className="offerformlabel">
-               Order History
+               Check Order Status
                </h4> 
              </a>
              </Link>
