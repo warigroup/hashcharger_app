@@ -17,7 +17,7 @@ import {
   setStratumUsernamePass,
   setRecentInvoiceId,
   setThemeColors } from "../actions/warihashApiCalls";
-import { FaRegClock, FaBitcoin, FaQuestionCircle } from "react-icons/fa";
+import { FaRegClock, FaBitcoin, FaQuestionCircle, FaWallet } from "react-icons/fa";
 import { TiFlash } from "react-icons/ti";
 import { Router } from "../routes";
 import MiningAlgoDropDown from "../components/tools/MiningAlgoDropDown";
@@ -60,6 +60,7 @@ class Marketplace extends React.Component {
       phone_number: "",
       duration_days: "",
       loading: false,
+      refund_address: "",
       hashratefocus: false,
       durationfocus: false,
       emailfocus: false,
@@ -67,6 +68,7 @@ class Marketplace extends React.Component {
       nameorcompanyfocus: false,
       durationdaysfocus: false,
       phonenumberfocus: false,
+      refundaddressfocus: false,
       formloading: false,
       menuOpen: false,
       checked: false
@@ -213,6 +215,8 @@ class Marketplace extends React.Component {
   handlePhoneNumberBlur = () => this.setState({ phonenumberfocus: false });
   handlePriceFocus = () => this.setState({ pricefocus: true });
   handlePriceBlur = () => this.setState({ pricefocus: false });  
+  handleRefundFocus = () => this.setState({ refundaddressfocus: true });
+  handleRefundBlur = () => this.setState({ refundaddressfocus: false });
 
   handleCheck = () => this.setState({ checked: !this.state.checked, limit_price: "" });
 
@@ -235,6 +239,7 @@ class Marketplace extends React.Component {
       this.props.settings.password,
       this.state.location,
       this.state.limit_price,
+      this.state.refund_address,
       this.props.settings.sub_user
     );
     this.timer = setTimeout(() => {
@@ -378,6 +383,8 @@ class Marketplace extends React.Component {
     };
 
     openOrderHistoryPage = () => Router.pushRoute(`/orderhistory`);
+    handlePriceFocus = () => this.setState({ pricefocus: true });
+    handlePriceBlur = () => this.setState({ pricefocus: false });
 
   render() {
     const {
@@ -1192,17 +1199,15 @@ class Marketplace extends React.Component {
                         </div>
 
 
-                        <div
-                  className="col-md-5 col-sm-12 col-12"
-                  style={{ marginTop: "7px" }}
-                >
+                        <div className="col-md-5 col-sm-12 col-12"
+                          style={{ marginTop: "7px" }}>
                   <div className="form-group">
-                    <label htmlFor="price" className="inputlabel">
+                    <label htmlFor="refund_address" className="inputlabel">
                       Bitcoin Refund Address:
                     </label>
                     <div
                       className={
-                        pricefocus === true
+                        refundaddressfocus === true
                           ? "input-group input-group-md focused"
                           : "input-group input-group-md"
                       }
@@ -1217,7 +1222,7 @@ class Marketplace extends React.Component {
                             color: "rgba(0,0,0,0.5)"
                           }}
                         >
-                          <FaBitcoin style={pricefocus === true ?
+                          <FaWallet style={refundaddressfocus === true ?
                            { fontSize: "1.3em", opacity: "1" } : 
                            { fontSize: "1.3em", opacity: "0.8" }} />
                         </span>
@@ -1225,8 +1230,8 @@ class Marketplace extends React.Component {
                       <input
                         type="text"
                         placeholder="Example: 0.0015"
-                        name="price"
-                        value={this.state.price}
+                        name="refund_address"
+                        value={this.state.refund_address}
                         onChange={this.handleChange}
                         className="form-control inputstyles2"
                         style={{
@@ -1234,25 +1239,26 @@ class Marketplace extends React.Component {
                           borderRadius: "7px",
                           fontSize: "0.82em"
                         }}
-                        onFocus={this.handlePriceFocus}
-                        onBlur={this.handlePriceBlur}
+                        onFocus={this.handleRefundFocus}
+                        onBlur={this.handleRefundBlur}
                         autoComplete="off"
                         required
                       />
-                      <p style={{paddingTop: "0px", 
-                          paddingBottom: "0px", 
-                          marginBottom: "0px",
-                          position: "relative",
-                          fontSize: "0.92em",
-                          top: "5.9px",
-                          right: "13px", 
-                          zIndex: "222"}}>
+                      <p style={{
+                        paddingTop: "0px", 
+                        paddingBottom: "0px", 
+                        marginBottom: "0px",
+                        position: "relative",
+                        fontSize: "0.92em",
+                        top: "5.9px",
+                        right: "13px", 
+                        zIndex: "222"}}>
                            BTC
                           </p>
                     </div>
 
-                    {this.props.errors.price !== undefined ? <p className="is-invalid-error add-padding-left">
-                      {this.props.errors.price}</p> : null}
+                    {this.props.errors.refund_address !== undefined ? <p className="is-invalid-error add-padding-left">
+                      {this.props.errors.refund_address}</p> : null}
                   </div>
 
                   <br />

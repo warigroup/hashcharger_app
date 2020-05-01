@@ -318,6 +318,7 @@ export const takeOffer = (
   password,
   location,
   limit_price,
+  refund_address,
   sub_user
 ) => dispatch => {
   const CancelToken = axios.CancelToken;
@@ -339,6 +340,7 @@ export const takeOffer = (
         password: password,
         location: location,
         limit_price: limit_price,
+        refund_address: refund_address,
         sub_user: sub_user
       },
       {
