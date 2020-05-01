@@ -72,15 +72,6 @@ class BidsList extends React.Component {
                     >
                       Invoice
                   </button>
-                    <button
-                      disabled={bid.offer_take_ids.length === 0}
-                      title={bid.offer_take_ids.length === 0 ? "No details available" : null}
-                      className="btn btn-sm btn-secondary orderstable-btn2"
-                      id="detailsbtn"
-                      onClick={() => openModal(bid)}
-                      >
-                        Details
-                  </button>
                 
                   </td>
                 </tr>
