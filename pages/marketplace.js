@@ -391,7 +391,8 @@ class Marketplace extends React.Component {
       hashratefocus,
       durationfocus,
       durationClicked,
-      pricefocus
+      pricefocus,
+      refundaddressfocus
     } = this.state;
     let hashrateExampleText = "";
     
@@ -1199,9 +1200,27 @@ class Marketplace extends React.Component {
                         </div>
 
 
-                        <div className="col-md-5 col-sm-12 col-12"
-                          style={{ marginTop: "7px" }}>
-                  <div className="form-group">
+                       
+
+
+
+
+                      <div>
+                    </div>
+
+
+                    </div>
+                  </div>
+                  
+             <div className="clearfix" />
+        
+                
+                      <div className="container-fluid">
+                        <div className="row" style={{ paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px" }}>
+                        
+                <div className="col-xl-5 col-lg-6 col-md-12 col-sm-12 col-12" 
+                style={{paddingRight: "0px"}}>
+                  <div className="form-group" style={{paddingRight: "0px"}}>
                     <label htmlFor="refund_address" className="inputlabel">
                       Bitcoin Refund Address:
                     </label>
@@ -1211,7 +1230,7 @@ class Marketplace extends React.Component {
                           ? "input-group input-group-md focused"
                           : "input-group input-group-md"
                       }
-                      style={{maxWidth: "285px"}}
+                      style={{maxWidth: "400px"}}
                     >
                       <div className="input-group-prepend">
                         <span
@@ -1229,7 +1248,7 @@ class Marketplace extends React.Component {
                       </div>
                       <input
                         type="text"
-                        placeholder="Example: 0.0015"
+                        placeholder="Example: 1BvBMSAYstWetqTQn5Au4t4GZg5xJaNVN4"
                         name="refund_address"
                         value={this.state.refund_address}
                         onChange={this.handleChange}
@@ -1244,17 +1263,6 @@ class Marketplace extends React.Component {
                         autoComplete="off"
                         required
                       />
-                      <p style={{
-                        paddingTop: "0px", 
-                        paddingBottom: "0px", 
-                        marginBottom: "0px",
-                        position: "relative",
-                        fontSize: "0.92em",
-                        top: "5.9px",
-                        right: "13px", 
-                        zIndex: "222"}}>
-                           BTC
-                          </p>
                     </div>
 
                     {this.props.errors.refund_address !== undefined ? <p className="is-invalid-error add-padding-left">
@@ -1264,50 +1272,22 @@ class Marketplace extends React.Component {
                   <br />
                   <br />
                 </div>
-
-
-
-
-                      <div>
-                    </div>
-
-
-                    </div>
-                  </div>
+                        
+                       
+              
                   
-             <div className="clearfix" />
-          <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-right">
-                      <div className="text-center"
-                            style={{ paddingTop: "0px", paddingBottom: "0px" }}>
 
-                           {this.props.time.message !== null ? 
-                           <p className="is-invalid-error add-padding-left">{this.props.time.message}</p> : null}
-                           
-                           {this.state.networkerror !== "" ? 
-                           <p className="is-invalid-error add-padding-left">{this.state.networkerror}</p> : null}
-                           {this.props.errors.errors !== null &&
-                           this.props.errors !== undefined &&
-                           this.props.payment.bid_id === undefined &&
-                           this.state.networkerror === "" &&
-                                fielderrors != "hashrate" &&
-                                fielderrors != "duration" &&
-                                fielderrors != "username" &&
-                                fielderrors != "password" &&
-                                fielderrors != "discount_code" &&
-                                fielderrors != "price" &&
-                               this.props.errors.host === undefined &&
-                               this.props.errors.port === undefined 
-                                ? <p className="is-invalid-error add-padding-left">
-                               {fielderrorsReason} </p>
-                                : null}
-                          </div>
+                    
 
-                
-                      <div className="container-fluid">
-                        <div className="row" style={{ paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px" }}>
-                        <div className="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12 text-right"
+                           <div className="col-xl-6 col-lg-12 text-right" 
+                           style={{paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px"}}>
+
+                          <div className="container-fluid">
+
+                          <div className="row">
+                          <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 text-right"
                           style={{ marginTop: "8px", marginLeft: "0px", 
-                          paddingLeft: "0%", position: "relative", left: "137px", top: "16px"}}>
+                          paddingLeft: "0%", position: "relative", left: "80px", top: "22px"}}>
                       <label>
                       <a href="https://warihash.zendesk.com/hc/en-us/articles/360040612232-What-is-a-limit-price-" 
                       target="_blank" 
@@ -1357,8 +1337,8 @@ class Marketplace extends React.Component {
                       </svg>
                     </div>
                   </div>
+
                   {this.state.checked === true ? 
-                
                 <div style={{ marginTop: "8px", marginLeft: "20px", 
                 paddingLeft: "0px", textAlign: "right", position: "relative", left: "15px" }}>
                   <div className="form-group">
@@ -1425,14 +1405,9 @@ class Marketplace extends React.Component {
 
 
                     </div>
-              
-                  
 
-                    
-
-                           <div className="col-xl-4 col-lg-12 text-right" 
-                           style={{paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px"}}>
-                           <CSRFToken />
+                            <div className="col-xl-6 col-md-6">
+                            <CSRFToken />
                        <button
                         disabled={this.state.formloading}
                         className="btn btn-info nooutline buybtn"
@@ -1443,17 +1418,50 @@ class Marketplace extends React.Component {
                           : <p style={{ paddingBottom: "0px", marginBottom: "0px" }}>Continue to Payment</p>}
 
                       </button>
+                            </div>
+
+                          </div>
 
 
-                     
+                           
+                           
 
-
+                            </div>
                            </div>
+
+
                         </div>
                       </div>
-                    
-                       
+
+                      <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-right">
+                      <div className="text-center"
+                            style={{ paddingTop: "0px", paddingBottom: "0px" }}>
+
+                           {this.props.time.message !== null ? 
+                           <p className="is-invalid-error add-padding-left">{this.props.time.message}</p> : null}
+                           
+                           {this.state.networkerror !== "" ? 
+                           <p className="is-invalid-error add-padding-left">{this.state.networkerror}</p> : null}
+                           {this.props.errors.errors !== null &&
+                           this.props.errors !== undefined &&
+                           this.props.payment.bid_id === undefined &&
+                           this.state.networkerror === "" &&
+                                fielderrors != "hashrate" &&
+                                fielderrors != "duration" &&
+                                fielderrors != "username" &&
+                                fielderrors != "password" &&
+                                fielderrors != "discount_code" &&
+                                fielderrors != "price" &&
+                               this.props.errors.host === undefined &&
+                               this.props.errors.port === undefined 
+                                ? <p className="is-invalid-error add-padding-left">
+                               {fielderrorsReason} </p>
+                                : null}
+                          </div>
+
                       </div>
+
+
                         </form> 
             </div>   }
           </div>
