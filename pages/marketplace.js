@@ -979,7 +979,8 @@ class Marketplace extends React.Component {
                   this.checkNestedConfigs() && 
                   parseInt(this.state.duration * 60) > (this.props.configs[this.props.miningalgo.algorithm] || {}).max_order_duration_min ? 
                   <p className="is-invalid-error add-padding-left">
-                    Your duration exceeds the maximum duration. Please decrease your duration input value. 
+                    Your duration exceeds the maximum duration. 
+                    <br />Please decrease your duration input value. 
                   </p> : null}
 
                   {this.props.errors.duration === undefined && 
@@ -991,7 +992,7 @@ class Marketplace extends React.Component {
                     The minimum duration you can purchase is {this.props.configs &&
                     this.props.configs[this.props.miningalgo.algorithm] && 
                     (this.props.configs[this.props.miningalgo.algorithm] || {}).min_order_duration_min / 60 + " hours"}. 
-                    Please increase your duration input value. 
+                    <br />Please increase your duration input value. 
                   </p> : null}
 
                   {this.maxDurationCheck() &&
@@ -1000,7 +1001,8 @@ class Marketplace extends React.Component {
                   this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min) === null
                   ? 
                   <p className="is-invalid-error add-padding-left">
-                   Selected duration is not available. Please change your duration.
+                   Selected duration is not available. 
+                   <br />Please change your duration.
                   </p> : null}
                          
                       </div>
@@ -1142,7 +1144,7 @@ class Marketplace extends React.Component {
   <p className="is-invalid-error add-padding-left">
     The minimum hashrate you can purchase is {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min)}{" "}
     {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].hashrate_units)}H/s.
-    Please increase your hashrate input value.
+    <br />Please increase your hashrate input value.
   </p>
    : null}                       
                  
@@ -1156,7 +1158,7 @@ class Marketplace extends React.Component {
   <p className="is-invalid-error add-padding-left">
     The minimum hashrate you can purchase is {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1].min)}{" "}
    {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].hashrate_units)}H/s.
-    Please increase your hashrate input value.
+   <br />Please increase your hashrate input value.
   </p> : null}                       
 
 
@@ -1218,7 +1220,7 @@ class Marketplace extends React.Component {
                       <div className="container-fluid">
                         <div className="row" style={{ paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px" }}>
                         
-                <div className="col-xl-5 col-lg-6 col-md-12 col-sm-12 col-12" 
+                <div className="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12" 
                 style={{paddingRight: "0px"}}>
                   <div className="form-group" style={{paddingRight: "0px"}}>
                     <label htmlFor="refund_address" className="inputlabel">
