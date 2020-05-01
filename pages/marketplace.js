@@ -1419,24 +1419,11 @@ class Marketplace extends React.Component {
                           : <p style={{ paddingBottom: "0px", marginBottom: "0px" }}>Continue to Payment</p>}
 
                       </button>
-                            </div>
-
-                          </div>
 
 
-                           
-                           
 
-                            </div>
-                           </div>
-
-
-                        </div>
-                      </div>
-
-                      <div className="offset-xl-5 col-xl-7 col-lg-12 col-md-12 col-sm-12 col-12 text-right">
                       <div className="text-center"
-                            style={{ paddingTop: "0px", paddingBottom: "0px" }}>
+                            style={{ paddingTop: "15px", paddingBottom: "0px" }}>
 
                            {this.props.time.message !== null ? 
                            <p className="is-invalid-error add-padding-left">{this.props.time.message}</p> : null}
@@ -1460,7 +1447,22 @@ class Marketplace extends React.Component {
                                 : null}
                           </div>
 
+                            </div>
+
+                          </div>
+
+
+                           
+                           
+
+                            </div>
+                           </div>
+
+
+                        </div>
                       </div>
+
+                    
 
 
                         </form> 
