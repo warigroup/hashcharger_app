@@ -1423,7 +1423,7 @@ class Marketplace extends React.Component {
 
 
                       <div className="text-center"
-                            style={{ paddingTop: "15px", paddingBottom: "0px" }}>
+                            style={{ paddingTop: "25px", paddingBottom: "0px" }}>
 
                            {this.props.time.message !== null ? 
                            <p className="is-invalid-error add-padding-left">{this.props.time.message}</p> : null}
