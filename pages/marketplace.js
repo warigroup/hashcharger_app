@@ -1263,7 +1263,6 @@ class Marketplace extends React.Component {
                         onFocus={this.handleRefundFocus}
                         onBlur={this.handleRefundBlur}
                         autoComplete="off"
-                        required
                       />
                     </div>
 
