@@ -76,3 +76,15 @@
 
 :focus { outline:none; }
 ::-moz-focus-inner { border:0; }
+
+.svg-close-icon {
+  width: 25px;
+  height: 25px;
+}
+
+@media(min-width: 1950px) {
+  .svg-close-icon {
+    width: 35px;
+    height: 35px;
+  }
+}
