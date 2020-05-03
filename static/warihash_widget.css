@@ -73,6 +73,10 @@
   height: 21.5px;
 }
 
+.svg-close-icon:hover {
+  fill: rgba(0,0,0,0.6);
+}
+
 @media(min-width: 1950px) {
   .svg-close-icon {
     width: 35px;
