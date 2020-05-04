@@ -556,6 +556,9 @@ class Marketplace extends React.Component {
               margin-bottom: 0px;
               color: white;
               font-weight: 600;
+              position: relative; 
+              left: -25px;
+              top: 15px;
             }
             .buybtn:hover {
               background: rgb(224, 79, 240) !important;
@@ -718,6 +721,10 @@ class Marketplace extends React.Component {
               }
               .mainwrapper {
                 padding: 0px;
+              }
+              .buybtn {
+                position: relative; 
+                top: 15px;
               }
               .buypage-title {
                 font-size: 1.1em;
@@ -1416,12 +1423,11 @@ class Marketplace extends React.Component {
 
                     </div>
 
-                            <div className="col-xl-6 col-md-6">
+                            <div className="col-xl-6 col-md-6 text-xl-right text-lg-right text-md-center text-center">
                             <CSRFToken />
                        <button
                         disabled={this.state.formloading}
                         className="btn btn-info nooutline buybtn"
-                        style={{ position: "relative", left: "-25px", top: "15px" }}
                         type="submit"
                       >
                         {this.state.formloading === true
