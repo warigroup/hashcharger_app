@@ -73,5 +73,9 @@
   height: 26px;
 }
 
+.svg-close-icon:hover {
+  fill: rgba(0,0,0,0.6);
+}
+
 :focus { outline:none; }
 ::-moz-focus-inner { border:0; }
