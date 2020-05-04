@@ -1423,7 +1423,7 @@ class Marketplace extends React.Component {
 
                     </div>
 
-                            <div className="col-xl-6 col-md-6 text-xl-right text-lg-right text-md-center text-center">
+      <div className="col-xl-6 col-lg-6 col-md-12 col-12 text-xl-right text-lg-right text-md-center text-center">
                             <CSRFToken />
                        <button
                         disabled={this.state.formloading}
