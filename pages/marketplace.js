@@ -668,7 +668,15 @@ class Marketplace extends React.Component {
               color: rgba(0,0,0,0.77);
             }
 
+            .main-marketplace-form {
+              width: 100%;
+            }
+
             @media (max-width: 770px) {
+              .main-marketplace-form {
+                width: 100%;
+                margin-bottom: 150px;
+              }
               .offerformlabel {
                 display: inline-block; 
                 margin-left: 15px;
@@ -876,7 +884,7 @@ class Marketplace extends React.Component {
            </div>
        </div>
 </div> : 
-            <div style={{width: "100%"}}>
+            <div className="main-marketplace-form">
             <form
               className="formstyles"
               onSubmit={this.handleSubmit}
@@ -1281,8 +1289,8 @@ class Marketplace extends React.Component {
 
                     
 
-                           <div className="col-xl-6 col-lg-12 text-right" 
-                           style={{paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px"}}>
+                <div className="col-xl-6 col-lg-12 col-md-12 text-xl-right text-lg-right text-md-center" 
+                  style={{ paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px" }}>
 
                           <div className="container-fluid">
                           <div className="row">
