@@ -74,7 +74,7 @@
 }
 
 .svg-close-icon:hover {
-  fill: rgba(0,0,0,0.6);
+  fill: rgba(0,0,0,0.55);
 }
 
 :focus { outline:none; }
