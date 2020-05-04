@@ -675,11 +675,36 @@ class Marketplace extends React.Component {
               width: 100%;
             }
 
-            @media (max-width: 770px) {
+            .limit-price-container {
+              margin-top: 8px; 
+              margin-left: 20px; 
+              padding-left: 0px; 
+              position: relative; 
+              left: 30px;
+            }
+
+            @media (max-width: 880px) {
               .main-marketplace-form {
                 width: 100%;
                 margin-bottom: 150px;
               }
+            }
+
+            @media (max-width: 770px) {
+              
+
+              .limitinput {
+                margin: 0 auto;
+              }
+
+              .limit-price-container {
+                margin-top: 8px; 
+              margin-left: 0px; 
+              padding-left: 0px; 
+              position: relative; 
+              left: 0px;
+              }
+
               .offerformlabel {
                 display: inline-block; 
                 margin-left: 15px;
@@ -1296,12 +1321,12 @@ class Marketplace extends React.Component {
 
                     
 
-                <div className="col-xl-6 col-lg-12 col-md-12 text-xl-right text-lg-right text-md-center" 
+      <div className="col-xl-6 col-lg-12 col-md-12 col-12 text-xl-right text-lg-right text-md-center text-center" 
                   style={{ paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px" }}>
 
-                          <div className="container-fluid">
-                          <div className="row">
-                          <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 text-right"
+          <div className="container-fluid">
+              <div className="row">
+              <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 text-xl-right text-lg-right text-md-center text-center"
                           style={{ marginTop: "8px", marginLeft: "0px", 
                           paddingLeft: "0%", position: "relative", left: "0px", top: "30px"}}>
                       <label>
@@ -1355,9 +1380,7 @@ class Marketplace extends React.Component {
                   </div>
 
                   {this.state.checked === true ? 
-                <div style={{ marginTop: "8px", marginLeft: "20px", 
-                paddingLeft: "0px", textAlign: "right", 
-                position: "relative", left: "30px" }}>
+                <div className="limit-price-container text-xl-right text-lg-right text-md-center">
                   <div className="form-group">
                     <label htmlFor="limit_price" 
                     className="inputlabel"
@@ -1367,8 +1390,8 @@ class Marketplace extends React.Component {
                     <div
                       className={
                         pricefocus === true
-                          ? "input-group input-group-md focused"
-                          : "input-group input-group-md"
+                          ? "input-group input-group-md limitinput focused"
+                          : "input-group input-group-md limitinput"
                       }
                       style={{maxWidth: "285px"}}
                     >
