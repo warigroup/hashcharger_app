@@ -692,16 +692,23 @@ class Marketplace extends React.Component {
               left: 30px;
             }
 
-            @media (max-width: 1000px) {
+            @media (max-width: 1200px) {
               .main-marketplace-form {
                 width: 100%;
-                margin-bottom: 150px;
+                margin-bottom: 160px;
               }
+            }
 
+            @media (max-width: 1000px) {
               .specify-limit {
                 position: relative; 
                 left: 20px;
                 top: 0px;
+              }
+
+              .buybtn {
+                position: relative; 
+                left: 12px;
               }
             }
 
@@ -1274,7 +1281,7 @@ class Marketplace extends React.Component {
                       <div className="container-fluid">
                         <div className="row" style={{ paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px" }}>
                         
-                <div className="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12" 
+                <div className="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-12" 
                 style={{paddingRight: "0px"}}>
                   <div className="form-group" style={{paddingRight: "0px"}}>
                     <label htmlFor="refund_address" className="inputlabel">
@@ -1336,7 +1343,7 @@ class Marketplace extends React.Component {
                     
 
       <div className="col-xl-6 col-lg-12 col-md-12 col-12" 
-                  style={{ paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px" }}>
+          style={{ paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px" }}>
 
           <div className="container-fluid">
               <div className="row">
