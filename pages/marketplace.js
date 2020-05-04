@@ -691,14 +691,12 @@ class Marketplace extends React.Component {
             }
 
             @media (max-width: 770px) {
-              
-
               .limitinput {
-                margin: 0 auto;
+                text-align: left;
               }
 
               .limit-price-container {
-                margin-top: 8px; 
+              margin-top: 8px; 
               margin-left: 0px; 
               padding-left: 0px; 
               position: relative; 
@@ -1321,12 +1319,12 @@ class Marketplace extends React.Component {
 
                     
 
-      <div className="col-xl-6 col-lg-12 col-md-12 col-12 text-xl-right text-lg-right text-md-center text-center" 
+      <div className="col-xl-6 col-lg-12 col-md-12 col-12" 
                   style={{ paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px" }}>
 
           <div className="container-fluid">
               <div className="row">
-              <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 text-xl-right text-lg-right text-md-center text-center"
+              <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 text-xl-right text-lg-right text-md-left text-left"
                           style={{ marginTop: "8px", marginLeft: "0px", 
                           paddingLeft: "0%", position: "relative", left: "0px", top: "30px"}}>
                       <label>
@@ -1380,7 +1378,7 @@ class Marketplace extends React.Component {
                   </div>
 
                   {this.state.checked === true ? 
-                <div className="limit-price-container text-xl-right text-lg-right text-md-center">
+                <div className="limit-price-container text-xl-right text-lg-right text-md-left text-left">
                   <div className="form-group">
                     <label htmlFor="limit_price" 
                     className="inputlabel"
@@ -1446,7 +1444,7 @@ class Marketplace extends React.Component {
 
                     </div>
 
-      <div className="col-xl-6 col-lg-6 col-md-12 col-12 text-xl-right text-lg-right text-md-center text-center">
+      <div className="col-xl-6 col-lg-6 col-md-12 col-12 text-xl-right text-lg-right text-md-left text-left">
                             <CSRFToken />
                        <button
                         disabled={this.state.formloading}
