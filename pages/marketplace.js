@@ -461,6 +461,15 @@ class Marketplace extends React.Component {
             margin-top: 77px;
           }
 
+          .specify-limit {
+            margin-top: 8px; 
+            margin-left: 0px; 
+            padding-left: 0%; 
+            position: relative; 
+            left: 0px;
+            top: 30px;
+          }
+
           .nav-buttons {
             background: none;
             display: inline-block;
@@ -683,10 +692,16 @@ class Marketplace extends React.Component {
               left: 30px;
             }
 
-            @media (max-width: 880px) {
+            @media (max-width: 1000px) {
               .main-marketplace-form {
                 width: 100%;
                 margin-bottom: 150px;
+              }
+
+              .specify-limit {
+                position: relative; 
+                left: 20px;
+                top: 0px;
               }
             }
 
@@ -696,11 +711,11 @@ class Marketplace extends React.Component {
               }
 
               .limit-price-container {
-              margin-top: 8px; 
-              margin-left: 0px; 
-              padding-left: 0px; 
-              position: relative; 
-              left: 0px;
+                margin-top: 8px; 
+                margin-left: 0px; 
+                padding-left: 0px; 
+                position: relative; 
+                left: 0px;
               }
 
               .offerformlabel {
@@ -748,6 +763,7 @@ class Marketplace extends React.Component {
               .buybtn {
                 position: relative; 
                 top: 15px;
+                left: 9px;
               }
               .buypage-title {
                 font-size: 1.1em;
@@ -1324,9 +1340,7 @@ class Marketplace extends React.Component {
 
           <div className="container-fluid">
               <div className="row">
-              <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 text-xl-right text-lg-right text-md-left text-left"
-                          style={{ marginTop: "8px", marginLeft: "0px", 
-                          paddingLeft: "0%", position: "relative", left: "0px", top: "30px"}}>
+              <div className="specify-limit col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 text-xl-right text-lg-right text-md-left text-left">
                       <label>
                       <a href="https://warihash.zendesk.com/hc/en-us/articles/360040612232-What-is-a-limit-price-" 
                       target="_blank" 
