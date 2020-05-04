@@ -29,7 +29,6 @@ var createModal = function() {
     var navtexts = (myScript.getAttribute('navtexts') || '');
     var btncolor = (myScript.getAttribute('btncolor') || '');
     var btntexts = (myScript.getAttribute('btntexts') || '');
-    var closebtn = (myScript.getAttribute('closebtn') || '');
     var nightmode = (myScript.getAttribute('nightmode') || '');
 
     // modal window div
@@ -56,8 +55,7 @@ var createModal = function() {
     widgetCloseBtn.className = 'warihash-close-button';
     widgetCloseBtn.id = 'warihash-close-button';
     widgetCloseBtn.title = 'Close window';
-    widgetCloseBtn.innerHTML = '<svg class="svg-close-icon" version="1.1" viewBox="0 0 14 14"><title/><desc/><defs/><g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1"><g fill="#000000" id="Core" transform="translate(-341.000000, -89.000000)"><g id="close" transform="translate(341.000000, 89.000000)"><path d="M14,1.4 L12.6,0 L7,5.6 L1.4,0 L0,1.4 L5.6,7 L0,12.6 L1.4,14 L7,8.4 L12.6,14 L14,12.6 L8.4,7 L14,1.4 Z" id="Shape"/></g></g></g></svg>';
-    widgetCloseBtn.style.color = closebtn;
+    widgetCloseBtn.innerHTML = '<svg class="svg-close-icon" enable-background="new 0 0 24 24" id="Layer_1" version="1.1" viewBox="0 0 24 24"><path d="M22.245,4.015c0.313,0.313,0.313,0.826,0,1.139l-6.276,6.27c-0.313,0.312-0.313,0.826,0,1.14l6.273,6.272  c0.313,0.313,0.313,0.826,0,1.14l-2.285,2.277c-0.314,0.312-0.828,0.312-1.142,0l-6.271-6.271c-0.313-0.313-0.828-0.313-1.141,0  l-6.276,6.267c-0.313,0.313-0.828,0.313-1.141,0l-2.282-2.28c-0.313-0.313-0.313-0.826,0-1.14l6.278-6.269  c0.313-0.312,0.313-0.826,0-1.14L1.709,5.147c-0.314-0.313-0.314-0.827,0-1.14l2.284-2.278C4.308,1.417,4.821,1.417,5.135,1.73  L11.405,8c0.314,0.314,0.828,0.314,1.141,0.001l6.276-6.267c0.312-0.312,0.826-0.312,1.141,0L22.245,4.015z"/></svg>';
 
     // add widget close function
     widgetCloseBtn.addEventListener("click", function () {
