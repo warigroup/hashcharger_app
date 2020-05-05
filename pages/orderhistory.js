@@ -161,7 +161,7 @@ class myOrderHistory extends React.Component {
       <PublicRoute>
         <div
           className="container-fluid"
-          style={{ marginTop: "20px", marginBottom: "100px" }}
+          style={{ marginTop: "20px", marginBottom: "60px" }}
         >
           <div className="row">
             <div className="container" style={{ padding: "0px" }}>
