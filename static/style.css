@@ -2023,12 +2023,7 @@ input {
 }
 
 @media (max-width: 610px) {
-  .min-value {
-    display: block;
-  }
-  .max-value {
-    display: block;
-  }
+
   .max-min-bar {
     display: none;
   }

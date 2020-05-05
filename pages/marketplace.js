@@ -1225,13 +1225,11 @@ class Marketplace extends React.Component {
                     <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
                       style={{paddingLeft: "0px", paddingRight: "0px", paddingTop: "0px", marginTop: "16px"}}
                       >
-                      <p
-                      style={{
+                      <p style={{
                         fontSize: "0.7em",
                         color: "rgba(0,0,0,0.6)",
                         marginLeft: "5px"
-                      }}
-                    >
+                      }}>
                     <span className="min-value">Minimum hashrate:{" "}{
                     this.checkNestedConfigs() &&
                     this.checkDurationBelowDay() ?
