@@ -697,9 +697,7 @@ class Marketplace extends React.Component {
                 width: 100%;
                 margin-bottom: 160px;
               }
-            }
 
-            @media (max-width: 1000px) {
               .specify-limit {
                 position: relative; 
                 left: 20px;
@@ -710,9 +708,7 @@ class Marketplace extends React.Component {
                 position: relative; 
                 left: 12px;
               }
-            }
 
-            @media (max-width: 770px) {
               .limitinput {
                 text-align: left;
               }
@@ -724,7 +720,10 @@ class Marketplace extends React.Component {
                 position: relative; 
                 left: 0px;
               }
+            }
 
+
+            @media (max-width: 770px) {
               .offerformlabel {
                 display: inline-block; 
                 margin-left: 15px;
@@ -947,7 +946,7 @@ class Marketplace extends React.Component {
                   <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div className="row formcontainer-price">
                   
-                  <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12" 
+                  <div className="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12" 
                   style={{paddingLeft: "0px", paddingRight: "0px"}}>
                       
                       <div className="form-group">
@@ -972,7 +971,7 @@ class Marketplace extends React.Component {
                           </div>
                           </div>
 
-                      <div className="col-xl-4 col-lg-4 col-md-8 col-sm-12 col-12" 
+                      <div className="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12" 
                       style={{paddingLeft: "0px", paddingRight: "0px"}}>
                         <div className="row">
                         <div className="col-xl-12 col-lg-12">
@@ -1097,7 +1096,7 @@ class Marketplace extends React.Component {
 
                      
 
-                      <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                      <div className="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12">
                       <div className="row">
                       <div className="form-group">
                         <label htmlFor="hashrate" className="inputlabel">
@@ -1347,7 +1346,7 @@ class Marketplace extends React.Component {
 
           <div className="container-fluid">
               <div className="row">
-              <div className="specify-limit col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 text-xl-right text-lg-right text-md-left text-left">
+              <div className="specify-limit col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 text-xl-right text-lg-left text-md-left text-left">
                       <label>
                       <a href="https://warihash.zendesk.com/hc/en-us/articles/360040612232-What-is-a-limit-price-" 
                       target="_blank" 
@@ -1399,7 +1398,7 @@ class Marketplace extends React.Component {
                   </div>
 
                   {this.state.checked === true ? 
-                <div className="limit-price-container text-xl-right text-lg-right text-md-left text-left">
+                <div className="limit-price-container text-xl-right text-lg-left text-md-left text-left">
                   <div className="form-group">
                     <label htmlFor="limit_price" 
                     className="inputlabel"
@@ -1465,7 +1464,7 @@ class Marketplace extends React.Component {
 
                     </div>
 
-      <div className="col-xl-6 col-lg-6 col-md-12 col-12 text-xl-right text-lg-right text-md-left text-left">
+      <div className="col-xl-6 col-lg-12 col-md-12 col-12 text-xl-right text-lg-left text-md-left text-left">
                             <CSRFToken />
                        <button
                         disabled={this.state.formloading}
