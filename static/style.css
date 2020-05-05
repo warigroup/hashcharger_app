@@ -2025,11 +2025,9 @@ input {
 @media (max-width: 610px) {
   .min-value {
     display: block;
-    padding-top: 2px;
   }
   .max-value {
     display: block;
-    padding-top: 2px;
   }
   .max-min-bar {
     display: none;
