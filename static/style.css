@@ -1479,7 +1479,7 @@ input {
 }
 
 .orders-table-id {
-  width: 7%;
+  width: 8%;
   padding-left: 1.7% !important;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1488,7 +1488,7 @@ input {
 }
 
 .orders-table-algorithm {
-  width: 9%;
+  width: 10%;
   overflow: hidden;
   text-overflow: ellipsis;
   -ms-text-overflow: ellipsis;
@@ -1497,7 +1497,7 @@ input {
 
 
 .orders-table-duration {
-  width: 14.5%;
+  width: 16.5%;
   overflow: hidden;
   text-overflow: ellipsis;
   -ms-text-overflow: ellipsis;
@@ -1505,7 +1505,7 @@ input {
 }
 
 .orders-table-average-hashrate {
-  width: 25%;
+  width: 26%;
   overflow: hidden;
   text-overflow: ellipsis;
   -ms-text-overflow: ellipsis;
@@ -1513,7 +1513,7 @@ input {
 }
 
 .orders-table-status {
-  width: 13.5%;
+  width: 14.5%;
   overflow: hidden;
   text-overflow: ellipsis;
   -ms-text-overflow: ellipsis;
@@ -1521,7 +1521,7 @@ input {
 }
 
 .orders-table-mining {
-  width: 9%;
+  width: 10%;
   overflow: hidden;
   text-overflow: ellipsis;
   -ms-text-overflow: ellipsis;
@@ -1529,7 +1529,7 @@ input {
 }
 
 .orders-table-buttons {
-  width: 22%;
+  width: 15%;
   overflow: hidden;
   text-overflow: ellipsis;
   -ms-text-overflow: ellipsis;
@@ -1538,7 +1538,7 @@ input {
 
 @media (max-width: 1200px) {
   .orders-table-id {
-    width: 10%;
+    width: 12%;
     text-overflow: ellipsis;
   }
 
@@ -1552,12 +1552,12 @@ input {
   }
 
   .orders-table-average-hashrate {
-    width: 40%;
+    width: 42%;
     text-overflow: ellipsis;
   }
 
   .orders-table-status {
-    width: 18%;
+    width: 20%;
     text-overflow: ellipsis;
   }
 
@@ -1566,14 +1566,14 @@ input {
   }
 
   .orders-table-buttons {
-    width: 32%;
+    width: 26%;
     text-overflow: ellipsis;
   }
 }
 
 @media (max-width: 1000px) {
   .orders-table-id {
-    width: 11%;
+    width: 13%;
     text-overflow: ellipsis;
   }
 
@@ -1587,30 +1587,30 @@ input {
   }
 
   .orders-table-status {
-    width: 21%;
+    width: 23%;
     text-overflow: ellipsis;
   }
 
   .orders-table-buttons {
-    width: 32%;
+    width: 28%;
     text-overflow: ellipsis;
   }
 }
 
 @media (max-width: 779px) {
   .orders-table-id {
-    width: 11%;
+    width: 15%;
     text-overflow: ellipsis;
   }
   .orders-table-average-hashrate {
-    width: 36%;
+    width: 40%;
     text-overflow: ellipsis;
   }
   .orders-table-status {
     display: none;
   }
   .orders-table-buttons {
-    width: 53%;
+    width: 45%;
     text-overflow: ellipsis;
   }
 }
@@ -1621,11 +1621,11 @@ input {
     text-overflow: ellipsis;
   }
   .orders-table-average-hashrate {
-    display: none;
+    display: 50%;
     text-overflow: ellipsis;
   }
   .orders-table-buttons {
-    width: 85%;
+    width: 35%;
     text-overflow: ellipsis;
   }
   .orderstable-btn span {
