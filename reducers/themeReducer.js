@@ -7,7 +7,7 @@ const initialState = {
         btn1texts: "#ffffff",
         btn2color: "#3626a5", 
         btn2texts: "#ffffff",
-        nightmode: "off"
+        fullscreen: "off"
 }
 
 export default function (state = initialState, action) {
@@ -21,7 +21,7 @@ export default function (state = initialState, action) {
                 btn1texts: action.payload[0].btn1texts,
                 btn2color: action.payload[0].btn2color,
                 btn2texts: action.payload[0].btn2texts,
-                nightmode: action.payload[0].nightmode
+                fullscreen: action.payload[0].fullscreen
               };
         default:
             return state;
