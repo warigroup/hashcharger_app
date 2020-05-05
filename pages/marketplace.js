@@ -1335,9 +1335,9 @@ class Marketplace extends React.Component {
                 
                 <div className="desktop-br">
                   <br />
-                  <br />
+                 
                 </div>
-                
+                <br />
                 </div>
                         
                        
