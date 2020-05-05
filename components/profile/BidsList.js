@@ -64,7 +64,7 @@ class BidsList extends React.Component {
                   </td>
         
                   <td
-                    className="orders-table-buttons text-center"
+                    className="orders-table-buttons text-xl-center text-lg-center text-md-right text-right"
                   >
                     <button
                       className="btn btn-sm btn-secondary orderstable-btn invoice-btn"
