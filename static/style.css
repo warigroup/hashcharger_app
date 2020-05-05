@@ -1639,17 +1639,16 @@ input {
     text-overflow: ellipsis;
   }
   .orders-table-average-hashrate {
-    display: none;
+    display: 60%;
     text-overflow: ellipsis;
   }
-
   .orders-table-buttons {
-    width: 85%;
+    width: 25%;
     text-overflow: ellipsis;
   }
 }
 
-@media (max-width: 470px) {
+@media (max-width: 450px) {
   .orders-table-id {
     width: 14%;
     text-overflow: ellipsis;
