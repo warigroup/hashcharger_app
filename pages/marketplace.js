@@ -695,7 +695,7 @@ class Marketplace extends React.Component {
             @media (max-width: 1200px) {
               .main-marketplace-form {
                 width: 100%;
-                margin-bottom: 160px;
+                margin-bottom: 200px;
               }
 
               .specify-limit {
