@@ -245,6 +245,12 @@ class InvoicePage extends React.Component {
                         padding-top: 25px;
                       }
 
+                      @media(max-width: 720px) {
+                        .mobile-padding {
+                          margin-bottom: 70px;
+                        }
+                      }
+
                       @media(max-width: 620px) {
                         .btc-address-input {
                           width: 260px;
@@ -467,7 +473,7 @@ class InvoicePage extends React.Component {
                        
                            </div>
                          
-                           <div style={{paddingBottom: "25px", paddingTop: "25px"}}>    
+                           <div className="mobile-padding" style={{paddingBottom: "25px", paddingTop: "25px"}}>    
                    <p className="invoice-contents">
                   This invoice can be accessed again through{" "}
                   <Link route="/orderhistory"><a className="link-items">order hisotry page</a></Link>.
