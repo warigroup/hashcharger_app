@@ -784,6 +784,10 @@ class Marketplace extends React.Component {
               .miningalgo-selector-container {
                 margin-top: 13px;
               }
+
+              .desktop-br {
+                display: none;
+              }
             }
 
             @media (max-width: 620px) {
@@ -1328,9 +1332,12 @@ class Marketplace extends React.Component {
                     {this.props.errors.refund_address !== undefined ? <p className="is-invalid-error add-padding-left">
                       {this.props.errors.refund_address}</p> : null}
                   </div>
-
+                
+                <div className="desktop-br">
                   <br />
                   <br />
+                </div>
+                
                 </div>
                         
                        
