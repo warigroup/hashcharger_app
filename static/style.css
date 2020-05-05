@@ -71,6 +71,7 @@ code {
 
 main {
   font-family: "Open Sans", sans-serif;
+  padding: 0;
 }
 
 /** IE11 Table style fix **/
