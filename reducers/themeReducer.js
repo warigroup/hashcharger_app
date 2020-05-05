@@ -14,7 +14,6 @@ export default function (state = initialState, action) {
     switch (action.type) {
         case SET_THEME_COLORS:
             return {
-                ...state,
                 navbg: action.payload[0].navbg,
                 navtexts: action.payload[0].navtexts,
                 btn1color: action.payload[0].btn1color,
