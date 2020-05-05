@@ -5065,3 +5065,16 @@ select:-moz-focusring {
   display: block;
   margin-top: 80px;
  }
+
+
+ .orderhistory-container {
+  margin-top: 20px; 
+  margin-bottom: 60px; 
+ }
+
+ @media (max-width: 700px) {
+  .orderhistory-container {
+    margin-top: 20px; 
+    margin-bottom: 150px; 
+   }
+ }
