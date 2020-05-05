@@ -1488,7 +1488,7 @@ input {
 }
 
 .orders-table-algorithm {
-  width: 10%;
+  width: 13.5%;
   overflow: hidden;
   text-overflow: ellipsis;
   -ms-text-overflow: ellipsis;
@@ -1497,7 +1497,7 @@ input {
 
 
 .orders-table-duration {
-  width: 16.5%;
+  width: 16%;
   overflow: hidden;
   text-overflow: ellipsis;
   -ms-text-overflow: ellipsis;
@@ -1505,7 +1505,7 @@ input {
 }
 
 .orders-table-average-hashrate {
-  width: 26%;
+  width: 23%;
   overflow: hidden;
   text-overflow: ellipsis;
   -ms-text-overflow: ellipsis;
