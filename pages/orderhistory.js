@@ -228,6 +228,11 @@ class myOrderHistory extends React.Component {
                           display: none;
                         }
                       }
+                      @media (max-width: 730px) {
+                        .tablecontainer {
+                          margin-bottom: 80px;
+                        }
+                      }
                       @media (max-width: 650px) {
                         .tabmenu-btn {
                           border-radius: 0px;
