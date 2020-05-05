@@ -2029,7 +2029,7 @@ input {
   }
   .max-value {
     display: block;
-    padding-top: 7px;
+    padding-top: 2px;
   }
   .max-min-bar {
     display: none;
