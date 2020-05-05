@@ -44,7 +44,7 @@ const MarketNav = ({ nav, profile, settings, miningalgo, theme }) => (
                 pointer-events: none;
               }
 
-              @media(max-width: 924px) {
+              @media(max-width: 932px) {
                 .addspace {
                   padding-top: 13px;
                   padding-bottom: 13px;
