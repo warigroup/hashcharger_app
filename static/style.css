@@ -1635,29 +1635,29 @@ input {
 
 @media (max-width: 485px) {
   .orders-table-id {
-    width: 15;
+    width: 20%;
     text-overflow: ellipsis;
   }
   .orders-table-average-hashrate {
-    display: 60%;
+    display: none;
     text-overflow: ellipsis;
   }
   .orders-table-buttons {
-    width: 25%;
+    width: 80%;
     text-overflow: ellipsis;
   }
 }
 
 @media (max-width: 450px) {
   .orders-table-id {
-    width: 14%;
+    width: 20%;
     text-overflow: ellipsis;
   }
   .orders-table-average-hashrate {
     display: none;
   }
   .orders-table-buttons {
-    width: 86%;
+    width: 80%;
     text-overflow: ellipsis;
   }
 }
