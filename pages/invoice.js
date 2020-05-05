@@ -247,7 +247,7 @@ class InvoicePage extends React.Component {
 
                       @media(max-width: 720px) {
                         .mobile-padding {
-                          margin-bottom: 70px;
+                          margin-bottom: 120px;
                         }
                       }
 
