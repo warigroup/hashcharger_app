@@ -43,10 +43,17 @@ const MarketNav = ({ nav, profile, settings, miningalgo, theme }) => (
               .disabled-link {
                 pointer-events: none;
               }
+
+              @media(max-width: 720px) {
+                .addspace {
+                  padding-top: 13px;
+                  padding-bottom: 13px;
+                }
+              } 
                `}
              </style>
             
-            <div className="col-xl-4 col-lg-4 col-md-12 text-center">
+            <div className="col-xl-4 col-lg-4 col-md-12 text-center addspace">
             <Link route={`/market/${settings.host}/${settings.port}/${settings.username}/${settings.password}/${miningalgo.algorithm}`}>
               <a
                 className={
@@ -64,7 +71,7 @@ const MarketNav = ({ nav, profile, settings, miningalgo, theme }) => (
          
             </div>
            
-            <div className="col-xl-4 col-lg-4 col-md-12 text-center">
+            <div className="col-xl-4 col-lg-4 col-md-12 text-center addspace">
             <Link route={`/invoice/id/${profile.recent_invoice_id}`}>
               <a
                 className={
@@ -82,7 +89,7 @@ const MarketNav = ({ nav, profile, settings, miningalgo, theme }) => (
             </Link>
             </div>
 
-            <div className="col-xl-4 col-lg-4 col-md-12 text-center">
+            <div className="col-xl-4 col-lg-4 col-md-12 text-center addspace">
              <Link route={`/orderhistory`}>
              <a
                className={
