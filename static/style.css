@@ -5056,3 +5056,13 @@ select:-moz-focusring {
     margin-bottom: 150px !important; 
    }
  }
+
+
+ .invoice-btn {
+  opacity: 1;
+  transition: 0.4s ease all;
+}
+
+.invoice-btn:hover {
+  opacity: 0.7;
+}

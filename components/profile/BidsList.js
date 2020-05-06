@@ -68,25 +68,9 @@ class BidsList extends React.Component {
                   <td
                     className="orders-table-buttons text-xl-center text-lg-center text-md-right text-right"
                   >
-                     <style jsx>
-                  {`       
-                    .invoice-btn {
-                      background: ${this.props.theme.primary};
-                      border: 1px solid ${this.props.theme.primary};
-                      color: ${this.props.theme.buttontexts};
-                      opacity: 1;
-                      transition: 0.4s ease all;
-                    }
-
-                    .invoice-btn:hover {
-                      opacity: 0.7;
-                      color: ${this.props.theme.buttontexts};
-                      border: 1px solid ${this.props.theme.primary};
-                    }
-                  `}
-                  </style>
                     <button
                       className="btn btn-sm btn-secondary orderstable-btn invoice-btn"
+                      style={{ background: this.props.theme.primary, color: this.props.theme.buttontexts }}
                       onClick={() => invoicePage(bid.bid_id)}
                     >
                       View Invoice
