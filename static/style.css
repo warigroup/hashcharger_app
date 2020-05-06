@@ -4993,16 +4993,19 @@ select:-moz-focusring {
   font-size: 0.8em !important;
   transition: 0.2s ease all !important;
   z-index: 4 !important;
+  opacity: 1;
+}
+
+.page-item {
+  opacity: 1;
 }
 
 .page-item:hover a {
-  color: white !important;
-  background: #503ec5 !important;
+  opacity: 0.7;
 }
 
 .page-item.active a{
-  color: white !important;
-  background: #3626a5 !important;
+  opacity: 0.7;
 }
 
 .pagination-container {

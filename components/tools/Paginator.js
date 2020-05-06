@@ -62,6 +62,19 @@ class Paginator extends Component {
     if (offeritems.total_pages > 0)
     return (
             <div className="paginator-fontsize">
+              <style>
+                {`
+                .page-item:active {
+                  background: ${this.props.primary} !important;
+                  color: ${this.props.buttontexts} !important;
+                }
+                .page-item:hover {
+                  background: ${this.props.primary} !important;
+                  color: ${this.props.buttontexts} !important;
+                }
+                
+                `}
+              </style>
               
                 {/****   Show initial pagination when total_pages is greater than 1 ******/}
                 {offeritems.page < 5 ? 

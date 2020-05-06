@@ -374,6 +374,8 @@ class myOrderHistory extends React.Component {
                                   style={{paddingRight: "20px", paddingLeft: "20px"}}>
                                                   <Paginator 
                                                       itemslist={this.props.bids.bids}
+                                                      primary={this.props.theme.primary}
+                                                      buttontexts={this.props.theme.buttontexts}
                                                       nextPage={this.nextPage}
                                                       prevPage={this.prevPage}
                                                       firstPage={this.firstPage}
