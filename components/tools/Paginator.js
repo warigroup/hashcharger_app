@@ -3,6 +3,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 class Paginator extends Component {
     render() {
+    const { primary, secondary } = this.props;
     let offeritems = this.props.itemslist;
     let lastpage = offeritems.total_pages - 1;
     //// PAGINATION /////////////////////
@@ -65,12 +66,12 @@ class Paginator extends Component {
               <style jsx>
                 {`
                 .page-item.active {
-                  background: ${this.props.primary} !important;
-                  color: ${this.props.buttontexts} !important;
+                  background: ${primary} !important;
+                  color: ${buttontexts} !important;
                 }
                 .page-item:hover {
-                  background: ${this.props.primary} !important;
-                  color: ${this.props.buttontexts} !important;
+                  background: ${primary} !important;
+                  color: ${buttontexts} !important;
                 }
                 `}
               </style>
