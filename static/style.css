@@ -4989,8 +4989,8 @@ select:-moz-focusring {
 .page-link {
   border: 0px;
   border-radius: 0px !important;
-  padding: 10px 13.5px 10px 13.5px;
-  font-size: 0.8em !important;
+  padding: 9px 12.5px 9px 12.5px;
+  font-size: 0.9em !important;
   transition: 0.2s ease all !important;
   z-index: 4 !important;
   opacity: 1;
