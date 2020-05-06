@@ -14,7 +14,6 @@ const MarketNav = ({ nav, profile, settings, miningalgo, theme }) => (
                 border: 2.5px solid ${theme.navtexts};
                 border-radius: 50%;
                 padding: 1px 7px 1px 7px;
-                color: ${theme.navtexts};
                 opactiy: 0.6 !important;
                 display: inline-block;
                 font-size: 0.95em;
@@ -37,9 +36,8 @@ const MarketNav = ({ nav, profile, settings, miningalgo, theme }) => (
                 opactiy: 1 !important;
                 pointer: cursor;
                }
-               
+
                .marketplacenav.selected .number-circle {
-                color: ${theme.navtexts};
                 border: 2.5px solid ${theme.navtexts};
                 opactiy: 1 !important;
                }
