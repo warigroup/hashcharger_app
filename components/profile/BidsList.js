@@ -72,6 +72,7 @@ class BidsList extends React.Component {
                     >
                       View Invoice
                     </button>
+                    {this.props.primary}
                   </td>
                 </tr>
               )

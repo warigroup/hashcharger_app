@@ -4990,7 +4990,7 @@ select:-moz-focusring {
   border: 0px;
   border-radius: 0px !important;
   padding: 9px 12.5px 9px 12.5px;
-  font-size: 0.9em !important;
+  font-size: 0.95em !important;
   transition: 0.2s ease all !important;
   z-index: 4 !important;
   opacity: 1;
