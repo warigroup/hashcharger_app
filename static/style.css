@@ -4988,6 +4988,8 @@ select:-moz-focusring {
 
 .page-link {
   border: 0px;
+  color: black;
+  background: white;
   border-radius: 0px !important;
   padding: 9px 12.5px 9px 12.5px;
   font-size: 0.98em !important;
@@ -4996,19 +4998,24 @@ select:-moz-focusring {
   opacity: 1;
 }
 
+.page-link:hover {
+  background: rgba(0,0,0,0.1) !important;
+  color: black !important;
+}
+
 .page-item {
-  background: white;
-  color: black;
+  background: white !important;
+  color: black !important;
 }
 
 .page-item:hover a {
-  background: rgba(0,0,0,0.1);
-  color: black;
+  background: rgba(0,0,0,0.1) !important;
+  color: black !important;
 }
 
 .page-item.active a{
-  background: rgba(0,0,0,0.1);
-  color: black;
+  background: rgba(0,0,0,0.1) !important;
+  color: black !important;
 }
 
 .pagination-container {
