@@ -4990,22 +4990,25 @@ select:-moz-focusring {
   border: 0px;
   border-radius: 0px !important;
   padding: 9px 12.5px 9px 12.5px;
-  font-size: 0.95em !important;
+  font-size: 0.98em !important;
   transition: 0.2s ease all !important;
   z-index: 4 !important;
   opacity: 1;
 }
 
 .page-item {
-  opacity: 1;
+  background: white;
+  color: black;
 }
 
 .page-item:hover a {
-  opacity: 0.7;
+  background: rgba(0,0,0,0.1);
+  color: black;
 }
 
 .page-item.active a{
-  opacity: 0.7;
+  background: rgba(0,0,0,0.1);
+  color: black;
 }
 
 .pagination-container {
