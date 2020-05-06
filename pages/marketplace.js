@@ -692,6 +692,11 @@ class Marketplace extends React.Component {
               left: 30px;
             }
 
+            .invoice-btn {
+              background: ${this.props.theme.primary}
+              color: ${this.props.theme.buttontexts}
+            }
+
             @media (max-width: 1200px) {
               .main-marketplace-form {
                 width: 100%;
