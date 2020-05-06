@@ -92,13 +92,15 @@ NotFound.propTypes = {
   notFoundPage: PropTypes.func,
   profile: PropTypes.object,
   settings: PropTypes.object,
-  miningalgo: PropTypes.object
+  miningalgo: PropTypes.object,
+  theme: PropTypes.object
 };
 
 const mapStateToProps = state => ({
   profile: state.profile,
   settings: state.settings,
-  miningalgo: state.miningalgo
+  miningalgo: state.miningalgo,
+  theme: state.theme
 });
 
 export default connect(
