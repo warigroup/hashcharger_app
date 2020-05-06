@@ -4973,10 +4973,6 @@ select:-moz-focusring {
   font-size: 0.71em;
 }
 
-.page-item {
-  border: 1px solid black;
-  z-index: 3 !important;
-}
 
 .page-link:first-child {
   border-radius: 0px !important;
@@ -5000,21 +4996,26 @@ select:-moz-focusring {
 
 .page-link:hover {
   background: rgba(0,0,0,0.1) !important;
+  border: 0px;
   color: black !important;
 }
 
 .page-item {
+  z-index: 3 !important;
   background: white !important;
+  border: 1px solid black !important;
   color: black !important;
 }
 
 .page-item:hover a {
   background: rgba(0,0,0,0.1) !important;
+  border: 1px solid black !important;
   color: black !important;
 }
 
 .page-item.active a{
   background: rgba(0,0,0,0.1) !important;
+  border: 1px solid black !important;
   color: black !important;
 }
 
