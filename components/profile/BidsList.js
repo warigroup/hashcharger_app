@@ -1,8 +1,6 @@
 import React, { Fragment } from "react";
 import { convertDuration } from "../../utils/convertDuration";
 import { capitalizeFirstLetter } from "../../utils/capitalizeFirstLetter";;
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
 
 class BidsList extends React.Component {
     render() {
@@ -70,8 +68,8 @@ class BidsList extends React.Component {
                   >
                     <button
                       className="btn btn-sm btn-secondary orderstable-btn invoice-btn"
-                      style={{ background: `${this.props.theme.primary}`, 
-                      color: `${this.props.theme.buttontexts}` }}
+                      style={{ backgroundColor: `${this.props.primary}`, 
+                      color: `${this.props.buttontexts}` }}
                       onClick={() => invoicePage(bid.bid_id)}
                     >
                       View Invoice
@@ -92,15 +90,4 @@ class BidsList extends React.Component {
 }
 
 
-BidsList.propTypes = {
-  theme: PropTypes.object
-};
-
-const mapStateToProps = state => ({
-  theme: state.theme
-});
-
-export default connect(
-  mapStateToProps,
-  null
-)(BidsList);
+export default BidsList;
