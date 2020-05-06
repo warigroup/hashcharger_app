@@ -4966,6 +4966,7 @@ select:-moz-focusring {
 
 .pagination {
   float: right !important;
+  border: 1px solid black !important;
   z-index: 2 !important;
 }
 
@@ -5002,7 +5003,7 @@ select:-moz-focusring {
 .page-item {
   z-index: 3 !important;
   background: white !important;
-  border: 1px solid black !important;
+  border-right: 1px solid black;
   color: black !important;
   box-shadow: 0px !important;
   outline: 0px !important;
@@ -5011,7 +5012,6 @@ select:-moz-focusring {
 .page-item:hover a {
   background: rgba(0,0,0,0.18) !important;
   color: black !important;
-  border-left: 0px !important;
   box-shadow: 0px !important;
   outline: 0px !important;
 }
@@ -5019,7 +5019,6 @@ select:-moz-focusring {
 .page-item.active a{
   background: rgba(0,0,0,0.18) !important;
   color: black !important;
-  border-left: 0px !important;
   box-shadow: 0px !important;
   outline: 0px !important;
 }
