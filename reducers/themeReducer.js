@@ -3,8 +3,8 @@ import { SET_THEME_COLORS } from '../actions/types';
 const initialState = {
         navbg: "#3626a5",
         navtexts: "#ffffff", 
-        primary: "#c526d8",
-        secondary: "#3626a5",
+        primary: "#3626a5",
+        secondary: "#c526d8",
         buttontexts: "#ffffff",
         tabletexts: "#ffffff",
         fullscreen: "off"

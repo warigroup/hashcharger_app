@@ -556,8 +556,8 @@ class Marketplace extends React.Component {
             }
             .buybtn {
               font-size: 0.85em;
-              background: #c526d8;
-              border: 1px solid #c526d8;
+              background: ${this.props.theme.secondary};
+              border: 1px solid ${this.props.theme.secondary};
               border-radius: 0px;
               width: 200px;
               height: 40px;
@@ -570,7 +570,7 @@ class Marketplace extends React.Component {
               top: 15px;
             }
             .buybtn:hover {
-              background: rgb(224, 79, 240) !important;
+              opacity: 0.7 !important;
             }
             .buybtn:focus,
             .buybtn:active:focus,
@@ -578,7 +578,7 @@ class Marketplace extends React.Component {
             .buybtn.focus,
             .buybtn:active.focus,
             .buybtn.active.focus {
-              background: rgb(224, 79, 240) !important;
+              opacity: 0.7 !important;
               outline: none !important;
               box-shadow: none !important;
             }
@@ -1540,8 +1540,6 @@ class Marketplace extends React.Component {
          style={{width: "100vw", height: "100vh", 
          textAlign: "center", position: "absolute", 
          top: "0"}}>
-            
-         
             <img
               src="/static/spinner.gif"
               style={{
@@ -1555,7 +1553,6 @@ class Marketplace extends React.Component {
               alt="Loading..."
             />
             <h6>Loading ...</h6>
-         
          </div>
         }   
       </PublicRoute>
