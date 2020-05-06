@@ -230,7 +230,7 @@ class Paginator extends Component {
 
 
 
-
+                    {this.props.primary}
             </div> 
         )
       else return null
