@@ -556,8 +556,8 @@ class Marketplace extends React.Component {
             }
             .buybtn {
               font-size: 0.85em;
-              background: ${this.props.theme.secondary};
-              border: 1px solid ${this.props.theme.secondary};
+              background: ${this.props.theme.primary};
+              border: 1px solid ${this.props.theme.primary};
               border-radius: 0px;
               width: 200px;
               height: 40px;
@@ -690,11 +690,6 @@ class Marketplace extends React.Component {
               padding-left: 0px; 
               position: relative; 
               left: 30px;
-            }
-
-            .invoice-btn {
-              background: ${this.props.theme.primary}
-              color: ${this.props.theme.buttontexts}
             }
 
             @media (max-width: 1200px) {

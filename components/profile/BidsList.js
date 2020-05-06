@@ -5,7 +5,7 @@ import { capitalizeFirstLetter } from "../../utils/capitalizeFirstLetter";;
 class BidsList extends React.Component {
 
     render() {
-      const {primary, buttontexts} = this.props;
+      const {secondary, buttontexts} = this.props;
         let invoicePage = bid_id => this.props.goToInvoicePage(bid_id);
 
         const bidsList = this.props.bids.map(
@@ -70,7 +70,7 @@ class BidsList extends React.Component {
                   >
                     <button
                       className="btn btn-sm btn-secondary orderstable-btn invoice-btn"
-                      style={{ background: primary, color: buttontexts }}
+                      style={{ background: secondary, color: buttontexts }}
                       onClick={() => invoicePage(bid.bid_id)}
                     >
                       View Invoice

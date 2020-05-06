@@ -265,7 +265,7 @@ class myOrderHistory extends React.Component {
                         style={{ color: "gray", width: "100%" }}
                       >
                         <table id="tableT" className="table table-borderless myorders-table-styles container-fluid">
-                          <thead style={{ background: this.props.theme.primary, color: this.props.theme.tabletexts }}>
+                          <thead style={{ background: this.props.theme.secondary, color: this.props.theme.tabletexts }}>
                             <tr className="row m-0" style={{
                               borderRight: "1px solid rgba(0,0,0,0.3)",
                               borderLeft: "1px solid rgba(0,0,0,0.3)"
@@ -320,7 +320,7 @@ class myOrderHistory extends React.Component {
                               this.props.bids.bids.result[0].offer_take_ids !== "" ? 
                               <BidsList 
                               bids={this.props.bids.bids.result}
-                              primary={this.props.theme.primary}
+                              secondary={this.props.theme.secondary}
                               buttontexts={this.props.theme.buttontexts}
                               goToInvoicePage={goToInvoicePage}
                               openBuyOrderModal={openBuyOrderModal}

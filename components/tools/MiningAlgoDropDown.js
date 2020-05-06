@@ -26,7 +26,7 @@ class MiningAlgoDropDown extends React.Component {
             <div className="miningalgorithm-dropdown" style={{marginTop: "26px"}}>
             <div className="dropdown-btn"
             id="miningalgorithm-selector">
-              <h4 style={{ color: `${this.props.theme.secondary}` }}>
+              <h4 style={{ color: `${this.props.theme.primary}` }}>
                 {this.props.miningalgo.algorithm === "sha256d" ? "SHA256d" : capitalizeFirstLetter(this.props.miningalgo.algorithm)}
               </h4>
             </div>
