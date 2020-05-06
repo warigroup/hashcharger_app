@@ -5016,9 +5016,12 @@ select:-moz-focusring {
 .page-item:hover a {
   background: rgba(0,0,0,0.18) !important;
   color: black !important;
-  border-left: 0px !important;
   box-shadow: 0px !important;
   outline: 0px !important;
+}
+
+.page-item:focus {
+  border-left: 0px;
 }
 
 .page-item.active a{
