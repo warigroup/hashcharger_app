@@ -1,6 +1,6 @@
 const routes = require('next-routes')
 
 module.exports = routes()
-.add('marketplace', '/market/:stratumaddress?/:stratumport?/:username?/:password?/:algorithm?/:navbg?/:navtexts?')
+.add('marketplace', '/market/:stratumaddress?/:stratumport?/:username?/:password?/:algorithm?/:navbg?/:navtexts?/:btncolor?/:btntexts?/:fullscreen?')
 .add('invoice', '/invoice/id/:bidid')
 .add('orderhistory', '/orderhistory')
