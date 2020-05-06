@@ -359,8 +359,8 @@ class InvoicePage extends React.Component {
                         bid.payment_success === false && bid.payment_fail === false && 
                 moment(bid.invoice_expiration_time).valueOf() / 1000 > utctime ? 
                         
-                        { position: "absolute", background: "#c525d7", height: "30px", width: `${this.state.percentage}%`} :
-                        { position: "absolute", background: "#c525d7", height: "30px", width: "100%" } }>
+                        { position: "absolute", background: this.props.theme.secondary, height: "30px", width: `${this.state.percentage}%`} :
+                        { position: "absolute", background: this.props.theme.secondary, height: "30px", width: "100%" } }>
                       </div>
                       <div className="container-fluid">
                         <div className="row">
