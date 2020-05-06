@@ -2,8 +2,6 @@ import React from "react";
 import WatchClickOutside from "./WatchClickOutside";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { FaCaretDown } from "react-icons/fa";
-import { algorithms } from "../../settings";
 import { capitalizeFirstLetter } from "../../utils/capitalizeFirstLetter";
 
 class MiningAlgoDropDown extends React.Component {
@@ -28,7 +26,7 @@ class MiningAlgoDropDown extends React.Component {
             <div className="miningalgorithm-dropdown" style={{marginTop: "26px"}}>
             <div className="dropdown-btn"
             id="miningalgorithm-selector">
-              <h4>
+              <h4 style={{ color: `${this.props.theme.secondary}` }}>
                 {this.props.miningalgo.algorithm === "sha256d" ? "SHA256d" : capitalizeFirstLetter(this.props.miningalgo.algorithm)}
               </h4>
             </div>
@@ -40,11 +38,13 @@ class MiningAlgoDropDown extends React.Component {
 }
 
 MiningAlgoDropDown.propTypes = {
-    miningalgo: PropTypes.object
+    miningalgo: PropTypes.object,
+    theme: PropTypes.object
   };
 
   const mapStateToProps = state => ({
-    miningalgo: state.miningalgo
+    miningalgo: state.miningalgo,
+    theme: state.theme
   });
 
 export default connect(

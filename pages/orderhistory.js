@@ -265,8 +265,7 @@ class myOrderHistory extends React.Component {
                         style={{ color: "gray", width: "100%" }}
                       >
                         <table id="tableT" className="table table-borderless myorders-table-styles container-fluid">
-                          <thead className="text-white"
-                            style={{ background: "#3626a5" }}>
+                          <thead style={{ background: this.props.theme.primary, color: this.props.theme.tabletexts }}>
                             <tr className="row m-0" style={{
                               borderRight: "1px solid rgba(0,0,0,0.3)",
                               borderLeft: "1px solid rgba(0,0,0,0.3)"

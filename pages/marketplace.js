@@ -563,7 +563,7 @@ class Marketplace extends React.Component {
               height: 40px;
               margin-top: 17px;
               margin-bottom: 0px;
-              color: white;
+              color: ${this.props.theme.buttontexts};
               font-weight: 600;
               position: relative; 
               left: -25px;
