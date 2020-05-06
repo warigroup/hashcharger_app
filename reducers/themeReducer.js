@@ -14,13 +14,14 @@ export default function (state = initialState, action) {
     switch (action.type) {
         case SET_THEME_COLORS:
             return {
-                navbg: action.payload.navbg,
-                navtexts: action.payload.navtexts,
-                btn1color: action.payload.btn1color,
-                btn1texts: action.payload.btn1texts,
-                btn2color: action.payload.btn2color,
-                btn2texts: action.payload.btn2texts,
-                fullscreen: action.payload.fullscreen
+                ...state,
+                navbg: '#' + action.payload[0].navbg,
+                navtexts: '#' + action.payload[1].navtexts,
+                btn1color: '#' + action.payload[2].btn1color,
+                btn1texts: '#' + action.payload[3].btn1texts,
+                btn2color: '#' + action.payload[4].btn2color,
+                btn2texts: '#' + action.payload[5].btn2texts,
+                fullscreen: '#' + action.payload[6].fullscreen
               };
         default:
             return state;

@@ -106,7 +106,7 @@ class Marketplace extends React.Component {
     };
 
     // set theme colors
-    if ( this.props.navbg !== undefined ) {
+
       this.props.setThemeColors(
         this.props.navbg, 
         this.props.navtexts, 
@@ -116,7 +116,7 @@ class Marketplace extends React.Component {
         this.props.btn2texts, 
         this.props.nightmode
       );
-    };
+  
 
   };
 
