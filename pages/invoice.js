@@ -527,7 +527,8 @@ class InvoicePage extends React.Component {
     errors: PropTypes.object,
     bids: PropTypes.object,
     settings: PropTypes.object,
-    configs: PropTypes.object
+    configs: PropTypes.object,
+    theme: PropTypes.object
   };
 
   const mapStateToProps = state => ({
@@ -536,7 +537,8 @@ class InvoicePage extends React.Component {
     errors: state.errors,
     bids: state.bids,
     settings: state.settings,
-    configs: state.configs
+    configs: state.configs,
+    theme: state.theme
   });
 
   export default connect(mapStateToProps, 

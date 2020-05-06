@@ -452,7 +452,8 @@ myOrderHistory.propTypes = {
   payment: PropTypes.object,
   hashrate: PropTypes.object,
   miningalgo: PropTypes.object,
-  settings: PropTypes.object
+  settings: PropTypes.object,
+  theme: PropTypes.object
 };
 
 const mapStateToProps = state => ({
@@ -466,7 +467,8 @@ const mapStateToProps = state => ({
   payment: state.payment,
   hashrate: state.hashrate,
   miningalgo: state.miningalgo,
-  settings: state.settings
+  settings: state.settings,
+  theme: state.theme
 });
 
 export default connect(
