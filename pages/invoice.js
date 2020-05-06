@@ -365,11 +365,11 @@ class InvoicePage extends React.Component {
                       <div className="container-fluid">
                         <div className="row">
                           <div className="col-md-6 col-sm-6 col-6 d-md-inline d-sm-inline d-none text-left">
-                               <p>Waiting for payment...</p>
+                               <p style={{ color: this.props.theme.buttontexts }}>Waiting for payment...</p>
                             </div>
                             <div className="col-md-6 col-sm-6 col-12 d-md-inline d-sm-inline d-inline text-right">
                             <span className="paymentinfo"
-                                style={{fontSize: "0.85em", position: "relative", top: "2.5px"}}> {this.state.countdown}</span>
+                                style={{ fontSize: "0.85em", position: "relative", top: "2.5px", color: this.props.theme.buttontexts }}> {this.state.countdown}</span>
                               </div>
                           </div>
                         </div>

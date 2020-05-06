@@ -2261,20 +2261,6 @@ select:-moz-focusring {
   box-shadow: none !important;
 }
 
-
-.invoice-btn {
-  background: #3626a5;
-  border: 1px solid #3626a5;
-  color: white;
-  transition: 0.4s ease all;
-}
-
-.invoice-btn:hover {
-  background: #5443c4;
-  color: white;
-  border: 1px solid #5443c4;
-}
-
 .resetbtn {
   display: inline-block;
   background: rgba(0, 0, 0, 0.2);

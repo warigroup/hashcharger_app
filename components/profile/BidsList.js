@@ -1,11 +1,12 @@
 import React, { Fragment } from "react";
 import { convertDuration } from "../../utils/convertDuration";
 import { capitalizeFirstLetter } from "../../utils/capitalizeFirstLetter";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 class BidsList extends React.Component {
     render() {
         let invoicePage = bid_id => this.props.goToInvoicePage(bid_id);
-        let openModal = bid => this.props.openBuyOrderModal(bid);
 
         const bidsList = this.props.bids.map(
             function (bid, index) {
@@ -17,6 +18,23 @@ class BidsList extends React.Component {
                     borderRight: "1px solid rgba(0,0,0,0.3)"
                   }}
                 >
+                  <style jsx>
+                  {`       
+                    .invoice-btn {
+                      background: ${this.props.theme.primary};
+                      border: 1px solid ${this.props.theme.primary};
+                      color: ${this.props.theme.buttontexts};
+                      opacity: 1;
+                      transition: 0.4s ease all;
+                    }
+
+                    .invoice-btn:hover {
+                      opacity: 0.7;
+                      color: ${this.props.theme.buttontexts};
+                      border: 1px solid ${this.props.theme.primary};
+                    }
+                  `}
+                  </style>
                   <td className="orders-table-id">
                     <p className="tabledata">{bid.bid_id}</p>
                   </td>
@@ -71,7 +89,7 @@ class BidsList extends React.Component {
                       onClick={() => invoicePage(bid.bid_id)}
                     >
                       View Invoice
-                  </button>
+                    </button>
                 
                   </td>
                 </tr>
@@ -88,4 +106,15 @@ class BidsList extends React.Component {
     }
 }
 
-export default BidsList;
+BidsList.propTypes = {
+  theme: PropTypes.object
+};
+
+const mapStateToProps = state => ({
+  theme: state.theme
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(BidsList);
