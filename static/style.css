@@ -4969,11 +4969,6 @@ select:-moz-focusring {
   z-index: 2 !important;
 }
 
-.paginator-fontsize {
-  font-size: 0.71em;
-}
-
-
 .page-link:first-child {
   border-radius: 0px !important;
 }
@@ -4992,12 +4987,16 @@ select:-moz-focusring {
   transition: 0.2s ease all !important;
   z-index: 4 !important;
   opacity: 1;
+  box-shadow: 0px !important;
+  outline: 0px !important;
 }
 
 .page-link:hover {
   background: rgba(0,0,0,0.1) !important;
   border: 0px;
   color: black !important;
+  box-shadow: 0px !important;
+  outline: 0px !important;
 }
 
 .page-item {
