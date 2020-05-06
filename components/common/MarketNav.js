@@ -67,7 +67,6 @@ const MarketNav = ({ nav, profile, settings, miningalgo, theme }) => (
                 </h4> 
               </a>
             </Link>
-         
             </div>
            
             <div className="col-xl-4 col-lg-4 col-md-12 text-center addspace">

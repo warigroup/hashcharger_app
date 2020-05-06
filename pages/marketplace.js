@@ -489,10 +489,10 @@ class Marketplace extends React.Component {
           }
 
           .number-circle {
-            border: 2.5px solid #3626a5;
+            border: 2.5px solid ${this.props.theme.navtexts};
             border-radius: 50%;
             padding: 1px 7px 1px 7px;
-            color: #3626a5;
+            color: ${this.props.theme.navtexts};
             display: inline-block;
             font-size: 0.95em;
             font-weight: bold;
@@ -804,11 +804,11 @@ class Marketplace extends React.Component {
 
             @media (max-width: 460px) {
               .number-circle {
-                border: 2.5px solid #3626a5;
+                border: 2.5px solid ${this.props.theme.navtexts};
                 border-radius: 50%;
                 padding: 1px 7px 1px 7px;
                 margin-right: 12px;
-                color: #3626a5;
+                color: ${this.props.theme.navtexts};
                 display: inline-block;
                 font-size: 0.9em;
                 font-weight: bold;
