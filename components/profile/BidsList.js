@@ -70,7 +70,7 @@ class BidsList extends React.Component {
                   >
                     <button
                       className="btn btn-sm btn-secondary orderstable-btn invoice-btn"
-                      style={{ background: this.props.theme.primary, color: this.props.theme.buttontexts }}
+                      style={{ background: this.props.primary, color: this.props.buttontexts }}
                       onClick={() => invoicePage(bid.bid_id)}
                     >
                       View Invoice
@@ -91,15 +91,5 @@ class BidsList extends React.Component {
     }
 }
 
-BidsList.propTypes = {
-  theme: PropTypes.object
-};
 
-const mapStateToProps = state => ({
-  theme: state.theme
-});
-
-export default connect(
-  mapStateToProps,
-  null
-)(BidsList);
+export default BidsList;

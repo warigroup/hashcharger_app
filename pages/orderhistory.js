@@ -320,6 +320,8 @@ class myOrderHistory extends React.Component {
                               this.props.bids.bids.result[0].offer_take_ids !== "" ? 
                               <BidsList 
                               bids={this.props.bids.bids.result}
+                              primary={this.props.theme.primary}
+                              buttontexts={this.props.theme.buttontexts}
                               goToInvoicePage={goToInvoicePage}
                               openBuyOrderModal={openBuyOrderModal}
                               />
