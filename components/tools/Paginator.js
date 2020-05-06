@@ -62,7 +62,7 @@ class Paginator extends Component {
     if (offeritems.total_pages > 0)
     return (
             <div className="paginator-fontsize">
-              <style>
+              <style jsx>
                 {`
                 .page-item:active {
                   background: ${this.props.primary} !important;
