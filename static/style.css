@@ -4499,20 +4499,16 @@ select:-moz-focusring {
 
 .buybtn {
   font-size: 0.85em;
-  background: #c526d8;
-  border: 1px solid #c526d8;
   border-radius: 0px;
   width: 175px;
   height: 40px;
   margin-top: 17px;
   margin-bottom: 0px;
-  color: white;
   font-weight: 600;
 }
 
 .buybtn:hover {
-  border: 1px solid #c526d8;
-  background: rgb(224, 79, 240) !important;
+  opacity: 0.7;
 }
 
 .buybtn:focus,
@@ -4521,8 +4517,7 @@ select:-moz-focusring {
 .buybtn.focus,
 .buybtn:active.focus,
 .buybtn.active.focus {
-  border: 1px solid #c526d8 !important;
-  background: rgb(224, 79, 240) !important;
+  opacity: 0.7;
   outline: none !important;
   box-shadow: none !important;
 }
