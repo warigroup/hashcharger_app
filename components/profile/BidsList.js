@@ -18,23 +18,7 @@ class BidsList extends React.Component {
                     borderRight: "1px solid rgba(0,0,0,0.3)"
                   }}
                 >
-                  <style jsx>
-                  {`       
-                    .invoice-btn {
-                      background: ${this.props.theme.primary};
-                      border: 1px solid ${this.props.theme.primary};
-                      color: ${this.props.theme.buttontexts};
-                      opacity: 1;
-                      transition: 0.4s ease all;
-                    }
-
-                    .invoice-btn:hover {
-                      opacity: 0.7;
-                      color: ${this.props.theme.buttontexts};
-                      border: 1px solid ${this.props.theme.primary};
-                    }
-                  `}
-                  </style>
+                 
                   <td className="orders-table-id">
                     <p className="tabledata">{bid.bid_id}</p>
                   </td>
@@ -84,6 +68,23 @@ class BidsList extends React.Component {
                   <td
                     className="orders-table-buttons text-xl-center text-lg-center text-md-right text-right"
                   >
+                     <style jsx>
+                  {`       
+                    .invoice-btn {
+                      background: ${this.props.theme.primary};
+                      border: 1px solid ${this.props.theme.primary};
+                      color: ${this.props.theme.buttontexts};
+                      opacity: 1;
+                      transition: 0.4s ease all;
+                    }
+
+                    .invoice-btn:hover {
+                      opacity: 0.7;
+                      color: ${this.props.theme.buttontexts};
+                      border: 1px solid ${this.props.theme.primary};
+                    }
+                  `}
+                  </style>
                     <button
                       className="btn btn-sm btn-secondary orderstable-btn invoice-btn"
                       onClick={() => invoicePage(bid.bid_id)}
