@@ -26,20 +26,21 @@ class NotFound extends React.Component {
               {`
                 .gotomain-btn {
                   cursor: pointer;
-                  background: #3626a5;
+                  background: ${this.props.theme.primary}
                   font-size: 16px;
                   border-radius: 0px;
-                  color: white !important;
+                  color: ${this.props.theme.buttontexts} !important;
                   border: none;
                   box-shadow: 0 4px 15px 0 rgba(129, 150, 160, 0.45);
-                  padding: 10px 15px 11px 15px;
+                  padding: 9px 15px 11px 15px;
                   text-decoration: none;
                   transition: 0.5s all ease-out;
                   margin-top: 4px;
+                  opacity: 1;
                 }
                 .gotomain-btn:hover {
-                  background: #5e51b7;
-                  color: white;
+                  color: ${this.props.theme.buttontexts};
+                  opacity: 0.7;
                 }
                 .gotomain-btn span {
                   margin-right: 12px;
