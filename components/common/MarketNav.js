@@ -15,7 +15,7 @@ const MarketNav = ({ nav, profile, settings, miningalgo, theme }) => (
                 border-radius: 50%;
                 padding: 1px 7px 1px 7px;
                 color: ${theme.navtexts};
-                opactiy: 0.6;
+                opactiy: 0.6 !important;
                 display: inline-block;
                 font-size: 0.95em;
                 font-weight: bold;
@@ -30,17 +30,18 @@ const MarketNav = ({ nav, profile, settings, miningalgo, theme }) => (
               }
                .marketplacenav  {
                 color: ${theme.navtexts};
-                opactiy: 0.6;
+                opactiy: 0.6 !important;
                }
                .marketplacenav.selected {
                 color: ${theme.navtexts};
-                opactiy: 1;
+                opactiy: 1 !important;
                 pointer: cursor;
                }
+               
                .marketplacenav.selected .number-circle {
                 color: ${theme.navtexts};
                 border: 2.5px solid ${theme.navtexts};
-                opactiy: 1;
+                opactiy: 1 !important;
                }
 
               .disabled-link {
