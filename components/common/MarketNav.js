@@ -65,7 +65,6 @@ const MarketNav = ({ nav, profile, settings, miningalgo, theme }) => (
                <h4 className="number-circle">1</h4>
                 <h4 className="offerformlabel">
                 Place an order
-                {theme.navtexts}
                 </h4> 
               </a>
             </Link>
