@@ -64,7 +64,7 @@ class Paginator extends Component {
             <div className="paginator-fontsize">
               <style jsx>
                 {`
-                .page-item:active {
+                .page-item.active {
                   background: ${this.props.primary} !important;
                   color: ${this.props.buttontexts} !important;
                 }
@@ -72,7 +72,6 @@ class Paginator extends Component {
                   background: ${this.props.primary} !important;
                   color: ${this.props.buttontexts} !important;
                 }
-                
                 `}
               </style>
               
@@ -229,8 +228,6 @@ class Paginator extends Component {
 
 
 
-
-                    {this.props.primary}
             </div> 
         )
       else return null
