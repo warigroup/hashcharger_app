@@ -27,9 +27,11 @@ var createModal = function() {
     var algorithm = (myScript.getAttribute('algorithm') || '');
     var navbg = (myScript.getAttribute('navbg') || '');
     var navtexts = (myScript.getAttribute('navtexts') || '');
-    var btncolor = (myScript.getAttribute('btncolor') || '');
-    var btntexts = (myScript.getAttribute('btntexts') || '');
-    var nightmode = (myScript.getAttribute('nightmode') || '');
+    var primary = (myScript.getAttribute('primary') || '');
+    var secondary = (myScript.getAttribute('secondary') || '');
+    var buttontexts = (myScript.getAttribute('buttontexts') || '');
+    var tabletexts = (myScript.getAttribute('tabletexts') || '');
+    var fullscreen = (myScript.getAttribute('fullscreen') || '');
 
     // modal window div
     var modalWindow = document.createElement('div');
@@ -42,7 +44,7 @@ var createModal = function() {
     // eslint-disable-next-line no-useless-concat
     iframe.src = 'https://app.warihash.org/market' + '/' + host + '/' + port + '/' + 
     username + '/' + password + '/' + algorithm + '/' + navbg + '/' + navtexts + '/' + 
-    btncolor + '/' + btntexts + '/' + nightmode;
+    primary + '/' + secondary + '/' + buttontexts + '/' + tabletexts + '/' + fullscreen;
     iframe.style.width = "100vw";
     iframe.style.height = "100vh";
     iframe.style.border = "none";
