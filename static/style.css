@@ -4983,7 +4983,7 @@ select:-moz-focusring {
   background: white;
   border-radius: 0px !important;
   padding: 9px 12.5px 9px 12.5px;
-  font-size: 1em !important;
+  font-size: 0.78em !important;
   transition: 0.2s ease all !important;
   z-index: 4 !important;
   opacity: 1;
@@ -5009,14 +5009,14 @@ select:-moz-focusring {
 }
 
 .page-item:hover a {
-  background: rgba(0,0,0,0.1) !important;
+  background: rgba(0,0,0,0.18) !important;
   color: black !important;
   box-shadow: 0px !important;
   outline: 0px !important;
 }
 
 .page-item.active a{
-  background: rgba(0,0,0,0.1) !important;
+  background: rgba(0,0,0,0.18) !important;
   color: black !important;
   box-shadow: 0px !important;
   outline: 0px !important;
