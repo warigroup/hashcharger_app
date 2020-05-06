@@ -4999,6 +4999,13 @@ select:-moz-focusring {
   color: black !important;
   box-shadow: 0px !important;
   outline: 0px !important;
+  padding: 0px !important;
+}
+
+.page-link:active {
+  box-shadow: 0px !important;
+  outline: 0px !important;
+  padding: 0px !important;
 }
 
 .page-item {
