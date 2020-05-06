@@ -5008,6 +5008,10 @@ select:-moz-focusring {
   padding: 9px 12.5px 9px 12.5px !important;
 }
 
+.page-link a {
+  padding: 0px !important;
+}
+
 .page-item {
   z-index: 3 !important;
   background: white !important;
@@ -5015,7 +5019,6 @@ select:-moz-focusring {
   color: black !important;
   box-shadow: 0px !important;
   outline: 0px !important;
-  padding: 0px !important;
 }
 
 .page-item:hover a {
@@ -5024,7 +5027,6 @@ select:-moz-focusring {
   box-shadow: 0px !important;
   outline: 0px !important;
   margin: 0px !important;
-  padding: 0px !important;
 }
 
 .page-item.active a{
@@ -5033,7 +5035,6 @@ select:-moz-focusring {
   box-shadow: 0px !important;
   outline: 0px !important;
   margin: 0px !important;
-  padding: 0px !important;
 }
 
 .pagination-container {
