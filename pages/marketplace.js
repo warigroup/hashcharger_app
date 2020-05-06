@@ -110,10 +110,10 @@ class Marketplace extends React.Component {
       this.props.setThemeColors(
         this.props.navbg, 
         this.props.navtexts, 
-        this.props.btn1color, 
-        this.props.btn1texts, 
-        this.props.btn2color, 
-        this.props.btn2texts, 
+        this.props.primary, 
+        this.props.secondary, 
+        this.props.buttontexts, 
+        this.props.tabletexts, 
         this.props.nightmode
       );
     };

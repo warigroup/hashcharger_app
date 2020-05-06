@@ -3,10 +3,10 @@ import { SET_THEME_COLORS } from '../actions/types';
 const initialState = {
         navbg: "#3626a5",
         navtexts: "#ffffff", 
-        btn1color: "#c526d8", 
-        btn1texts: "#ffffff",
-        btn2color: "#3626a5", 
-        btn2texts: "#ffffff",
+        primary: "#c526d8",
+        secondary: "#3626a5",
+        buttontexts: "#ffffff",
+        tabletexts: "#ffffff",
         fullscreen: "off"
 }
 
@@ -17,10 +17,10 @@ export default function (state = initialState, action) {
                 ...state,
                 navbg: '#' + action.payload[0].navbg,
                 navtexts: '#' + action.payload[1].navtexts,
-                btn1color: '#' + action.payload[2].btn1color,
-                btn1texts: '#' + action.payload[3].btn1texts,
-                btn2color: '#' + action.payload[4].btn2color,
-                btn2texts: '#' + action.payload[5].btn2texts,
+                primary: '#' + action.payload[2].primary,
+                secondary: '#' + action.payload[3].secondary,
+                buttontexts: '#' + action.payload[4].buttontexts,
+                tabletexts: '#' + action.payload[5].tabletexts,
                 fullscreen: '#' + action.payload[6].fullscreen
               };
         default:
