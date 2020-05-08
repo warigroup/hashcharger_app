@@ -120,8 +120,8 @@ class Marketplace extends React.Component {
     };
 
     // set token
-    if ( this.props.tokenvalue !== undefined ) {
-      this.props.setToken(this.props.tokenvalue);
+    if ( this.props.mytoken !== undefined ) {
+      this.props.setToken(this.props.mytoken);
     };
 
   };

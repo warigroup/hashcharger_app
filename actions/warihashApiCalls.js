@@ -627,9 +627,9 @@ export const setThemeColors = (navbg, navtexts, primary, secondary, buttontexts,
   };
 };
 
-export const setToken = (value) => {
+export const setToken = token => {
   return {
     type: types.SET_TOKEN,
-    payload: [{ value: value }]
+    payload: token
   };
 };
