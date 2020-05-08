@@ -16,7 +16,8 @@ import {
   setStratumHostPort,
   setStratumUsernamePass,
   setRecentInvoiceId,
-  setThemeColors } from "../actions/warihashApiCalls";
+  setThemeColors,
+  setToken } from "../actions/warihashApiCalls";
 import { FaRegClock, FaBitcoin, FaQuestionCircle, FaWallet } from "react-icons/fa";
 import { TiFlash } from "react-icons/ti";
 import { Router } from "../routes";
@@ -116,6 +117,11 @@ class Marketplace extends React.Component {
         this.props.tabletexts, 
         this.props.nightmode
       );
+    };
+
+    // set token
+    if ( this.props.token !== undefined ) {
+      this.props.setToken(this.props.token);
     };
 
   };
@@ -1583,6 +1589,7 @@ Marketplace.propTypes = {
   setStratumUsernamePass: PropTypes.func,
   setRecentInvoiceId: PropTypes.func,
   setThemeColors: PropTypes.func,
+  setToken: PropTypes.func,
   errors: PropTypes.object,
   configs: PropTypes.object,
   network: PropTypes.object,
@@ -1627,6 +1634,7 @@ export default connect(
     setStratumHostPort,
     setStratumUsernamePass,
     setRecentInvoiceId,
-    setThemeColors
+    setThemeColors,
+    setToken
   }
 )(Marketplace);
