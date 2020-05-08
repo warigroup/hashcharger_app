@@ -15,7 +15,7 @@ export const resetErrors = () => {
 
 //////// CANCEL OFFER ACTIONS ////////////////////////
 
-export const cancelOrder = offerId => dispatch => {
+export const cancelOrder = (offerId, token) => dispatch => {
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();
   setTimeout(() => {
@@ -28,7 +28,7 @@ export const cancelOrder = offerId => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "CustomToken Wz4okAcgswSbB7rm5XD2kf"
+          "Authorization": `CustomToken ${token}`
         }
       },
       { cancelToken: source.token }
@@ -100,7 +100,7 @@ export const getConfigs = () => dispatch => {
 
 //////// GET OFFERS (PROFILE PAGE) //////////////////////////
 
-export const getOffers = (pagenumber) => dispatch => {
+export const getOffers = (pagenumber, token) => dispatch => {
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();
   setTimeout(() => {
@@ -112,7 +112,7 @@ export const getOffers = (pagenumber) => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "CustomToken Wz4okAcgswSbB7rm5XD2kf"
+          "Authorization": `CustomToken ${token}`
         },
         sub_id: "widgetaccount@protonmail.com"
       },
@@ -173,7 +173,7 @@ export const clearOffers = () => {
 
 /////// LOAD SETTLEMENTS (USER PROFILE PAGE) //////////
 
-export const getSettlements = (offer_take_id) => dispatch => {
+export const getSettlements = (offer_take_id, token) => dispatch => {
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();
   setTimeout(() => {
@@ -185,7 +185,7 @@ export const getSettlements = (offer_take_id) => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "CustomToken Wz4okAcgswSbB7rm5XD2kf"
+          "Authorization": `CustomToken ${token}`
         }
       },
       { cancelToken: source.token }
@@ -277,7 +277,7 @@ export const notFoundPage = () => {
 
 //////// PROFILE ACTIONS /////////////////////////////
 
-export const getCurrentProfile = () => dispatch => {
+export const getCurrentProfile = (token) => dispatch => {
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();
   setTimeout(() => {
@@ -287,7 +287,7 @@ export const getCurrentProfile = () => dispatch => {
     .get(`${apiurl}/user_info/`, {
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "CustomToken Wz4okAcgswSbB7rm5XD2kf"
+        "Authorization": `CustomToken ${token}`
       }
     }, { cancelToken: source.token })
     .then(res => dispatch({ type: types.GET_PROFILE, payload: res.data }))
@@ -319,7 +319,8 @@ export const takeOffer = (
   location,
   limit_price,
   refund_address,
-  sub_user
+  sub_user,
+  token
 ) => dispatch => {
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();
@@ -346,7 +347,7 @@ export const takeOffer = (
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "CustomToken Wz4okAcgswSbB7rm5XD2kf"
+          "Authorization": `CustomToken ${token}`
         }
       },
       { cancelToken: source.token }
@@ -372,7 +373,7 @@ export const takeOffer = (
 
 //////// GET BIDS ACTIONS //////////////////////////
 
-export const getBids = (number, sub_user) => dispatch => {
+export const getBids = (number, sub_user, token) => dispatch => {
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();
   setTimeout(() => {
@@ -384,7 +385,7 @@ export const getBids = (number, sub_user) => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "CustomToken Wz4okAcgswSbB7rm5XD2kf"
+          "Authorization": `CustomToken ${token}`
         }
       },
       { cancelToken: source.token }
@@ -402,7 +403,7 @@ export const getBids = (number, sub_user) => dispatch => {
     });
 };
 
-export const getBidInfo = bid_id => dispatch => {
+export const getBidInfo = (bid_id, token) => dispatch => {
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();
   setTimeout(() => {
@@ -414,7 +415,7 @@ export const getBidInfo = bid_id => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "CustomToken Wz4okAcgswSbB7rm5XD2kf"
+          "Authorization": `CustomToken ${token}`
         }
       },
       { cancelToken: source.token }
@@ -469,7 +470,7 @@ export const timeoutReset = () => {
 
 /////// GET HASHRATE INFO ///////////////////////////////
 
-export const getHashrateInfo = idnumber => dispatch => {
+export const getHashrateInfo = (idnumber, token) => dispatch => {
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();
   setTimeout(() => {
@@ -481,7 +482,7 @@ export const getHashrateInfo = idnumber => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "CustomToken Wz4okAcgswSbB7rm5XD2kf"
+          "Authorization": `CustomToken ${token}`
         }
       },
       { cancelToken: source.token }
@@ -499,7 +500,7 @@ export const getHashrateInfo = idnumber => dispatch => {
     });
 };
 
-export const getHashrateHistory = idnumber => dispatch => {
+export const getHashrateHistory = (idnumber, token) => dispatch => {
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();
   setTimeout(() => {
@@ -511,7 +512,7 @@ export const getHashrateHistory = idnumber => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "CustomToken Wz4okAcgswSbB7rm5XD2kf"
+          "Authorization": `CustomToken ${token}`
         }
       },
       { cancelToken: source.token }
@@ -529,7 +530,7 @@ export const getHashrateHistory = idnumber => dispatch => {
     });
 };
 
-export const getBidHashrateChart = idnumber => dispatch => {
+export const getBidHashrateChart = (idnumber, token) => dispatch => {
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();
   setTimeout(() => {
@@ -541,7 +542,7 @@ export const getBidHashrateChart = idnumber => dispatch => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "CustomToken Wz4okAcgswSbB7rm5XD2kf"
+          "Authorization": `CustomToken ${token}`
         }
       },
       { cancelToken: source.token }
