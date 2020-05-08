@@ -7,9 +7,7 @@ import { SET_TOKEN } from "../actions/types";
   export default function(state = initialState, action) {
     switch (action.type) {
       case SET_TOKEN: 
-        return {
-            value: action.payload
-        }
+        return action.payload[0].value
       default:
         return state;
     }
