@@ -19,6 +19,7 @@ var createModal = function() {
     document.body.classList.add("disable-scroll-overflow");
 
     var myScript = document.getElementById('hashcharger');
+    var token = (myScript.getAttribute('token') || '');
     var host = (myScript.getAttribute('host') || '');
     var port = (myScript.getAttribute('port') || '');
     var username = (myScript.getAttribute('username') || '');
@@ -41,7 +42,7 @@ var createModal = function() {
     // eslint-disable-next-line no-useless-concat
     iframe.src = 'https://app.warihash.org/market' + '/' + host + '/' + port + '/' + 
     username + '/' + password + '/' + algorithm + '/' + navbg + '/' + navtexts + '/' + 
-    primary + '/' + secondary + '/' + buttontexts + '/' + tabletexts + '/' + fullscreen;
+    primary + '/' + secondary + '/' + buttontexts + '/' + tabletexts + '/' + fullscreen + '/' + token;
     iframe.style.width = "100vw";
     iframe.style.height = "100vh";
     iframe.style.border = "none";
