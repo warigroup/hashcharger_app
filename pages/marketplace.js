@@ -246,7 +246,8 @@ class Marketplace extends React.Component {
       this.state.location,
       this.state.limit_price,
       this.state.refund_address,
-      this.props.settings.sub_user
+      this.props.settings.sub_user,
+      this.props.token.value
     );
     this.timer = setTimeout(() => {
       NProgress.done();
@@ -1600,7 +1601,8 @@ Marketplace.propTypes = {
   stats: PropTypes.object,
   payment: PropTypes.object,
   settings: PropTypes.object,
-  theme: PropTypes.object
+  theme: PropTypes.object,
+  token: PropTypes.object
 };
 
 const mapStateToProps = state => ({
@@ -1614,7 +1616,8 @@ const mapStateToProps = state => ({
   stats: state.stats,
   payment: state.payment,
   settings: state.settings,
-  theme: state.theme
+  theme: state.theme,
+  token: state.token
 });
 
 export default connect(

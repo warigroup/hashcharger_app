@@ -46,7 +46,7 @@ class InvoicePage extends React.Component {
       this.props.invoicePage();
       window.addEventListener("focus", this.onFocus);
       //// get invoice info 
-      this.props.getBidInfo(this.props.bidid);
+      this.props.getBidInfo(this.props.bidid, this.props.token.value);
       this.automaticRefresh();
       if (/*@cc_on!@*/false || !!document.documentMode === true) {
         this.setState({ msIE: true });
@@ -74,7 +74,7 @@ class InvoicePage extends React.Component {
       if (this._isMounted && 
         this.state.isSent === false && 
         this.state.isFailed === false) {
-        this.props.getBidInfo(this.props.payment.bid_id);
+        this.props.getBidInfo(this.props.payment.bid_id, this.props.token.value);
       }
     }, 5000);
   };
@@ -105,7 +105,7 @@ class InvoicePage extends React.Component {
   stopRefreshAndCheck = () => {
     clearInterval(this.countdownTimer, this.getbidsTimer);
     this.setState({ isFailed: true });
-    this.props.getBidInfo(this.props.bidid);
+    this.props.getBidInfo(this.props.bidid, this.props.token.value);
     this._isMounted = false;
   };
 
@@ -143,7 +143,7 @@ class InvoicePage extends React.Component {
   };
 
   onFocus = () => {
-    this.props.getBidInfo(this.props.bidid);
+    this.props.getBidInfo(this.props.bidid, this.props.token.value);
     this.setCountdown();
     this.automaticRefresh();
   };
@@ -528,7 +528,8 @@ class InvoicePage extends React.Component {
     bids: PropTypes.object,
     settings: PropTypes.object,
     configs: PropTypes.object,
-    theme: PropTypes.object
+    theme: PropTypes.object,
+    token: PropTypes.object
   };
 
   const mapStateToProps = state => ({
@@ -538,7 +539,8 @@ class InvoicePage extends React.Component {
     bids: state.bids,
     settings: state.settings,
     configs: state.configs,
-    theme: state.theme
+    theme: state.theme,
+    token: state.token
   });
 
   export default connect(mapStateToProps, 

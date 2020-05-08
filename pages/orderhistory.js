@@ -52,7 +52,7 @@ class myOrderHistory extends React.Component {
     this.props.clearAlert();
     this.props.clearHashrateData();
     this.props.orderHistoryPage();
-    this.props.getBids(this.state.pagenumber, this.props.settings.sub_user);
+    this.props.getBids(this.state.pagenumber, this.props.settings.sub_user, this.props.token.value);
   };
 
   componentDidUpdate(prevProps) {
@@ -103,38 +103,38 @@ class myOrderHistory extends React.Component {
 
   selectNewPage = number => {
     let pagenumber = number - 1;
-    this.props.getBids(pagenumber, this.props.settings.username);
+    this.props.getBids(pagenumber, this.props.settings.username, this.props.token.value);
   };
 
   prevPage = number => {
     let pagenumber = number - 1;
-    this.props.getBids(pagenumber, this.props.settings.username);
+    this.props.getBids(pagenumber, this.props.settings.username, this.props.token.value);
   };
 
   nextPage = number => {
     let pagenumber = number + 1;
-    this.props.getBids(pagenumber, this.props.settings.username);
+    this.props.getBids(pagenumber, this.props.settings.username, this.props.token.value);
   };
 
   firstPage = () => {
     let pagenumber = 0;
-    this.props.getBids(pagenumber, this.props.settings.username);
+    this.props.getBids(pagenumber, this.props.settings.username, this.props.token.value);
   };
 
   lastPage = number => {
     let pagenumber = number;
-    this.props.getBids(pagenumber, this.props.settings.username);
+    this.props.getBids(pagenumber, this.props.settings.username, this.props.token.value);
   };
 
   pageSix = () => {
     let pagenumber = 5;
-    this.props.getBids(pagenumber, this.props.settings.username);
+    this.props.getBids(pagenumber, this.props.settings.username, this.props.token.value);
 
   };
 
   minusSix = number => {
     let pagenumber = number - 6;
-    this.props.getBids(pagenumber, this.props.settings.username);
+    this.props.getBids(pagenumber, this.props.settings.username, this.props.token.value);
   };
 
   handleChange = event => {
@@ -147,13 +147,13 @@ class myOrderHistory extends React.Component {
     const modalcontents = this.state.modaloffers;
 
     const openBuyOrderModal = bid => {
-      this.props.getBidHashrateChart(bid.bid_id);
-      this.props.getBidInfo(bid.bid_id);
+      this.props.getBidHashrateChart(bid.bid_id, this.props.token.value);
+      this.props.getBidInfo(bid.bid_id, this.props.token.value);
       this.setState({ showBuyOrderModal: true, menuOpen: false });
     };
 
     const goToInvoicePage = bid_id => { 
-      this.props.setOldInvoiceId(bid_id);
+      this.props.setOldInvoiceId(bid_id, this.props.token.value);
       Router.pushRoute(`/invoice/id/${bid_id}`) 
     };
 
@@ -454,7 +454,8 @@ myOrderHistory.propTypes = {
   hashrate: PropTypes.object,
   miningalgo: PropTypes.object,
   settings: PropTypes.object,
-  theme: PropTypes.object
+  theme: PropTypes.object,
+  token: PropTypes.object
 };
 
 const mapStateToProps = state => ({
@@ -469,7 +470,8 @@ const mapStateToProps = state => ({
   hashrate: state.hashrate,
   miningalgo: state.miningalgo,
   settings: state.settings,
-  theme: state.theme
+  theme: state.theme,
+  token: state.token
 });
 
 export default connect(
