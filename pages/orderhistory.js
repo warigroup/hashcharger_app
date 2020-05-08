@@ -153,7 +153,7 @@ class myOrderHistory extends React.Component {
     };
 
     const goToInvoicePage = bid_id => { 
-      this.props.setOldInvoiceId(bid_id, this.props.token.value);
+      this.props.setOldInvoiceId(bid_id);
       Router.pushRoute(`/invoice/id/${bid_id}`) 
     };
 
