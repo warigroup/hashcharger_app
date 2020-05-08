@@ -14,6 +14,7 @@ import bidsReducer from './bidsReducer';
 import statsReducer from './statsReducer';
 import globalStratumConfigs from './globalStratumConfigs';
 import themeReducer from './themeReducer';
+import tokenReducer from './tokenReducer';
 
 export default combineReducers({
   errors: errorReducer,
@@ -30,5 +31,6 @@ export default combineReducers({
   bids: bidsReducer,
   stats: statsReducer,
   settings: globalStratumConfigs,
-  theme: themeReducer
+  theme: themeReducer,
+  token: tokenReducer
 });
