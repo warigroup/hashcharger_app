@@ -1,4 +1,4 @@
-.warihash-widget {
+.hashcharger-widget {
   animation-name: fadein-animation;
   animation-duration: 1s;
   animation-iteration-count: 1;
@@ -57,7 +57,7 @@
   }
 }
 
-.warihash-close-button {
+.hashcharger-close-button {
   z-index: 58458348948341; 
   position: absolute !important;
   top: 30px !important;
@@ -81,3 +81,4 @@
 
 :focus { outline:none; }
 ::-moz-focus-inner { border:0; }
+
