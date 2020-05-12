@@ -3,7 +3,7 @@
 ///##########
 
 
-export const apiurl = "https://devapi2.warihash.org";
+export const apiurl = "https://api.warihash.com";
 
 ///#########
 ///#########  Mining algorithms. Add or remove mining algorithms here.
