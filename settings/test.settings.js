@@ -11,7 +11,7 @@ export const apiurl = "http://localhost:8000";
 ///#########  Mining algorithms. Add or remove mining algorithms here.
 ///#########
 
-export const algorithms = ["sha256d", "scrypt", "ethash", "handshake"];
+export const algorithms = ["sha256d", "scrypt", "ethash", "handshake", "equihash-zcash"];
 
 ///#########
 ///#########  Miner locations. Add or remove miner locations here.
