@@ -20,17 +20,17 @@ var createModal = function() {
 
     var myScript = document.getElementById('hashcharger');
     var token = (myScript.getAttribute('token') || '');
-    var host = (myScript.getAttribute('host') || '');
-    var port = (myScript.getAttribute('port') || '');
-    var username = (myScript.getAttribute('username') || '');
-    var password = (myScript.getAttribute('password') || '');
+    var host = (myScript.getAttribute('stratum-host') || '');
+    var port = (myScript.getAttribute('stratum-port') || '');
+    var username = (myScript.getAttribute('stratum-username') || '');
+    var password = (myScript.getAttribute('stratum-password') || '');
     var algorithm = (myScript.getAttribute('algorithm') || '');
-    var navbg = (myScript.getAttribute('navbg') || '');
-    var navtexts = (myScript.getAttribute('navtexts') || '');
-    var primary = (myScript.getAttribute('primary') || '');
-    var secondary = (myScript.getAttribute('secondary') || '');
-    var buttontexts = (myScript.getAttribute('buttontexts') || '');
-    var tabletexts = (myScript.getAttribute('tabletexts') || '');
+    var navbg = (myScript.getAttribute('theme-navbg') || '');
+    var navtexts = (myScript.getAttribute('theme-navtexts') || '');
+    var primary = (myScript.getAttribute('theme-primary') || '');
+    var secondary = (myScript.getAttribute('theme-secondary') || '');
+    var buttontexts = (myScript.getAttribute('theme-buttontexts') || '');
+    var tabletexts = (myScript.getAttribute('theme-tabletexts') || '');
     var fullscreen = (myScript.getAttribute('fullscreen') || '');
 
     var modalWindow = document.createElement('div');
