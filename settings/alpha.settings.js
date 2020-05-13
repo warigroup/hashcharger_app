@@ -8,16 +8,16 @@ export const apiurl = "https://api.warihash.com";
 ///#########  Mining algorithms. Add or remove mining algorithms here.
 ///#########
 
-export const algorithms = ["sha256d", "scrypt", "ethash", "handshake", "equihash-zcash"];
+export const algorithms = ["equihash-zcash", "handshake", "sha256d", "ethash", "scrypt" ];
 
 ///#########
 ///#########  Miner locations. Add or remove miner locations here.
 ///#########
 
 export const minerLocations = [ 
-    {name: 'North America East (New York)', value: 'NA East'}, 
     {name: 'North America West (San Francisco)', value: 'NA West'},
-    {name: 'Europe West (Amsterdam)', value: 'EU West'}    
+    {name: 'Europe West (Amsterdam)', value: 'EU West'},
+    {name: 'North America East (New York)', value: 'NA East'}
 ];
 
 ///#########
