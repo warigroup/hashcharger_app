@@ -839,9 +839,9 @@ class Marketplace extends React.Component {
           <title>WariHash</title>
         </Head>
 
-        {/* {this.checkNestedConfigs() &&
+        {this.checkNestedConfigs() &&
       this.props.configs[this.props.miningalgo.algorithm] !== undefined &&
-      this.props.configs[this.props.miningalgo.algorithm][minerLocations[0].value] !== undefined ? */}
+      this.props.configs[this.props.miningalgo.algorithm][minerLocations[0].value] !== undefined ?
                      
         <div>
         <div className="container">
@@ -1539,9 +1539,9 @@ class Marketplace extends React.Component {
           </div>
          </div> 
          
-         </div> 
 
-         {/* : 
+
+         </div> : 
          
          <div 
          style={{width: "100vw", height: "100vh", 
@@ -1560,7 +1560,7 @@ class Marketplace extends React.Component {
               alt="Loading..."
             />
             <h6>Loading ...</h6>
-         </div> */}
+         </div>
         }   
       </PublicRoute>
     );
