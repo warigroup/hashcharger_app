@@ -22,7 +22,7 @@
   transition-timing-function: ease-out;
 }
 
-body.hashcharger-opened {
+.hashcharger-opened {
   overflow: hidden !important;
 }
 
