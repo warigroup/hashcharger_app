@@ -71,7 +71,6 @@ export const clearNetwork = () => {
 };
 
 //////// GET CONFIGS /////////////////////////////////
-
 export const getConfigs = () => dispatch => {
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();

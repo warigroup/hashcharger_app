@@ -251,14 +251,9 @@ class myOrderHistory extends React.Component {
 
                   <div className="col-md-12 clearfix mb-2" />
                   <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 tablecontainer">
-
                     <div className="buy-orders-table" style={{width: "100%"}}>
-                          <div
-                      className="board"
-                      style={{
-                        borderBottom: "1px solid rgba(0,0,0,0.3)",
-                        borderRadius: "0px"
-                      }}
+                    <div className="board"
+                      style={{ borderBottom: "1px solid rgba(0,0,0,0.3)", borderRadius: "0px" }}
                     >
                       <div
                         className="tableheader"
@@ -282,21 +277,18 @@ class myOrderHistory extends React.Component {
                               >
                                 Algorithm
                               </th>
-
                               <th
                                 id="duration"
                                 className="orders-table-duration offertitle"
                               >
                                 Duration
                               </th>
-
                               <th
                                 id="average_hashrate"
                                 className="orders-table-average-hashrate offertitle"
                               >
                                 Purchased / Average Hashrate
                               </th>
-
                               <th
                                 id="payment_status"
                                 className="orders-table-status offertitle"
@@ -330,7 +322,8 @@ class myOrderHistory extends React.Component {
                               this.props.bids.bid_loaded === true &&
                               this.props.bids.bids.result.length === 0 ?
                               <tr style={{
-                                width: "100%", borderRight: "1px solid rgba(0,0,0,0.3)",
+                                width: "100%", 
+                                borderRight: "1px solid rgba(0,0,0,0.3)",
                                 borderLeft: "1px solid rgba(0,0,0,0.3)"
                               }}>
                                 <td style={{
@@ -346,7 +339,7 @@ class myOrderHistory extends React.Component {
                               this.props.bids.bid_loaded === false ? 
                               <tr style={{ width: "100%", textAlign: "center",
                               borderRight: "1px solid rgba(0,0,0,0.2)",
-                                  borderLeft: "1px solid rgba(0,0,0,0.2)", }}>
+                                  borderLeft: "1px solid rgba(0,0,0,0.2)" }}>
                               <td>
                               <img
                                 src="/static/spinner.gif"
@@ -385,7 +378,6 @@ class myOrderHistory extends React.Component {
                                                     />
                                     </div>
                              : null} 
-
 
 
                     </div>    
