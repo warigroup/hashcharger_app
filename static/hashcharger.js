@@ -17,6 +17,7 @@ var widgetOpenBtn = document.getElementsByClassName("open-hashcharger");
 
 var createModal = function() {
     document.body.classList.add("disable-scroll-overflow");
+    document.body.style.overflow="hidden";
 
     var myScript = document.getElementById('hashcharger');
     var token = (myScript.getAttribute('token') || '');
@@ -37,6 +38,7 @@ var createModal = function() {
     modalWindow.className = 'hashcharger-widget';
     modalWindow.id = 'hashcharger-widget';
     document.getElementsByTagName('body')[0].appendChild(modalWindow);
+
 
     var iframe = document.createElement('iframe');
     // eslint-disable-next-line no-useless-concat
@@ -62,6 +64,7 @@ var createModal = function() {
         setTimeout(function(){ 
             elem.parentNode.removeChild(elem); 
             document.body.classList.remove("disable-scroll-overflow");
+            document.body.style.overflow="scroll";
         }, 450);
       });
     modalWindow.appendChild(widgetCloseBtn);
