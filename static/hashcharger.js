@@ -16,8 +16,7 @@ window.addEventListener("load", () => {
 var widgetOpenBtn = document.getElementsByClassName("open-hashcharger");
 
 var createModal = function() {
-    document.documentElement.style.overflow = 'hidden';
-    document.body.scroll = "no";
+    document.body.classList.add("hashcharger-opened");
 
     var myScript = document.getElementById('hashcharger');
     var token = (myScript.getAttribute('token') || '');
@@ -63,8 +62,7 @@ var createModal = function() {
         elem.classList.add('widget-fadeout');
         setTimeout(function(){ 
             elem.parentNode.removeChild(elem); 
-            document.documentElement.style.overflow = 'scroll';
-            document.body.scroll = "yes";
+            document.body.classList.remove("hashcharger-opened");
         }, 450);
       });
     modalWindow.appendChild(widgetCloseBtn);

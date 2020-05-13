@@ -22,6 +22,10 @@
   transition-timing-function: ease-out;
 }
 
+body.hashcharger-opened {
+  overflow: hidden !important;
+}
+
 .disable-scroll-overflow {
   overflow-y: hidden !important;
   overflow-x: hidden !important;
