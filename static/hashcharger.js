@@ -16,7 +16,7 @@ window.addEventListener("load", () => {
 var widgetOpenBtn = document.getElementsByClassName("open-hashcharger");
 
 var createModal = function() {
-    var root = document.getElementsByTagName( 'html' )[0];
+    var root = document.getElementsByTagName( 'body' )[0];
     root.classList.add("hashcharger-opened");
 
     var myScript = document.getElementById('hashcharger');
@@ -63,7 +63,7 @@ var createModal = function() {
         elem.classList.add('widget-fadeout');
         setTimeout(function(){ 
             elem.parentNode.removeChild(elem); 
-            var root = document.getElementsByTagName( 'html' )[0];
+            var root = document.getElementsByTagName( 'body' )[0];
             root.classList.remove("hashcharger-opened");
         }, 450);
       });
