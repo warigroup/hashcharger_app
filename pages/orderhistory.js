@@ -158,11 +158,11 @@ class myOrderHistory extends React.Component {
 
     return (
       <PublicRoute>
-        <div className="container-fluid orderhistory-container" style={{marginBottom: "0px", paddingBottom: "0px"}}>
+        <div className="container-fluid orderhistory-container" style={{ marginBottom: "-20px", paddingBottom: "0px"}}>
           <div className="row" style={{marginBottom: "0px", paddingBottom: "0px"}}>
-            <div className="container" style={{ padding: "0px" }}>
+            <div className="container" style={{ marginBottom: "0px", padding: "0px" }}>
               <div className="container-fluid" style={{marginBottom: "0px", paddingBottom: "0px"}}>
-                <div className="row" style={{ padding: "0px" }}>
+                <div className="row" style={{ marginBottom: "0px", padding: "0px" }}>
                 <style jsx>
                     {`
                       .marketplace-menu {
@@ -180,17 +180,8 @@ class myOrderHistory extends React.Component {
                         padding-bottom: 7px;
                       }
                       .search-btn {
-                          display: inline-block;
-                          border: none;
-                      }
-                      .stratum-btn-container {
-                        width: 100%;
-                        padding-right: 33px;
-                        margin-top: 15px;
-                      }
-                      .tab-menu-container {
-                        padding-right: 25px;
-                        margin-top: 27px;
+                        display: inline-block;
+                        border: none;
                       }
                       .tabmenu-btn {
                         border-radius: 0px;
@@ -212,14 +203,6 @@ class myOrderHistory extends React.Component {
                         color: #ff846c;
                       }
                       @media (max-width: 992px) {
-                        .tab-menu-container{
-                          text-align: left !important;
-                          margin-top: 25px;
-                          margin-bottom: 5px;
-                        }
-                        .stratum-btn-container {
-                          text-align: left !important;
-                        }
                         .hideonmobile {
                           display: none;
                         }
