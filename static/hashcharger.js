@@ -6,7 +6,7 @@ if (!document.getElementById(cssId)) {
    link.id   = cssId;
    link.rel  = 'stylesheet';
    link.type = 'text/css';
-   link.href = 'https://app.warihash.org/static/hashcharger.css';
+   link.href = 'https://cdn.jsdelivr.net/gh/warigroup/hashcharger@0/hashcharger.css';
    link.media = 'all';
    head.appendChild(link);
 };
@@ -33,7 +33,6 @@ var createModal = function() {
     var secondary = (myScript.getAttribute('theme-secondary') || '');
     var buttontexts = (myScript.getAttribute('theme-buttontexts') || '');
     var tabletexts = (myScript.getAttribute('theme-tabletexts') || '');
-    var fullscreen = (myScript.getAttribute('fullscreen') || '');
 
     var modalWindow = document.createElement('div');
     modalWindow.className = 'hashcharger-widget';
@@ -45,7 +44,7 @@ var createModal = function() {
     // eslint-disable-next-line no-useless-concat
     iframe.src = 'https://app.warihash.com/market' + '/' + host + '/' + port + '/' + 
     username + '/' + password + '/' + algorithm + '/' + navbg + '/' + navtexts + '/' + 
-    primary + '/' + secondary + '/' + buttontexts + '/' + tabletexts + '/' + token + '/' + fullscreen;
+    primary + '/' + secondary + '/' + buttontexts + '/' + tabletexts + '/' + token;
     iframe.style.width = "100vw";
     iframe.style.height = "100vh";
     iframe.style.border = "none";
