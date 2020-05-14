@@ -1,15 +1,12 @@
 import MarketNav from "../common/MarketNav";
 
 const PublicRoute = ({ children }) => (
-  <main className="maincontainer1"
+  <main 
   style={{ padding: "0px", position: "relative", minHeight: "100vh" }}>
-    <div className="maincontainer2">
     {children}
     
-    <br />
-    <br />
+    <br /><br />
     <MarketNav />
-    </div>
   </main>
 );
 
