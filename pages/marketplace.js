@@ -865,9 +865,9 @@ class Marketplace extends React.Component {
              </button>
              </div>
 
-             <div className="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12" style={{paddingLeft: "40px"}}> 
+             <div className="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12" > 
               {/******* MINING ALGORITHM SELECTOR *********/}
-               <div className="miningalgo-selector-container">
+               <div className="miningalgo-selector-container" style={{paddingLeft: "50px"}}>
                   <h4 className="marketplacetitle">Buy Hashing Power for</h4>
                   <MiningAlgoDropDown 
                     selectAlgorithm={this.selectAlgorithm}
