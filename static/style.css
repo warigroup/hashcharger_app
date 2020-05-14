@@ -5070,7 +5070,7 @@ select:-moz-focusring {
 
 .marketplace-menu {
   position: absolute; 
-  bottom: 0px;
+  bottom: -8px;
   width: 100vw; 
   display: block;
  }
