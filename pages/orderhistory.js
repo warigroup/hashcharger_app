@@ -158,10 +158,10 @@ class myOrderHistory extends React.Component {
 
     return (
       <PublicRoute>
-        <div className="container-fluid orderhistory-container">
-          <div className="row">
+        <div className="container-fluid orderhistory-container" style={{marginBottom: "0px", paddingBottom: "0px"}}>
+          <div className="row" style={{marginBottom: "0px", paddingBottom: "0px"}}>
             <div className="container" style={{ padding: "0px" }}>
-              <div className="container-fluid">
+              <div className="container-fluid" style={{marginBottom: "0px", paddingBottom: "0px"}}>
                 <div className="row" style={{ padding: "0px" }}>
                 <style jsx>
                     {`
@@ -249,7 +249,8 @@ class myOrderHistory extends React.Component {
                   </div>
 
                   <div className="col-md-12 clearfix mb-2" />
-                  <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 tablecontainer">
+                  <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 tablecontainer" 
+                  style={{marginBottom: "0px", paddingBottom: "0px"}}>
                     <div className="buy-orders-table" style={{width: "100%"}}>
                     <div className="board"
                       style={{ borderBottom: "1px solid rgba(0,0,0,0.3)", borderRadius: "0px" }}
