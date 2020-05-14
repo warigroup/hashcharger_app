@@ -689,6 +689,7 @@ class Marketplace extends React.Component {
 
             .main-marketplace-form {
               width: 100%;
+              padding-left: 37px;
             }
 
             .limit-price-container {
