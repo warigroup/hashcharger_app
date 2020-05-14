@@ -64,6 +64,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body, html {
+  overflow: hidden;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -72,6 +76,21 @@ code {
 main {
   font-family: "Open Sans", sans-serif;
   padding: 0;
+}
+
+.maincontainer1 {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.maincontainer2 {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: -15px;
+  overflow: auto;
 }
 
 /** IE11 Table style fix **/
