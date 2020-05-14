@@ -470,7 +470,7 @@ class Marketplace extends React.Component {
 
           .specify-limit {
             margin-top: 8px; 
-            margin-left: 0px; 
+            margin-left: 5px; 
             padding-left: 0%; 
             position: relative; 
             left: 0px;
