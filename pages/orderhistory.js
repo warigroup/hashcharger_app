@@ -24,7 +24,6 @@ import {
 } from "../actions/warihashApiCalls";
 import Cookies from "js-cookie";
 import { csrfcookie } from "../utils/cookieNames";
-import Paginator from "../components/tools/Paginator";
 import BidsList from "../components/profile/BidsList";
 
 class myOrderHistory extends React.Component {
@@ -96,44 +95,6 @@ class myOrderHistory extends React.Component {
       showCancelOrderModal: false,
     showPaymentAddressModal: false });
     this.setState({ modaloffers: [{ bid_id: { result: {} } }] });
-  };
-
-  /// PAGINATION //////////////////////////
-
-  selectNewPage = number => {
-    let pagenumber = number - 1;
-    this.props.getBids(pagenumber, this.props.settings.username, this.props.token.value);
-  };
-
-  prevPage = number => {
-    let pagenumber = number - 1;
-    this.props.getBids(pagenumber, this.props.settings.username, this.props.token.value);
-  };
-
-  nextPage = number => {
-    let pagenumber = number + 1;
-    this.props.getBids(pagenumber, this.props.settings.username, this.props.token.value);
-  };
-
-  firstPage = () => {
-    let pagenumber = 0;
-    this.props.getBids(pagenumber, this.props.settings.username, this.props.token.value);
-  };
-
-  lastPage = number => {
-    let pagenumber = number;
-    this.props.getBids(pagenumber, this.props.settings.username, this.props.token.value);
-  };
-
-  pageSix = () => {
-    let pagenumber = 5;
-    this.props.getBids(pagenumber, this.props.settings.username, this.props.token.value);
-
-  };
-
-  minusSix = number => {
-    let pagenumber = number - 6;
-    this.props.getBids(pagenumber, this.props.settings.username, this.props.token.value);
   };
 
   handleChange = event => {
@@ -339,23 +300,7 @@ class myOrderHistory extends React.Component {
                       </div>
                     </div>
 
-                          {/****   Show pagination when total_pages is greater than 1 ******/}
-                          {this.props.bids.bids.total_pages > 1 ? 
-                                  <div className="col-xl-12 col-md-12 col-12 pagination-container" 
-                                  style={{paddingRight: "20px", paddingLeft: "20px", marginBottom: "25px"}}>
-                                                  <Paginator 
-                                                      itemslist={this.props.bids.bids}
-                                                      nextPage={this.nextPage}
-                                                      prevPage={this.prevPage}
-                                                      firstPage={this.firstPage}
-                                                      lastPage={this.lastPage}
-                                                      selectNewPage={this.selectNewPage}
-                                                      pageSix={this.pageSix}
-                                                      minusSix={this.minusSix}
-                                                      textSize="medium"
-                                                    />
-                                    </div>
-                             : null} 
+
 
                     </div>    
                   </div>
