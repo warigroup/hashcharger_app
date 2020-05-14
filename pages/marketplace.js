@@ -848,7 +848,7 @@ class Marketplace extends React.Component {
         <div className="container">
           <div className="row">
           <div className="col-sm-12 col-12 d-xl-none d-lg-none d-md-none d-sm-inline d-inline" 
-             style={{paddingTop: "11.5px"}}>
+             style={{paddingTop: "11.5px", paddingLeft: "37px"}}>
                <br />
                <br />
             
