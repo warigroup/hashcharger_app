@@ -251,14 +251,9 @@ class myOrderHistory extends React.Component {
                   <div className="col-md-12 clearfix mb-2" />
                   <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 tablecontainer" 
                   style={{marginBottom: "0px", paddingBottom: "0px"}}>
-                    <div className="buy-orders-table" style={{width: "100%"}}>
-                    <div className="board"
-                      style={{ borderBottom: "1px solid rgba(0,0,0,0.3)", borderRadius: "0px" }}
-                    >
-                      <div
-                        className="tableheader"
-                        style={{ color: "gray", width: "100%" }}
-                      >
+                    <div className="buy-orders-table" style={{width: "100%", marginBottom: "0px", paddingBottom: "0px"}}>
+                    <div className="board" style={{ borderBottom: "1px solid rgba(0,0,0,0.3)", borderRadius: "0px" }}>
+                      <div className="tableheader" style={{ color: "gray", width: "100%" }}>
                         <table id="tableT" className="table table-borderless myorders-table-styles container-fluid">
                           <thead style={{ background: this.props.theme.secondary, color: this.props.theme.tabletexts }}>
                             <tr className="row m-0" style={{
@@ -321,11 +316,9 @@ class myOrderHistory extends React.Component {
                             {this.state.loading === false &&
                               this.props.bids.bid_loaded === true &&
                               this.props.bids.bids.result.length === 0 ?
-                              <tr style={{
-                                width: "100%", 
+                              <tr style={{ width: "100%", 
                                 borderRight: "1px solid rgba(0,0,0,0.3)",
-                                borderLeft: "1px solid rgba(0,0,0,0.3)"
-                              }}>
+                                borderLeft: "1px solid rgba(0,0,0,0.3)" }}>
                                 <td style={{
                                   width: "100%",
                                   paddingTop: "90px",
@@ -379,13 +372,10 @@ class myOrderHistory extends React.Component {
                                     </div>
                              : null} 
 
-
                     </div>    
-
                   </div>
 
 
-                  <div className="clearfix" />
                 </div>
               </div>
             </div>
