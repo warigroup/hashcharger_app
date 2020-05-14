@@ -26,7 +26,6 @@ import Cookies from "js-cookie";
 import { csrfcookie } from "../utils/cookieNames";
 import Paginator from "../components/tools/Paginator";
 import BidsList from "../components/profile/BidsList";
-import BuyOrderModal from "../components/profile/BuyOrderModal";
 
 class myOrderHistory extends React.Component {
   constructor() {
@@ -384,14 +383,6 @@ class myOrderHistory extends React.Component {
 
                   </div>
 
-                    {/**************** BUY ORDER MODAL ****************/}             
-                     <BuyOrderModal 
-                     hashrate={this.props.hashrate}
-                     modalcontents={modalcontents}
-                     modalLoading={this.state.modalLoading}
-                     handleCloseModal={this.handleCloseModal}
-                     showBuyOrderModal={this.state.showBuyOrderModal}
-                     />
 
                   <div className="clearfix" />
                 </div>
