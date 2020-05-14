@@ -697,7 +697,6 @@ class Marketplace extends React.Component {
               margin-left: 20px; 
               padding-left: 0px; 
               position: relative; 
-              left: 30px;
             }
 
             @media (max-width: 1200px) {
