@@ -225,13 +225,12 @@ class myOrderHistory extends React.Component {
                     `}
                   </style>
 
-                  <div className="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12">
-                      <br />
-                      <br />
-                  <h4 className="marketplacetitle">My Order History</h4>
-                  </div>
+      
 
-                  <div className="col-md-12 clearfix mb-2" />
+                
+                <div className="col-xl-12">
+                  <h4 className="marketplacetitle">My Order History</h4>
+                </div>
                   <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 tablecontainer" 
                   style={{marginBottom: "0px", paddingBottom: "0px"}}>
                     <div className="buy-orders-table" style={{width: "100%", marginBottom: "0px", paddingBottom: "0px"}}>
