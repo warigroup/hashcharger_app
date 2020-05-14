@@ -470,7 +470,7 @@ class Marketplace extends React.Component {
 
           .specify-limit {
             margin-top: 8px; 
-            margin-left: 5px; 
+            margin-left: 0px; 
             padding-left: 0%; 
             position: relative; 
             left: 0px;
@@ -867,7 +867,7 @@ class Marketplace extends React.Component {
 
              <div className="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12" > 
               {/******* MINING ALGORITHM SELECTOR *********/}
-               <div className="miningalgo-selector-container" style={{paddingLeft: "50px"}}>
+               <div className="miningalgo-selector-container" style={{paddingLeft: "35px"}}>
                   <h4 className="marketplacetitle">Buy Hashing Power for</h4>
                   <MiningAlgoDropDown 
                     selectAlgorithm={this.selectAlgorithm}
