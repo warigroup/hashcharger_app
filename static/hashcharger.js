@@ -6,7 +6,7 @@ if (!document.getElementById(cssId)) {
    link.id   = cssId;
    link.rel  = 'stylesheet';
    link.type = 'text/css';
-   link.href = 'https://cdn.jsdelivr.net/gh/warigroup/hashcharger@0/hashcharger.css';
+   link.href = 'https://app.warihash.org/static/hashcharger.css';
    link.media = 'all';
    head.appendChild(link);
 };
