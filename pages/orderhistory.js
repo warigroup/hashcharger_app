@@ -236,7 +236,7 @@ class myOrderHistory extends React.Component {
                   <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 tablecontainer" 
                   style={{marginBottom: "0px", paddingBottom: "0px"}}>
                     <div className="buy-orders-table" 
-                    style={{width: "100%", marginBottom: "0px", paddingBottom: "0px"}}>
+                    style={{width: "100%", marginBottom: "30px", paddingBottom: "0px"}}>
                     <div className="board" style={{ borderBottom: "1px solid rgba(0,0,0,0.3)", borderRadius: "0px" }}>
                       <div className="tableheader" style={{ color: "gray", width: "100%" }}>
                         <table id="tableT" className="table table-borderless myorders-table-styles container-fluid">

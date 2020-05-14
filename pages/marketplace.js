@@ -694,7 +694,7 @@ class Marketplace extends React.Component {
 
             .limit-price-container {
               margin-top: 8px; 
-              left: 17px; 
+              left: 22px; 
               padding-left: 0px; 
               position: relative; 
             }
