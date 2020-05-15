@@ -904,7 +904,7 @@ class Marketplace extends React.Component {
              <a href="https://warihash.zendesk.com/hc/en-us/requests/new" 
              target="_blank"
              rel="noopener noreferrer"
-             style={{ marginLeft: "10px" }}>
+             style={{ marginLeft: "14px" }}>
                <button className="nav-buttons">
                  <p>Help</p>
                 </button>
