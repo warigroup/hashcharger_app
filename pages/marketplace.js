@@ -699,6 +699,10 @@ class Marketplace extends React.Component {
               position: relative; 
             }
 
+            .addpaddingleft {
+              padding-left: 35px;
+            }
+
             @media (max-width: 1200px) {
               .main-marketplace-form {
                 width: 100%;
@@ -731,6 +735,10 @@ class Marketplace extends React.Component {
 
 
             @media (max-width: 770px) {
+              .addpaddingleft {
+                padding-left: 0px;
+              }
+              
               .offerformlabel {
                 display: inline-block; 
                 margin-left: 15px;
@@ -846,8 +854,8 @@ class Marketplace extends React.Component {
         <div>
         <div className="container">
           <div className="row">
-          <div className="col-sm-12 col-12 d-xl-none d-lg-none d-md-none d-sm-inline d-inline" 
-             style={{paddingTop: "11.5px", paddingLeft: "37px"}}>
+          <div className="col-sm-12 col-12 d-xl-none d-lg-none d-md-none d-sm-inline d-inline addpaddingleft" 
+             style={{paddingTop: "11.5px"}}>
                <br />
                <br />
             
@@ -867,7 +875,7 @@ class Marketplace extends React.Component {
 
              <div className="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12" > 
               {/******* MINING ALGORITHM SELECTOR *********/}
-               <div className="miningalgo-selector-container" style={{paddingLeft: "35px"}}>
+               <div className="miningalgo-selector-container addpaddingleft">
                   <h4 className="marketplacetitle">Buy Hashing Power for</h4>
                   <MiningAlgoDropDown 
                     selectAlgorithm={this.selectAlgorithm}
