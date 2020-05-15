@@ -70,7 +70,7 @@ class BidsList extends React.Component {
                   >
                     <button
                       className="btn btn-sm btn-secondary orderstable-btn invoice-btn"
-                      style={{ background: secondary, color: buttontexts }}
+                      style={{ background: secondary, color: buttontexts, fontWeight: "bold" }}
                       onClick={() => invoicePage(bid.bid_id)}
                     >
                       View Invoice
