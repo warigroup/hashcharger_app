@@ -677,9 +677,9 @@ class Marketplace extends React.Component {
             .link-icon {
               color: rgba(0,0,0,0.5);
               position: relative;
-              left: 6px;
+              left: 5px;
               top: -2px;
-              margin-right: 14px;
+              margin-right: 11px;
               font-size: 11px;
             }
 
@@ -704,7 +704,7 @@ class Marketplace extends React.Component {
             }
 
             .limitpricelabel {
-              left: -6.88px;
+              left: -6.9px;
             }
 
             @media (max-width: 1200px) {
@@ -1378,7 +1378,7 @@ class Marketplace extends React.Component {
           <div className="container-fluid">
               <div className="row">
               <div className="specify-limit col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 text-xl-right text-lg-left text-md-left text-left">
-                      <label>
+                   <label>
                       <a href="https://warihash.zendesk.com/hc/en-us/articles/360040612232-What-is-a-limit-price-" 
                       target="_blank" 
                       rel="noopener noreferrer" 
