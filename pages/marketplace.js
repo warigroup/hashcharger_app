@@ -704,7 +704,7 @@ class Marketplace extends React.Component {
             }
 
             .limitpricelabel {
-              left: -6.7px;
+              left: -6.88px;
             }
 
             @media (max-width: 1200px) {
