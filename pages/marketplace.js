@@ -17,7 +17,8 @@ import {
   setStratumUsernamePass,
   setRecentInvoiceId,
   setThemeColors,
-  setToken } from "../actions/warihashApiCalls";
+  setToken,
+  setSubUser } from "../actions/warihashApiCalls";
 import { FaRegClock, FaBitcoin, FaQuestionCircle, FaWallet } from "react-icons/fa";
 import { TiFlash } from "react-icons/ti";
 import { Router } from "../routes";
@@ -95,6 +96,10 @@ class Marketplace extends React.Component {
     if ( this.props.username !== undefined || this.props.password !== undefined ) {
       this.props.setStratumUsernamePass(this.props.username, this.props.password);
     }; 
+    // set subuser
+    if (this.props.mysubuser !== undefined) {
+      this.props.setSubUser(this.props.mysubuser);
+    };
 
     // select algorithm
     if ( this.props.algorithm !== undefined && algorithms.includes(this.props.algorithm) === true ) {
@@ -246,7 +251,7 @@ class Marketplace extends React.Component {
       this.state.location,
       this.state.limit_price,
       this.state.refund_address,
-      this.props.settings.sub_user,
+      this.props.subuser.value,
       this.props.token.value
     );
     this.timer = setTimeout(() => {
@@ -1611,6 +1616,7 @@ Marketplace.propTypes = {
   setRecentInvoiceId: PropTypes.func,
   setThemeColors: PropTypes.func,
   setToken: PropTypes.func,
+  setSubUser: PropTypes.func,
   errors: PropTypes.object,
   configs: PropTypes.object,
   network: PropTypes.object,
@@ -1622,7 +1628,8 @@ Marketplace.propTypes = {
   payment: PropTypes.object,
   settings: PropTypes.object,
   theme: PropTypes.object,
-  token: PropTypes.object
+  token: PropTypes.object,
+  subuser: PropTypes.object
 };
 
 const mapStateToProps = state => ({
@@ -1637,7 +1644,8 @@ const mapStateToProps = state => ({
   payment: state.payment,
   settings: state.settings,
   theme: state.theme,
-  token: state.token
+  token: state.token,
+  subuser: state.subuser
 });
 
 export default connect(
@@ -1658,6 +1666,7 @@ export default connect(
     setStratumUsernamePass,
     setRecentInvoiceId,
     setThemeColors,
-    setToken
+    setToken,
+    setSubUser
   }
 )(Marketplace);

@@ -632,3 +632,10 @@ export const setToken = token => {
     payload: token
   };
 };
+
+export const setSubUser = subuser => {
+  return {
+    type: types.SET_SUBUSER,
+    payload: subuser
+  };
+};

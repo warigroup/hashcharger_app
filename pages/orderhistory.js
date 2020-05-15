@@ -50,7 +50,7 @@ class myOrderHistory extends React.Component {
     this.props.clearAlert();
     this.props.clearHashrateData();
     this.props.orderHistoryPage();
-    this.props.getBids(this.state.pagenumber, this.props.settings.sub_user, this.props.token.value);
+    this.props.getBids(this.state.pagenumber, this.props.subuser.value, this.props.token.value);
   };
 
   componentDidUpdate(prevProps) {
@@ -359,7 +359,8 @@ myOrderHistory.propTypes = {
   miningalgo: PropTypes.object,
   settings: PropTypes.object,
   theme: PropTypes.object,
-  token: PropTypes.object
+  token: PropTypes.object,
+  subuser: PropTypes.object
 };
 
 const mapStateToProps = state => ({
@@ -375,7 +376,8 @@ const mapStateToProps = state => ({
   miningalgo: state.miningalgo,
   settings: state.settings,
   theme: state.theme,
-  token: state.token
+  token: state.token,
+  subuser: state.subuser
 });
 
 export default connect(

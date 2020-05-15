@@ -87,3 +87,6 @@ export const SET_THEME_COLORS = "SET_THEME_COLORS";
 
 // SET TOKEN VALUE
 export const SET_TOKEN = "SET_TOKEN";
+
+// SET SUB USER
+export const SET_SUBUSER = "SET_SUBUSER";
