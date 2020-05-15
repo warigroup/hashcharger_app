@@ -733,12 +733,11 @@ class Marketplace extends React.Component {
               }
             }
 
-
             @media (max-width: 770px) {
               .main-marketplace-form {
                 padding-left: 10px;
               }
-              
+
               .addpaddingleft {
                 padding-left: 10px;
               }
@@ -1426,7 +1425,7 @@ class Marketplace extends React.Component {
                   <div className="form-group">
                     <label htmlFor="limit_price" 
                     className="inputlabel"
-                    style={{ position: "relative" }}>
+                    style={{ position: "relative", left: "-2.5px" }}>
                       Limit Price in <PaymentRate />
                     </label>
                     <div
