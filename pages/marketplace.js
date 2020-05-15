@@ -677,7 +677,7 @@ class Marketplace extends React.Component {
             .link-icon {
               color: rgba(0,0,0,0.5);
               position: relative;
-              left: 3px;
+              left: 2px;
               top: -2px;
               margin-right: 14px;
               font-size: 11px;
@@ -903,7 +903,8 @@ class Marketplace extends React.Component {
                <br />
              <a href="https://warihash.zendesk.com/hc/en-us/requests/new" 
              target="_blank"
-             rel="noopener noreferrer">
+             rel="noopener noreferrer"
+             style={{ marginLeft: "10px" }}>
                <button className="nav-buttons">
                  <p>Help</p>
                 </button>
