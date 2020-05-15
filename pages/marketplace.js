@@ -896,7 +896,7 @@ class Marketplace extends React.Component {
                 {/******* MINING ALGORITHM SELECTOR END *********/}
              </div>
              <div className="col-xl-5 col-lg-5 col-md-5 d-xl-inline d-lg-inline d-md-inline d-sm-none d-none" 
-             style={{paddingTop: "11.5px", paddingLeft: "17px"}}>
+             style={{paddingTop: "11.5px", paddingLeft: "25px"}}>
                <br />
                <br />
                <br />
