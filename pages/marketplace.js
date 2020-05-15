@@ -677,9 +677,9 @@ class Marketplace extends React.Component {
             .link-icon {
               color: rgba(0,0,0,0.5);
               position: relative;
-              left: 5px;
+              left: 3px;
               top: -2px;
-              margin-right: 11px;
+              margin-right: 14px;
               font-size: 11px;
             }
 
