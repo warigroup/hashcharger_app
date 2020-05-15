@@ -735,10 +735,14 @@ class Marketplace extends React.Component {
 
 
             @media (max-width: 770px) {
-              .addpaddingleft {
-                padding-left: 0px;
+              .main-marketplace-form {
+                padding-left: 10px;
               }
               
+              .addpaddingleft {
+                padding-left: 10px;
+              }
+
               .offerformlabel {
                 display: inline-block; 
                 margin-left: 15px;
