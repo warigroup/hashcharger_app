@@ -90,3 +90,6 @@ export const SET_TOKEN = "SET_TOKEN";
 
 // SET SUB USER
 export const SET_SUBUSER = "SET_SUBUSER";
+
+// GET ESTIMATE
+export const GET_ESTIMATE = "GET_ESTIMATE";
