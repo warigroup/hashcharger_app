@@ -18,7 +18,8 @@ import {
   setRecentInvoiceId,
   setThemeColors,
   setToken,
-  setSubUser } from "../actions/warihashApiCalls";
+  setSubUser,
+  getEstimate } from "../actions/warihashApiCalls";
 import { FaRegClock, FaBitcoin, FaQuestionCircle, FaWallet } from "react-icons/fa";
 import { TiFlash } from "react-icons/ti";
 import { Router } from "../routes";
@@ -1617,6 +1618,7 @@ Marketplace.propTypes = {
   setThemeColors: PropTypes.func,
   setToken: PropTypes.func,
   setSubUser: PropTypes.func,
+  getEstimate: PropTypes.func,
   errors: PropTypes.object,
   configs: PropTypes.object,
   network: PropTypes.object,
@@ -1667,6 +1669,7 @@ export default connect(
     setRecentInvoiceId,
     setThemeColors,
     setToken,
-    setSubUser
+    setSubUser,
+    getEstimate
   }
 )(Marketplace);
