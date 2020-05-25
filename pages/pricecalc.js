@@ -20,13 +20,16 @@ class calculatorPage extends Component {
             limit_price: ""
         }
     }
-    
+
     render() {
 
         openOrderPage = () => Router.pushRoute('/');
 
         return (
             <PublicRoute>
+                <Head>
+                <title>WariHash</title>
+                </Head>
                 <div>
         <div className="container">
           <div className="row">
@@ -76,8 +79,8 @@ class calculatorPage extends Component {
               </a>
              {" "}<p className="nav-bar">|</p>{" "} 
              <button className="nav-buttons"
-             onClick={() => this.getPriceEstimate()}>
-               <p>Get Price Estimate</p>
+             onClick={() => this.openOrderPage()}>
+               <p>Place an Order</p>
              </button>
                <br />
              </div>

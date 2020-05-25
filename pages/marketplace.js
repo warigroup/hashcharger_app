@@ -916,7 +916,7 @@ class Marketplace extends React.Component {
               </a>
              {" "}<p className="nav-bar">|</p>{" "} 
              <button className="nav-buttons"
-             onClick={() => this.getPriceEstimate()}>
+             onClick={() => this.openPriceEstimate()}>
                <p>Get Price Estimate</p>
              </button>
                <br />
