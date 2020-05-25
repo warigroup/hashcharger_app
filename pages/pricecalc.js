@@ -584,6 +584,7 @@ calculatorPage.defaultProps = {
   
   calculatorPage.propTypes = {
     resetErrors: PropTypes.func,
+    getEstimate: PropTypes.func,
     estimate: PropTypes.object,
   };
   
@@ -595,6 +596,7 @@ calculatorPage.defaultProps = {
     mapStateToProps,
     {
       resetErrors,
+      getEstimate
     }
   )(calculatorPage);
   
