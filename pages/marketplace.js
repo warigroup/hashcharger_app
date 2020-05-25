@@ -18,8 +18,7 @@ import {
   setRecentInvoiceId,
   setThemeColors,
   setToken,
-  setSubUser,
-  getEstimate } from "../actions/warihashApiCalls";
+  setSubUser } from "../actions/warihashApiCalls";
 import { FaRegClock, FaBitcoin, FaQuestionCircle, FaWallet } from "react-icons/fa";
 import { TiFlash } from "react-icons/ti";
 import { Router } from "../routes";
@@ -395,7 +394,7 @@ class Marketplace extends React.Component {
       }
     };
 
-    openOrderHistoryPage = () => Router.pushRoute(`/orderhistory`);
+    getPriceEstimate = () => this.setState({ priceEstimatePage: true });
     handlePriceFocus = () => this.setState({ pricefocus: true });
     handlePriceBlur = () => this.setState({ pricefocus: false });
 
@@ -917,8 +916,8 @@ class Marketplace extends React.Component {
               </a>
              {" "}<p className="nav-bar">|</p>{" "} 
              <button className="nav-buttons"
-             onClick={() => this.openOrderHistoryPage()}>
-               <p>My Order History</p>
+             onClick={() => this.getPriceEstimate()}>
+               <p>Get Price Estimate</p>
              </button>
                <br />
              </div>
@@ -1618,7 +1617,6 @@ Marketplace.propTypes = {
   setThemeColors: PropTypes.func,
   setToken: PropTypes.func,
   setSubUser: PropTypes.func,
-  getEstimate: PropTypes.func,
   errors: PropTypes.object,
   configs: PropTypes.object,
   network: PropTypes.object,
@@ -1669,7 +1667,6 @@ export default connect(
     setRecentInvoiceId,
     setThemeColors,
     setToken,
-    setSubUser,
-    getEstimate
+    setSubUser
   }
 )(Marketplace);
