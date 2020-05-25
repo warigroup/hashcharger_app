@@ -394,7 +394,7 @@ class Marketplace extends React.Component {
       }
     };
 
-    getPriceEstimate = () => Router.pushRoute('/pricecalc');
+    openPriceEstimate = () => Router.pushRoute('/pricecalc');
     handlePriceFocus = () => this.setState({ pricefocus: true });
     handlePriceBlur = () => this.setState({ pricefocus: false });
 
@@ -884,8 +884,8 @@ class Marketplace extends React.Component {
               </a>
              {" "}<p className="nav-bar">|</p>{" "} 
              <button className="nav-buttons"
-             onClick={() => this.openOrderHistoryPage()}>
-               <p>My Order History</p>
+             onClick={() => this.openPriceEstimate()}>
+               <p>Get Price Estimate</p>
              </button>
              </div>
 
