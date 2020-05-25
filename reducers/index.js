@@ -16,6 +16,7 @@ import globalStratumConfigs from './globalStratumConfigs';
 import themeReducer from './themeReducer';
 import tokenReducer from './tokenReducer';
 import subuserReducer from './subuserReducer';
+import estimateReducer from './estimateReducer';
 
 export default combineReducers({
   errors: errorReducer,
@@ -34,5 +35,6 @@ export default combineReducers({
   settings: globalStratumConfigs,
   theme: themeReducer,
   token: tokenReducer,
-  subuser: subuserReducer
+  subuser: subuserReducer,
+  estimate: estimateReducer
 });
