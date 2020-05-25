@@ -55,11 +55,10 @@ class calculatorPage extends Component {
              <div className="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12" > 
               {/******* MINING ALGORITHM SELECTOR *********/}
                <div className="miningalgo-selector-container addpaddingleft">
-                  <h4 className="marketplacetitle">Buy Hashing Power for</h4>
+                  <h4 className="marketplacetitle">Price Estimate Calculator for </h4>
                   <MiningAlgoDropDown 
                     selectAlgorithm={this.selectAlgorithm}
                     />
-                
                 </div>
                 {/******* MINING ALGORITHM SELECTOR END *********/}
              </div>
@@ -194,29 +193,6 @@ class calculatorPage extends Component {
 
                       </div>
 
-                      <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
-                      style={{paddingLeft: "0px", paddingRight: "0px", paddingTop: "0px"}}
-                      >
-                      <p
-                      style={{
-                        fontSize: "0.7em",
-                        color: "rgba(0,0,0,0.6)",
-                        marginLeft: "5px"
-                      }}
-                    >
-                    <span className="min-value">Minimum duration:{" "}
-                    {this.checkNestedConfigs() && 
-                    this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location].min_order_hashrate[0].min) === null ? "25 hours" :
-                    parseInt((this.props.configs[this.props.miningalgo.algorithm] || {}).min_order_duration_min / 60) + " hours"}</span>
-                    <br />
-                    <span className="max-value">Maximum duration:{" "}
-                    {this.checkNestedConfigs() && 
-                    this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location].min_order_hashrate[1].min) === null ? "24 hours" :
-                     this.checkNestedConfigs() &&
-                     parseInt(this.props.configs[this.props.miningalgo.algorithm].max_order_duration_min / 60) + " hours" }
-                    </span>
-                      </p> 
-                      </div>
                         </div>
                         </div>
                       </div>
@@ -386,7 +362,7 @@ class calculatorPage extends Component {
               
 
       <div className="col-xl-6 col-lg-12 col-md-12 col-12 text-xl-right text-lg-left text-md-left text-left">
-                            <CSRFToken />
+                  
                        <button
                         disabled={this.state.formloading}
                         className="btn btn-info nooutline buybtn"
@@ -443,10 +419,12 @@ calculatorPage.defaultProps = {
     resetErrors: PropTypes.func,
     getEstimate: PropTypes.func,
     estimate: PropTypes.object,
+    settings: PropTypes.object
   };
   
   const mapStateToProps = state => ({
-    estimate: state.estimate
+    estimate: state.estimate,
+    settings: state.settings
   });
   
   export default connect(
