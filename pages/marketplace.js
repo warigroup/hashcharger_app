@@ -394,7 +394,7 @@ class Marketplace extends React.Component {
       }
     };
 
-    getPriceEstimate = () => this.setState({ priceEstimatePage: true });
+    getPriceEstimate = () => Router.pushRoute('/pricecalc');
     handlePriceFocus = () => this.setState({ pricefocus: true });
     handlePriceBlur = () => this.setState({ pricefocus: false });
 
