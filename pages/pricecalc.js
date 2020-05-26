@@ -11,6 +11,7 @@ import {
   TIMEOUT_DURATION
 } from "../utils/timeout-config";
 import { FaWallet } from "react-icons/fa";
+import { minerLocations } from "../settings";
 import ThreeDotsLoading from "../components/tools/ThreeDotsLoading";
 import Head from "next/head";
 import PropTypes from "prop-types";
@@ -24,7 +25,7 @@ class calculatorPage extends Component {
             hashrate: "",
             hashrate_units: "",
             mining_algo: "",
-            location: "",
+            location: "NA East",
             limit_price: "",
             formloading: false
         }
@@ -59,10 +60,38 @@ class calculatorPage extends Component {
           }, TIMEOUT_DURATION);
         };
 
+        safeNestedCheck = (fn, defaultVal) => {
+          try {
+              return fn();
+          } catch (e) {
+              return defaultVal;
+          }
+        };
+
         selectAlgorithm = algorithm_name => {
           const hashunits = ((this.props.configs || {})[algorithm_name] || {}).hashrate_units;
           this.setState({ mining_algo: algorithm_name, hashrate_units: hashunits });
+          this.selectFirstRegion(algorithm_name);
         };
+
+        selectFirstRegion = algorithm_name => {
+          const locations = minerLocations;
+          const firstAvailableLocation = locations.find(location => this.safeNestedCheck(() => this.props.configs[algorithm_name][location.value].min_order_hashrate[0].min) !== null ||
+          this.safeNestedCheck(() => this.props.configs[algorithm_name][location.value].min_order_hashrate[1].min) !== null );
+          if (firstAvailableLocation !== undefined) {
+            this.setState({ location: firstAvailableLocation.value });
+            if (this.safeNestedCheck(() => (this.props.configs[algorithm_name] || {})[firstAvailableLocation.value].min_order_hashrate[0].min) === null) {
+              this.setState({ duration: 25, duration_example: 25 });
+            } else { 
+              this.setState({ duration:  parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name].min_order_duration_min) / 60), 
+                duration_example:  parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name].min_order_duration_min) / 60) });
+            };
+          };
+          if (firstAvailableLocation === undefined) {
+            this.setState({ location: "NA East" });
+          };
+        };
+    
     
         return (
             <PublicRoute>
