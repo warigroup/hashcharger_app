@@ -7,6 +7,10 @@ import {
   formSubmission,
   timeoutReset,
   enableNavigation } from "../actions/warihashApiCalls";
+import {
+  TIMEOUT_DURATION
+} from "../utils/timeout-config";
+import { FaWallet } from "react-icons/fa";
 import ThreeDotsLoading from "../components/tools/ThreeDotsLoading";
 import Head from "next/head";
 import PropTypes from "prop-types";
@@ -59,7 +63,7 @@ class calculatorPage extends Component {
                 <Head>
                 <title>WariHash</title>
                 </Head>
-                <div>
+      <div>
         <div className="container">
           <div className="row">
           <div className="col-sm-12 col-12 d-xl-none d-lg-none d-md-none d-sm-inline d-inline addpaddingleft" 
@@ -183,7 +187,7 @@ class calculatorPage extends Component {
                                 color: "rgba(0,0,0,0.5)"
                               }}
                             >
-                              <FaRegClock style={durationfocus === true ? 
+                              <FaWallet style={durationfocus === true ? 
                                 { fontSize: "1.26em", opacity: "1" } : 
                                 { fontSize: "1.26em", opacity: "0.8" }} />
                             </span>
@@ -250,7 +254,7 @@ class calculatorPage extends Component {
                                 color: "rgba(0,0,0,0.5)"
                               }}
                             >
-                              <TiFlash style={hashratefocus === true ? 
+                              <FaWallet style={hashratefocus === true ? 
                               { fontSize: "1.4em", opacity: "1" } : 
                               { fontSize: "1.4em", opacity: "0.8" }} />
                             </span>
@@ -297,10 +301,7 @@ class calculatorPage extends Component {
 
                     <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
                       style={{paddingLeft: "0px", paddingRight: "0px", paddingTop: "0px", marginTop: "16px"}}
-                      >
-                    
-                   
-                      </div>
+                      ></div>
 
                     </div>
                         </div>
@@ -308,10 +309,6 @@ class calculatorPage extends Component {
 
 
                        
-
-
-
-
                       <div>
                     </div>
 
