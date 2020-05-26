@@ -26,7 +26,7 @@ class calculatorPage extends Component {
 
     render() {
 
-        openOrderPage = () => Router.pushRoute('/');
+        openOrderPage = () => Router.pushRoute(`/market/${this.props.settings.host}/${this.props.settings.port}/${this.props.settings.username}/${this.props.settings.password}/${this.props.miningalgo.algorithm}`);
 
         handleSubmit = event => {
           event.preventDefault();
@@ -450,12 +450,14 @@ calculatorPage.defaultProps = {
     timeoutReset: PropTypes.func,
     enableNavigation: PropTypes.func,
     estimate: PropTypes.object,
-    settings: PropTypes.object
+    settings: PropTypes.object,
+    miningalgo: PropTypes.object
   };
   
   const mapStateToProps = state => ({
     estimate: state.estimate,
-    settings: state.settings
+    settings: state.settings,
+    miningalgo: state.miningalgo
   });
   
   export default connect(
