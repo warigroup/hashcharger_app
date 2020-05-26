@@ -14,6 +14,7 @@ import { FaWallet } from "react-icons/fa";
 import ThreeDotsLoading from "../components/tools/ThreeDotsLoading";
 import Head from "next/head";
 import PropTypes from "prop-types";
+import AlgoDropDown from '../components/tools/AlgoDropDown';
 
 class calculatorPage extends Component {
     constructor() {
@@ -58,6 +59,11 @@ class calculatorPage extends Component {
           }, TIMEOUT_DURATION);
         };
 
+        selectAlgorithm = algorithm_name => {
+          const hashunits = ((this.props.configs || {})[algorithm_name] || {}).hashrate_units;
+          this.setState({ mining_algo: algorithm_name, hashrate_units: hashunits });
+        };
+    
         return (
             <PublicRoute>
                 <Head>
@@ -88,10 +94,11 @@ class calculatorPage extends Component {
              <div className="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12" > 
               {/******* MINING ALGORITHM SELECTOR *********/}
                <div className="miningalgo-selector-container addpaddingleft">
-                  <h4 className="marketplacetitle">Price Estimate Calculator for </h4>
-                  <MiningAlgoDropDown 
-                    selectAlgorithm={this.selectAlgorithm}
-                    />
+                  <h4 className="marketplacetitle">Price Estimate Calculator</h4><br />
+                  
+                  <h4 className="marketplacetitle">Mining Algorithm: </h4>
+
+                    <AlgoDropDown selectAlgorithm={this.selectAlgorithm} />
                 </div>
                 {/******* MINING ALGORITHM SELECTOR END *********/}
              </div>
@@ -448,13 +455,15 @@ calculatorPage.defaultProps = {
     enableNavigation: PropTypes.func,
     estimate: PropTypes.object,
     settings: PropTypes.object,
-    miningalgo: PropTypes.object
+    miningalgo: PropTypes.object,
+    configs: PropTypes.object
   };
   
   const mapStateToProps = state => ({
     estimate: state.estimate,
     settings: state.settings,
-    miningalgo: state.miningalgo
+    miningalgo: state.miningalgo,
+    configs: state.configs
   });
   
   export default connect(
