@@ -25,7 +25,8 @@ class calculatorPage extends Component {
             hashrate_units: "",
             mining_algo: "",
             location: "",
-            limit_price: ""
+            limit_price: "",
+            formloading: false
         }
     }
 
@@ -35,7 +36,6 @@ class calculatorPage extends Component {
 
         handleSubmit = event => {
           event.preventDefault();
-          const durationInMinutes = this.state.duration * 60;
           this.setState({ formloading: true });
           NProgress.start();
           this.props.resetErrors();
@@ -133,10 +133,8 @@ class calculatorPage extends Component {
             </div>
             
 
-
             <div className="container">
               <div className="row">
-
             <div className="main-marketplace-form">
             <form
               className="formstyles"
@@ -444,7 +442,8 @@ class calculatorPage extends Component {
 }
 
 calculatorPage.defaultProps = {
-    estimate: []
+    estimate: [],
+    errors: []
   };
   
   calculatorPage.propTypes = {
@@ -456,14 +455,16 @@ calculatorPage.defaultProps = {
     estimate: PropTypes.object,
     settings: PropTypes.object,
     miningalgo: PropTypes.object,
-    configs: PropTypes.object
+    configs: PropTypes.object,
+    errors: PropTypes.object
   };
   
   const mapStateToProps = state => ({
     estimate: state.estimate,
     settings: state.settings,
     miningalgo: state.miningalgo,
-    configs: state.configs
+    configs: state.configs,
+    errors: state.errors
   });
   
   export default connect(
