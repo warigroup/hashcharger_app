@@ -3,7 +3,10 @@ import PublicRoute from "../components/routes/PublicRoute";
 import { connect } from "react-redux";
 import {
   resetErrors,
-  getEstimate } from "../actions/warihashApiCalls";
+  getEstimate,
+  formSubmission,
+  timeoutReset,
+  enableNavigation } from "../actions/warihashApiCalls";
 import ThreeDotsLoading from "../components/tools/ThreeDotsLoading";
 import Head from "next/head";
 import PropTypes from "prop-types";
@@ -24,6 +27,32 @@ class calculatorPage extends Component {
     render() {
 
         openOrderPage = () => Router.pushRoute('/');
+
+        handleSubmit = event => {
+          event.preventDefault();
+          const durationInMinutes = this.state.duration * 60;
+          this.setState({ formloading: true });
+          NProgress.start();
+          this.props.resetErrors();
+          this.props.formSubmission();
+          this.props.timeoutReset();
+          this.props.getEstimate(
+            this.state.duration,
+            this.state.hashrate,
+            this.state.hashrate_units,
+            this.state.mining_algo,
+            this.state.location,
+            this.state.limit_price
+          );
+          this.timer = setTimeout(() => {
+            NProgress.done();
+            this.setState({ formloading: false });
+            this.props.enableNavigation();
+            if (!this.props.errors) {
+              this.props.timeoutError();
+            }
+          }, TIMEOUT_DURATION);
+        };
 
         return (
             <PublicRoute>
@@ -97,7 +126,6 @@ class calculatorPage extends Component {
             <div className="container">
               <div className="row">
 
- 
             <div className="main-marketplace-form">
             <form
               className="formstyles"
@@ -418,6 +446,9 @@ calculatorPage.defaultProps = {
   calculatorPage.propTypes = {
     resetErrors: PropTypes.func,
     getEstimate: PropTypes.func,
+    formSubmission: PropTypes.func,
+    timeoutReset: PropTypes.func,
+    enableNavigation: PropTypes.func,
     estimate: PropTypes.object,
     settings: PropTypes.object
   };
@@ -431,7 +462,10 @@ calculatorPage.defaultProps = {
     mapStateToProps,
     {
       resetErrors,
-      getEstimate
+      getEstimate,
+      formSubmission,
+      timeoutReset,
+      enableNavigation
     }
   )(calculatorPage);
   
