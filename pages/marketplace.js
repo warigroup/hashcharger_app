@@ -104,6 +104,9 @@ class Marketplace extends React.Component {
     // select algorithm
     if ( this.props.algorithm !== undefined && algorithms.includes(this.props.algorithm) === true ) {
       this.selectAlgorithm(this.props.algorithm);
+      setTimeout(() => {
+        this.selectFirstRegion(algorithm_name);
+      }, 1250)
     };
 
     // set default algorithm
@@ -310,7 +313,6 @@ class Marketplace extends React.Component {
       this.setState({ mining_algo: algorithm_name, hashrate_units: hashunits });
       Cookies.set("algo_select", algorithm_name, { expires: 7 });
       this.setState({ durationClicked: false });
-      this.selectFirstRegion(algorithm_name);
     };
 
     selectFirstRegion = algorithm_name => {
