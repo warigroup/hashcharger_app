@@ -103,11 +103,10 @@ class Marketplace extends React.Component {
 
     // select algorithm
     if ( this.props.algorithm !== undefined && algorithms.includes(this.props.algorithm) === true ) {
-      
+      this.selectAlgorithm(this.props.algorithm);
       setTimeout(() => {
-        this.selectAlgorithm(this.props.algorithm);
         this.selectFirstRegion(this.props.algorithm);
-      }, 1450)
+      }, 1250)
     };
 
     // set default algorithm
