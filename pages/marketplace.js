@@ -1503,7 +1503,12 @@ class Marketplace extends React.Component {
                     </div>
 
       <div className="col-xl-6 col-lg-12 col-md-12 col-12 text-xl-right text-lg-left text-md-left text-left">
-                            <CSRFToken />
+                         
+                    <div style={{borderTop: "1px solid black", paddingTop: "25px"}}>
+                          
+                    </div>     
+                         
+                    <CSRFToken />
                        <button
                         disabled={this.state.formloading}
                         className="btn btn-info nooutline buybtn"
