@@ -313,6 +313,7 @@ class Marketplace extends React.Component {
       this.setState({ mining_algo: algorithm_name, hashrate_units: hashunits });
       Cookies.set("algo_select", algorithm_name, { expires: 7 });
       this.setState({ durationClicked: false });
+      this.selectFirstRegion(algorithm_name);
     };
 
     selectFirstRegion = algorithm_name => {
