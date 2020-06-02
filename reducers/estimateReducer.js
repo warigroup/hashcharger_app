@@ -1,16 +1,13 @@
 import { GET_ESTIMATE } from "../actions/types";
 
 const initialState = {
-    data: {
-      "data": undefined
-    }
+    price: undefined
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_ESTIMATE:
-      return { ...state, 
-        data: action.payload };
+      return { price: action.payload };
     default:
       return state;
   }
