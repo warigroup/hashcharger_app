@@ -395,7 +395,7 @@ class Marketplace extends React.Component {
       }
     };
 
-    openPriceEstimate = () => Router.pushRoute('/pricecalc');
+    openOrderHistory = () => Router.pushRoute('/orderhistory');
     handlePriceFocus = () => this.setState({ pricefocus: true });
     handlePriceBlur = () => this.setState({ pricefocus: false });
 
@@ -885,8 +885,8 @@ class Marketplace extends React.Component {
               </a>
              {" "}<p className="nav-bar">|</p>{" "} 
              <button className="nav-buttons"
-             onClick={() => this.openPriceEstimate()}>
-               <p>Get Price Estimate</p>
+             onClick={() => this.openOrderHistory()}>
+               <p>Order History</p>
              </button>
              </div>
 
@@ -917,8 +917,8 @@ class Marketplace extends React.Component {
               </a>
              {" "}<p className="nav-bar">|</p>{" "} 
              <button className="nav-buttons"
-             onClick={() => this.openPriceEstimate()}>
-               <p>Get Price Estimate</p>
+             onClick={() => this.openOrderHistory()}>
+               <p>Order History</p>
              </button>
                <br />
              </div>
@@ -1375,9 +1375,6 @@ class Marketplace extends React.Component {
                         
                        
               
-                  
-
-                    
 
       <div className="col-xl-6 col-lg-12 col-md-12 col-12" 
           style={{ paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px" }}>
