@@ -611,7 +611,6 @@ class Marketplace extends React.Component {
             }
             .formcontainer-price {
               width: 100%;
-              margin-top: 15px;
               padding-left: 15px;
             }
             .formcontainer-offerdetails {
@@ -790,7 +789,6 @@ class Marketplace extends React.Component {
               }
               .formcontainer-price {
                 padding: 0px 15px 15px 15px;
-                margin-top: 10px;
               }
               .formcontainer-offerdetails {
                 padding: 15px;
