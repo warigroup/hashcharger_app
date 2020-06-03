@@ -1375,7 +1375,7 @@ class Marketplace extends React.Component {
 
           <div className="container-fluid">
               <div className="row">
-              <div className="specify-limit col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 text-xl-right text-lg-left text-md-left text-left">
+              <div className="specify-limit col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-xl-right text-lg-left text-md-left text-left">
                    <label>
                       <a href="https://warihash.zendesk.com/hc/en-us/articles/360040612232-What-is-a-limit-price-" 
                       target="_blank" 
