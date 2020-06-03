@@ -1495,7 +1495,7 @@ class Marketplace extends React.Component {
 
       <div className="offset-xl-7 col-xl-5 col-lg-12 col-md-12 col-12 text-xl-right text-lg-left text-md-left text-left">
                          
-                    <div style={{borderTop: "1px solid black", paddingTop: "25px"}}>
+                    <div style={{borderTop: "1px solid black", paddingTop: "2px"}}>
                       <FaBitcoin style={{ fontSize: "1.3em", 
                       opacity: "1", 
                       color: "black", 
