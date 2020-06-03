@@ -1499,7 +1499,8 @@ class Marketplace extends React.Component {
                       <FaBitcoin style={{ fontSize: "1.3em", 
                       opacity: "1", 
                       color: "black", 
-                      display: "inline-block" }} /> 
+                      display: "inline-block",
+                      marginRight: "13px" }} /> 
                       <h5 style={{ display: "inline-block" }}>Estimated Cost:</h5> <h5>{this.props.estimate.price === undefined ? "0.00000000" : this.props.estimate.price} BTC</h5>
                       <p style={{ fontSize: "0.9em", opacity: "0.8"}}>
                         Estimate based on last available rate and may differ from actual invoice amount.
