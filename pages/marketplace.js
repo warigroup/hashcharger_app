@@ -1360,18 +1360,14 @@ class Marketplace extends React.Component {
                       {this.props.errors.refund_address}</p> : null}
                   </div>
                 
-                <div className="desktop-br">
-                  <br />
-                 
-                </div>
-                <br />
+         
                 </div>
                         
                        
               
 
       <div className="col-xl-12 col-lg-12 col-md-12 col-12" 
-          style={{ paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px" }}>
+          style={{ paddingRight: "0px", paddingLeft: "0px", }}>
 
           <div className="container-fluid">
               <div className="row">
