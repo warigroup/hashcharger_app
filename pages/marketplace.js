@@ -272,6 +272,19 @@ class Marketplace extends React.Component {
     this.setState({ [itemName]: itemValue });
   };
 
+  handleHashrateChange = event => {
+    const itemName = event.target.name;
+    const itemValue = event.target.value;
+    this.setState({ [itemName]: itemValue });
+    this.props.getEstimate(
+      this.state.duration,
+      this.state.hashrate,
+      this.state.hashrate_units,
+      this.props.miningalgo.algorithm,
+      this.state.location,
+      this.state.limit_price);
+  };
+
   handleSelect = event => {
     this.setState({ stratum_id: event.target.value });
     this.selectStratumSetting(event.target.value);
@@ -1174,7 +1187,7 @@ class Marketplace extends React.Component {
                               borderRadius: "7px",
                               fontSize: "0.82em"
                             }}
-                            onChange={this.handleChange}
+                            onChange={this.handleHashrateChange}
                             onFocus={this.handleHashrateFocus}
                             onBlur={this.handleHashrateBlur}
                             autoComplete="off"
