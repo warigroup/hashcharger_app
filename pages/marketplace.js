@@ -214,7 +214,16 @@ class Marketplace extends React.Component {
   };
 
   handleHashrateFocus = () => this.setState({ hashratefocus: true });
-  handleHashrateBlur = () => this.setState({ hashratefocus: false });
+  handleHashrateBlur = () => { 
+    this.setState({ hashratefocus: false }),
+    this.props.getEstimate(
+      this.state.duration,
+      this.state.hashrate,
+      this.state.hashrate_units,
+      this.props.miningalgo.algorithm,
+      this.state.location,
+      this.state.limit_price); 
+  };
   handleDurationFocus = () => this.setState({ durationfocus: true, durationClicked: true });
   handleDurationBlur = () => this.setState({ durationfocus: false });
   handleDurationDaysFocus = () => this.setState({ durationdaysfocus: true });
@@ -270,19 +279,6 @@ class Marketplace extends React.Component {
     const itemName = event.target.name;
     const itemValue = event.target.value;
     this.setState({ [itemName]: itemValue });
-  };
-
-  handleHashrateChange = event => {
-    const itemName = event.target.name;
-    const itemValue = event.target.value;
-    this.setState({ [itemName]: itemValue });
-    this.props.getEstimate(
-      this.state.duration,
-      this.state.hashrate,
-      this.state.hashrate_units,
-      this.props.miningalgo.algorithm,
-      this.state.location,
-      this.state.limit_price);
   };
 
   handleSelect = event => {
@@ -1187,7 +1183,7 @@ class Marketplace extends React.Component {
                               borderRadius: "7px",
                               fontSize: "0.82em"
                             }}
-                            onChange={this.handleHashrateChange}
+                            onChange={this.handleChange}
                             onFocus={this.handleHashrateFocus}
                             onBlur={this.handleHashrateBlur}
                             autoComplete="off"
