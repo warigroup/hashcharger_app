@@ -886,7 +886,7 @@ class Marketplace extends React.Component {
              {" "}<p className="nav-bar">|</p>{" "} 
              <button className="nav-buttons"
              onClick={() => this.openOrderHistory()}>
-               <p>Order History</p>
+               <p>My Order History</p>
              </button>
              </div>
 
@@ -918,7 +918,7 @@ class Marketplace extends React.Component {
              {" "}<p className="nav-bar">|</p>{" "} 
              <button className="nav-buttons"
              onClick={() => this.openOrderHistory()}>
-               <p>Order History</p>
+               <p>My Order History</p>
              </button>
                <br />
              </div>
