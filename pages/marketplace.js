@@ -1296,12 +1296,6 @@ class Marketplace extends React.Component {
                         </div>
                         </div>
 
-
-                       
-
-
-
-
                       <div>
                     </div>
 
@@ -1315,7 +1309,7 @@ class Marketplace extends React.Component {
                       <div className="container-fluid">
                         <div className="row" style={{ paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px" }}>
                         
-                <div className="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-12" 
+                <div className="offset-xl-7 col-xl-5 col-lg-12 col-md-12 col-sm-12 col-12" 
                 style={{paddingRight: "0px"}}>
                   <div className="form-group" style={{paddingRight: "0px"}}>
                     <label htmlFor="refund_address" className="inputlabel">
@@ -1502,9 +1496,14 @@ class Marketplace extends React.Component {
       <div className="col-xl-6 col-lg-12 col-md-12 col-12 text-xl-right text-lg-left text-md-left text-left">
                          
                     <div style={{borderTop: "1px solid black", paddingTop: "25px"}}>
-                      <FaBitcoin style={{ fontSize: "1.3em", opacity: "1", color: "black" }} /> 
+                      <FaBitcoin style={{ fontSize: "1.3em", 
+                      opacity: "1", 
+                      color: "black", 
+                      display: "inline-block" }} /> 
                       <h5>Estimated Cost:</h5> <h5>{this.props.estimate.price === undefined ? "0.00000000" : this.props.estimate.price} BTC</h5>
-                      <p>Estimate based on last available rate and may differ from actual invoice amount.</p>
+                      <p style={{ fontSize: "0.9em", opacity: "0.8"}}>
+                        Estimate based on last available rate and may differ from actual invoice amount.
+                      </p>
                     </div>     
                          
                     <CSRFToken />
