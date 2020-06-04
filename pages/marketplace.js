@@ -1434,7 +1434,7 @@ class Marketplace extends React.Component {
 
                   {this.state.checked === true ? 
               <div className="container-fluid">
-                <div className="offset-xl-7 col-xl-5">
+                <div className="offset-xl-8 col-xl-4">
                 <div className="limit-price-container text-xl-right text-lg-left text-md-left text-left">
                   <div className="form-group">
                     <label htmlFor="limit_price" 
