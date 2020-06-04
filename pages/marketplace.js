@@ -287,15 +287,6 @@ class Marketplace extends React.Component {
     this.selectStratumSetting(event.target.value);
   };
 
-  estimateTest = () => {
-    this.props.getEstimate(
-      this.state.duration,
-      this.state.hashrate,
-      this.state.hashrate_units,
-      this.props.miningalgo.algorithm,
-      this.state.location,
-      this.state.limit_price); 
-  }
 
         //// ERROR ALERT ///////////////////////////////
         errorAlert = () => {
@@ -915,7 +906,6 @@ class Marketplace extends React.Component {
                   <MiningAlgoDropDown 
                     selectAlgorithm={this.selectAlgorithm}
                     />
-                   <button onClick={this.estimateTest}>Get ESTIMATE</button>
                 </div>
                 {/******* MINING ALGORITHM SELECTOR END *********/}
              </div>
