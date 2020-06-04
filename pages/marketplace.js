@@ -493,8 +493,8 @@ class Marketplace extends React.Component {
             margin-left: 0px; 
             padding-left: 0%; 
             position: relative; 
-            left: 0px;
-            top: 10px;
+            left: 20px;
+            top: 6px;
           }
 
           .nav-buttons {
