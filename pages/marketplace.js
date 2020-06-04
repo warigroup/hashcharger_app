@@ -1319,7 +1319,7 @@ class Marketplace extends React.Component {
                         
                 <div className="offset-xl-6 col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12" 
                 style={{paddingRight: "0px"}}>
-                  <div className="form-group" style={{paddingRight: "0px"}}>
+                  <div className="form-group" style={{paddingRight: "0px", position: "relative", left: "15px"}}>
                     <label htmlFor="refund_address" className="inputlabel">
                       Bitcoin Refund Address:
                     </label>
