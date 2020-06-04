@@ -1433,6 +1433,8 @@ class Marketplace extends React.Component {
                   </div>
 
                   {this.state.checked === true ? 
+              <div className="container-fluid">
+                <div className="offset-xl-7 col-xl-5">
                 <div className="limit-price-container text-xl-right text-lg-left text-md-left text-left">
                   <div className="form-group">
                     <label htmlFor="limit_price" 
@@ -1494,6 +1496,8 @@ class Marketplace extends React.Component {
                           {this.props.errors.price}
                         </p> : null}
                   </div>
+                  </div>
+                  </div>
                   </div> : null}
 
 
@@ -1509,6 +1513,7 @@ class Marketplace extends React.Component {
                       marginRight: "13px" }} /> 
                       <h5 style={{ display: "inline-block" }}>Estimated Cost:</h5>{" "}
                       <h5 style={{ display: "inline-block" }}>{this.props.estimate.price === undefined ? "0.00000000" : this.props.estimate.price.total_payment_amount} BTC</h5>
+                      
                       <p style={{ fontSize: "0.8em", opacity: "0.8"}}>
                         Estimate based on last available rate and may differ from actual invoice amount.
                       </p>
