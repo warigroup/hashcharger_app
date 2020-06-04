@@ -494,7 +494,7 @@ class Marketplace extends React.Component {
             padding-left: 0%; 
             position: relative; 
             left: 0px;
-            top: 30px;
+            top: 10px;
           }
 
           .nav-buttons {
@@ -1384,7 +1384,6 @@ class Marketplace extends React.Component {
 
           <div className="container">
               <div className="row">
-
               <div className="specify-limit offset-xl-2 col-xl-10 col-lg-12 col-md-12 col-sm-12 col-12 text-xl-right text-lg-left text-md-left text-left"
               style={{marginBottom: "25px"}}>
                    <label>
@@ -1509,8 +1508,7 @@ class Marketplace extends React.Component {
                     </div>
 
       <div className="offset-xl-6 col-xl-5 col-lg-12 col-md-12 col-12 text-xl-right text-lg-left text-md-left text-left">
-                         
-                    <div style={{borderTop: "1px solid black", paddingTop: "16px", paddingLeft: "25px", paddingRight: "25px"}}>
+           <div style={{borderTop: "1px solid black", paddingTop: "16px", paddingLeft: "25px", paddingRight: "25px"}}>
                       <div className="container-fluid">
                         <div className="row">
                             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
