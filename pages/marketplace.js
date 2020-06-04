@@ -1315,10 +1315,11 @@ class Marketplace extends React.Component {
         
                 
                       <div className="container-fluid">
-                        <div className="row" style={{ paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px" }}>
+                        <div className="row" 
+                        style={{ paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px", position: "relative", right: "-30px" }}>
                         
                 <div className="offset-xl-6 col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12" 
-                style={{paddingRight: "0px", position: "relative", right: "-30px"}}>
+                style={{paddingRight: "0px"}}>
                   <div className="form-group" 
                   style={{paddingRight: "0px"}}>
                     <label htmlFor="refund_address" className="inputlabel">
