@@ -657,7 +657,7 @@ export const getEstimate = (
     source.cancel("ERROR: Timeout");
   }, TIMEOUT_DURATION);
   return axios
-    .post(
+    .get(
       `${apiurl}/estimate_get/`,
       {
         duration: duration,
