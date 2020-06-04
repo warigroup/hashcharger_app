@@ -215,15 +215,18 @@ class Marketplace extends React.Component {
 
   handleHashrateFocus = () => this.setState({ hashratefocus: true });
   handleHashrateBlur = () => { 
-    this.setState({ hashratefocus: false }),
-    this.props.getEstimate(
-      this.state.duration,
-      this.state.hashrate,
-      this.state.hashrate_units,
-      this.props.miningalgo.algorithm,
-      this.state.location,
-      this.state.limit_price,
-      this.props.mytoken); 
+    this.setState({ hashratefocus: false });
+    
+    if (this.state.hashrate !== "") {
+      this.props.getEstimate(
+        this.state.duration,
+        this.state.hashrate,
+        this.state.hashrate_units,
+        this.props.miningalgo.algorithm,
+        this.state.location,
+        this.state.limit_price,
+        this.props.mytoken); 
+    }
   };
   handleDurationFocus = () => this.setState({ durationfocus: true, durationClicked: true });
   handleDurationBlur = () => this.setState({ durationfocus: false });
