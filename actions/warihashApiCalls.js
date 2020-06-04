@@ -658,7 +658,7 @@ export const getEstimate = (
   }, TIMEOUT_DURATION);
   return axios
     .get(
-      `${apiurl}/estimate_get/?${duration}/?${hashrate}/?${hashrate_units}/?${mining_algo}/?${location}/?${limit_price}`,
+      `${apiurl}/estimate_get/${duration}/${hashrate}/${hashrate_units}/${mining_algo}/${location}/${limit_price}`,
       {
         headers: {
           "Content-Type": "application/json",
