@@ -1382,7 +1382,7 @@ class Marketplace extends React.Component {
       <div className="col-xl-12 col-lg-12 col-md-12 col-12" 
           style={{ paddingRight: "0px", paddingLeft: "0px" }}>
 
-          <div className="container-fluid">
+          <div className="container">
               <div className="row">
 
               <div className="specify-limit col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-xl-right text-lg-left text-md-left text-left"
