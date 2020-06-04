@@ -493,7 +493,7 @@ class Marketplace extends React.Component {
             margin-left: 0px; 
             padding-left: 0%; 
             position: relative; 
-            left: 50px;
+            left: 90px;
             top: 6px;
           }
 
