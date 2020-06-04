@@ -558,7 +558,6 @@ class Marketplace extends React.Component {
             }
             .inputlabel {
               font-size: 0.83em;
-              font-weight: bold;
             }
             .select-container {
               margin-bottom: 15px;
