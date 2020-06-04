@@ -648,7 +648,8 @@ export const getEstimate = (
   hashrate_units,
   mining_algo,
   location,
-  limit_price
+  limit_price,
+  token
 ) => dispatch => {
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();

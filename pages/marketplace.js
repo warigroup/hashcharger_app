@@ -222,7 +222,8 @@ class Marketplace extends React.Component {
       this.state.hashrate_units,
       this.props.miningalgo.algorithm,
       this.state.location,
-      this.state.limit_price); 
+      this.state.limit_price,
+      this.props.mytoken); 
   };
   handleDurationFocus = () => this.setState({ durationfocus: true, durationClicked: true });
   handleDurationBlur = () => this.setState({ durationfocus: false });
