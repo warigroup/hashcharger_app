@@ -20,7 +20,7 @@ import {
   setThemeColors,
   setToken,
   setSubUser } from "../actions/warihashApiCalls";
-import { FaRegClock, FaBitcoin, FaQuestionCircle, FaWallet } from "react-icons/fa";
+import { FaRegClock, FaBitcoin, FaQuestionCircle, FaWallet, FaBolt } from "react-icons/fa";
 import { TiFlash } from "react-icons/ti";
 import { Router } from "../routes";
 import MiningAlgoDropDown from "../components/tools/MiningAlgoDropDown";
@@ -1526,6 +1526,24 @@ class Marketplace extends React.Component {
                             <h6 style={{ display: "inline-block", fontSize: "0.9em" }}>
                               {this.props.estimate.price === undefined ? "0.00000000" : this.props.estimate.price.total_payment_amount} BTC</h6>
                             </div>
+
+
+                            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6" 
+                            style={{paddingLeft: "0px"}}>
+                            <FaBolt style={{ fontSize: "1.18em", 
+                              opacity: "1", 
+                              color: "black", 
+                              display: "inline-block",
+                              marginRight: "13px" }} /> 
+                              <h6 style={{ display: "inline-block", fontSize: "0.9em" }}>
+                              Estimated Rate:
+                               </h6>{" "}
+                            </div>
+                            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                            <h6 style={{ display: "inline-block", fontSize: "0.9em" }}>
+                              {this.props.estimate.price === undefined ? "0.00000000" : this.props.estimate.price.average_price} BTC</h6>
+                            </div>
+
                         </div>
                       </div>
                      
