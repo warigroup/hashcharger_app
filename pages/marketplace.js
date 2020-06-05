@@ -1512,7 +1512,7 @@ class Marketplace extends React.Component {
            <div style={{borderTop: "1px solid black", paddingTop: "16px"}}>
                       <div className="container-fluid">
                         <div className="row">
-                            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6" style={{paddingLeft: "0px"}}>
                             <FaBitcoin style={{ fontSize: "1em", 
                               opacity: "1", 
                               color: "black", 
@@ -1539,6 +1539,7 @@ class Marketplace extends React.Component {
                         disabled={this.state.formloading}
                         className="btn btn-info nooutline buybtn"
                         type="submit"
+                        style={{position: "relative", right: "-15px"}}
                       >
                         {this.state.formloading === true
                           ? <ThreeDotsLoading />
