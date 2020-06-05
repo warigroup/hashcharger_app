@@ -1509,7 +1509,7 @@ class Marketplace extends React.Component {
 
       <div className="offset-xl-6 col-xl-5 col-lg-12 col-md-12 col-12 text-xl-right text-lg-left text-md-left text-left"
       style={{paddingLeft: "35px", paddingRight: "40px"}}>
-           <div style={{borderTop: "1px solid black", paddingTop: "16px"}}>
+           <div style={{borderTop: "1px solid rgba(0,0,0,0.5)", paddingTop: "16px"}}>
                       <div className="container-fluid">
                         <div className="row">
                             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6" style={{paddingLeft: "0px"}}>
@@ -1539,7 +1539,7 @@ class Marketplace extends React.Component {
                         disabled={this.state.formloading}
                         className="btn btn-info nooutline buybtn"
                         type="submit"
-                        style={{position: "relative", right: "-15px"}}
+                        style={{position: "relative", right: "-19px"}}
                       >
                         {this.state.formloading === true
                           ? <ThreeDotsLoading />
