@@ -1512,23 +1512,23 @@ class Marketplace extends React.Component {
                       <div className="container-fluid">
                         <div className="row">
                             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
-                            <FaBitcoin style={{ fontSize: "1.1em", 
+                            <FaBitcoin style={{ fontSize: "1em", 
                               opacity: "1", 
                               color: "black", 
                               display: "inline-block",
                               marginRight: "13px" }} /> 
-                              <h6 style={{ display: "inline-block", fontSize: "1em" }}>Estimated Cost:</h6>{" "}
+                              <h6 style={{ display: "inline-block", fontSize: "0.9em" }}>
+                                Estimated Cost:
+                               </h6>{" "}
                             </div>
                             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
-                            <h6 style={{ display: "inline-block", fontSize: "1em" }}>
+                            <h6 style={{ display: "inline-block", fontSize: "0.9em" }}>
                               {this.props.estimate.price === undefined ? "0.00000000" : this.props.estimate.price.total_payment_amount} BTC</h6>
                             </div>
                         </div>
                       </div>
                      
-                      
-                      
-                      <p style={{ fontSize: "0.8em", opacity: "0.8"}}>
+                      <p style={{ fontSize: "0.8em", opacity: "0.7", marginTop: "7px"}}>
                         Estimate based on last available rate and may differ from actual invoice amount.
                       </p>
                     </div>     
