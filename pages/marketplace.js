@@ -1508,7 +1508,7 @@ class Marketplace extends React.Component {
                     </div>
 
       <div className="offset-xl-6 col-xl-5 col-lg-12 col-md-12 col-12 text-xl-right text-lg-left text-md-left text-left"
-      style={{paddingLeft: "35px", paddingRight: "35px"}}>
+      style={{paddingLeft: "35px", paddingRight: "40px"}}>
            <div style={{borderTop: "1px solid black", paddingTop: "16px"}}>
                       <div className="container-fluid">
                         <div className="row">
@@ -1529,7 +1529,7 @@ class Marketplace extends React.Component {
                         </div>
                       </div>
                      
-                      <p style={{ fontSize: "0.8em", opacity: "0.7", marginTop: "7px"}}>
+                      <p style={{ fontSize: "0.73em", opacity: "0.7", marginTop: "7px"}}>
                         Estimate based on last available rate and may differ from actual invoice amount.
                       </p>
                     </div>     
