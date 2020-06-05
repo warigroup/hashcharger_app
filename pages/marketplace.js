@@ -936,7 +936,6 @@ class Marketplace extends React.Component {
 
              <div className="col-xl-12 col-lg-12 col-md-12 d-xl-inline d-lg-inline d-md-inline d-sm-none d-none">
                <br />
-               <br />
              </div>
 
               </div>
