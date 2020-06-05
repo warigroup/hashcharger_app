@@ -1557,7 +1557,7 @@ class Marketplace extends React.Component {
                         disabled={this.state.formloading}
                         className="btn btn-info nooutline buybtn"
                         type="submit"
-                        style={{position: "relative", left: "2px"}}
+                        style={{position: "relative", left: "1px"}}
                       >
                         {this.state.formloading === true
                           ? <ThreeDotsLoading />
