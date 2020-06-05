@@ -767,6 +767,8 @@ class Marketplace extends React.Component {
                 padding-right: 0px; 
                 padding-left: 0px; 
                 padding-top: 0px; 
+                position: relative;
+                left: 0px;
               }
 
               .main-marketplace-form {
