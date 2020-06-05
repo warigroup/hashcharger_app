@@ -1530,7 +1530,7 @@ class Marketplace extends React.Component {
                       </div>
                      
                       <p style={{ fontSize: "0.73em", opacity: "0.7", marginTop: "7px"}}>
-                        Estimate based on last available rate and may differ from actual invoice amount.
+                      Estimate is based on latest available rate. May change when continuing to payment.
                       </p>
                     </div>     
                          
