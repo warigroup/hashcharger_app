@@ -20,7 +20,7 @@ import {
   setThemeColors,
   setToken,
   setSubUser } from "../actions/warihashApiCalls";
-import { FaRegClock, FaBitcoin, FaQuestionCircle, FaWallet, FaBolt } from "react-icons/fa";
+import { FaRegClock, FaBitcoin, FaQuestionCircle, FaWallet } from "react-icons/fa";
 import { TiFlash } from "react-icons/ti";
 import { Router } from "../routes";
 import MiningAlgoDropDown from "../components/tools/MiningAlgoDropDown";
@@ -1530,8 +1530,8 @@ class Marketplace extends React.Component {
 
                             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6" 
                             style={{paddingLeft: "0px"}}>
-                            <FaBolt style={{ fontSize: "1.18em", 
-                              opacity: "1", 
+                            <FaBitcoin style={{ fontSize: "1.18em", 
+                              opacity: "0", 
                               color: "black", 
                               display: "inline-block",
                               marginRight: "13px" }} /> 
