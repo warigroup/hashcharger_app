@@ -488,10 +488,6 @@ class Marketplace extends React.Component {
             position: relative; 
             right: -33.5px;
           }
-          .limit-price-container {
-            position: relative; 
-            left: -15px;
-          }
           .estimate-container {
             padding-left: 68px;
             padding-right: 45px;
@@ -729,7 +725,7 @@ class Marketplace extends React.Component {
               margin-top: 8px; 
               padding-left: 0px; 
               position: relative; 
-              left: 22px; 
+              left: 15px; 
             }
 
             .addpaddingleft {
@@ -1469,7 +1465,7 @@ class Marketplace extends React.Component {
                   {this.state.checked === true ? 
               <div className="container-fluid">
                 <div className="offset-xl-8 col-xl-4 limit-price-container">
-                <div className="limit-price-container text-xl-right text-lg-left text-md-left text-left">
+                <div className="text-xl-right text-lg-left text-md-left text-left">
                   <div className="form-group">
                     <label htmlFor="limit_price" 
                     className="inputlabel limitpricelabel"
