@@ -725,7 +725,7 @@ class Marketplace extends React.Component {
               margin-top: 8px; 
               padding-left: 0px; 
               position: relative; 
-              left: 12.5px; 
+              left: 9px; 
             }
 
             .addpaddingleft {
@@ -769,7 +769,7 @@ class Marketplace extends React.Component {
             @media (max-width: 770px) {
               .limit-price-container {
                 position: relative; 
-                left: -12px;
+                left: -14.2px;
               }
 
               .refund-address-container {
@@ -781,7 +781,7 @@ class Marketplace extends React.Component {
               }
 
               .estimate-container {
-                padding-left: 25px;
+                padding-left: 27px;
                 padding-right: 25px;
               }
 
