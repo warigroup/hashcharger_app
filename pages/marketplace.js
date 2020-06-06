@@ -732,6 +732,10 @@ class Marketplace extends React.Component {
               padding-left: 35px;
             }
 
+            .addpaddingleftmenu {
+              padding-left: 35px;
+            }
+
             .limitpricelabel {
               left: -6.9px;
             }
@@ -769,7 +773,7 @@ class Marketplace extends React.Component {
             @media (max-width: 770px) {
               .limit-price-container {
                 position: relative; 
-                left: -14.2px;
+                left: -15.5px;
               }
 
               .refund-address-container {
@@ -795,6 +799,10 @@ class Marketplace extends React.Component {
 
               .addpaddingleft {
                 padding-left: 10px;
+              }
+
+              .addpaddingleftmenu {
+                padding-left: 20px;
               }
 
               .offerformlabel {
@@ -911,7 +919,7 @@ class Marketplace extends React.Component {
         <div>
         <div className="container">
           <div className="row">
-          <div className="col-sm-12 col-12 d-xl-none d-lg-none d-md-none d-sm-inline d-inline addpaddingleft" 
+          <div className="col-sm-12 col-12 d-xl-none d-lg-none d-md-none d-sm-inline d-inline addpaddingleftmenu" 
              style={{paddingTop: "11.5px"}}>
                <br />
                <br />
