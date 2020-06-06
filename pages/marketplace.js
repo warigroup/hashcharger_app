@@ -802,7 +802,7 @@ class Marketplace extends React.Component {
               }
 
               .addpaddingleftmenu {
-                padding-left: 20px;
+                padding-left: 16px;
               }
 
               .offerformlabel {
