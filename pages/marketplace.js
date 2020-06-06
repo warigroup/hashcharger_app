@@ -492,6 +492,10 @@ class Marketplace extends React.Component {
             position: relative; 
             left: -15px;
           }
+          .estimate-container {
+            padding-left: 68px;
+            padding-right: 45px;
+          }
           .miningalgo-selector-container {
             display: block;
             width: 100%;
@@ -769,7 +773,7 @@ class Marketplace extends React.Component {
             @media (max-width: 770px) {
               .limit-price-container {
                 position: relative; 
-                left: -15px;
+                left: -20px;
               }
 
               .refund-address-container {
@@ -778,6 +782,11 @@ class Marketplace extends React.Component {
                 padding-top: 0px; 
                 position: relative;
                 left: 0px;
+              }
+
+              .estimate-container {
+                padding-left: 10px;
+                padding-right: 10px;
               }
 
               .main-marketplace-form {
@@ -1528,8 +1537,7 @@ class Marketplace extends React.Component {
 
                     </div>
 
-      <div className="offset-xl-6 col-xl-5 col-lg-12 col-md-12 col-12 text-xl-right text-lg-left text-md-left text-left"
-      style={{paddingLeft: "68px", paddingRight: "45px"}}>
+      <div className="offset-xl-6 col-xl-5 col-lg-12 col-md-12 col-12 text-xl-right text-lg-left text-md-left text-left estimate-container">
            <div style={{borderTop: "1px solid rgba(0,0,0,0.3)", paddingTop: "16px", paddingLeft: "0px", paddingRight: "0px"}}>
               <div className="container-fluid" style={{paddingLeft: "0px", paddingRight: "0px"}}>
                 <div className="row" style={{paddingLeft: "0px", paddingRight: "0px"}}>
