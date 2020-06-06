@@ -217,7 +217,7 @@ class Marketplace extends React.Component {
   handleHashrateBlur = () => { 
     this.setState({ hashratefocus: false });
 
-    if (this.state.hashrate !== "") {
+    if (this.state.hashrate !== "" && this.state.duration !== "") {
       this.props.getEstimate(
         this.state.duration,
         this.state.hashrate,
@@ -229,7 +229,18 @@ class Marketplace extends React.Component {
     }
   };
   handleDurationFocus = () => this.setState({ durationfocus: true, durationClicked: true });
-  handleDurationBlur = () => this.setState({ durationfocus: false });
+  handleDurationBlur = () =>  { this.setState({ durationfocus: false }) 
+  if (this.state.hashrate !== "" && this.state.duration !== "") {
+    this.props.getEstimate(
+      this.state.duration,
+      this.state.hashrate,
+      this.state.hashrate_units,
+      this.props.miningalgo.algorithm,
+      this.state.location,
+      this.state.limit_price,
+      this.props.mytoken); 
+  }
+};
   handleDurationDaysFocus = () => this.setState({ durationdaysfocus: true });
   handleDurationDaysBlur = () => this.setState({ durationdaysfocus: false });
   handleEmailFocus = () => this.setState({ emailfocus: true });
