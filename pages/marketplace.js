@@ -769,7 +769,7 @@ class Marketplace extends React.Component {
             @media (max-width: 770px) {
               .limit-price-container {
                 position: relative; 
-                left: 3px;
+                left: -10px;
               }
 
               .refund-address-container {
