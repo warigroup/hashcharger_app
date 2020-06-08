@@ -1271,7 +1271,7 @@ class Marketplace extends React.Component {
   this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min) &&
   parseFloat(this.state.hashrate) > parseFloat(this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[0].max) ? 
   <p className="is-invalid-error add-padding-left">
-    The maximum hashrate you can purchase is {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].max_order_hashrate[0].max)}{" "}
+    The maximum hashrate you can purchase is {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[0].max)}{" "}
     {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].hashrate_units)}H/s. 
   Please decrease your hashrate input value.</p>
    : null}
