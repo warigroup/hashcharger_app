@@ -1552,8 +1552,7 @@ class Marketplace extends React.Component {
 
                     </div>
 
-      <div className="offset-xl-6 col-xl-5 col-lg-12 col-md-12 col-12 text-xl-right text-lg-left text-md-left text-left estimate-container"
-      style={{paddingLeft: "0px"}}>
+      <div className="offset-xl-6 col-xl-5 col-lg-12 col-md-12 col-12 text-xl-right text-lg-left text-md-left text-left estimate-container">
            <div style={{borderTop: "1px solid rgba(0,0,0,0.3)", paddingTop: "16px", paddingLeft: "0px", paddingRight: "0px"}}>
               <div className="container-fluid" style={{paddingLeft: "0px", paddingRight: "0px"}}>
                 <div className="row" style={{paddingLeft: "0px", paddingRight: "0px"}}>
@@ -1563,7 +1562,7 @@ class Marketplace extends React.Component {
                               opacity: "1", 
                               color: "black", 
                               display: "inline-block",
-                              marginRight: "13px" }} /> 
+                              marginRight: "16px" }} /> 
                               <h6 style={{ display: "inline-block", fontSize: "0.9em" }}>
                                 Estimated Cost:
                                </h6>{" "}
@@ -1580,7 +1579,7 @@ class Marketplace extends React.Component {
                               opacity: "0", 
                               color: "black", 
                               display: "inline-block",
-                              marginRight: "13px" }} /> 
+                              marginRight: "16px" }} /> 
                               <h6 style={{ display: "inline-block", fontSize: "0.9em" }}>
                               Estimated Rate:
                                </h6>{" "}
