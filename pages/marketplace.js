@@ -7,6 +7,7 @@ import {
   clearNetwork,
   clearAlert,
   getConfigs,
+  getEstimate,
   marketplacePage,
   formSubmission,
   enableNavigation,
@@ -217,9 +218,33 @@ class Marketplace extends React.Component {
   };
 
   handleHashrateFocus = () => this.setState({ hashratefocus: true });
-  handleHashrateBlur = () => this.setState({ hashratefocus: false });
+  handleHashrateBlur = () => { 
+    this.setState({ hashratefocus: false });
+
+    if (this.state.hashrate !== "" && this.state.duration !== "") {
+      this.props.getEstimate(
+        this.state.duration,
+        this.state.hashrate,
+        this.state.hashrate_units,
+        this.props.miningalgo.algorithm,
+        this.state.location,
+        this.state.limit_price,
+        this.props.mytoken); 
+    }
+  };
   handleDurationFocus = () => this.setState({ durationfocus: true, durationClicked: true });
-  handleDurationBlur = () => this.setState({ durationfocus: false });
+  handleDurationBlur = () =>  { this.setState({ durationfocus: false }) 
+  if (this.state.hashrate !== "" && this.state.duration !== "") {
+    this.props.getEstimate(
+      this.state.duration,
+      this.state.hashrate,
+      this.state.hashrate_units,
+      this.props.miningalgo.algorithm,
+      this.state.location,
+      this.state.limit_price,
+      this.props.mytoken); 
+  }
+};
   handleDurationDaysFocus = () => this.setState({ durationdaysfocus: true });
   handleDurationDaysBlur = () => this.setState({ durationdaysfocus: false });
   handleEmailFocus = () => this.setState({ emailfocus: true });
@@ -279,6 +304,7 @@ class Marketplace extends React.Component {
     this.setState({ stratum_id: event.target.value });
     this.selectStratumSetting(event.target.value);
   };
+
 
         //// ERROR ALERT ///////////////////////////////
         errorAlert = () => {
@@ -397,7 +423,7 @@ class Marketplace extends React.Component {
       }
     };
 
-    openOrderHistoryPage = () => Router.pushRoute(`/orderhistory`);
+    openOrderHistory = () => Router.pushRoute('/orderhistory');
     handlePriceFocus = () => this.setState({ pricefocus: true });
     handlePriceBlur = () => this.setState({ pricefocus: false });
 
@@ -469,7 +495,17 @@ class Marketplace extends React.Component {
       <PublicRoute>
         <style jsx>
           {`
-
+          .refund-address-container {
+            padding-right: 0px; 
+            padding-left: 0px; 
+            padding-top: 0px; 
+            position: relative; 
+            right: -33.5px;
+          }
+          .estimate-container {
+            padding-left: 68px;
+            padding-right: 45px;
+          }
           .miningalgo-selector-container {
             display: block;
             width: 100%;
@@ -481,8 +517,8 @@ class Marketplace extends React.Component {
             margin-left: 0px; 
             padding-left: 0%; 
             position: relative; 
-            left: 0px;
-            top: 30px;
+            left: 90px;
+            top: 6px;
           }
 
           .nav-buttons {
@@ -613,7 +649,6 @@ class Marketplace extends React.Component {
             }
             .formcontainer-price {
               width: 100%;
-              margin-top: 15px;
               padding-left: 15px;
             }
             .formcontainer-offerdetails {
@@ -702,12 +737,16 @@ class Marketplace extends React.Component {
 
             .limit-price-container {
               margin-top: 8px; 
-              left: 22px; 
               padding-left: 0px; 
               position: relative; 
+              left: 9px; 
             }
 
             .addpaddingleft {
+              padding-left: 35px;
+            }
+
+            .addpaddingleftmenu {
               padding-left: 35px;
             }
 
@@ -746,6 +785,24 @@ class Marketplace extends React.Component {
             }
 
             @media (max-width: 770px) {
+              .limit-price-container {
+                position: relative; 
+                left: -15.5px;
+              }
+
+              .refund-address-container {
+                padding-right: 0px; 
+                padding-left: 0px; 
+                padding-top: 0px; 
+                position: relative;
+                left: 0px;
+              }
+
+              .estimate-container {
+                padding-left: 27px;
+                padding-right: 25px;
+              }
+
               .main-marketplace-form {
                 padding-left: 10px;
               }
@@ -756,6 +813,10 @@ class Marketplace extends React.Component {
 
               .addpaddingleft {
                 padding-left: 10px;
+              }
+
+              .addpaddingleftmenu {
+                padding-left: 16px;
               }
 
               .offerformlabel {
@@ -792,7 +853,6 @@ class Marketplace extends React.Component {
               }
               .formcontainer-price {
                 padding: 0px 15px 15px 15px;
-                margin-top: 10px;
               }
               .formcontainer-offerdetails {
                 padding: 15px;
@@ -873,7 +933,7 @@ class Marketplace extends React.Component {
         <div>
         <div className="container">
           <div className="row">
-          <div className="col-sm-12 col-12 d-xl-none d-lg-none d-md-none d-sm-inline d-inline addpaddingleft" 
+          <div className="col-sm-12 col-12 d-xl-none d-lg-none d-md-none d-sm-inline d-inline addpaddingleftmenu" 
              style={{paddingTop: "11.5px"}}>
                <br />
                <br />
@@ -887,7 +947,7 @@ class Marketplace extends React.Component {
               </a>
              {" "}<p className="nav-bar">|</p>{" "} 
              <button className="nav-buttons"
-             onClick={() => this.openOrderHistoryPage()}>
+             onClick={() => this.openOrderHistory()}>
                <p>My Order History</p>
              </button>
              </div>
@@ -899,7 +959,6 @@ class Marketplace extends React.Component {
                   <MiningAlgoDropDown 
                     selectAlgorithm={this.selectAlgorithm}
                     />
-                
                 </div>
                 {/******* MINING ALGORITHM SELECTOR END *********/}
              </div>
@@ -919,14 +978,13 @@ class Marketplace extends React.Component {
               </a>
              {" "}<p className="nav-bar">|</p>{" "} 
              <button className="nav-buttons"
-             onClick={() => this.openOrderHistoryPage()}>
+             onClick={() => this.openOrderHistory()}>
                <p>My Order History</p>
              </button>
                <br />
              </div>
 
              <div className="col-xl-12 col-lg-12 col-md-12 d-xl-inline d-lg-inline d-md-inline d-sm-none d-none">
-               <br />
                <br />
              </div>
 
@@ -1298,12 +1356,6 @@ class Marketplace extends React.Component {
                         </div>
                         </div>
 
-
-                       
-
-
-
-
                       <div>
                     </div>
 
@@ -1314,12 +1366,13 @@ class Marketplace extends React.Component {
              <div className="clearfix" />
         
                 
-                      <div className="container-fluid">
-                        <div className="row" style={{ paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px" }}>
-                        
-                <div className="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-12" 
+        <div className="container-fluid">
+          <div className="row refund-address-container">
+          
+                <div className="offset-xl-6 col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12" 
                 style={{paddingRight: "0px"}}>
-                  <div className="form-group" style={{paddingRight: "0px"}}>
+                  <div className="form-group" 
+                  style={{paddingRight: "0px"}}>
                     <label htmlFor="refund_address" className="inputlabel">
                       Bitcoin Refund Address:
                     </label>
@@ -1368,25 +1421,19 @@ class Marketplace extends React.Component {
                       {this.props.errors.refund_address}</p> : null}
                   </div>
                 
-                <div className="desktop-br">
-                  <br />
-                 
-                </div>
-                <br />
+         
                 </div>
                         
                        
               
-                  
 
-                    
+      <div className="col-xl-12 col-lg-12 col-md-12 col-12" 
+          style={{ paddingRight: "0px", paddingLeft: "0px" }}>
 
-      <div className="col-xl-6 col-lg-12 col-md-12 col-12" 
-          style={{ paddingRight: "0px", paddingLeft: "0px", paddingTop: "0px" }}>
-
-          <div className="container-fluid">
+          <div className="container">
               <div className="row">
-              <div className="specify-limit col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 text-xl-right text-lg-left text-md-left text-left">
+              <div className="specify-limit offset-xl-2 col-xl-10 col-lg-12 col-md-12 col-sm-12 col-12 text-xl-right text-lg-left text-md-left text-left"
+              style={{marginBottom: "25px"}}>
                    <label>
                       <a href="https://warihash.zendesk.com/hc/en-us/articles/360040612232-What-is-a-limit-price-" 
                       target="_blank" 
@@ -1438,7 +1485,9 @@ class Marketplace extends React.Component {
                   </div>
 
                   {this.state.checked === true ? 
-                <div className="limit-price-container text-xl-right text-lg-left text-md-left text-left">
+              <div className="container-fluid">
+                <div className="offset-xl-8 col-xl-4 limit-price-container">
+                <div className="text-xl-right text-lg-left text-md-left text-left">
                   <div className="form-group">
                     <label htmlFor="limit_price" 
                     className="inputlabel limitpricelabel"
@@ -1499,25 +1548,71 @@ class Marketplace extends React.Component {
                           {this.props.errors.price}
                         </p> : null}
                   </div>
+                  </div>
+                  </div>
                   </div> : null}
 
 
                     </div>
 
-      <div className="col-xl-6 col-lg-12 col-md-12 col-12 text-xl-right text-lg-left text-md-left text-left">
-                            <CSRFToken />
+      <div className="offset-xl-6 col-xl-5 col-lg-12 col-md-12 col-12 text-xl-right text-lg-left text-md-left text-left estimate-container">
+           <div style={{paddingLeft: "0px", paddingRight: "0px"}}>
+              <div className="container-fluid" style={{paddingTop: "16px", paddingLeft: "0px", paddingRight: "0px", borderTop: "1px solid rgba(0,0,0,0.3)", }}>
+                <div className="row" style={{paddingLeft: "0px", paddingRight: "0px"}}>
+                  <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6" 
+                      style={{paddingLeft: "0px"}}>
+                            <FaBitcoin style={{ fontSize: "1.18em", 
+                              opacity: "1", 
+                              color: "black", 
+                              display: "inline-block",
+                              marginRight: "16px" }} /> 
+                              <h6 style={{ display: "inline-block", fontSize: "0.9em" }}>
+                                Estimated Cost:
+                               </h6>{" "}
+                            </div>
+                            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                            <h6 style={{ display: "inline-block", fontSize: "0.9em" }}>
+                              {this.props.estimate.price === undefined ? "--------" : this.props.estimate.price.total_payment_amount} BTC</h6>
+                            </div>
+
+
+                            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6" 
+                            style={{paddingLeft: "0px"}}>
+                            <FaBitcoin style={{ fontSize: "1.18em", 
+                              opacity: "0", 
+                              color: "black", 
+                              display: "inline-block",
+                              marginRight: "16px" }} /> 
+                              <h6 style={{ display: "inline-block", fontSize: "0.9em" }}>
+                              Estimated Rate:
+                               </h6>{" "}
+                            </div>
+                            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                              <h6 style={{ display: "inline-block", fontSize: "0.9em" }}>
+                              {this.props.estimate.price === undefined ? "--------" : this.props.estimate.price.average_price} BTC
+                              </h6>
+                            </div>
+
+                        </div>
+                      </div>
+                     
+                      <p style={{ fontSize: "0.73em", opacity: "0.7", marginTop: "7px"}}>
+                      Estimate is based on latest available rate. May change when continuing to payment.
+                      </p>
+                    </div>     
+                         
+                    <CSRFToken />
                        <button
                         disabled={this.state.formloading}
                         className="btn btn-info nooutline buybtn"
                         type="submit"
+                        style={{position: "relative", left: "0px"}}
                       >
                         {this.state.formloading === true
                           ? <ThreeDotsLoading />
                           : <p style={{ paddingBottom: "0px", marginBottom: "0px" }}>Continue to Payment</p>}
-
                       </button>
-
-
+                       
 
                       <div className="text-center"
                             style={{ paddingTop: "25px", paddingBottom: "0px" }}>
@@ -1543,6 +1638,9 @@ class Marketplace extends React.Component {
                                {fielderrorsReason} </p>
                                 : null}
                           </div>
+                          <br />
+                          <br />    
+
 
                             </div>
 
@@ -1607,6 +1705,7 @@ Marketplace.propTypes = {
   resetErrors: PropTypes.func,
   marketplacePage: PropTypes.func,
   getConfigs: PropTypes.func,
+  getEstimate: PropTypes.func,
   clearNetwork: PropTypes.func,
   clearAlert: PropTypes.func,
   formSubmission: PropTypes.func,
@@ -1622,6 +1721,7 @@ Marketplace.propTypes = {
   setSubUser: PropTypes.func,
   errors: PropTypes.object,
   configs: PropTypes.object,
+  estimate: PropTypes.object,
   network: PropTypes.object,
   miningalgo: PropTypes.object,
   form: PropTypes.object,
@@ -1640,6 +1740,7 @@ const mapStateToProps = state => ({
   configs: state.configs,
   network: state.network,
   miningalgo: state.miningalgo,
+  estimate: state.estimate,
   form: state.form,
   time: state.time,
   profile: state.profile,
@@ -1658,6 +1759,7 @@ export default connect(
     clearNetwork,
     clearAlert,
     getConfigs,
+    getEstimate,
     marketplacePage,
     resetErrors,
     formSubmission,

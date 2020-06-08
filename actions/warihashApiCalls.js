@@ -639,3 +639,48 @@ export const setSubUser = subuser => {
     payload: subuser
   };
 };
+
+/////// GET ESTIMATE ///////////////////////////////
+
+export const getEstimate = (
+  duration,
+  hashrate,
+  hashrate_units,
+  mining_algo,
+  location,
+  limit_price,
+  token
+) => dispatch => {
+  const CancelToken = axios.CancelToken;
+  let source = CancelToken.source();
+  setTimeout(() => {
+    source.cancel("ERROR: Timeout");
+  }, TIMEOUT_DURATION);
+  return axios
+    .get(
+      `${apiurl}/estimate_get/?duration=${duration}&hashrate=${hashrate}&hashrate_units=${hashrate_units}&mining_algo=${mining_algo}&location=${location}&limit_price=${limit_price}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `CustomToken ${token}`
+        }
+      },
+      { cancelToken: source.token }
+    )
+    .then(res => {
+      dispatch({
+        type: types.GET_ESTIMATE,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: types.GET_ERRORS,
+        payload: (err.response || {}).data
+      });
+      dispatch({
+        type: types.GET_STATUS_CODE,
+        payload: (err.response || {}).status
+      });
+    });
+};
