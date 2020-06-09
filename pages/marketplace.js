@@ -794,7 +794,7 @@ class Marketplace extends React.Component {
             @media (max-width: 770px) {
               .estimate-containerdiv {
                 padding-top: 16px; 
-                padding-left: 0px;
+                padding-left: 10px;
                 padding-right: 0px;
                 border-top: none;
               }
