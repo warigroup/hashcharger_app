@@ -1020,7 +1020,7 @@ input {
 
 .input-group-md {
   border: 0.5px solid rgba(0, 0, 0, 0.3);
-  border-radius: 2.5spx;
+  border-radius: 3px;
   padding: 4px;
   transition: 0.4s ease all;
   -webkit-transition: 0.4s ease all;
