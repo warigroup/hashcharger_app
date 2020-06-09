@@ -761,37 +761,8 @@ class Marketplace extends React.Component {
               border-top: 1px solid rgba(0,0,0,0.3);
             }
 
-            @media (max-width: 1200px) {
-              .main-marketplace-form {
-                width: 100%;
-                margin-bottom: 240px;
-              }
-
-              .specify-limit {
-                position: relative; 
-                left: 20px;
-                top: 0px;
-              }
-
-              .buybtn {
-                position: relative; 
-                left: 12px;
-              }
-
-              .limitinput {
-                text-align: left;
-              }
-
-              .limit-price-container {
-                margin-top: 8px; 
-                margin-left: 0px; 
-                padding-left: 0px; 
-                position: relative; 
-                left: 0px;
-              }
-            }
-
-            @media (max-width: 1095px) {
+           
+            @media (max-width: 1214px) {
               .estimate-containerdiv {
                 padding-top: 16px; 
                 padding-left: 10px;
@@ -895,6 +866,36 @@ class Marketplace extends React.Component {
 
               .desktop-br {
                 display: none;
+              }
+            }
+
+            @media (max-width: 1200px) {
+              .main-marketplace-form {
+                width: 100%;
+                margin-bottom: 240px;
+              }
+
+              .specify-limit {
+                position: relative; 
+                left: 20px;
+                top: 0px;
+              }
+
+              .buybtn {
+                position: relative; 
+                left: 12px;
+              }
+
+              .limitinput {
+                text-align: left;
+              }
+
+              .limit-price-container {
+                margin-top: 8px; 
+                margin-left: 0px; 
+                padding-left: 0px; 
+                position: relative; 
+                left: 0px;
               }
             }
 
