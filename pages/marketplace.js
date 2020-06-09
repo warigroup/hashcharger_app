@@ -791,7 +791,7 @@ class Marketplace extends React.Component {
               }
             }
 
-            @media (max-width: 770px) {
+            @media (max-width: 913px) {
               .estimate-containerdiv {
                 padding-top: 16px; 
                 padding-left: 10px;
@@ -1068,7 +1068,7 @@ class Marketplace extends React.Component {
                             className="form-control selectstyles miningalgoselect"
                             name="location"
                             onChange={this.selectLocation}
-                            style={{height: "42px", width: "285px"}}
+                            style={{height: "42px", width: "285px", borderRadius: "3px"}}
                             value={this.checkNestedConfigs() &&
                               this.props.configs[this.props.miningalgo.algorithm] !== undefined &&
                               this.props.configs[this.props.miningalgo.algorithm][minerLocations[0].value] !== undefined ? 
