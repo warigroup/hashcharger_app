@@ -220,7 +220,6 @@ class Marketplace extends React.Component {
   handleHashrateFocus = () => this.setState({ hashratefocus: true });
   handleHashrateBlur = () => { 
     this.setState({ hashratefocus: false });
-
     if (this.state.hashrate !== "" && this.state.duration !== "") {
       this.props.getEstimate(
         this.state.duration,
@@ -761,7 +760,6 @@ class Marketplace extends React.Component {
               border-top: 1px solid rgba(0,0,0,0.3);
             }
 
-           
             @media (max-width: 1203px) {
               .estimate-containerdiv {
                 padding-top: 16px; 
@@ -1251,7 +1249,7 @@ class Marketplace extends React.Component {
                               borderRadius: "7px",
                               fontSize: "0.82em"
                             }}
-                            onChange={this.handleChange}
+                            onChange={event => this.setState({hashrate: event.target.value.replace(/\D/,'')})}
                             onFocus={this.handleHashrateFocus}
                             onBlur={this.handleHashrateBlur}
                             autoComplete="off"
