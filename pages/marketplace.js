@@ -221,8 +221,9 @@ class Marketplace extends React.Component {
   handleHashrateBlur = () => { 
     this.setState({ hashratefocus: false });
     if (this.state.hashrate !== "" && this.state.duration !== "") {
+      const durationInMinutes = this.state.duration * 60;
       this.props.getEstimate(
-        this.state.duration,
+        durationInMinutes,
         this.state.hashrate,
         this.state.hashrate_units,
         this.props.miningalgo.algorithm,
@@ -234,8 +235,9 @@ class Marketplace extends React.Component {
   handleDurationFocus = () => this.setState({ durationfocus: true, durationClicked: true });
   handleDurationBlur = () =>  { this.setState({ durationfocus: false }) 
   if (this.state.hashrate !== "" && this.state.duration !== "") {
+    const durationInMinutes = this.state.duration * 60;
     this.props.getEstimate(
-      this.state.duration,
+      durationInMinutes,
       this.state.hashrate,
       this.state.hashrate_units,
       this.props.miningalgo.algorithm,
@@ -1602,7 +1604,7 @@ class Marketplace extends React.Component {
                             </div>
                             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
                               <h6 style={{ display: "inline-block", fontSize: "0.9em" }}>
-                              {this.props.estimate.price === undefined ? "- - - - - - - - " : this.props.estimate.price.average_price} <PaymentRate />
+                              {this.props.estimate.price === undefined ? "- - - - - - - - " : this.props.estimate.price.average_price} <BTCPaymentRate />
                               </h6>
                             </div>
 
