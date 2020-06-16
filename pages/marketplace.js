@@ -1575,36 +1575,36 @@ class Marketplace extends React.Component {
         <div style={{paddingLeft: "0px", paddingRight: "0px"}}>
           <div className="container-fluid estimate-containerdiv" style={{paddingLeft: "0px", paddingRight: "0px"}}>
             <div className="row" style={{paddingLeft: "0px", paddingRight: "0px"}}>
-              <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6" 
+              <div className="col-xl-5 col-lg-6 col-md-6 col-sm-6 col-6" 
                 style={{paddingLeft: "0px", paddingRight: "0px"}}>
                       <FaBitcoin style={{ fontSize: "1.18em", 
                         opacity: "1", 
                         color: "black", 
                         display: "inline-block",
                         marginRight: "16px" }} /> 
-                        <h6 style={{ display: "inline-block", fontSize: "0.9em" }}>
+                        <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
                           Estimated Cost:
                           </h6>{" "}
                       </div>
-                            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 text-left">
-                            <h6 style={{ display: "inline-block", fontSize: "0.9em" }}>
+                            <div className="col-xl-7 col-lg-6 col-md-6 col-sm-6 col-6 text-left">
+                            <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
                               {this.props.estimate.price === undefined ? "- - - - - - - - " : this.props.estimate.price.total_payment_amount} BTC</h6>
                             </div>
 
 
-                            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6" 
+                            <div className="col-xl-5 col-lg-6 col-md-6 col-sm-6 col-6" 
                             style={{paddingLeft: "0px", paddingRight: "0px"}}>
                             <FaBitcoin style={{ fontSize: "1.18em", 
                               opacity: "0", 
                               color: "black", 
                               display: "inline-block",
                               marginRight: "16px" }} /> 
-                              <h6 style={{ display: "inline-block", fontSize: "0.9em" }}>
+                              <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
                               Estimated Rate:
                                </h6>{" "}
                             </div>
-                            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 text-left">
-                              <h6 style={{ display: "inline-block", fontSize: "0.9em" }}>
+                            <div className="col-xl-7 col-lg-6 col-md-6 col-sm-6 col-6 text-left">
+                              <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
                               {this.props.estimate.price === undefined ? "- - - - - - - - " : this.props.estimate.price.average_price} <BTCPaymentRate />
                               </h6>
                             </div>
