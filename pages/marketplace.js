@@ -1571,7 +1571,7 @@ class Marketplace extends React.Component {
 
                     </div>
 
-      <div className="offset-xl-3 col-xl-9 col-lg-12 col-md-12 col-12 text-xl-right text-lg-left text-md-left text-left estimate-container">
+      <div className="offset-xl-5 col-xl-7 col-lg-12 col-md-12 col-12 text-xl-right text-lg-left text-md-left text-left estimate-container">
         <div style={{paddingLeft: "0px", paddingRight: "0px"}}>
           <div className="container-fluid estimate-containerdiv">
             <div className="row" style={{paddingLeft: "0px", paddingRight: "0px"}}>
@@ -1586,7 +1586,7 @@ class Marketplace extends React.Component {
                           Estimated Cost:
                           </h6>{" "}
                       </div>
-                            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 text-left">
                             <h6 style={{ display: "inline-block", fontSize: "0.9em" }}>
                               {this.props.estimate.price === undefined ? "- - - - - - - - " : this.props.estimate.price.total_payment_amount} BTC</h6>
                             </div>
@@ -1603,7 +1603,7 @@ class Marketplace extends React.Component {
                               Estimated Rate:
                                </h6>{" "}
                             </div>
-                            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 text-left">
                               <h6 style={{ display: "inline-block", fontSize: "0.9em" }}>
                               {this.props.estimate.price === undefined ? "- - - - - - - - " : this.props.estimate.price.average_price} <BTCPaymentRate />
                               </h6>
