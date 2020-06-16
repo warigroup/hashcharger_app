@@ -1571,7 +1571,7 @@ class Marketplace extends React.Component {
 
                     </div>
 
-      <div className="offset-xl-5 col-xl-6 col-lg-12 col-md-12 col-12 text-xl-right text-lg-left text-md-left text-left estimate-container">
+      <div className="offset-xl-5 col-xl-6 col-lg-12 col-md-12 col-12 text-xl-left text-lg-left text-md-left text-left estimate-container">
         <div style={{paddingLeft: "0px", paddingRight: "0px"}}>
           <div className="container-fluid estimate-containerdiv" style={{paddingLeft: "0px", paddingRight: "0px"}}>
             <div className="row" style={{paddingLeft: "0px", paddingRight: "0px"}}>
