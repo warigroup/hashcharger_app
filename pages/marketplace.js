@@ -30,6 +30,7 @@ import CSRFToken from "../utils/csrftoken";
 import Cookies from "js-cookie";
 import { googleAnalytics, minerLocations, algorithms } from "../settings";
 import PaymentRate from "../components/tools/PaymentRate";
+import BTCPaymentRate from "../components/tools/BTCPaymentRate";
 import {
   WAIT_ALERT,
   TIMEOUT_DURATION
