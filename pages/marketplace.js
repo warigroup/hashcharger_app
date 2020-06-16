@@ -1618,6 +1618,7 @@ class Marketplace extends React.Component {
                     </div>     
                          
                     <CSRFToken />
+                    <div style={{width: "100%", textAlign: "right"}}>
                        <button
                         disabled={this.state.formloading}
                         className="btn btn-info nooutline buybtn"
@@ -1628,7 +1629,7 @@ class Marketplace extends React.Component {
                           ? <ThreeDotsLoading />
                           : <p style={{ paddingBottom: "0px", marginBottom: "0px" }}>Continue to Payment</p>}
                       </button>
-                       
+                      </div>
 
                       <div className="text-center"
                             style={{ paddingTop: "25px", paddingBottom: "0px" }}>
