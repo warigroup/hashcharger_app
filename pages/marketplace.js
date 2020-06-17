@@ -762,6 +762,10 @@ class Marketplace extends React.Component {
               padding-right: 0px;
             }
 
+            .extrapadding {
+              padding-left: 23px;
+              padding-right: 0px;
+            }
             .rowpaddings {
               padding-left: 25px; 
               padding-right: 0px;
@@ -936,6 +940,10 @@ class Marketplace extends React.Component {
             @media (max-width: 773px) {
               .estimate-containerdiv {
                 padding-left: 5px;
+              }
+              .extrapadding {
+                padding-left: 0px;
+                padding-right: 0px;
               }
               .rowpaddings {
                 padding-left: 0px; 
@@ -1622,7 +1630,7 @@ class Marketplace extends React.Component {
                     </div>
 
       <div className="offset-xl-5 col-xl-6 col-lg-12 col-md-12 col-12 text-xl-left text-lg-left text-md-left text-left estimate-container">
-        <div style={{paddingLeft: "23px", paddingRight: "0px"}}>
+        <div className="extrapadding">
           <div className="container-fluid estimate-containerdiv" style={{paddingLeft: "0px", paddingRight: "0px"}}>
           <div className="bordertop"></div>
             <div className="row rowpaddings">
