@@ -774,6 +774,10 @@ class Marketplace extends React.Component {
               left: 16px;
             }
 
+            .btcicons {
+              display: inline-block;
+            }
+
             @media (max-width: 1203px) {
               .estimate-containerdiv {
                 padding-top: 16px; 
@@ -923,6 +927,9 @@ class Marketplace extends React.Component {
               .rowpaddings {
                 padding-left: 10px; 
                 padding-right: 0px;
+              }
+              .btcicons {
+                display: none;
               }
             }
 
@@ -1609,7 +1616,7 @@ class Marketplace extends React.Component {
                         color: "black", 
                         display: "inline-block",
                         marginRight: "16px",
-                        marginLeft: "2px" }} /> 
+                        marginLeft: "2px" }} className="btcicons"/> 
                         <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
                           Estimated Cost:
                           </h6>{" "}
@@ -1627,7 +1634,7 @@ class Marketplace extends React.Component {
                               color: "black", 
                               display: "inline-block",
                               marginRight: "16px",
-                              marginLeft: "2px" }} /> 
+                              marginLeft: "2px" }} className="btcicons"/> 
                               <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
                               Estimated Rate:
                                </h6>{" "}
