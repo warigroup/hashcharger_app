@@ -761,6 +761,11 @@ class Marketplace extends React.Component {
               padding-left: 0px;
               padding-right: 0px;
             }
+
+            .rowpaddings {
+              padding-left: 25px; 
+              padding-right: 0px;
+            }
             .bordertop {
               border-top: 1px solid rgba(0,0,0,0.3);
               padding-top: 16px; 
@@ -914,6 +919,10 @@ class Marketplace extends React.Component {
             @media (max-width: 702px) {
               .estimate-containerdiv {
                 padding-left: 5px;
+              }
+              .rowpaddings {
+                padding-left: 10px; 
+                padding-right: 0px;
               }
             }
 
@@ -1592,7 +1601,7 @@ class Marketplace extends React.Component {
         <div style={{paddingLeft: "23px", paddingRight: "0px"}}>
           <div className="container-fluid estimate-containerdiv" style={{paddingLeft: "0px", paddingRight: "0px"}}>
           <div className="bordertop"></div>
-            <div className="row" style={{paddingLeft: "25px", paddingRight: "0px"}}>
+            <div className="row rowpaddings">
               <div className="col-xl-5 col-lg-6 col-md-6 col-sm-6 col-6" 
                 style={{paddingLeft: "0px", paddingRight: "0px"}}>
                       <FaBitcoin style={{ fontSize: "1.18em", 
