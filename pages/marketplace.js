@@ -1603,7 +1603,7 @@ class Marketplace extends React.Component {
           <div className="bordertop"></div>
             <div className="row rowpaddings">
               <div className="col-xl-5 col-lg-6 col-md-6 col-sm-6 col-6" 
-                style={{paddingLeft: "0px", paddingRight: "0px"}}>
+                style={{paddingLeft: "3px", paddingRight: "0px"}}>
                       <FaBitcoin style={{ fontSize: "1.18em", 
                         opacity: "1", 
                         color: "black", 
@@ -1621,7 +1621,7 @@ class Marketplace extends React.Component {
 
 
                             <div className="col-xl-5 col-lg-6 col-md-6 col-sm-6 col-6" 
-                            style={{paddingLeft: "0px", paddingRight: "0px"}}>
+                            style={{paddingLeft: "3px", paddingRight: "0px"}}>
                             <FaBitcoin style={{ fontSize: "1.18em", 
                               opacity: "0", 
                               color: "black", 
