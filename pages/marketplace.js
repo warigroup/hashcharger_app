@@ -929,7 +929,7 @@ class Marketplace extends React.Component {
                 padding-right: 0px;
               }
               .btcicons {
-                display: none;
+                display: none !important;
               }
             }
 
