@@ -1614,7 +1614,6 @@ class Marketplace extends React.Component {
                       <FaBitcoin style={{ fontSize: "1.18em", 
                         opacity: "1", 
                         color: "black", 
-                        display: "inline-block",
                         marginRight: "16px",
                         marginLeft: "2px" }} className="btcicons"/> 
                         <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
@@ -1632,7 +1631,6 @@ class Marketplace extends React.Component {
                             <FaBitcoin style={{ fontSize: "1.18em", 
                               opacity: "0", 
                               color: "black", 
-                              display: "inline-block",
                               marginRight: "16px",
                               marginLeft: "2px" }} className="btcicons"/> 
                               <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
