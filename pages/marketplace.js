@@ -764,13 +764,13 @@ class Marketplace extends React.Component {
             .bordertop {
               border-top: 1px solid rgba(0,0,0,0.3);
               padding-top: 16px; 
-              width: 360px;
+              width: 377px;
             }
 
             @media (max-width: 1203px) {
               .estimate-containerdiv {
                 padding-top: 16px; 
-                padding-left: 10px;
+                padding-left: 15px;
                 padding-right: 0px;
                 border-top: none;
               }
