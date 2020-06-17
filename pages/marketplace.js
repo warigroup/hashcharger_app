@@ -784,6 +784,7 @@ class Marketplace extends React.Component {
             }
 
             .btciconstwo {
+              display: inline-block;
               font-size: 1.18em;
               opacity: 0;
               margin-right: 16px;
@@ -1627,7 +1628,14 @@ class Marketplace extends React.Component {
             <div className="row rowpaddings">
               <div className="col-xl-5 col-lg-6 col-md-6 col-sm-5 col-5" 
                 style={{paddingLeft: "3px", paddingRight: "0px"}}>
-                      <FaBitcoin className="btciconsone"/> 
+                      <FaBitcoin style={{
+                        display: "inline-block",
+                        fontSize: "1.18em",
+                        opacity: "1",
+                        color: "black",
+                        marginRight: "16px",
+                        marginLeft: "2px"
+                      }} /> 
                         <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
                           Estimated Cost:
                           </h6>{" "}
@@ -1640,7 +1648,13 @@ class Marketplace extends React.Component {
 
                             <div className="col-xl-5 col-lg-6 col-md-6 col-sm-5 col-5" 
                             style={{paddingLeft: "3px", paddingRight: "0px"}}>
-                            <FaBitcoin className="btciconstwo"/> 
+                            <FaBitcoin style={{
+                        display: "inline-block",
+                        fontSize: "1.18em",
+                        opacity: "0",
+                        marginRight: "16px",
+                        marginLeft: "2px"
+                      }} /> 
                               <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
                               Estimated Rate:
                                </h6>{" "}
