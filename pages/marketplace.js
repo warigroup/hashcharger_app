@@ -778,23 +778,6 @@ class Marketplace extends React.Component {
               left: 16px;
             }
 
-            .btciconsone {
-              display: inline-block;
-              font-size: 1.18em;
-              opacity: 1;
-              color: black;
-              margin-right: 16px;
-              margin-left: 2px;
-            }
-
-            .btciconstwo {
-              display: inline-block;
-              font-size: 1.18em;
-              opacity: 0;
-              margin-right: 16px;
-              margin-left: 2px;
-            }
-
             @media (max-width: 1203px) {
               .estimate-containerdiv {
                 padding-top: 16px; 
@@ -948,13 +931,6 @@ class Marketplace extends React.Component {
               .rowpaddings {
                 padding-left: 0px; 
                 padding-right: 0px;
-              }
-              .btciconsone {
-                display: none !important;
-                opacity: 0;
-              }
-              .btciconstwo {
-                display: none !important;
               }
             }
 
