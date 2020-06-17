@@ -764,7 +764,7 @@ class Marketplace extends React.Component {
             .bordertop {
               border-top: 1px solid rgba(0,0,0,0.3);
               padding-top: 16px; 
-              width: 400px;
+              width: 360px;
             }
 
             @media (max-width: 1203px) {
@@ -773,6 +773,11 @@ class Marketplace extends React.Component {
                 padding-left: 10px;
                 padding-right: 0px;
                 border-top: none;
+              }
+
+              .bordertop {
+                border-top: none;
+                padding-top: 16px; 
               }
 
               .limit-price-container {
@@ -1575,8 +1580,8 @@ class Marketplace extends React.Component {
 
                     </div>
 
-      <div className="offset-xl-6 col-xl-5 col-lg-12 col-md-12 col-12 text-xl-left text-lg-left text-md-left text-left estimate-container">
-        <div style={{paddingLeft: "0px", paddingRight: "0px"}}>
+      <div className="offset-xl-5 col-xl-6 col-lg-12 col-md-12 col-12 text-xl-left text-lg-left text-md-left text-left estimate-container">
+        <div style={{paddingLeft: "23px", paddingRight: "0px"}}>
           <div className="container-fluid estimate-containerdiv" style={{paddingLeft: "0px", paddingRight: "0px"}}>
           <div className="bordertop"></div>
             <div className="row" style={{paddingLeft: "25px", paddingRight: "0px"}}>
