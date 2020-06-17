@@ -764,7 +764,9 @@ class Marketplace extends React.Component {
             .bordertop {
               border-top: 1px solid rgba(0,0,0,0.3);
               padding-top: 16px; 
-              width: 377px;
+              width: 410px;
+              position: relative;
+              left: 20px;
             }
 
             @media (max-width: 1203px) {
