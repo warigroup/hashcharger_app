@@ -774,8 +774,20 @@ class Marketplace extends React.Component {
               left: 16px;
             }
 
-            .btcicons {
+            .btciconsone {
               display: inline-block;
+              font-size: 1.18em;
+              opacity: 1;
+              color: black;
+              margin-right: 16px;
+              margin-left: 2px;
+            }
+
+            .btciconstwo {
+              font-size: 1.18em;
+              opacity: 0;
+              margin-right: 16px;
+              margin-left: 2px;
             }
 
             @media (max-width: 1203px) {
@@ -928,7 +940,11 @@ class Marketplace extends React.Component {
                 padding-left: 10px; 
                 padding-right: 0px;
               }
-              .btcicons {
+              .btciconsone {
+                display: none !important;
+                opacity: 0;
+              }
+              .btciconstwo {
                 display: none !important;
               }
             }
@@ -1611,11 +1627,7 @@ class Marketplace extends React.Component {
             <div className="row rowpaddings">
               <div className="col-xl-5 col-lg-6 col-md-6 col-sm-5 col-5" 
                 style={{paddingLeft: "3px", paddingRight: "0px"}}>
-                      <FaBitcoin style={{ fontSize: "1.18em", 
-                        opacity: "1", 
-                        color: "black", 
-                        marginRight: "16px",
-                        marginLeft: "2px" }} className="btcicons"/> 
+                      <FaBitcoin className="btciconsone"/> 
                         <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
                           Estimated Cost:
                           </h6>{" "}
@@ -1628,11 +1640,7 @@ class Marketplace extends React.Component {
 
                             <div className="col-xl-5 col-lg-6 col-md-6 col-sm-5 col-5" 
                             style={{paddingLeft: "3px", paddingRight: "0px"}}>
-                            <FaBitcoin style={{ fontSize: "1.18em", 
-                              opacity: "0", 
-                              color: "black", 
-                              marginRight: "16px",
-                              marginLeft: "2px" }} className="btcicons"/> 
+                            <FaBitcoin className="btciconstwo"/> 
                               <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
                               Estimated Rate:
                                </h6>{" "}
