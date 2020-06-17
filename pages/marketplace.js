@@ -1608,7 +1608,8 @@ class Marketplace extends React.Component {
                         opacity: "1", 
                         color: "black", 
                         display: "inline-block",
-                        marginRight: "16px" }} /> 
+                        marginRight: "16px",
+                        marginLeft: "2px" }} /> 
                         <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
                           Estimated Cost:
                           </h6>{" "}
@@ -1625,7 +1626,8 @@ class Marketplace extends React.Component {
                               opacity: "0", 
                               color: "black", 
                               display: "inline-block",
-                              marginRight: "16px" }} /> 
+                              marginRight: "16px",
+                              marginLeft: "2px" }} /> 
                               <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
                               Estimated Rate:
                                </h6>{" "}
