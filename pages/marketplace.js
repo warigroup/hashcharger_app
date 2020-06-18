@@ -221,32 +221,13 @@ class Marketplace extends React.Component {
   handleHashrateFocus = () => this.setState({ hashratefocus: true });
   handleHashrateBlur = () => { 
     this.setState({ hashratefocus: false });
-    if (this.state.hashrate !== "" && this.state.duration !== "") {
-      const durationInMinutes = this.state.duration * 60;
-      this.props.getEstimate(
-        durationInMinutes,
-        this.state.hashrate,
-        this.state.hashrate_units,
-        this.props.miningalgo.algorithm,
-        this.state.location,
-        this.state.limit_price,
-        this.props.mytoken); 
-    }
+    this.checkEstimatePrice();
   };
   handleDurationFocus = () => this.setState({ durationfocus: true, durationClicked: true });
-  handleDurationBlur = () =>  { this.setState({ durationfocus: false }) 
-  if (this.state.hashrate !== "" && this.state.duration !== "") {
-    const durationInMinutes = this.state.duration * 60;
-    this.props.getEstimate(
-      durationInMinutes,
-      this.state.hashrate,
-      this.state.hashrate_units,
-      this.props.miningalgo.algorithm,
-      this.state.location,
-      this.state.limit_price,
-      this.props.mytoken); 
-  }
-};
+  handleDurationBlur = () =>  { 
+    this.setState({ durationfocus: false }) 
+    this.checkEstimatePrice();
+  };
   handleDurationDaysFocus = () => this.setState({ durationdaysfocus: true });
   handleDurationDaysBlur = () => this.setState({ durationdaysfocus: false });
   handleEmailFocus = () => this.setState({ emailfocus: true });
@@ -361,6 +342,7 @@ class Marketplace extends React.Component {
       if (firstAvailableLocation === undefined) {
         this.setState({ location: "NA East" });
       };
+      this.checkEstimatePrice();
     };
 
     handleUnitSelect = event => this.setState({ hashrate_units_fiat: event.target.value });
@@ -373,6 +355,19 @@ class Marketplace extends React.Component {
         this.setState({ duration: parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].min_order_duration_min) / 60), 
           duration_example: parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].min_order_duration_min) / 60) });
       };
+    };
+
+    checkEstimatePrice = () => {
+      if (this.state.hashrate !== "" && this.state.duration !== "") {
+        const durationInMinutes = this.state.duration * 60;
+        this.props.getEstimate(
+          durationInMinutes,
+          this.state.hashrate,
+          this.state.hashrate_units,
+          this.props.miningalgo.algorithm,
+          this.state.location,
+          this.state.limit_price); 
+      }
     };
 
     checkNestedConfigs = () => { 
