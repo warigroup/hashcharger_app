@@ -342,7 +342,6 @@ class Marketplace extends React.Component {
       if (firstAvailableLocation === undefined) {
         this.setState({ location: "NA East" });
       };
-      this.checkEstimatePrice();
     };
 
     handleUnitSelect = event => this.setState({ hashrate_units_fiat: event.target.value });
@@ -355,6 +354,7 @@ class Marketplace extends React.Component {
         this.setState({ duration: parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].min_order_duration_min) / 60), 
           duration_example: parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].min_order_duration_min) / 60) });
       };
+      this.checkEstimatePrice();
     };
 
     checkEstimatePrice = () => {
