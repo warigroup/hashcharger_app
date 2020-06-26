@@ -52,6 +52,7 @@ class Marketplace extends React.Component {
       tag: "",
       duration: "",
       duration_example: "",
+      durationunit: "hour",
       limit_price: "",
       durationClicked: false,
       stratum_id: "",
@@ -63,6 +64,7 @@ class Marketplace extends React.Component {
       name_or_company: "", 
       phone_number: "",
       duration_days: "",
+      internetExplorer: false,
       loading: false,
       refund_address: "",
       hashratefocus: false,
@@ -109,7 +111,6 @@ class Marketplace extends React.Component {
       const hashunits = ((this.props.configs || {})[this.props.algorithm] || {}).hashrate_units;
       this.setState({ mining_algo: this.props.algorithm, hashrate_units: hashunits });
       Cookies.set("algo_select", this.props.algorithm, { expires: 7 });
-
     };
 
     // set default algorithm
@@ -245,7 +246,8 @@ class Marketplace extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const durationInMinutes = this.state.duration * 60;
+    var durationHoursToMins = this.state.duration * 60;
+    var durationDaysToMins = this.state.duration * 1440;
     this.setState({ formloading: true });
     NProgress.start();
     this.props.resetErrors();
@@ -255,7 +257,7 @@ class Marketplace extends React.Component {
       this.state.hashrate,
       this.state.hashrate_units,
       this.props.miningalgo.algorithm,
-      durationInMinutes,
+      this.state.durationunit === "hour" ? durationHoursToMins : durationDaysToMins,
       this.props.settings.host,
       this.props.settings.port,
       this.props.settings.username,
@@ -355,6 +357,28 @@ class Marketplace extends React.Component {
           duration_example: parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].min_order_duration_min) / 60) });
       };
       this.checkEstimatePrice();
+    };
+
+    selectDurationUnit = event => {
+      this.setState({ durationunit: event.target.value });
+      if (event.target.value === "hour") {
+        this.setState({ duration:  this.checkNestedConfigs() && 
+          this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].hashrate_min) === null ? 25 :
+          parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min / 60)});
+        this.setState({ duration_example: this.checkNestedConfigs() && 
+          this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].hashrate_min) === null ? 25 :
+          parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min / 60)});
+      };
+      if (event.target.value === "day") {
+        this.setState({ duration:  this.checkNestedConfigs() && 
+          this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].hashrate_min) === null ? 1 :
+          parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min / 1440)});
+  
+        this.setState({ duration_example:   this.checkNestedConfigs() && 
+          this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].hashrate_min) === null ? 1 :
+          parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min / 1440)});
+  
+        };
     };
 
     checkEstimatePrice = () => {
