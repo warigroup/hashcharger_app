@@ -1371,8 +1371,8 @@ class Marketplace extends React.Component {
                             name="hashrate"
                             value={this.state.hashrate}
                             placeholder={this.checkNestedConfigs() &&
-                              this.props.configs[this.props.miningalgo.algorithm] !== undefined &&
-                              this.props.configs[this.props.miningalgo.algorithm][minerLocations[0].value] !== undefined ?
+                              configs[miningalgo.algorithm] !== undefined &&
+                              configs[miningalgo.algorithm][minerLocations[0].value] !== undefined ?
                               hashrateExampleText : "Loading..."
                             }
                             className="form-control inputstyles2"
@@ -1394,11 +1394,10 @@ class Marketplace extends React.Component {
                           top: "5.9px",
                           right: "13px", 
                           zIndex: "222"}}>
-                            {this.checkNestedConfigs() &&
-                            this.props.configs[this.props.miningalgo.algorithm] !== undefined &&
-                            this.props.configs[this.props.miningalgo.algorithm][minerLocations[0].value] !== undefined ?
-                            this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].hashrate_units) + "H/s" : ""}
-                          
+                           {this.checkNestedConfigs() &&
+                            configs[miningalgo.algorithm] !== undefined &&
+                            configs[miningalgo.algorithm][minerLocations[0].value] !== undefined ?
+                            this.safeNestedCheck(() => configs[miningalgo.algorithm].hashrate_units) + "H/s" : ""}
                           </p>
                           <br />
                         </div>
@@ -1412,12 +1411,12 @@ class Marketplace extends React.Component {
   hashratefocus === false &&
   this.minDurationCheck() &&
   this.checkNestedConfigs() &&
-  this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[0].max) !==
-  this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min) &&
-  parseFloat(this.state.hashrate) > parseFloat(this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[0].max) ? 
+  this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_max) !==
+  this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_min) &&
+  parseFloat(this.state.hashrate) > parseFloat(configs[miningalgo.algorithm][location][durationunit].hashrate_max) ? 
   <p className="is-invalid-error add-padding-left">
-    The maximum hashrate you can purchase is {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[0].max)}{" "}
-    {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].hashrate_units)}H/s. 
+    The maximum hashrate you can purchase is {this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_max)}{" "}
+    {this.safeNestedCheck(() => configs[miningalgo.algorithm].hashrate_units)}H/s. 
   Please decrease your hashrate input value.</p>
    : null}
 
@@ -1425,12 +1424,12 @@ class Marketplace extends React.Component {
   this.state.hashrate !== "" &&
   this.maxDurationCheck() &&
   this.checkNestedConfigs() &&
-  this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[1].max) !==
-  this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1].min) &&
-  parseFloat(this.state.hashrate) > parseFloat(this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[1].max) ? 
+  this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_max) !==
+  this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_min) &&
+  parseFloat(this.state.hashrate) > parseFloat(configs[miningalgo.algorithm][location][durationunit].hashrate_max) ? 
   <p className="is-invalid-error add-padding-left">
-    The maximum hashrate you can purchase is {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[1].max)}{" "}
-     {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].hashrate_units)}H/s. 
+    The maximum hashrate you can purchase is {this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_max)}{" "}
+     {this.safeNestedCheck(() => configs[miningalgo.algorithm].hashrate_units)}H/s. 
   Please decrease your hashrate input value.</p>
    : null}
 
@@ -1440,13 +1439,13 @@ class Marketplace extends React.Component {
   this.minDurationCheck() &&
   hashratefocus === false &&
   this.checkNestedConfigs() &&
-  this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[0].max) !==
-  this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min) &&
-  parseFloat(this.state.hashrate) < parseFloat(this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min) ? 
+  this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_max) !==
+  this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_min) &&
+  parseFloat(this.state.hashrate) < parseFloat(configs[miningalgo.algorithm][location][durationunit].hashrate_min) ? 
   <p className="is-invalid-error add-padding-left">
-    The minimum hashrate you can purchase is {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min)}{" "}
-    {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].hashrate_units)}H/s.
-    <br />Please increase your hashrate input value.
+    The minimum hashrate you can purchase is {this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_min)}{" "}
+    {this.safeNestedCheck(() => configs[miningalgo.algorithm].hashrate_units)}H/s.
+    Please increase your hashrate input value.
   </p>
    : null}                       
                  
@@ -1454,14 +1453,14 @@ class Marketplace extends React.Component {
   this.state.hashrate !== "" &&
   this.maxDurationCheck() &&
   hashratefocus === false &&
-  this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[1].max) !==
-  this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1].min) &&
-  parseFloat(this.state.hashrate) < parseFloat(this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1].min) ? 
+  this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_max) !==
+  this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_min) &&
+  parseFloat(this.state.hashrate) < parseFloat(configs[miningalgo.algorithm][location][durationunit].hashrate_min) ? 
   <p className="is-invalid-error add-padding-left">
-    The minimum hashrate you can purchase is {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1].min)}{" "}
-   {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].hashrate_units)}H/s.
-   <br />Please increase your hashrate input value.
-  </p> : null}                       
+    The minimum hashrate you can purchase is {this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_min)}{" "}
+   {this.safeNestedCheck(() => configs[miningalgo.algorithm].hashrate_units)}H/s.
+    Please increase your hashrate input value.
+  </p> : null}                               
 
 
                     <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
@@ -1472,27 +1471,27 @@ class Marketplace extends React.Component {
                         color: "rgba(0,0,0,0.6)",
                         marginLeft: "5px"
                       }}>
-                    <span className="min-value">Minimum hashrate:{" "}{
+                   <span className="min-value">Minimum hashrate:{" "}{
                     this.checkNestedConfigs() &&
                     this.checkDurationBelowDay() ?
-                    this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min) !== null &&
-                    this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min) 
+                    this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_min) !== null &&
+                    this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_min) 
                    : 
-                   this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1].min) !== null &&
-                   this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1].min)
+                   this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_min) !== null &&
+                   this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_min)
                    } 
-                   {" "}{this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].hashrate_units)}H/s</span>
-                   <br />
+                   {" "}{this.safeNestedCheck(() => configs[miningalgo.algorithm].hashrate_units)}H/s</span>
+                    <span className="max-min-bar">|</span>
                     <span className="max-value">Maximum hashrate:{" "}{
                       this.checkNestedConfigs() && 
                       this.checkDurationBelowDay() ?
                       
-                     this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[0].max) !== null &&
-                     this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[0].max)
+                     this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_max) !== null &&
+                     this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_max)
                     :
-                     this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[1].max) !== null &&
-                     this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[1].max)
-                    }{" "}{this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].hashrate_units)}H/s</span>
+                     this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_max) !== null &&
+                     this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_max)
+                    }{" "}{this.safeNestedCheck(() => configs[miningalgo.algorithm].hashrate_units)}H/s</span>
                       </p> 
                    
                       </div>
