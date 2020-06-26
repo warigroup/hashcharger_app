@@ -571,6 +571,34 @@ class Marketplace extends React.Component {
             position: relative;
             top: -1px;
           }
+
+          .unitselectstyles {
+            height: 42.7px !important; 
+            width: 100px; 
+            max-height: 42.7px;
+            display: inline-block; 
+            padding-bottom: 0px; 
+            margin-bottom: 0px;
+            margin-left: 0px;
+            font-size: 0.82em;
+            position: relative;
+            top: -2px;
+            cursor: pointer;
+          }
+
+          .unitselectie {
+            height: 42.7px !important; 
+            width: 100px; 
+            max-height: 42.7px;
+            display: inline-block; 
+            padding-bottom: 0px; 
+            margin-bottom: 0px;
+            margin-left: 0px;
+            font-size: 0.82em;
+            position: relative;
+            top: -12px;
+            cursor: pointer;
+          }
           
           .offerformlabel {
             display: inline-block; 
