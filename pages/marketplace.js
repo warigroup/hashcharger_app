@@ -827,6 +827,10 @@ class Marketplace extends React.Component {
               left: 16px;
             }
 
+            .iconcontainers {
+              display: inline-block;
+            }
+
             @media (max-width: 1203px) {
               .estimate-containerdiv {
                 padding-top: 16px; 
@@ -966,6 +970,12 @@ class Marketplace extends React.Component {
                 padding-left: 0px; 
                 position: relative; 
                 left: 0px;
+              }
+            }
+
+            @media (max-width: 820px) {
+              .iconcontainers {
+                display: none;
               }
             }
 
@@ -1706,6 +1716,7 @@ class Marketplace extends React.Component {
             <div className="row rowpaddings">
               <div className="col-xl-5 col-lg-6 col-md-6 col-sm-5 col-5" 
                 style={{paddingLeft: "3px", paddingRight: "0px"}}>
+                    <div className="iconcontainers">
                       <FaBitcoin style={{
                         display: "inline-block",
                         fontSize: "1.18em",
@@ -1713,7 +1724,8 @@ class Marketplace extends React.Component {
                         color: "black",
                         marginRight: "16px",
                         marginLeft: "2px"
-                      }} /> 
+                      }} />
+                      </div>
                         <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
                           Estimated Cost:
                           </h6>{" "}
@@ -1726,13 +1738,15 @@ class Marketplace extends React.Component {
 
                             <div className="col-xl-5 col-lg-6 col-md-6 col-sm-5 col-5" 
                             style={{paddingLeft: "3px", paddingRight: "0px"}}>
+                                <div className="iconcontainers">
                             <FaBitcoin style={{
-                        display: "inline-block",
-                        fontSize: "1.18em",
-                        opacity: "0",
-                        marginRight: "16px",
-                        marginLeft: "2px"
-                      }} /> 
+                              display: "inline-block",
+                              fontSize: "1.18em",
+                              opacity: "0",
+                              marginRight: "16px",
+                              marginLeft: "2px"
+                            }} /> 
+                            </div>
                               <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
                               Estimated Rate:
                                </h6>{" "}
