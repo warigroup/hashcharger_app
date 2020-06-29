@@ -146,15 +146,15 @@ class Marketplace extends React.Component {
       this.props.enableNavigation();
     };
     if (prevProps.configs !== this.props.configs) {
-        this.setState({ hashrate_units: (this.props.configs[this.props.miningalgo.algorithm] || {}).hashrate_units });
-        if (this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location].min_order_hashrate[0].min) === null) {
-          this.setState({ duration: 25, duration_example: 25 });
-        };
-        if (this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location].min_order_hashrate[0].min) !== null){
-          this.setState({ duration:  parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].min_order_duration_min) / 60), 
-            duration_example: parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].min_order_duration_min) / 60) });
-        };
-    };
+      this.setState({ hashrate_units: (this.props.configs[this.props.miningalgo.algorithm] || {}).hashrate_units });
+      if (this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][this.state.durationunit].hashrate_min) === null) {
+        this.setState({ duration: 25, duration_example: 25 });
+      };
+      if (this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][this.state.durationunit].hashrate_min) !== null){
+        this.setState({ duration:  parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location][this.state.durationunit].duration_min) / 60), 
+          duration_example: parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location][this.state.durationunit].duration_min) / 60) });
+      };
+  };
     if (
       this.props.errors.alertnow === "alertnow" &&
       prevProps.errors.alertnow !== "alertnow"
