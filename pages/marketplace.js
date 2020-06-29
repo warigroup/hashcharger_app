@@ -327,7 +327,7 @@ class Marketplace extends React.Component {
       this.setState({ durationClicked: false });
       this.selectFirstRegion(algorithm_name);
     };
-    
+
     selectFirstRegion = algorithm_name => {
       const locations = minerLocations;
       const firstAvailableLocation = locations.find(location => this.safeNestedCheck(() => this.props.configs[algorithm_name][location.value][this.state.durationunit].hashrate_min) !== null ||
@@ -1337,7 +1337,7 @@ class Marketplace extends React.Component {
                     durationunit === "day" && 
                     parseInt((configs[miningalgo.algorithm] || {})[location][durationunit].duration_min / 1440) + " days"}
                     </span>
-                    <span className="max-min-bar">|</span>
+                    <br />
                     <span className="max-value">Maximum duration:{" "}
                     {durationunit === "hour" && 
                     this.checkNestedConfigs() && 
@@ -1502,7 +1502,7 @@ class Marketplace extends React.Component {
                    this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_min)
                    } 
                    {" "}{this.safeNestedCheck(() => configs[miningalgo.algorithm].hashrate_units)}H/s</span>
-                    <span className="max-min-bar">|</span>
+                    <br />
                     <span className="max-value">Maximum hashrate:{" "}{
                       this.checkNestedConfigs() && 
                       this.checkDurationBelowDay() ?
