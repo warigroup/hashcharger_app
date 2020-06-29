@@ -1201,7 +1201,7 @@ class Marketplace extends React.Component {
                               ? "input-group input-group-md focused"
                               : "input-group input-group-md"
                           }
-                          style={{maxWidth: "285px"}}
+                          style={{maxWidth: "170px", maxHeight: "60px", marginRight: "10px"}}
                         >
                           <div className="input-group-prepend">
                             <span
