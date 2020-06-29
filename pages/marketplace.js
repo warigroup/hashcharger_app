@@ -327,18 +327,29 @@ class Marketplace extends React.Component {
       this.setState({ durationClicked: false });
       this.selectFirstRegion(algorithm_name);
     };
-
+    
     selectFirstRegion = algorithm_name => {
       const locations = minerLocations;
-      const firstAvailableLocation = locations.find(location => this.safeNestedCheck(() => this.props.configs[algorithm_name][location.value].min_order_hashrate[0].min) !== null ||
-      this.safeNestedCheck(() => this.props.configs[algorithm_name][location.value].min_order_hashrate[1].min) !== null );
+      const firstAvailableLocation = locations.find(location => this.safeNestedCheck(() => this.props.configs[algorithm_name][location.value][this.state.durationunit].hashrate_min) !== null ||
+      this.safeNestedCheck(() => this.props.configs[algorithm_name][location.value].hashrate_min) !== null );
       if (firstAvailableLocation !== undefined) {
-        this.setState({ location: firstAvailableLocation.value });
-        if (this.safeNestedCheck(() => (this.props.configs[algorithm_name] || {})[firstAvailableLocation.value].min_order_hashrate[0].min) === null) {
-          this.setState({ duration: 25, duration_example: 25 });
-        } else { 
-          this.setState({ duration: parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name].min_order_duration_min) / 60), 
-            duration_example: parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name].min_order_duration_min) / 60) });
+        if (this.state.durationunit === "hour") {
+          this.setState({ location: firstAvailableLocation.value });
+          if (this.safeNestedCheck(() => (this.props.configs[algorithm_name] || {})[firstAvailableLocation.value][this.state.location][this.state.durationunit].hashrate_min) === null) {
+            this.setState({ duration: 25, duration_example: 25 });
+          } else { 
+            this.setState({ duration:  parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name][this.state.location][this.state.durationunit].duration_min) / 60), 
+              duration_example:  parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name][this.state.location][this.state.durationunit].duration_min) / 60) });
+          };
+        };
+        if (this.state.durationunit === "day") {
+          this.setState({ location: firstAvailableLocation.value });
+          if (this.safeNestedCheck(() => (this.props.configs[algorithm_name] || {})[firstAvailableLocation.value][this.state.location][this.state.durationunit].hashrate_min) === null) {
+            this.setState({ duration: 1, duration_example: 1 });
+          } else { 
+            this.setState({ duration:  parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name][this.state.location][this.state.durationunit].duration_min) / 1440), 
+              duration_example:  parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name][this.state.location][this.state.durationunit].duration_min) / 1440) });
+          };
         };
       };
       if (firstAvailableLocation === undefined) {
@@ -458,7 +469,7 @@ class Marketplace extends React.Component {
       durationunit,
       location
     } = this.state;
-    const { miningalgo, configs, stats, auth, stratum } = this.props;
+    const { miningalgo, configs, stats } = this.props;
     
     let hashrateExampleText = "";
     
@@ -1730,10 +1741,10 @@ class Marketplace extends React.Component {
                           Estimated Cost:
                           </h6>{" "}
                       </div>
-                            <div className="col-xl-7 col-lg-6 col-md-6 col-sm-7 col-7 text-left">
-                            <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
-                              {this.props.estimate.price === undefined ? "- - - - - - - " : this.props.estimate.price.total_payment_amount} BTC</h6>
-                            </div>
+                      <div className="col-xl-7 col-lg-6 col-md-6 col-sm-7 col-7 text-left">
+                      <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
+                        {this.props.estimate.price === undefined ? "- - - - - - - " : this.props.estimate.price.total_payment_amount} BTC</h6>
+                      </div>
 
 
                             <div className="col-xl-5 col-lg-6 col-md-6 col-sm-5 col-5" 
