@@ -361,13 +361,25 @@ class Marketplace extends React.Component {
 
     selectLocation = event => {
       this.setState({ location: event.target.value });
-      if (this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[event.target.value].min_order_hashrate[0].min) === null) {
-        this.setState({ duration: 25, duration_example: 25 });
-      } else { 
-        this.setState({ duration: parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].min_order_duration_min) / 60), 
-          duration_example: parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].min_order_duration_min) / 60) });
+      if (this.state.durationunit === "hour") {
+        if (this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[event.target.value][this.state.durationunit].hashrate_min) === null) {
+          this.setState({ duration: 25, duration_example: 25 });
+        } else { 
+          this.setState({ duration:  parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location][this.state.durationunit].duration_min) / 60), 
+            duration_example:  parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location][this.state.durationunit].duration_min) / 60) });
+        };
+        this.checkEstimatePrice();
       };
-      this.checkEstimatePrice();
+      
+      if (this.state.durationunit === "day") {
+        if (this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[event.target.value][this.state.durationunit].hashrate_min) === null) {
+          this.setState({ duration: 1, duration_example: 1 });
+        } else { 
+          this.setState({ duration:  parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location][this.state.durationunit].duration_min) / 1440), 
+            duration_example:  parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location][this.state.durationunit].duration_min) / 1440) });
+        };
+        this.checkEstimatePrice();
+      };
     };
 
     selectDurationUnit = event => {
