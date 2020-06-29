@@ -52,6 +52,7 @@ class Marketplace extends React.Component {
       tag: "",
       duration: "",
       duration_example: "",
+      durationunit: "hour",
       limit_price: "",
       durationClicked: false,
       stratum_id: "",
@@ -63,6 +64,7 @@ class Marketplace extends React.Component {
       name_or_company: "", 
       phone_number: "",
       duration_days: "",
+      internetExplorer: false,
       loading: false,
       refund_address: "",
       hashratefocus: false,
@@ -109,7 +111,6 @@ class Marketplace extends React.Component {
       const hashunits = ((this.props.configs || {})[this.props.algorithm] || {}).hashrate_units;
       this.setState({ mining_algo: this.props.algorithm, hashrate_units: hashunits });
       Cookies.set("algo_select", this.props.algorithm, { expires: 7 });
-
     };
 
     // set default algorithm
@@ -145,15 +146,15 @@ class Marketplace extends React.Component {
       this.props.enableNavigation();
     };
     if (prevProps.configs !== this.props.configs) {
-        this.setState({ hashrate_units: (this.props.configs[this.props.miningalgo.algorithm] || {}).hashrate_units });
-        if (this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location].min_order_hashrate[0].min) === null) {
-          this.setState({ duration: 25, duration_example: 25 });
-        };
-        if (this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location].min_order_hashrate[0].min) !== null){
-          this.setState({ duration:  parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].min_order_duration_min) / 60), 
-            duration_example: parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].min_order_duration_min) / 60) });
-        };
-    };
+      this.setState({ hashrate_units: (this.props.configs[this.props.miningalgo.algorithm] || {}).hashrate_units });
+      if (this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][this.state.durationunit].hashrate_min) === null) {
+        this.setState({ duration: 25, duration_example: 25 });
+      };
+      if (this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][this.state.durationunit].hashrate_min) !== null){
+        this.setState({ duration:  parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location][this.state.durationunit].duration_min) / 60), 
+          duration_example: parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location][this.state.durationunit].duration_min) / 60) });
+      };
+  };
     if (
       this.props.errors.alertnow === "alertnow" &&
       prevProps.errors.alertnow !== "alertnow"
@@ -245,7 +246,8 @@ class Marketplace extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const durationInMinutes = this.state.duration * 60;
+    var durationHoursToMins = this.state.duration * 60;
+    var durationDaysToMins = this.state.duration * 1440;
     this.setState({ formloading: true });
     NProgress.start();
     this.props.resetErrors();
@@ -255,7 +257,7 @@ class Marketplace extends React.Component {
       this.state.hashrate,
       this.state.hashrate_units,
       this.props.miningalgo.algorithm,
-      durationInMinutes,
+      this.state.durationunit === "hour" ? durationHoursToMins : durationDaysToMins,
       this.props.settings.host,
       this.props.settings.port,
       this.props.settings.username,
@@ -328,15 +330,26 @@ class Marketplace extends React.Component {
 
     selectFirstRegion = algorithm_name => {
       const locations = minerLocations;
-      const firstAvailableLocation = locations.find(location => this.safeNestedCheck(() => this.props.configs[algorithm_name][location.value].min_order_hashrate[0].min) !== null ||
-      this.safeNestedCheck(() => this.props.configs[algorithm_name][location.value].min_order_hashrate[1].min) !== null );
+      const firstAvailableLocation = locations.find(location => this.safeNestedCheck(() => this.props.configs[algorithm_name][location.value][this.state.durationunit].hashrate_min) !== null ||
+      this.safeNestedCheck(() => this.props.configs[algorithm_name][location.value].hashrate_min) !== null );
       if (firstAvailableLocation !== undefined) {
-        this.setState({ location: firstAvailableLocation.value });
-        if (this.safeNestedCheck(() => (this.props.configs[algorithm_name] || {})[firstAvailableLocation.value].min_order_hashrate[0].min) === null) {
-          this.setState({ duration: 25, duration_example: 25 });
-        } else { 
-          this.setState({ duration: parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name].min_order_duration_min) / 60), 
-            duration_example: parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name].min_order_duration_min) / 60) });
+        if (this.state.durationunit === "hour") {
+          this.setState({ location: firstAvailableLocation.value });
+          if (this.safeNestedCheck(() => (this.props.configs[algorithm_name] || {})[firstAvailableLocation.value][this.state.location][this.state.durationunit].hashrate_min) === null) {
+            this.setState({ duration: 25, duration_example: 25 });
+          } else { 
+            this.setState({ duration:  parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name][this.state.location][this.state.durationunit].duration_min) / 60), 
+              duration_example:  parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name][this.state.location][this.state.durationunit].duration_min) / 60) });
+          };
+        };
+        if (this.state.durationunit === "day") {
+          this.setState({ location: firstAvailableLocation.value });
+          if (this.safeNestedCheck(() => (this.props.configs[algorithm_name] || {})[firstAvailableLocation.value][this.state.location][this.state.durationunit].hashrate_min) === null) {
+            this.setState({ duration: 1, duration_example: 1 });
+          } else { 
+            this.setState({ duration:  parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name][this.state.location][this.state.durationunit].duration_min) / 1440), 
+              duration_example:  parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name][this.state.location][this.state.durationunit].duration_min) / 1440) });
+          };
         };
       };
       if (firstAvailableLocation === undefined) {
@@ -348,13 +361,47 @@ class Marketplace extends React.Component {
 
     selectLocation = event => {
       this.setState({ location: event.target.value });
-      if (this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[event.target.value].min_order_hashrate[0].min) === null) {
-        this.setState({ duration: 25, duration_example: 25 });
-      } else { 
-        this.setState({ duration: parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].min_order_duration_min) / 60), 
-          duration_example: parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].min_order_duration_min) / 60) });
+      if (this.state.durationunit === "hour") {
+        if (this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[event.target.value][this.state.durationunit].hashrate_min) === null) {
+          this.setState({ duration: 25, duration_example: 25 });
+        } else { 
+          this.setState({ duration:  parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location][this.state.durationunit].duration_min) / 60), 
+            duration_example:  parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location][this.state.durationunit].duration_min) / 60) });
+        };
+        this.checkEstimatePrice();
       };
-      this.checkEstimatePrice();
+      
+      if (this.state.durationunit === "day") {
+        if (this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[event.target.value][this.state.durationunit].hashrate_min) === null) {
+          this.setState({ duration: 1, duration_example: 1 });
+        } else { 
+          this.setState({ duration:  parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location][this.state.durationunit].duration_min) / 1440), 
+            duration_example:  parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location][this.state.durationunit].duration_min) / 1440) });
+        };
+        this.checkEstimatePrice();
+      };
+    };
+
+    selectDurationUnit = event => {
+      this.setState({ durationunit: event.target.value });
+      if (event.target.value === "hour") {
+        this.setState({ duration:  this.checkNestedConfigs() && 
+          this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].hashrate_min) === null ? 25 :
+          parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min / 60)});
+        this.setState({ duration_example: this.checkNestedConfigs() && 
+          this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].hashrate_min) === null ? 25 :
+          parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min / 60)});
+      };
+      if (event.target.value === "day") {
+        this.setState({ duration:  this.checkNestedConfigs() && 
+          this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].hashrate_min) === null ? 1 :
+          parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min / 1440)});
+  
+        this.setState({ duration_example:   this.checkNestedConfigs() && 
+          this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].hashrate_min) === null ? 1 :
+          parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min / 1440)});
+  
+        };
     };
 
     checkEstimatePrice = () => {
@@ -430,56 +477,58 @@ class Marketplace extends React.Component {
       durationfocus,
       durationClicked,
       pricefocus,
-      refundaddressfocus
+      refundaddressfocus,
+      durationunit,
+      location
     } = this.state;
+    const { miningalgo, configs, stats } = this.props;
+    
     let hashrateExampleText = "";
     
     if (this.checkDurationBelowDay() && 
       this.checkNestedConfigs() &&
-      this.props.configs[this.props.miningalgo.algorithm][this.state.location] &&
-      this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min !== null 
+      configs[miningalgo.algorithm][location] &&
+      configs[miningalgo.algorithm][location][durationunit].hashrate_min !== null 
     ) {
       hashrateExampleText = `Example: ${
         this.checkNestedConfigs() &&
-        this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0] &&
-        this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min}`;
-   
+        configs[miningalgo.algorithm][location] &&
+        configs[miningalgo.algorithm][location][durationunit].hashrate_min}`;
     } else if (this.maxDurationCheck() && 
     this.checkNestedConfigs() &&
-    this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1].min !== null 
+    configs[miningalgo.algorithm][location][durationunit].hashrate_min !== null 
     ) {
       hashrateExampleText = `Example: ${this.checkNestedConfigs() &&
-        this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1] && 
-        this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1].min}`;
- 
+        configs[miningalgo.algorithm][location] && 
+        configs[miningalgo.algorithm][location][durationunit].hashrate_min}`;
     } else if (this.checkDurationBelowDay() && 
     this.checkNestedConfigs() &&
-    this.props.configs[this.props.miningalgo.algorithm][this.state.location] &&
-    this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min === null 
+    configs[miningalgo.algorithm][location] &&
+    configs[miningalgo.algorithm][location][durationunit].hashrate_min === null 
     ) {
       hashrateExampleText = "Not available";
     } else if (this.maxDurationCheck() && 
     this.checkNestedConfigs() &&
-    this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1].min === null
+    configs[miningalgo.algorithm][location][durationunit].hashrate_min === null
     ) {
       hashrateExampleText = "Not available";
     };
 
-    const availableRegions = minerLocations.map(location => { 
+    const availableRegions = minerLocations.map(minerLocation => { 
       if (this.checkNestedConfigs() &&
-      this.props.configs[this.props.miningalgo.algorithm] !== undefined &&
-      this.props.configs[this.props.miningalgo.algorithm][location.value] !== undefined) 
+      configs[miningalgo.algorithm] !== undefined &&
+      configs[miningalgo.algorithm][minerLocation.value] !== undefined) 
         return (
         <option className={
-          this.props.configs[this.props.miningalgo.algorithm][location.value].min_order_hashrate[0].min !== null ||
-        this.props.configs[this.props.miningalgo.algorithm][location.value].min_order_hashrate[1].min !== null ?
+          configs[miningalgo.algorithm][minerLocation.value][durationunit].hashrate_min !== null ||
+          configs[miningalgo.algorithm][minerLocation.value][durationunit].hashrate_min !== null ?
           "selectstyles" : "hidethis"} 
-          key={location.value} 
-          value={location.value}
-          disabled={this.props.configs[this.props.miningalgo.algorithm][location.value].min_order_hashrate[0].min === null &&
-            this.props.configs[this.props.miningalgo.algorithm][location.value].min_order_hashrate[1].min === null}
+          key={minerLocation.value} 
+          value={minerLocation.value}
+          disabled={configs[miningalgo.algorithm][minerLocation.value][durationunit].hashrate_min === null &&
+            configs[miningalgo.algorithm][minerLocation.value][durationunit].hashrate_min === null}
           >
-          {location.name}
+          {minerLocation.name}
           </option>
         )
       } 
@@ -546,6 +595,34 @@ class Marketplace extends React.Component {
             font-weight: bold;
             position: relative;
             top: -1px;
+          }
+
+          .unitselectstyles {
+            height: 42.7px !important; 
+            width: 100px; 
+            max-height: 42.7px;
+            display: inline-block; 
+            padding-bottom: 0px; 
+            margin-bottom: 0px;
+            margin-left: 0px;
+            font-size: 0.82em;
+            position: relative;
+            top: -2px;
+            cursor: pointer;
+          }
+
+          .unitselectie {
+            height: 42.7px !important; 
+            width: 100px; 
+            max-height: 42.7px;
+            display: inline-block; 
+            padding-bottom: 0px; 
+            margin-bottom: 0px;
+            margin-left: 0px;
+            font-size: 0.82em;
+            position: relative;
+            top: -12px;
+            cursor: pointer;
           }
           
           .offerformlabel {
@@ -773,6 +850,10 @@ class Marketplace extends React.Component {
               left: 16px;
             }
 
+            .iconcontainers {
+              display: inline-block;
+            }
+
             @media (max-width: 1203px) {
               .estimate-containerdiv {
                 padding-top: 16px; 
@@ -915,6 +996,12 @@ class Marketplace extends React.Component {
               }
             }
 
+            @media (max-width: 820px) {
+              .iconcontainers {
+                display: none;
+              }
+            }
+
             @media (max-width: 773px) {
               .estimate-containerdiv {
                 padding-left: 5px;
@@ -972,8 +1059,8 @@ class Marketplace extends React.Component {
         </Head>
 
         {this.checkNestedConfigs() &&
-      this.props.configs[this.props.miningalgo.algorithm] !== undefined &&
-      this.props.configs[this.props.miningalgo.algorithm][minerLocations[0].value] !== undefined ?
+     configs[miningalgo.algorithm] !== undefined &&
+     configs[miningalgo.algorithm][minerLocations[0].value] !== undefined ?
                      
         <div>
         <div className="container">
@@ -1040,20 +1127,17 @@ class Marketplace extends React.Component {
 
             <div className="container">
               <div className="row">
-{ this.checkNestedAvailable() &&
-  this.props.stats.available[this.props.miningalgo.algorithm].hashrate !== undefined &&
-  this.props.stats.available[this.props.miningalgo.algorithm].hashrate === "0.0000" ||
-  this.checkNestedConfigs() &&
-  this.props.configs[this.props.miningalgo.algorithm]['NA East'] &&
-  this.props.configs[this.props.miningalgo.algorithm]['NA East'].min_order_hashrate[0].min === null &&
-  this.props.configs[this.props.miningalgo.algorithm]['NA East'].min_order_hashrate[1].min === null && 
-  this.props.configs[this.props.miningalgo.algorithm]['NA West'] &&
-  this.props.configs[this.props.miningalgo.algorithm]['NA West'].min_order_hashrate[0].min === null &&
-  this.props.configs[this.props.miningalgo.algorithm]['NA West'].min_order_hashrate[1].min === null && 
-  this.props.configs[this.props.miningalgo.algorithm]['EU West'] &&
-  this.props.configs[this.props.miningalgo.algorithm]['EU West'].min_order_hashrate[0].min === null &&
-  this.props.configs[this.props.miningalgo.algorithm]['EU West'].min_order_hashrate[1].min === null
-  ? 
+              { this.checkNestedAvailable() &&
+                stats.available[miningalgo.algorithm].hashrate !== undefined &&
+                stats.available[miningalgo.algorithm].hashrate === "0.0000" ||
+                this.checkNestedConfigs() &&
+                configs[miningalgo.algorithm]['NA East'] &&
+                configs[miningalgo.algorithm]['NA East'][durationunit].hashrate_min === null &&
+                configs[miningalgo.algorithm]['NA West'] &&
+                configs[miningalgo.algorithm]['NA West'][durationunit].hashrate_min === null &&
+                configs[miningalgo.algorithm]['EU West'] &&
+                configs[miningalgo.algorithm]['EU West'][durationunit].hashrate_min === null 
+                ? 
 <div className="container">
 <div className="row">
            <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center">
@@ -1121,13 +1205,15 @@ class Marketplace extends React.Component {
                         <label htmlFor="duration" className="inputlabel">
                         Order Duration:
                         </label>
+                        <div>
+                        <div style={{display: "inline-block", paddingTop: "0px", paddingBottom: "0px", maxHeight: "43.65px"}}>
                         <div
                           className={
                             durationfocus === true
                               ? "input-group input-group-md focused"
                               : "input-group input-group-md"
                           }
-                          style={{maxWidth: "285px"}}
+                          style={{maxWidth: "170px", maxHeight: "60px", marginRight: "10px"}}
                         >
                           <div className="input-group-prepend">
                             <span
@@ -1161,50 +1247,82 @@ class Marketplace extends React.Component {
                             autoComplete="off"
                             required
                           />
-                          <p style={{paddingTop: "0px", 
-                          paddingBottom: "0px", 
-                          marginBottom: "0px",
-                          position: "relative",
-                          fontSize: "0.88em",
-                          top: "6.2px",
-                          right: "13px", 
-                          zIndex: "2342342"}}>
-                          Hours
-                          </p>
-                          <br />
+                       <br />
                         </div>
+                        
+                          </div>
+                          <select
+                            className={this.state.internetExplorer === true ? 
+                              "form-control selectstyles unitselectie" : 
+                              "form-control selectstyles unitselectstyles"}
+                            name="durationunit"
+                            onChange={this.selectDurationUnit}
+                            value={this.state.durationunit}
+                          >
+                            <option className="selectstyles" value="hour">
+                              {this.state.duration > 1 ? "Hours" : "Hour"}
+                            </option>
+                            <option className="selectstyles" value="day">
+                              {this.state.duration > 1 ? "Days" : "Day"}
+                            </option>
+                          </select>
+                          </div>
+                        
 
                   {this.props.errors.duration !== undefined ? 
                   <p className="is-invalid-error add-padding-left">{this.props.errors.duration}</p> : null}
+                 
+                 {this.props.errors.duration === undefined && 
+                  this.state.duration !== "" && 
+                  this.state.durationunit === "hour" &&
+                  this.checkNestedConfigs() && 
+                  parseInt(this.state.duration * 60) > (configs[miningalgo.algorithm] || {})[location][durationunit].duration_max ? 
+                  <p className="is-invalid-error add-padding-left">
+                    Your duration exceeds the maximum duration. Please decrease your duration input value. 
+                  </p> : null}
+
                   {this.props.errors.duration === undefined && 
                   this.state.duration !== "" && 
+                  this.state.durationunit === "day" &&
                   this.checkNestedConfigs() && 
-                  parseInt(this.state.duration * 60) > (this.props.configs[this.props.miningalgo.algorithm] || {}).max_order_duration_min ? 
+                  parseInt(this.state.duration * 1440) > (configs[miningalgo.algorithm] || {})[location][durationunit].duration_max ? 
                   <p className="is-invalid-error add-padding-left">
-                    Your duration exceeds the maximum duration. 
-                    <br />Please decrease your duration input value. 
+                    Your duration exceeds the maximum duration. Please decrease your duration input value. 
                   </p> : null}
 
                   {this.props.errors.duration === undefined && 
                   this.state.duration !== "" && 
                   durationfocus === false &&
+                  this.state.durationunit === "hour" &&
                   this.checkNestedConfigs() && 
-                  parseInt(this.state.duration * 60) < (this.props.configs[this.props.miningalgo.algorithm] || {}).min_order_duration_min ? 
+                  parseInt(this.state.duration * 60) < (configs[miningalgo.algorithm] || {})[location][durationunit].duration_min ? 
                   <p className="is-invalid-error add-padding-left">
-                    The minimum duration you can purchase is {this.props.configs &&
-                    this.props.configs[this.props.miningalgo.algorithm] && 
-                    (this.props.configs[this.props.miningalgo.algorithm] || {}).min_order_duration_min / 60 + " hours"}. 
-                    <br />Please increase your duration input value. 
+                    The minimum duration you can purchase is {configs &&
+                    configs[miningalgo.algorithm] && 
+                    (configs[miningalgo.algorithm] || {})[location][durationunit].duration_min / 60 + " hours"}. 
+                    Please increase your duration input value. 
+                  </p> : null}
+
+                  {this.props.errors.duration === undefined && 
+                  this.state.duration !== "" && 
+                  durationfocus === false &&
+                  this.state.durationunit === "day" &&
+                  this.checkNestedConfigs() && 
+                  parseInt(this.state.duration * 1440) < (configs[miningalgo.algorithm] || {})[location][durationunit].duration_min ? 
+                  <p className="is-invalid-error add-padding-left">
+                    The minimum duration you can purchase is {configs &&
+                    configs[miningalgo.algorithm] && 
+                    (configs[miningalgo.algorithm] || {})[location][durationunit].duration_min / 1440 + " days"}. 
+                    Please increase your duration input value. 
                   </p> : null}
 
                   {this.maxDurationCheck() &&
-                  this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1].min) === null ||
+                  this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_min) === null ||
                   this.minDurationCheck() &&
-                  this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min) === null
+                  this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_max) === null
                   ? 
                   <p className="is-invalid-error add-padding-left">
-                   Selected duration is not available. 
-                   <br />Please change your duration.
+                   Selected duration is not available. Please change your duration.
                   </p> : null}
                          
                       </div>
@@ -1219,24 +1337,39 @@ class Marketplace extends React.Component {
                         marginLeft: "5px"
                       }}
                     >
-                    <span className="min-value">Minimum duration:{" "}
-                    {this.checkNestedConfigs() && 
-                    this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location].min_order_hashrate[0].min) === null ? "25 hours" :
-                    parseInt((this.props.configs[this.props.miningalgo.algorithm] || {}).min_order_duration_min / 60) + " hours"}</span>
+                   <span className="min-value">Minimum duration:{" "}
+                    {durationunit === "hour" && 
+                     this.checkNestedConfigs() && 
+                    this.safeNestedCheck(() => (configs[miningalgo.algorithm] || {})[location][durationunit].hashrate_min) === null ? "25 hours" :
+                    durationunit === "hour" && 
+                    parseInt((configs[miningalgo.algorithm] || {})[location][durationunit].duration_min / 60) + " hours"}
+                    {durationunit === "day" && 
+                     this.checkNestedConfigs() && 
+                    this.safeNestedCheck(() => (configs[miningalgo.algorithm] || {})[location][durationunit].hashrate_min) === null ? "1 day" :
+                    durationunit === "day" && 
+                    parseInt((configs[miningalgo.algorithm] || {})[location][durationunit].duration_min / 1440) + " days"}
+                    </span>
                     <br />
                     <span className="max-value">Maximum duration:{" "}
-                    {this.checkNestedConfigs() && 
-                    this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location].min_order_hashrate[1].min) === null ? "24 hours" :
+                    {durationunit === "hour" && 
+                    this.checkNestedConfigs() && 
+                    this.safeNestedCheck(() => (configs[miningalgo.algorithm] || {})[location][durationunit].hashrate_min) === null ? "24 hours" :
                      this.checkNestedConfigs() &&
-                     parseInt(this.props.configs[this.props.miningalgo.algorithm].max_order_duration_min / 60) + " hours" }
+                     durationunit === "hour" && 
+                     parseInt(configs[miningalgo.algorithm][location][durationunit].duration_max / 60) + " hours" }
+
+                    {durationunit === "day" && 
+                    this.checkNestedConfigs() && 
+                    this.safeNestedCheck(() => (configs[miningalgo.algorithm] || {})[location][durationunit].hashrate_min) === null ? "1 day" :
+                     this.checkNestedConfigs() &&
+                     durationunit === "day" && 
+                     parseInt(configs[miningalgo.algorithm][location][durationunit].duration_max / 1440) + " days" }
                     </span>
                       </p> 
                       </div>
                         </div>
                         </div>
                       </div>
-
-                     
 
                       <div className="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12">
                       <div className="row">
@@ -1271,8 +1404,8 @@ class Marketplace extends React.Component {
                             name="hashrate"
                             value={this.state.hashrate}
                             placeholder={this.checkNestedConfigs() &&
-                              this.props.configs[this.props.miningalgo.algorithm] !== undefined &&
-                              this.props.configs[this.props.miningalgo.algorithm][minerLocations[0].value] !== undefined ?
+                              configs[miningalgo.algorithm] !== undefined &&
+                              configs[miningalgo.algorithm][minerLocations[0].value] !== undefined ?
                               hashrateExampleText : "Loading..."
                             }
                             className="form-control inputstyles2"
@@ -1294,11 +1427,10 @@ class Marketplace extends React.Component {
                           top: "5.9px",
                           right: "13px", 
                           zIndex: "222"}}>
-                            {this.checkNestedConfigs() &&
-                            this.props.configs[this.props.miningalgo.algorithm] !== undefined &&
-                            this.props.configs[this.props.miningalgo.algorithm][minerLocations[0].value] !== undefined ?
-                            this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].hashrate_units) + "H/s" : ""}
-                          
+                           {this.checkNestedConfigs() &&
+                            configs[miningalgo.algorithm] !== undefined &&
+                            configs[miningalgo.algorithm][minerLocations[0].value] !== undefined ?
+                            this.safeNestedCheck(() => configs[miningalgo.algorithm].hashrate_units) + "H/s" : ""}
                           </p>
                           <br />
                         </div>
@@ -1312,12 +1444,12 @@ class Marketplace extends React.Component {
   hashratefocus === false &&
   this.minDurationCheck() &&
   this.checkNestedConfigs() &&
-  this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[0].max) !==
-  this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min) &&
-  parseFloat(this.state.hashrate) > parseFloat(this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[0].max) ? 
+  this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_max) !==
+  this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_min) &&
+  parseFloat(this.state.hashrate) > parseFloat(configs[miningalgo.algorithm][location][durationunit].hashrate_max) ? 
   <p className="is-invalid-error add-padding-left">
-    The maximum hashrate you can purchase is {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[0].max)}{" "}
-    {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].hashrate_units)}H/s. 
+    The maximum hashrate you can purchase is {this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_max)}{" "}
+    {this.safeNestedCheck(() => configs[miningalgo.algorithm].hashrate_units)}H/s. 
   Please decrease your hashrate input value.</p>
    : null}
 
@@ -1325,12 +1457,12 @@ class Marketplace extends React.Component {
   this.state.hashrate !== "" &&
   this.maxDurationCheck() &&
   this.checkNestedConfigs() &&
-  this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[1].max) !==
-  this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1].min) &&
-  parseFloat(this.state.hashrate) > parseFloat(this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[1].max) ? 
+  this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_max) !==
+  this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_min) &&
+  parseFloat(this.state.hashrate) > parseFloat(configs[miningalgo.algorithm][location][durationunit].hashrate_max) ? 
   <p className="is-invalid-error add-padding-left">
-    The maximum hashrate you can purchase is {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[1].max)}{" "}
-     {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].hashrate_units)}H/s. 
+    The maximum hashrate you can purchase is {this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_max)}{" "}
+     {this.safeNestedCheck(() => configs[miningalgo.algorithm].hashrate_units)}H/s. 
   Please decrease your hashrate input value.</p>
    : null}
 
@@ -1340,13 +1472,13 @@ class Marketplace extends React.Component {
   this.minDurationCheck() &&
   hashratefocus === false &&
   this.checkNestedConfigs() &&
-  this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[0].max) !==
-  this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min) &&
-  parseFloat(this.state.hashrate) < parseFloat(this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min) ? 
+  this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_max) !==
+  this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_min) &&
+  parseFloat(this.state.hashrate) < parseFloat(configs[miningalgo.algorithm][location][durationunit].hashrate_min) ? 
   <p className="is-invalid-error add-padding-left">
-    The minimum hashrate you can purchase is {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min)}{" "}
-    {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].hashrate_units)}H/s.
-    <br />Please increase your hashrate input value.
+    The minimum hashrate you can purchase is {this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_min)}{" "}
+    {this.safeNestedCheck(() => configs[miningalgo.algorithm].hashrate_units)}H/s.
+    Please increase your hashrate input value.
   </p>
    : null}                       
                  
@@ -1354,14 +1486,14 @@ class Marketplace extends React.Component {
   this.state.hashrate !== "" &&
   this.maxDurationCheck() &&
   hashratefocus === false &&
-  this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[1].max) !==
-  this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1].min) &&
-  parseFloat(this.state.hashrate) < parseFloat(this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1].min) ? 
+  this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_max) !==
+  this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_min) &&
+  parseFloat(this.state.hashrate) < parseFloat(configs[miningalgo.algorithm][location][durationunit].hashrate_min) ? 
   <p className="is-invalid-error add-padding-left">
-    The minimum hashrate you can purchase is {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1].min)}{" "}
-   {this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].hashrate_units)}H/s.
-   <br />Please increase your hashrate input value.
-  </p> : null}                       
+    The minimum hashrate you can purchase is {this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_min)}{" "}
+   {this.safeNestedCheck(() => configs[miningalgo.algorithm].hashrate_units)}H/s.
+    Please increase your hashrate input value.
+  </p> : null}                               
 
 
                     <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
@@ -1372,27 +1504,27 @@ class Marketplace extends React.Component {
                         color: "rgba(0,0,0,0.6)",
                         marginLeft: "5px"
                       }}>
-                    <span className="min-value">Minimum hashrate:{" "}{
+                   <span className="min-value">Minimum hashrate:{" "}{
                     this.checkNestedConfigs() &&
                     this.checkDurationBelowDay() ?
-                    this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min) !== null &&
-                    this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[0].min) 
+                    this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_min) !== null &&
+                    this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_min) 
                    : 
-                   this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1].min) !== null &&
-                   this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].min_order_hashrate[1].min)
+                   this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_min) !== null &&
+                   this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_min)
                    } 
-                   {" "}{this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].hashrate_units)}H/s</span>
-                   <br />
+                   {" "}{this.safeNestedCheck(() => configs[miningalgo.algorithm].hashrate_units)}H/s</span>
+                    <br />
                     <span className="max-value">Maximum hashrate:{" "}{
                       this.checkNestedConfigs() && 
                       this.checkDurationBelowDay() ?
                       
-                     this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[0].max) !== null &&
-                     this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[0].max)
+                     this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_max) !== null &&
+                     this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_max)
                     :
-                     this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[1].max) !== null &&
-                     this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location].max_order_hashrate[1].max)
-                    }{" "}{this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm].hashrate_units)}H/s</span>
+                     this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_max) !== null &&
+                     this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_max)
+                    }{" "}{this.safeNestedCheck(() => configs[miningalgo.algorithm].hashrate_units)}H/s</span>
                       </p> 
                    
                       </div>
@@ -1605,8 +1737,9 @@ class Marketplace extends React.Component {
           <div className="container-fluid estimate-containerdiv" style={{paddingLeft: "0px", paddingRight: "0px"}}>
           <div className="bordertop"></div>
             <div className="row rowpaddings">
-              <div className="col-xl-5 col-lg-6 col-md-6 col-sm-5 col-5" 
+              <div className="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-5" 
                 style={{paddingLeft: "3px", paddingRight: "0px"}}>
+                    <div className="iconcontainers">
                       <FaBitcoin style={{
                         display: "inline-block",
                         fontSize: "1.18em",
@@ -1614,33 +1747,36 @@ class Marketplace extends React.Component {
                         color: "black",
                         marginRight: "16px",
                         marginLeft: "2px"
-                      }} /> 
+                      }} />
+                      </div>
                         <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
                           Estimated Cost:
                           </h6>{" "}
                       </div>
-                            <div className="col-xl-7 col-lg-6 col-md-6 col-sm-7 col-7 text-left">
-                            <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
-                              {this.props.estimate.price === undefined ? "- - - - - - - - " : this.props.estimate.price.total_payment_amount} BTC</h6>
-                            </div>
+                      <div className="col-xl-7 col-lg-6 col-md-6 col-sm-7 col-7 text-left">
+                      <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
+                        {this.props.estimate.price === undefined ? "- - - - - - - " : this.props.estimate.price.total_payment_amount} BTC</h6>
+                      </div>
 
 
                             <div className="col-xl-5 col-lg-6 col-md-6 col-sm-5 col-5" 
                             style={{paddingLeft: "3px", paddingRight: "0px"}}>
+                                <div className="iconcontainers">
                             <FaBitcoin style={{
-                        display: "inline-block",
-                        fontSize: "1.18em",
-                        opacity: "0",
-                        marginRight: "16px",
-                        marginLeft: "2px"
-                      }} /> 
+                              display: "inline-block",
+                              fontSize: "1.18em",
+                              opacity: "0",
+                              marginRight: "16px",
+                              marginLeft: "2px"
+                            }} /> 
+                            </div>
                               <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
                               Estimated Rate:
                                </h6>{" "}
                             </div>
-                            <div className="col-xl-7 col-lg-6 col-md-6 col-sm-7 col-7 text-left">
+                            <div className="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-7 text-left">
                               <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
-                              {this.props.estimate.price === undefined ? "- - - - - - - - " : this.props.estimate.price.average_price} <BTCPaymentRate />
+                              {this.props.estimate.price === undefined ? "- - - - - - - " : this.props.estimate.price.average_price} <BTCPaymentRate />
                               </h6>
                             </div>
 
