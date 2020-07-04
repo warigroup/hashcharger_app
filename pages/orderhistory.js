@@ -104,7 +104,6 @@ class myOrderHistory extends React.Component {
   };
 
   render() {
-    const modalcontents = this.state.modaloffers;
 
     const openBuyOrderModal = bid => {
       this.props.getBidHashrateChart(bid.bid_id, this.props.token.value);
