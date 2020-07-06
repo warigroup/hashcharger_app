@@ -104,7 +104,8 @@ class myOrderHistory extends React.Component {
   };
 
   render() {
-    const modalcontents = this.state.modaloffers;
+    const { loading } = this.state;
+    const { bids, theme } = this.props;
 
     const openBuyOrderModal = bid => {
       this.props.getBidHashrateChart(bid.bid_id, this.props.token.value);
@@ -201,7 +202,7 @@ class myOrderHistory extends React.Component {
                     <div className="board" style={{ borderBottom: "1px solid rgba(0,0,0,0.3)", borderRadius: "0px" }}>
                       <div className="tableheader" style={{ color: "gray", width: "100%" }}>
                         <table id="tableT" className="table table-borderless myorders-table-styles container-fluid">
-                          <thead style={{ background: this.props.theme.secondary, color: this.props.theme.tabletexts }}>
+                          <thead style={{ background: theme.secondary, color: theme.tabletexts }}>
                             <tr className="row m-0" style={{
                               borderRight: "1px solid rgba(0,0,0,0.3)",
                               borderLeft: "1px solid rgba(0,0,0,0.3)"
@@ -248,20 +249,20 @@ class myOrderHistory extends React.Component {
                             </tr>
                           </thead>
                           <tbody id="tablebodytaken">
-                            {this.state.loading === false && 
-                              this.props.bids.bids.result.length > 0 && 
-                              this.props.bids.bids.result[0].offer_take_ids !== "" ? 
+                            {loading === false && 
+                              bids.bids.result.length > 0 && 
+                              bids.bids.result[0].offer_take_ids !== "" ? 
                               <BidsList 
-                              bids={this.props.bids.bids.result}
-                              secondary={this.props.theme.secondary}
-                              buttontexts={this.props.theme.buttontexts}
+                              bids={bids.bids.result}
+                              secondary={theme.secondary}
+                              buttontexts={theme.buttontexts}
                               goToInvoicePage={goToInvoicePage}
                               openBuyOrderModal={openBuyOrderModal}
                               />
                               : null}
-                            {this.state.loading === false &&
-                              this.props.bids.bid_loaded === true &&
-                              this.props.bids.bids.result.length === 0 ?
+                            {loading === false &&
+                              bids.bid_loaded === true &&
+                              bids.bids.result.length === 0 ?
                               <tr style={{ width: "100%", 
                                 borderRight: "1px solid rgba(0,0,0,0.3)",
                                 borderLeft: "1px solid rgba(0,0,0,0.3)" }}>
@@ -274,8 +275,8 @@ class myOrderHistory extends React.Component {
                                   <p style={{ fontWeight: "bold", color: "rgba(0,0,0,0.5)" }}>No orders found.</p>
                                 </td>
                               </tr> : null}
-                              {this.state.loading === true && 
-                              this.props.bids.bid_loaded === false ? 
+                              {loading === true && 
+                              bids.bid_loaded === false ? 
                               <tr style={{ width: "100%", textAlign: "center",
                               borderRight: "1px solid rgba(0,0,0,0.2)",
                                   borderLeft: "1px solid rgba(0,0,0,0.2)" }}>
