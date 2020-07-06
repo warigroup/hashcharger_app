@@ -151,7 +151,7 @@ class Marketplace extends React.Component {
         this.setState({ duration: 25, duration_example: 25 });
       };
       if (this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][this.state.durationunit].hashrate_min) !== null){
-        this.setState({ duration:  parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location][this.state.durationunit].duration_min) / 60), 
+        this.setState({ duration: parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location][this.state.durationunit].duration_min) / 60), 
           duration_example: parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location][this.state.durationunit].duration_min) / 60) });
       };
   };
@@ -333,24 +333,24 @@ class Marketplace extends React.Component {
       const firstAvailableLocation = locations.find(location => this.safeNestedCheck(() => this.props.configs[algorithm_name][location.value][this.state.durationunit].hashrate_min) !== null ||
       this.safeNestedCheck(() => this.props.configs[algorithm_name][location.value].hashrate_min) !== null );
       if (firstAvailableLocation !== undefined) {
-        if (this.state.durationunit === "hour") {
-          this.setState({ location: firstAvailableLocation.value });
-          if (this.safeNestedCheck(() => (this.props.configs[algorithm_name] || {})[firstAvailableLocation.value][this.state.location][this.state.durationunit].hashrate_min) === null) {
-            this.setState({ duration: 25, duration_example: 25 });
-          } else { 
-            this.setState({ duration:  parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name][this.state.location][this.state.durationunit].duration_min) / 60), 
-              duration_example:  parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name][this.state.location][this.state.durationunit].duration_min) / 60) });
+          if (this.state.durationunit === "hour") {
+            this.setState({ location: firstAvailableLocation.value });
+            if (this.safeNestedCheck(() => (this.props.configs[algorithm_name] || {})[firstAvailableLocation.value][this.state.location][this.state.durationunit].hashrate_min) === null) {
+              this.setState({ duration: 25, duration_example: 25 });
+            } else { 
+              this.setState({ duration: parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name][this.state.location][this.state.durationunit].duration_min) / 60), 
+                duration_example: parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name][this.state.location][this.state.durationunit].duration_min) / 60) });
+            };
           };
-        };
-        if (this.state.durationunit === "day") {
-          this.setState({ location: firstAvailableLocation.value });
-          if (this.safeNestedCheck(() => (this.props.configs[algorithm_name] || {})[firstAvailableLocation.value][this.state.location][this.state.durationunit].hashrate_min) === null) {
-            this.setState({ duration: 1, duration_example: 1 });
-          } else { 
-            this.setState({ duration:  parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name][this.state.location][this.state.durationunit].duration_min) / 1440), 
-              duration_example:  parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name][this.state.location][this.state.durationunit].duration_min) / 1440) });
+          if (this.state.durationunit === "day") {
+            this.setState({ location: firstAvailableLocation.value });
+            if (this.safeNestedCheck(() => (this.props.configs[algorithm_name] || {})[firstAvailableLocation.value][this.state.location][this.state.durationunit].hashrate_min) === null) {
+              this.setState({ duration: 1, duration_example: 1 });
+            } else { 
+              this.setState({ duration: parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name][this.state.location][this.state.durationunit].duration_min) / 1440), 
+                duration_example: parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name][this.state.location][this.state.durationunit].duration_min) / 1440) });
+            };
           };
-        };
       };
       if (firstAvailableLocation === undefined) {
         this.setState({ location: "NA East" });
@@ -391,48 +391,48 @@ class Marketplace extends React.Component {
     selectDurationUnit = event => {
       this.setState({ durationunit: event.target.value });
       if (event.target.value === "hour") {
-        this.setState({ duration:  this.checkNestedConfigs() && 
+        this.setState({ duration: this.checkNestedConfigs() && 
           this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].hashrate_min) === null ? 25 :
           parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min / 60)});
         this.setState({ duration_example: this.checkNestedConfigs() && 
           this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].hashrate_min) === null ? 25 :
           parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min / 60)});
-          if(this.state.duration !== "" && this.state.hashrate !== "") {
-            this.props.getEstimate(
-              parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min),
-              this.state.hashrate,
-              this.state.hashrate_units,
-              this.props.miningalgo.algorithm,
-              this.state.location,
-              this.state.limit_price)  
-          };
+      
+          if(this.state.duration !== "" && this.state.hashrate !== "") {  
+          this.props.getEstimate(
+            parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min),
+            this.state.hashrate,
+            this.state.hashrate_units,
+            this.props.miningalgo.algorithm,
+            this.state.location,
+            this.state.limit_price)  
+          }
       };
       if (event.target.value === "day") {
-        this.setState({ duration:  this.checkNestedConfigs() && 
+        this.setState({ duration: this.checkNestedConfigs() && 
           this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].hashrate_min) === null ? 1 :
           parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min / 1440)});
-  
-          this.setState({ duration_example:   this.checkNestedConfigs() && 
+        this.setState({ duration_example: this.checkNestedConfigs() && 
           this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].hashrate_min) === null ? 1 :
           parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min / 1440)});
-        
           if(this.state.duration !== "" && this.state.hashrate !== "") {
-            this.props.getEstimate(
-              parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min),
-              this.state.hashrate,
-              this.state.hashrate_units,
-              this.props.miningalgo.algorithm,
-              this.state.location,
-              this.state.limit_price)  
-            };
-          };
+          this.props.getEstimate(
+            parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min),
+            this.state.hashrate,
+            this.state.hashrate_units,
+            this.props.miningalgo.algorithm,
+            this.state.location,
+            this.state.limit_price)
+            }
+          }
     };
 
     checkEstimatePrice = () => {
       if (this.state.hashrate !== "" && this.state.duration !== "") {
-        const durationInMinutes = this.state.duration * 60;
+        const durationHoursToMins = this.state.duration * 60;
+        const durationDaysToMins = this.state.duration * 1440;
         this.props.getEstimate(
-          durationInMinutes,
+          this.state.durationunit === "hour" ? durationHoursToMins : durationDaysToMins,
           this.state.hashrate,
           this.state.hashrate_units,
           this.props.miningalgo.algorithm,
