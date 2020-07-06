@@ -539,17 +539,20 @@ class Marketplace extends React.Component {
       configs[miningalgo.algorithm] !== undefined &&
       configs[miningalgo.algorithm][minerLocation.value] !== undefined) 
         return (
-        <option className={
-          configs[miningalgo.algorithm][minerLocation.value][durationunit].hashrate_min !== null ||
-          configs[miningalgo.algorithm][minerLocation.value][durationunit].hashrate_min !== null ?
-          "selectstyles" : "hidethis"} 
-          key={minerLocation.value} 
-          value={minerLocation.value}
-          disabled={configs[miningalgo.algorithm][minerLocation.value][durationunit].hashrate_min === null &&
-            configs[miningalgo.algorithm][minerLocation.value][durationunit].hashrate_min === null}
-          >
-          {minerLocation.name}
-          </option>
+      <option className={
+        configs[miningalgo.algorithm][minerLocation.value]['hour'].hashrate_min !== null ||
+        configs[miningalgo.algorithm][minerLocation.value]['day'].hashrate_min !== null 
+        ?
+        "selectstyles" : "hidethis"} 
+        key={minerLocation.value} 
+        value={minerLocation.value}
+        disabled={configs[miningalgo.algorithm][minerLocation.value]['hour'].hashrate_min === null &&
+          configs[miningalgo.algorithm][minerLocation.value]['hour'].hashrate_max === null && 
+          configs[miningalgo.algorithm][minerLocation.value]['day'].hashrate_min === null &&
+          configs[miningalgo.algorithm][minerLocation.value]['day'].hashrate_max === null}
+        >
+        {minerLocation.name}
+        </option>
         )
       } 
     );
