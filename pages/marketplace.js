@@ -391,32 +391,35 @@ class Marketplace extends React.Component {
         this.setState({ duration_example: this.checkNestedConfigs() && 
           this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].hashrate_min) === null ? 25 :
           parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min / 60)});
-         
-          this.props.getEstimate(
-            parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min),
-            this.state.hashrate,
-            this.state.hashrate_units,
-            this.props.miningalgo.algorithm,
-            this.state.location,
-            this.state.limit_price)  
+          if(this.state.duration !== "" && this.state.hashrate !== "") {
+            this.props.getEstimate(
+              parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min),
+              this.state.hashrate,
+              this.state.hashrate_units,
+              this.props.miningalgo.algorithm,
+              this.state.location,
+              this.state.limit_price)  
+          };
       };
       if (event.target.value === "day") {
         this.setState({ duration:  this.checkNestedConfigs() && 
           this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].hashrate_min) === null ? 1 :
           parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min / 1440)});
   
-        this.setState({ duration_example:   this.checkNestedConfigs() && 
+          this.setState({ duration_example:   this.checkNestedConfigs() && 
           this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].hashrate_min) === null ? 1 :
           parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min / 1440)});
         
-          this.props.getEstimate(
-            parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min),
-            this.state.hashrate,
-            this.state.hashrate_units,
-            this.props.miningalgo.algorithm,
-            this.state.location,
-            this.state.limit_price)  
-        };
+          if(this.state.duration !== "" && this.state.hashrate !== "") {
+            this.props.getEstimate(
+              parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min),
+              this.state.hashrate,
+              this.state.hashrate_units,
+              this.props.miningalgo.algorithm,
+              this.state.location,
+              this.state.limit_price)  
+            };
+          };
     };
 
     checkEstimatePrice = () => {
