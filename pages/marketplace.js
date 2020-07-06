@@ -361,22 +361,28 @@ class Marketplace extends React.Component {
 
     selectLocation = event => {
       this.setState({ location: event.target.value });
-      if (this.state.durationunit === "hour") {
-        if (this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[event.target.value][this.state.durationunit].hashrate_min) === null) {
+      
+      if (this.props.configs[this.props.miningalgo.algorithm][event.target.value] &&
+          this.props.configs[this.props.miningalgo.algorithm][event.target.value]['hour'].hashrate_min !== null) {
+        this.setState({ durationunit: "hour" });
+        if (this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[event.target.value]['hour'].hashrate_min) === null) {
           this.setState({ duration: 25, duration_example: 25 });
         } else { 
-          this.setState({ duration:  parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location][this.state.durationunit].duration_min) / 60), 
-            duration_example:  parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location][this.state.durationunit].duration_min) / 60) });
+          this.setState({ duration: parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][event.target.value]['hour'].duration_min) / 60), 
+            duration_example: parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][event.target.value]['hour'].duration_min) / 60) });
         };
         this.checkEstimatePrice();
-      };
-      
-      if (this.state.durationunit === "day") {
-        if (this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[event.target.value][this.state.durationunit].hashrate_min) === null) {
+     };
+
+      if (this.props.configs[this.props.miningalgo.algorithm][event.target.value] &&
+        this.props.configs[this.props.miningalgo.algorithm][event.target.value]['day'].hashrate_min !== null && 
+        this.props.configs[this.props.miningalgo.algorithm][event.target.value]['hour'].hashrate_min === null) {
+          this.setState({ durationunit: "day" });
+          if (this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[event.target.value]['day'].hashrate_min) === null) {
           this.setState({ duration: 1, duration_example: 1 });
         } else { 
-          this.setState({ duration:  parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location][this.state.durationunit].duration_min) / 1440), 
-            duration_example:  parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location][this.state.durationunit].duration_min) / 1440) });
+          this.setState({ duration: parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][event.target.value]['day'].duration_min) / 1440), 
+            duration_example: parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][event.target.value]['day'].duration_min) / 1440) });
         };
         this.checkEstimatePrice();
       };
