@@ -355,8 +355,7 @@ class InvoicePage extends React.Component {
                 
                 <div className="progress-bar-background">
                       <div className="progress-bar-component" 
-                      style={
-                        bid.payment_success === false && bid.payment_fail === false && 
+                      style={ bid.payment_success === false && bid.payment_fail === false && 
                 moment(bid.invoice_expiration_time).valueOf() / 1000 > utctime ? 
                         
                         { position: "absolute", background: this.props.theme.secondary, height: "30px", width: `${this.state.percentage}%`} :

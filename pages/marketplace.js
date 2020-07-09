@@ -499,7 +499,7 @@ class Marketplace extends React.Component {
       durationunit,
       location
     } = this.state;
-    const { miningalgo, configs, stats } = this.props;
+    const { miningalgo, configs } = this.props;
     
     let hashrateExampleText = "";
     
@@ -1077,8 +1077,8 @@ class Marketplace extends React.Component {
         </Head>
 
         {this.checkNestedConfigs() &&
-     configs[miningalgo.algorithm] !== undefined &&
-     configs[miningalgo.algorithm][minerLocations[0].value] !== undefined ?
+     this.props.configs[miningalgo.algorithm] !== undefined &&
+     this.props.configs[miningalgo.algorithm][minerLocations[0].value] !== undefined ?
                      
         <div>
         <div className="container">
@@ -1146,8 +1146,8 @@ class Marketplace extends React.Component {
             <div className="container">
               <div className="row">
               { this.checkNestedAvailable() &&
-                stats.available[miningalgo.algorithm].hashrate !== undefined &&
-                stats.available[miningalgo.algorithm].hashrate === "0.0000" ||
+                this.props.stats.available[miningalgo.algorithm].hashrate !== undefined &&
+                this.props.stats.available[miningalgo.algorithm].hashrate === "0.0000" ||
                 this.checkNestedConfigs() &&
                 configs[miningalgo.algorithm]['NA East'] &&
                 configs[miningalgo.algorithm]['NA East'][durationunit].hashrate_min === null &&
@@ -1203,13 +1203,13 @@ class Marketplace extends React.Component {
                             onChange={this.selectLocation}
                             style={{height: "42px", width: "285px", borderRadius: "3px"}}
                             value={this.checkNestedConfigs() &&
-                              this.props.configs[this.props.miningalgo.algorithm] !== undefined &&
-                              this.props.configs[this.props.miningalgo.algorithm][minerLocations[0].value] !== undefined ? 
+                              configs[miningalgo.algorithm] !== undefined &&
+                              configs[miningalgo.algorithm][minerLocations[0].value] !== undefined ? 
                               this.state.location : ""}
                           >
                      {this.checkNestedConfigs() &&
-      this.props.configs[this.props.miningalgo.algorithm] !== undefined &&
-      this.props.configs[this.props.miningalgo.algorithm][minerLocations[0].value] !== undefined ?
+      configs[miningalgo.algorithm] !== undefined &&
+      configs[miningalgo.algorithm][minerLocations[0].value] !== undefined ?
                      availableRegions : <option className="selectstyles" selected>Loading ...</option>}  
                           </select>
                           </div>
@@ -1318,7 +1318,7 @@ class Marketplace extends React.Component {
 
                   {this.props.errors.duration === undefined && 
                   this.state.duration !== "" && 
-                  durationfocus === false &&
+                  this.state.durationfocus === false &&
                   this.state.durationunit === "hour" &&
                   this.checkNestedConfigs() && 
                   parseInt(this.state.duration * 60) < (configs[miningalgo.algorithm] || {})[location][durationunit].duration_min ? 
@@ -1331,7 +1331,7 @@ class Marketplace extends React.Component {
 
                   {this.props.errors.duration === undefined && 
                   this.state.duration !== "" && 
-                  durationfocus === false &&
+                  this.state.durationfocus === false &&
                   this.state.durationunit === "day" &&
                   this.checkNestedConfigs() && 
                   parseInt(this.state.duration * 1440) < (configs[miningalgo.algorithm] || {})[location][durationunit].duration_min ? 
@@ -1364,32 +1364,32 @@ class Marketplace extends React.Component {
                       }}
                     >
                    <span className="min-value">Minimum duration:{" "}
-                    {durationunit === "hour" && 
+                    {this.state.durationunit === "hour" && 
                      this.checkNestedConfigs() && 
                     this.safeNestedCheck(() => (configs[miningalgo.algorithm] || {})[location][durationunit].hashrate_min) === null ? "25 hours" :
-                    durationunit === "hour" && 
+                    this.state.durationunit === "hour" && 
                     parseInt((configs[miningalgo.algorithm] || {})[location][durationunit].duration_min / 60) + " hours"}
-                    {durationunit === "day" && 
+                    {this.state.durationunit === "day" && 
                      this.checkNestedConfigs() && 
                     this.safeNestedCheck(() => (configs[miningalgo.algorithm] || {})[location][durationunit].hashrate_min) === null ? "1 day" :
-                    durationunit === "day" && 
+                    this.state.durationunit === "day" && 
                     parseInt((configs[miningalgo.algorithm] || {})[location][durationunit].duration_min / 1440) + " days"}
                     </span>
                     <br />
                     <span className="max-value">Maximum duration:{" "}
-                    {durationunit === "hour" && 
+                    {this.state.durationunit === "hour" && 
                     this.checkNestedConfigs() && 
-                    this.safeNestedCheck(() => (configs[miningalgo.algorithm] || {})[location][durationunit].hashrate_min) === null ? "24 hours" :
+                    this.safeNestedCheck(() => (this.props.configs[miningalgo.algorithm] || {})[location][durationunit].hashrate_min) === null ? "24 hours" :
                      this.checkNestedConfigs() &&
-                     durationunit === "hour" && 
-                     parseInt(configs[miningalgo.algorithm][location][durationunit].duration_max / 60) + " hours" }
+                     this.state.durationunit === "hour" && 
+                     parseInt(this.props.configs[miningalgo.algorithm][location][durationunit].duration_max / 60) + " hours" }
 
-                    {durationunit === "day" && 
+                    {this.state.durationunit === "day" && 
                     this.checkNestedConfigs() && 
-                    this.safeNestedCheck(() => (configs[miningalgo.algorithm] || {})[location][durationunit].hashrate_min) === null ? "1 day" :
+                    this.safeNestedCheck(() => (this.props.configs[miningalgo.algorithm] || {})[location][durationunit].hashrate_min) === null ? "1 day" :
                      this.checkNestedConfigs() &&
-                     durationunit === "day" && 
-                     parseInt(configs[miningalgo.algorithm][location][durationunit].duration_max / 1440) + " days" }
+                     this.state.durationunit === "day" && 
+                     parseInt(this.props.configs[miningalgo.algorithm][location][durationunit].duration_max / 1440) + " days" }
                     </span>
                       </p> 
                       </div>
