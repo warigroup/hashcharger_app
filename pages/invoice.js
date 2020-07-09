@@ -150,8 +150,6 @@ class InvoicePage extends React.Component {
 
   render() {
     let utctime = moment().tz('UTC').valueOf() / 1000;
-    const { configs, bids, bidid, theme } = this.props;
-    const { msIE, isSent, copied, isFailed, percentage } = this.state;
       return (
           <PublicRoute>
               <div className="container">
@@ -304,8 +302,8 @@ class InvoicePage extends React.Component {
                     `}
                   </style>
                           
-                  {bids.bid_info.result.map(bid => {  
-              if (bid.bid_id == bidid) {
+                  {this.props.bids.bid_info.result.map(bid => {  
+              if (bid.bid_id == this.props.bidid) {
                 return (
                 <div key={bid.bid_id}>
                
@@ -326,7 +324,7 @@ class InvoicePage extends React.Component {
                 <p className="invoice-contents" style={{marginTop: "20px", marginBottom: "26px"}}>
                 You have failed to make the payment on time. <br />
                 Your order has been cancelled.</p>
-                {isFailed === false ? this.stopRefresh() : null}
+                {this.state.isFailed === false ? this.stopRefresh() : null}
                 </div> : null }
 
                 {/*********** PAYMENT SUCCESS  ******************/}
@@ -336,7 +334,7 @@ class InvoicePage extends React.Component {
                 <p className="invoice-contents" style={{marginTop: "20px", marginBottom: "26px"}}>
                 You have successfully made the payment! <br /> 
                 Hashing power is being delivered.</p>
-                {isSent === false ? this.successConversion(bid.invoice_id) : null}
+                {this.state.isSent === false ? this.successConversion(bid.invoice_id) : null}
                 </div> : null }
                
                {/*********** PAYMENT STILL PROCESSING  ******************/}
@@ -346,14 +344,14 @@ class InvoicePage extends React.Component {
                    <br />
                 <p className="invoice-contents" style={{marginTop: "22px", marginBottom: "26px"}}>
                 We're processing your order. Please check this invoice page later.</p>
-                {isFailed === false ? this.stopRefreshAndCheck() : null}
+                {this.state.isFailed === false ? this.stopRefreshAndCheck() : null}
                 </div> : null }
 
                 {/*********** WAITING FOR PAYMENT  **************/}
                 { bid.payment_success === false && bid.payment_fail === false && 
                 moment(bid.invoice_expiration_time).valueOf() / 1000 > utctime  ? 
                 <React.Fragment>
-                  {msIE === false ? 
+                  {this.state.msIE === false ? 
                 
                 <div className="progress-bar-background">
                       <div className="progress-bar-component" 
@@ -361,31 +359,31 @@ class InvoicePage extends React.Component {
                         bid.payment_success === false && bid.payment_fail === false && 
                 moment(bid.invoice_expiration_time).valueOf() / 1000 > utctime ? 
                         
-                        { position: "absolute", background: theme.secondary, height: "30px", width: `${percentage}%`} :
-                        { position: "absolute", background: theme.secondary, height: "30px", width: "100%" } }>
+                        { position: "absolute", background: this.props.theme.secondary, height: "30px", width: `${this.state.percentage}%`} :
+                        { position: "absolute", background: this.props.theme.secondary, height: "30px", width: "100%" } }>
                       </div>
                       <div className="container-fluid">
                         <div className="row">
                           <div className="col-md-6 col-sm-6 col-6 d-md-inline d-sm-inline d-none text-left">
-                               <p style={{ color: theme.buttontexts }}>Waiting for payment...</p>
+                               <p style={{ color: this.props.theme.buttontexts }}>Waiting for payment...</p>
                             </div>
                             <div className="col-md-6 col-sm-6 col-12 d-md-inline d-sm-inline d-inline text-right">
                             <span className="paymentinfo"
-                                style={{ fontSize: "0.85em", position: "relative", top: "2.5px", color: theme.buttontexts }}> {this.state.countdown}</span>
+                                style={{ fontSize: "0.85em", position: "relative", top: "2.5px", color: this.props.theme.buttontexts }}> {this.state.countdown}</span>
                               </div>
                           </div>
                         </div>
                     </div> : null }
                     <div style={{paddingTop: "30px", paddingBottom: "5px", paddingLeft: "30px", paddingRight: "25px"}}>
-                    {msIE === false ? 
+                    {this.state.msIE === false ? 
                 <p className="invoice-contents" style={{marginTop: "15px", marginBottom: "0px"}}>Please make a payment of <span className="paymentinfo">{bid.payment_amount} BTC</span> to complete purchase.
                 {/********* Set countdown and automatic page refresh ********/}
-                {isSent === false ? this.setCountdown(bid.invoice_expiration_time) : null} 
+                {this.state.isSent === false ? this.setCountdown(bid.invoice_expiration_time) : null} 
                 
                 </p> : null }
 
                 <div className="btcaddress-container">
-                  {msIE === false ? 
+                  {this.state.msIE === false ? 
                   <React.Fragment>
                     <p style={{fontSize: "0.9em", fontWeight: "bold"}}>Copy BTC address to clipboard:</p>
                     <div className="form-group">
@@ -407,7 +405,7 @@ class InvoicePage extends React.Component {
                     style={{width: "19px"}} />
                   </button>
                   <p className="copied-message">
-                    {copied === true ? "Copied!" : null}
+                    {this.state.copied === true ? "Copied!" : null}
                   </p></div>
                   </React.Fragment>
                 : 
@@ -439,8 +437,8 @@ class InvoicePage extends React.Component {
 
                             {bid.discount_amount == 0 ? 
                           <div className="invoice-info">
-                            <p><span className="invoice-label">Rate:</span> {bid.reserved_average_price}{" "}<span style={{display: "inline-block"}}>{configs.payment_vehicle}/{(configs[bid.mining_algo] || {}).price_hash_units}
-                                 Hashes/sec/{(configs[bid.mining_algo] || {}).price_time_units}</span></p>
+                            <p><span className="invoice-label">Rate:</span> {bid.reserved_average_price}{" "}<span style={{display: "inline-block"}}>{this.props.configs.payment_vehicle}/{(this.props.configs[bid.mining_algo] || {}).price_hash_units}
+                                 Hashes/sec/{(this.props.configs[bid.mining_algo] || {}).price_time_units}</span></p>
                           </div> : null}
                           
                           {bid.discount_amount > 0 ? 
@@ -451,8 +449,8 @@ class InvoicePage extends React.Component {
 
                           {bid.discount_amount > 0 ? 
                           <div className="invoice-info">
-                          <p><span className="invoice-label discounted-texts">Discounted Rate:</span> {bid.discount_reserved_average_price}{" "}<span style={{display: "inline-block"}}>{configs.payment_vehicle}/{(configs[bid.mining_algo] || {}).price_hash_units}
-                               Hashes/sec/{(configs[bid.mining_algo] || {}).price_time_units}</span></p>
+                          <p><span className="invoice-label discounted-texts">Discounted Rate:</span> {bid.discount_reserved_average_price}{" "}<span style={{display: "inline-block"}}>{this.props.configs.payment_vehicle}/{(this.props.configs[bid.mining_algo] || {}).price_hash_units}
+                               Hashes/sec/{(this.props.configs[bid.mining_algo] || {}).price_time_units}</span></p>
                         </div>
                          : null}
 
