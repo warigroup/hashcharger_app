@@ -424,9 +424,10 @@ class Marketplace extends React.Component {
 
     checkEstimatePrice = () => {
       if (this.state.hashrate !== "" && this.state.duration !== "") {
-        const durationInMinutes = this.state.duration * 60;
+        const durationHoursToMins = this.state.duration * 60;
+        const durationDaysToMins = this.state.duration * 1440;
         this.props.getEstimate(
-          durationInMinutes,
+          this.state.durationunit === "hour" ? durationHoursToMins : durationDaysToMins,
           this.state.hashrate,
           this.state.hashrate_units,
           this.props.miningalgo.algorithm,
@@ -1077,8 +1078,8 @@ class Marketplace extends React.Component {
         </Head>
 
         {this.checkNestedConfigs() &&
-     this.props.configs[miningalgo.algorithm] !== undefined &&
-     this.props.configs[miningalgo.algorithm][minerLocations[0].value] !== undefined ?
+     configs[miningalgo.algorithm] !== undefined &&
+     configs[miningalgo.algorithm][minerLocations[0].value] !== undefined ?
                      
         <div>
         <div className="container">
@@ -1146,8 +1147,8 @@ class Marketplace extends React.Component {
             <div className="container">
               <div className="row">
               { this.checkNestedAvailable() &&
-                this.props.stats.available[miningalgo.algorithm].hashrate !== undefined &&
-                this.props.stats.available[miningalgo.algorithm].hashrate === "0.0000" ||
+                stats.available[miningalgo.algorithm].hashrate !== undefined &&
+                stats.available[miningalgo.algorithm].hashrate === "0.0000" ||
                 this.checkNestedConfigs() &&
                 configs[miningalgo.algorithm]['NA East'] &&
                 configs[miningalgo.algorithm]['NA East'][durationunit].hashrate_min === null &&
@@ -1323,9 +1324,10 @@ class Marketplace extends React.Component {
                   this.checkNestedConfigs() && 
                   parseInt(this.state.duration * 60) < (configs[miningalgo.algorithm] || {})[location][durationunit].duration_min ? 
                   <p className="is-invalid-error add-padding-left">
-                    The minimum duration you can purchase is {configs &&
-                    configs[miningalgo.algorithm] && 
-                    (configs[miningalgo.algorithm] || {})[location][durationunit].duration_min / 60 + " hours"}. 
+                    The minimum duration you can purchase is{" "}
+                    {this.props.configs &&
+                    this.props.configs[miningalgo.algorithm] && 
+                    (this.props.configs[miningalgo.algorithm] || {})[location][durationunit].duration_min / 60 + " hours"}. 
                     Please increase your duration input value. 
                   </p> : null}
 
@@ -1336,7 +1338,7 @@ class Marketplace extends React.Component {
                   this.checkNestedConfigs() && 
                   parseInt(this.state.duration * 1440) < (configs[miningalgo.algorithm] || {})[location][durationunit].duration_min ? 
                   <p className="is-invalid-error add-padding-left">
-                    The minimum duration you can purchase is {configs &&
+                    The minimum duration you can purchase is {this.props.configs &&
                     configs[miningalgo.algorithm] && 
                     (configs[miningalgo.algorithm] || {})[location][durationunit].duration_min / 1440 + " days"}. 
                     Please increase your duration input value. 
@@ -1656,7 +1658,6 @@ class Marketplace extends React.Component {
                         >
                          Specify limit price
                         </span>
-                       
                       </label>
 
                   <div className="pretty p-svg p-curve" style={{position: "relative", top: "1.5px"}}>
