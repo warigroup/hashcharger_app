@@ -151,7 +151,7 @@ class Marketplace extends React.Component {
         this.setState({ duration: 25, duration_example: 25 });
       };
       if (this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][this.state.durationunit].hashrate_min) !== null){
-        this.setState({ duration: parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location][this.state.durationunit].duration_min) / 60), 
+        this.setState({ duration:  parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location][this.state.durationunit].duration_min) / 60), 
           duration_example: parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location][this.state.durationunit].duration_min) / 60) });
       };
   };
@@ -333,24 +333,24 @@ class Marketplace extends React.Component {
       const firstAvailableLocation = locations.find(location => this.safeNestedCheck(() => this.props.configs[algorithm_name][location.value][this.state.durationunit].hashrate_min) !== null ||
       this.safeNestedCheck(() => this.props.configs[algorithm_name][location.value].hashrate_min) !== null );
       if (firstAvailableLocation !== undefined) {
-          if (this.state.durationunit === "hour") {
-            this.setState({ location: firstAvailableLocation.value });
-            if (this.safeNestedCheck(() => (this.props.configs[algorithm_name] || {})[firstAvailableLocation.value][this.state.location][this.state.durationunit].hashrate_min) === null) {
-              this.setState({ duration: 25, duration_example: 25 });
-            } else { 
-              this.setState({ duration: parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name][this.state.location][this.state.durationunit].duration_min) / 60), 
-                duration_example: parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name][this.state.location][this.state.durationunit].duration_min) / 60) });
-            };
+        if (this.state.durationunit === "hour") {
+          this.setState({ location: firstAvailableLocation.value });
+          if (this.safeNestedCheck(() => (this.props.configs[algorithm_name] || {})[firstAvailableLocation.value][this.state.location][this.state.durationunit].hashrate_min) === null) {
+            this.setState({ duration: 25, duration_example: 25 });
+          } else { 
+            this.setState({ duration:  parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name][this.state.location][this.state.durationunit].duration_min) / 60), 
+              duration_example:  parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name][this.state.location][this.state.durationunit].duration_min) / 60) });
           };
-          if (this.state.durationunit === "day") {
-            this.setState({ location: firstAvailableLocation.value });
-            if (this.safeNestedCheck(() => (this.props.configs[algorithm_name] || {})[firstAvailableLocation.value][this.state.location][this.state.durationunit].hashrate_min) === null) {
-              this.setState({ duration: 1, duration_example: 1 });
-            } else { 
-              this.setState({ duration: parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name][this.state.location][this.state.durationunit].duration_min) / 1440), 
-                duration_example: parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name][this.state.location][this.state.durationunit].duration_min) / 1440) });
-            };
+        };
+        if (this.state.durationunit === "day") {
+          this.setState({ location: firstAvailableLocation.value });
+          if (this.safeNestedCheck(() => (this.props.configs[algorithm_name] || {})[firstAvailableLocation.value][this.state.location][this.state.durationunit].hashrate_min) === null) {
+            this.setState({ duration: 1, duration_example: 1 });
+          } else { 
+            this.setState({ duration:  parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name][this.state.location][this.state.durationunit].duration_min) / 1440), 
+              duration_example:  parseInt(this.safeNestedCheck(() => this.props.configs[algorithm_name][this.state.location][this.state.durationunit].duration_min) / 1440) });
           };
+        };
       };
       if (firstAvailableLocation === undefined) {
         this.setState({ location: "NA East" });
@@ -361,28 +361,22 @@ class Marketplace extends React.Component {
 
     selectLocation = event => {
       this.setState({ location: event.target.value });
-      
-      if (this.props.configs[this.props.miningalgo.algorithm][event.target.value] &&
-          this.props.configs[this.props.miningalgo.algorithm][event.target.value]['hour'].hashrate_min !== null) {
-        this.setState({ durationunit: "hour" });
-        if (this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[event.target.value]['hour'].hashrate_min) === null) {
+      if (this.state.durationunit === "hour") {
+        if (this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[event.target.value][this.state.durationunit].hashrate_min) === null) {
           this.setState({ duration: 25, duration_example: 25 });
         } else { 
-          this.setState({ duration: parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][event.target.value]['hour'].duration_min) / 60), 
-            duration_example: parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][event.target.value]['hour'].duration_min) / 60) });
+          this.setState({ duration:  parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location][this.state.durationunit].duration_min) / 60), 
+            duration_example:  parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location][this.state.durationunit].duration_min) / 60) });
         };
         this.checkEstimatePrice();
-     };
-
-      if (this.props.configs[this.props.miningalgo.algorithm][event.target.value] &&
-        this.props.configs[this.props.miningalgo.algorithm][event.target.value]['day'].hashrate_min !== null && 
-        this.props.configs[this.props.miningalgo.algorithm][event.target.value]['hour'].hashrate_min === null) {
-          this.setState({ durationunit: "day" });
-          if (this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[event.target.value]['day'].hashrate_min) === null) {
+      };
+      
+      if (this.state.durationunit === "day") {
+        if (this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[event.target.value][this.state.durationunit].hashrate_min) === null) {
           this.setState({ duration: 1, duration_example: 1 });
         } else { 
-          this.setState({ duration: parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][event.target.value]['day'].duration_min) / 1440), 
-            duration_example: parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][event.target.value]['day'].duration_min) / 1440) });
+          this.setState({ duration:  parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location][this.state.durationunit].duration_min) / 1440), 
+            duration_example:  parseInt(this.safeNestedCheck(() => this.props.configs[this.props.miningalgo.algorithm][this.state.location][this.state.durationunit].duration_min) / 1440) });
         };
         this.checkEstimatePrice();
       };
@@ -391,48 +385,30 @@ class Marketplace extends React.Component {
     selectDurationUnit = event => {
       this.setState({ durationunit: event.target.value });
       if (event.target.value === "hour") {
-        this.setState({ duration: this.checkNestedConfigs() && 
+        this.setState({ duration:  this.checkNestedConfigs() && 
           this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].hashrate_min) === null ? 25 :
           parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min / 60)});
         this.setState({ duration_example: this.checkNestedConfigs() && 
           this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].hashrate_min) === null ? 25 :
           parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min / 60)});
-      
-          if(this.state.duration !== "" && this.state.hashrate !== "") {  
-          this.props.getEstimate(
-            parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min),
-            this.state.hashrate,
-            this.state.hashrate_units,
-            this.props.miningalgo.algorithm,
-            this.state.location,
-            this.state.limit_price)  
-          }
       };
       if (event.target.value === "day") {
-        this.setState({ duration: this.checkNestedConfigs() && 
+        this.setState({ duration:  this.checkNestedConfigs() && 
           this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].hashrate_min) === null ? 1 :
           parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min / 1440)});
-        this.setState({ duration_example: this.checkNestedConfigs() && 
+  
+        this.setState({ duration_example:   this.checkNestedConfigs() && 
           this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].hashrate_min) === null ? 1 :
           parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min / 1440)});
-          if(this.state.duration !== "" && this.state.hashrate !== "") {
-          this.props.getEstimate(
-            parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min),
-            this.state.hashrate,
-            this.state.hashrate_units,
-            this.props.miningalgo.algorithm,
-            this.state.location,
-            this.state.limit_price)
-            }
-          }
+  
+        };
     };
 
     checkEstimatePrice = () => {
       if (this.state.hashrate !== "" && this.state.duration !== "") {
-        const durationHoursToMins = this.state.duration * 60;
-        const durationDaysToMins = this.state.duration * 1440;
+        const durationInMinutes = this.state.duration * 60;
         this.props.getEstimate(
-          this.state.durationunit === "hour" ? durationHoursToMins : durationDaysToMins,
+          durationInMinutes,
           this.state.hashrate,
           this.state.hashrate_units,
           this.props.miningalgo.algorithm,
@@ -496,12 +472,16 @@ class Marketplace extends React.Component {
     handlePriceBlur = () => this.setState({ pricefocus: false });
 
   render() {
-    const { hashratefocus, durationfocus, durationClicked,
-      pricefocus, refundaddressfocus, durationunit,
-      location, refund_address, checked, formloading,
-      networkerror, limit_price, hashrate,
-      duration, duration_example, internetExplorer } = this.state;
-    const { miningalgo, configs, stats, theme, estimate, time, errors, payment } = this.props;
+    const {
+      hashratefocus,
+      durationfocus,
+      durationClicked,
+      pricefocus,
+      refundaddressfocus,
+      durationunit,
+      location
+    } = this.state;
+    const { miningalgo, configs, stats } = this.props;
     
     let hashrateExampleText = "";
     
@@ -539,26 +519,23 @@ class Marketplace extends React.Component {
       configs[miningalgo.algorithm] !== undefined &&
       configs[miningalgo.algorithm][minerLocation.value] !== undefined) 
         return (
-      <option className={
-        configs[miningalgo.algorithm][minerLocation.value]['hour'].hashrate_min !== null ||
-        configs[miningalgo.algorithm][minerLocation.value]['day'].hashrate_min !== null 
-        ?
-        "selectstyles" : "hidethis"} 
-        key={minerLocation.value} 
-        value={minerLocation.value}
-        disabled={configs[miningalgo.algorithm][minerLocation.value]['hour'].hashrate_min === null &&
-          configs[miningalgo.algorithm][minerLocation.value]['hour'].hashrate_max === null && 
-          configs[miningalgo.algorithm][minerLocation.value]['day'].hashrate_min === null &&
-          configs[miningalgo.algorithm][minerLocation.value]['day'].hashrate_max === null}
-        >
-        {minerLocation.name}
-        </option>
+        <option className={
+          configs[miningalgo.algorithm][minerLocation.value][durationunit].hashrate_min !== null ||
+          configs[miningalgo.algorithm][minerLocation.value][durationunit].hashrate_min !== null ?
+          "selectstyles" : "hidethis"} 
+          key={minerLocation.value} 
+          value={minerLocation.value}
+          disabled={configs[miningalgo.algorithm][minerLocation.value][durationunit].hashrate_min === null &&
+            configs[miningalgo.algorithm][minerLocation.value][durationunit].hashrate_min === null}
+          >
+          {minerLocation.name}
+          </option>
         )
       } 
     );
 
-    const fielderrors = Object.keys(errors);
-    const fielderrorsReason = errors[fielderrors];
+    const fielderrors = Object.keys(this.props.errors);
+    const fielderrorsReason = this.props.errors[fielderrors];
 
     return (
       <PublicRoute>
@@ -609,10 +586,10 @@ class Marketplace extends React.Component {
           }
 
           .number-circle {
-            border: 2.5px solid ${theme.navtexts};
+            border: 2.5px solid ${this.props.theme.navtexts};
             border-radius: 50%;
             padding: 1px 7px 1px 7px;
-            color: ${theme.navtexts};
+            color: ${this.props.theme.navtexts};
             display: inline-block;
             font-size: 0.95em;
             font-weight: bold;
@@ -704,14 +681,14 @@ class Marketplace extends React.Component {
             }
             .buybtn {
               font-size: 0.85em;
-              background: ${theme.primary};
-              border: 1px solid ${theme.primary};
+              background: ${this.props.theme.primary};
+              border: 1px solid ${this.props.theme.primary};
               border-radius: 0px;
               width: 200px;
               height: 40px;
               margin-top: 17px;
               margin-bottom: 0px;
-              color: ${theme.buttontexts};
+              color: ${this.props.theme.buttontexts};
               font-weight: 600;
               position: relative; 
               left: -25px;
@@ -1053,11 +1030,11 @@ class Marketplace extends React.Component {
 
             @media (max-width: 460px) {
               .number-circle {
-                border: 2.5px solid ${theme.navtexts};
+                border: 2.5px solid ${this.props.theme.navtexts};
                 border-radius: 50%;
                 padding: 1px 7px 1px 7px;
                 margin-right: 12px;
-                color: ${theme.navtexts};
+                color: ${this.props.theme.navtexts};
                 display: inline-block;
                 font-size: 0.9em;
                 font-weight: bold;
@@ -1208,13 +1185,13 @@ class Marketplace extends React.Component {
                             onChange={this.selectLocation}
                             style={{height: "42px", width: "285px", borderRadius: "3px"}}
                             value={this.checkNestedConfigs() &&
-                              configs[miningalgo.algorithm] !== undefined &&
-                              configs[miningalgo.algorithm][minerLocations[0].value] !== undefined ? 
-                              location : ""}
+                              this.props.configs[this.props.miningalgo.algorithm] !== undefined &&
+                              this.props.configs[this.props.miningalgo.algorithm][minerLocations[0].value] !== undefined ? 
+                              this.state.location : ""}
                           >
                      {this.checkNestedConfigs() &&
-      configs[miningalgo.algorithm] !== undefined &&
-      configs[miningalgo.algorithm][minerLocations[0].value] !== undefined ?
+      this.props.configs[this.props.miningalgo.algorithm] !== undefined &&
+      this.props.configs[this.props.miningalgo.algorithm][minerLocations[0].value] !== undefined ?
                      availableRegions : <option className="selectstyles" selected>Loading ...</option>}  
                           </select>
                           </div>
@@ -1255,9 +1232,9 @@ class Marketplace extends React.Component {
                           <input
                             type="text"
                             name="duration"
-                            value={durationClicked === false ? "" : duration}
+                            value={durationClicked === false ? "" : this.state.duration}
                             placeholder={durationClicked === false ? 
-                              `Example: ${duration_example}` : duration}
+                              `Example: ${this.state.duration_example}` : this.state.duration}
                             className="form-control inputstyles2"
                             style={{
                               border: "none",
@@ -1275,50 +1252,50 @@ class Marketplace extends React.Component {
                         
                           </div>
                           <select
-                            className={internetExplorer === true ? 
+                            className={this.state.internetExplorer === true ? 
                               "form-control selectstyles unitselectie" : 
                               "form-control selectstyles unitselectstyles"}
                             name="durationunit"
                             onChange={this.selectDurationUnit}
-                            value={durationunit}
+                            value={this.state.durationunit}
                           >
                             <option className="selectstyles" value="hour">
-                              {duration > 1 ? "Hours" : "Hour"}
+                              {this.state.duration > 1 ? "Hours" : "Hour"}
                             </option>
                             <option className="selectstyles" value="day">
-                              {duration > 1 ? "Days" : "Day"}
+                              {this.state.duration > 1 ? "Days" : "Day"}
                             </option>
                           </select>
                           </div>
                         
 
-                  {errors.duration !== undefined ? 
-                  <p className="is-invalid-error add-padding-left">{errors.duration}</p> : null}
+                  {this.props.errors.duration !== undefined ? 
+                  <p className="is-invalid-error add-padding-left">{this.props.errors.duration}</p> : null}
                  
-                 {duration === undefined && 
-                  duration !== "" && 
-                  durationunit === "hour" &&
+                 {this.props.errors.duration === undefined && 
+                  this.state.duration !== "" && 
+                  this.state.durationunit === "hour" &&
                   this.checkNestedConfigs() && 
-                  parseInt(duration * 60) > (configs[miningalgo.algorithm] || {})[location][durationunit].duration_max ? 
+                  parseInt(this.state.duration * 60) > (configs[miningalgo.algorithm] || {})[location][durationunit].duration_max ? 
                   <p className="is-invalid-error add-padding-left">
                     Your duration exceeds the maximum duration. Please decrease your duration input value. 
                   </p> : null}
 
-                  {duration === undefined && 
-                  duration !== "" && 
-                  durationunit === "day" &&
+                  {this.props.errors.duration === undefined && 
+                  this.state.duration !== "" && 
+                  this.state.durationunit === "day" &&
                   this.checkNestedConfigs() && 
-                  parseInt(duration * 1440) > (configs[miningalgo.algorithm] || {})[location][durationunit].duration_max ? 
+                  parseInt(this.state.duration * 1440) > (configs[miningalgo.algorithm] || {})[location][durationunit].duration_max ? 
                   <p className="is-invalid-error add-padding-left">
                     Your duration exceeds the maximum duration. Please decrease your duration input value. 
                   </p> : null}
 
-                  {errors.duration === undefined && 
-                  duration !== "" && 
+                  {this.props.errors.duration === undefined && 
+                  this.state.duration !== "" && 
                   durationfocus === false &&
-                  durationunit === "hour" &&
+                  this.state.durationunit === "hour" &&
                   this.checkNestedConfigs() && 
-                  parseInt(duration * 60) < (configs[miningalgo.algorithm] || {})[location][durationunit].duration_min ? 
+                  parseInt(this.state.duration * 60) < (configs[miningalgo.algorithm] || {})[location][durationunit].duration_min ? 
                   <p className="is-invalid-error add-padding-left">
                     The minimum duration you can purchase is {configs &&
                     configs[miningalgo.algorithm] && 
@@ -1326,12 +1303,12 @@ class Marketplace extends React.Component {
                     Please increase your duration input value. 
                   </p> : null}
 
-                  {errors.duration === undefined && 
-                  duration !== "" && 
+                  {this.props.errors.duration === undefined && 
+                  this.state.duration !== "" && 
                   durationfocus === false &&
-                  durationunit === "day" &&
+                  this.state.durationunit === "day" &&
                   this.checkNestedConfigs() && 
-                  parseInt(duration * 1440) < (configs[miningalgo.algorithm] || {})[location][durationunit].duration_min ? 
+                  parseInt(this.state.duration * 1440) < (configs[miningalgo.algorithm] || {})[location][durationunit].duration_min ? 
                   <p className="is-invalid-error add-padding-left">
                     The minimum duration you can purchase is {configs &&
                     configs[miningalgo.algorithm] && 
@@ -1425,7 +1402,7 @@ class Marketplace extends React.Component {
                           <input
                             type="text"
                             name="hashrate"
-                            value={hashrate}
+                            value={this.state.hashrate}
                             placeholder={this.checkNestedConfigs() &&
                               configs[miningalgo.algorithm] !== undefined &&
                               configs[miningalgo.algorithm][minerLocations[0].value] !== undefined ?
@@ -1459,10 +1436,10 @@ class Marketplace extends React.Component {
                         </div>
                       
 
-{errors.hashrate !== undefined ? 
-<p className="is-invalid-error add-padding-left">{errors.hashrate}</p> : null}
+{this.props.errors.hashrate !== undefined ? 
+<p className="is-invalid-error add-padding-left">{this.props.errors.hashrate}</p> : null}
 
-{errors.hashrate === undefined && 
+{this.props.errors.hashrate === undefined && 
   this.state.hashrate !== "" &&
   hashratefocus === false &&
   this.minDurationCheck() &&
@@ -1476,7 +1453,7 @@ class Marketplace extends React.Component {
   Please decrease your hashrate input value.</p>
    : null}
 
-{errors.hashrate === undefined && 
+{this.props.errors.hashrate === undefined && 
   this.state.hashrate !== "" &&
   this.maxDurationCheck() &&
   this.checkNestedConfigs() &&
@@ -1490,7 +1467,7 @@ class Marketplace extends React.Component {
    : null}
 
 
-{errors.hashrate === undefined && 
+{this.props.errors.hashrate === undefined && 
   this.state.hashrate !== "" &&
   this.minDurationCheck() &&
   hashratefocus === false &&
@@ -1505,13 +1482,13 @@ class Marketplace extends React.Component {
   </p>
    : null}                       
                  
-{errors.hashrate === undefined && 
-  hashrate !== "" &&
+{this.props.errors.hashrate === undefined && 
+  this.state.hashrate !== "" &&
   this.maxDurationCheck() &&
   hashratefocus === false &&
   this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_max) !==
   this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_min) &&
-  parseFloat(hashrate) < parseFloat(configs[miningalgo.algorithm][location][durationunit].hashrate_min) ? 
+  parseFloat(this.state.hashrate) < parseFloat(configs[miningalgo.algorithm][location][durationunit].hashrate_min) ? 
   <p className="is-invalid-error add-padding-left">
     The minimum hashrate you can purchase is {this.safeNestedCheck(() => configs[miningalgo.algorithm][location][durationunit].hashrate_min)}{" "}
    {this.safeNestedCheck(() => configs[miningalgo.algorithm].hashrate_units)}H/s.
@@ -1602,7 +1579,7 @@ class Marketplace extends React.Component {
                         type="text"
                         placeholder="Example: 1BvBMSAYstWetqTQn5Au4t4GZg5xJaNVN4"
                         name="refund_address"
-                        value={refund_address}
+                        value={this.state.refund_address}
                         onChange={this.handleChange}
                         className="form-control inputstyles2"
                         style={{
@@ -1617,8 +1594,8 @@ class Marketplace extends React.Component {
                       />
                     </div>
 
-                    {errors.refund_address !== undefined ? <p className="is-invalid-error add-padding-left">
-                      {errors.refund_address}</p> : null}
+                    {this.props.errors.refund_address !== undefined ? <p className="is-invalid-error add-padding-left">
+                      {this.props.errors.refund_address}</p> : null}
                   </div>
                 
          
@@ -1660,7 +1637,7 @@ class Marketplace extends React.Component {
                     <input
                       type="checkbox"
                       onChange={this.handleCheck}
-                      defaultChecked={checked}
+                      defaultChecked={this.state.checked}
                     />
                     <div className="state p-success">
                       <label>
@@ -1684,7 +1661,7 @@ class Marketplace extends React.Component {
                     </div>
                   </div>
 
-                  {checked === true ? 
+                  {this.state.checked === true ? 
               <div className="container-fluid">
                 <div className="offset-xl-8 col-xl-4 limit-price-container">
                 <div className="text-xl-right text-lg-left text-md-left text-left">
@@ -1720,7 +1697,7 @@ class Marketplace extends React.Component {
                         type="text"
                         placeholder="Example: 0.0015"
                         name="limit_price"
-                        value={limit_price}
+                        value={this.state.limit_price}
                         onChange={this.handleChange}
                         className="form-control inputstyles2"
                         style={{
@@ -1743,9 +1720,9 @@ class Marketplace extends React.Component {
                         </p>
                     </div>
 
-                        {errors.price !== undefined ? 
+                        {this.props.errors.price !== undefined ? 
                         <p className="is-invalid-error add-padding-left">
-                          {errors.price}
+                          {this.props.errors.price}
                         </p> : null}
                   </div>
                   </div>
@@ -1778,7 +1755,7 @@ class Marketplace extends React.Component {
                       </div>
                       <div className="col-xl-7 col-lg-6 col-md-6 col-sm-7 col-7 text-left">
                       <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
-                        {estimate.price === undefined ? "- - - - - - - " : estimate.price.total_payment_amount} BTC</h6>
+                        {this.props.estimate.price === undefined ? "- - - - - - - " : this.props.estimate.price.total_payment_amount} BTC</h6>
                       </div>
 
 
@@ -1799,7 +1776,7 @@ class Marketplace extends React.Component {
                             </div>
                             <div className="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-7 text-left">
                               <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
-                              {estimate.price === undefined ? "- - - - - - - " : estimate.price.average_price} <BTCPaymentRate />
+                              {this.props.estimate.price === undefined ? "- - - - - - - " : this.props.estimate.price.average_price} <BTCPaymentRate />
                               </h6>
                             </div>
 
@@ -1817,12 +1794,12 @@ class Marketplace extends React.Component {
                     <CSRFToken />
                     <div style={{width: "100%", textAlign: "right"}}>
                        <button
-                        disabled={formloading}
+                        disabled={this.state.formloading}
                         className="btn btn-info nooutline buybtn"
                         type="submit"
                         style={{position: "relative", left: "0px"}}
                       >
-                        {formloading === true
+                        {this.state.formloading === true
                           ? <ThreeDotsLoading />
                           : <p style={{ paddingBottom: "0px", marginBottom: "0px" }}>Continue to Payment</p>}
                       </button>
@@ -1831,23 +1808,23 @@ class Marketplace extends React.Component {
                       <div className="text-center"
                             style={{ paddingTop: "25px", paddingBottom: "0px" }}>
 
-                           {time.message !== null ? 
-                           <p className="is-invalid-error add-padding-left">{time.message}</p> : null}
+                           {this.props.time.message !== null ? 
+                           <p className="is-invalid-error add-padding-left">{this.props.time.message}</p> : null}
                            
-                           {networkerror !== "" ? 
-                           <p className="is-invalid-error add-padding-left">{networkerror}</p> : null}
-                           {errors.errors !== null &&
-                           errors !== undefined &&
-                           payment.bid_id === undefined &&
-                           networkerror === "" &&
+                           {this.state.networkerror !== "" ? 
+                           <p className="is-invalid-error add-padding-left">{this.state.networkerror}</p> : null}
+                           {this.props.errors.errors !== null &&
+                           this.props.errors !== undefined &&
+                           this.props.payment.bid_id === undefined &&
+                           this.state.networkerror === "" &&
                                 fielderrors != "hashrate" &&
                                 fielderrors != "duration" &&
                                 fielderrors != "username" &&
                                 fielderrors != "password" &&
                                 fielderrors != "discount_code" &&
                                 fielderrors != "price" &&
-                               errors.host === undefined &&
-                               errors.port === undefined 
+                               this.props.errors.host === undefined &&
+                               this.props.errors.port === undefined 
                                 ? <p className="is-invalid-error add-padding-left">
                                {fielderrorsReason} </p>
                                 : null}
