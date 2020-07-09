@@ -391,7 +391,17 @@ class Marketplace extends React.Component {
         this.setState({ duration_example: this.checkNestedConfigs() && 
           this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].hashrate_min) === null ? 25 :
           parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min / 60)});
-      };
+          if(this.state.duration !== "" && this.state.hashrate !== "") {  
+            this.props.getEstimate(
+              parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min),
+              this.state.hashrate,
+              this.state.hashrate_units,
+              this.props.miningalgo.algorithm,
+              this.state.location,
+              this.state.limit_price)  
+            }
+      
+        };
       if (event.target.value === "day") {
         this.setState({ duration:  this.checkNestedConfigs() && 
           this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].hashrate_min) === null ? 1 :
@@ -400,7 +410,15 @@ class Marketplace extends React.Component {
         this.setState({ duration_example:   this.checkNestedConfigs() && 
           this.safeNestedCheck(() => (this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].hashrate_min) === null ? 1 :
           parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min / 1440)});
-  
+          if(this.state.duration !== "" && this.state.hashrate !== "") {  
+            this.props.getEstimate(
+              parseInt((this.props.configs[this.props.miningalgo.algorithm] || {})[this.state.location][event.target.value].duration_min),
+              this.state.hashrate,
+              this.state.hashrate_units,
+              this.props.miningalgo.algorithm,
+              this.state.location,
+              this.state.limit_price)  
+            }
         };
     };
 
@@ -1259,11 +1277,19 @@ class Marketplace extends React.Component {
                             onChange={this.selectDurationUnit}
                             value={this.state.durationunit}
                           >
-                            <option className="selectstyles" value="hour">
-                              {this.state.duration > 1 ? "Hours" : "Hour"}
-                            </option>
-                            <option className="selectstyles" value="day">
-                              {this.state.duration > 1 ? "Days" : "Day"}
+                               <option className={
+                            configs[miningalgo.algorithm][minerLocation.value]['hour'].hashrate_min !== null ||
+                            configs[miningalgo.algorithm][minerLocation.value]['day'].hashrate_min !== null 
+                            ?
+                            "selectstyles" : "hidethis"} 
+                            key={minerLocation.value} 
+                            value={minerLocation.value}
+                            disabled={configs[miningalgo.algorithm][minerLocation.value]['hour'].hashrate_min === null &&
+                              configs[miningalgo.algorithm][minerLocation.value]['hour'].hashrate_max === null && 
+                              configs[miningalgo.algorithm][minerLocation.value]['day'].hashrate_min === null &&
+                              configs[miningalgo.algorithm][minerLocation.value]['day'].hashrate_max === null}
+                            >
+                            {minerLocation.name}
                             </option>
                           </select>
                           </div>
