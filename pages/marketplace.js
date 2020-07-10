@@ -1278,20 +1278,22 @@ class Marketplace extends React.Component {
                             onChange={this.selectDurationUnit}
                             value={this.state.durationunit}
                           >
-                               <option className={
-                            configs[miningalgo.algorithm][minerLocation.value]['hour'].hashrate_min !== null ||
-                            configs[miningalgo.algorithm][minerLocation.value]['day'].hashrate_min !== null 
-                            ?
-                            "selectstyles" : "hidethis"} 
-                            key={minerLocation.value} 
-                            value={minerLocation.value}
-                            disabled={configs[miningalgo.algorithm][minerLocation.value]['hour'].hashrate_min === null &&
-                              configs[miningalgo.algorithm][minerLocation.value]['hour'].hashrate_max === null && 
-                              configs[miningalgo.algorithm][minerLocation.value]['day'].hashrate_min === null &&
-                              configs[miningalgo.algorithm][minerLocation.value]['day'].hashrate_max === null}
-                            >
-                            {minerLocation.name}
+                           {this.props.configs[miningalgo.algorithm][location] &&
+                            this.props.configs[miningalgo.algorithm][location]['hour'].hashrate_min !== null && 
+                            this.props.configs[miningalgo.algorithm][location]['hour'].hashrate_max !== null
+                            ? 
+                            <option className="selectstyles" value="hour">
+                            {this.state.duration > 1 ? "Hours" : "Hour"}
                             </option>
+                            : null}
+                           {this.props.configs[miningalgo.algorithm][location] &&
+                            this.props.configs[miningalgo.algorithm][location]['day'].hashrate_min !== null && 
+                            this.props.configs[miningalgo.algorithm][location]['day'].hashrate_max !== null
+                            ? 
+                            <option className="selectstyles" value="day">
+                            {this.state.duration > 1 ? "Days" : "Day"}
+                            </option>
+                            : null}
                           </select>
                           </div>
                         
