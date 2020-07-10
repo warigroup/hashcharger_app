@@ -500,7 +500,7 @@ class Marketplace extends React.Component {
       durationunit,
       location
     } = this.state;
-    const { miningalgo, configs } = this.props;
+    const { miningalgo, configs, stats } = this.props;
     
     let hashrateExampleText = "";
     
