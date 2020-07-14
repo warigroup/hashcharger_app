@@ -181,12 +181,12 @@ class InvoicePage extends React.Component {
                       }
                       .invoice-section-title {
                         font-weight: bold;
-                        font-size: 1.1em;
+                        font-size: 1em;
                         margin-bottom: 25px;
                       }
 
                       .invoice-info p {
-                        font-size: 0.85em;
+                        font-size: 0.81em;
                       }
 
                       .invoice-label {
