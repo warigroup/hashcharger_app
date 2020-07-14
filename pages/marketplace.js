@@ -1649,12 +1649,7 @@ class Marketplace extends React.Component {
               <div className="specify-limit offset-xl-2 col-xl-10 col-lg-12 col-md-12 col-sm-12 col-12 text-xl-right text-lg-left text-md-left text-left"
               style={{marginBottom: "25px"}}>
                    <label>
-                      <a href="https://warihash.zendesk.com/hc/en-us/articles/360040612232-What-is-a-limit-price-" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="link-icon">
-                        <FaQuestionCircle />
-                      </a>
+
                         <span style={{
                             fontSize: "0.83em",
                             marginLeft: "0px",
