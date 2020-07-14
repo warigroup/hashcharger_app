@@ -1626,6 +1626,7 @@ class Marketplace extends React.Component {
 
                     {this.props.errors.refund_address !== undefined ? <p className="is-invalid-error add-padding-left">
                       {this.props.errors.refund_address}</p> : null}
+                      <p>Partial and Full refund will be sent to this address, in case we cannot deliver the full hashing power purchased.</p>
                   </div>
                 
          
