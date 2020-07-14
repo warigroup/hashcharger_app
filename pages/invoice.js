@@ -181,12 +181,12 @@ class InvoicePage extends React.Component {
                       }
                       .invoice-section-title {
                         font-weight: bold;
-                        font-size: 1.1em;
+                        font-size: 1em;
                         margin-bottom: 25px;
                       }
 
                       .invoice-info p {
-                        font-size: 0.85em;
+                        font-size: 0.81em;
                       }
 
                       .invoice-label {
@@ -429,7 +429,7 @@ class InvoicePage extends React.Component {
                          <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 invoice-section">
                            <br />
                            <h5 className="invoice-section-title" 
-                           style={{marginTop: "28px", paddingBottom: "17px"}}>Invoice for order #{bid.bid_id}</h5>
+                           style={{marginTop: "16px", paddingBottom: "5px"}}>Invoice for order #{bid.bid_id}</h5>
                            <div className="invoice-info">
                            <p><span className="invoice-label">Hashrate Reserved:</span> {bid.reserved_hashrate}{" "}{bid.hashrate_units}H/s</p>
                             </div>
@@ -458,10 +458,25 @@ class InvoicePage extends React.Component {
                              <span className="invoice-label">Duration:</span> {convertDuration(bid.duration)}
                            </p>
                            </div>
-                           <br />
+                        
+                           <h5 className="invoice-section-title" 
+                           style={{marginTop: "35px", paddingBottom: "5px"}}>Refund Information</h5>
+
+                          <div className="invoice-info">
+                            <p>
+                              <span className="invoice-label">Owed Refund:</span> {bid.settlement_is_finished === false ? "Order is not finished yet" : bid.refund_amount + " BTC"}
+                            </p>
+                            <p>
+                              <span className="invoice-label">Refund Method:</span> {bid.refund_address === null ? "Credit given to user account" : "Sent to " + bid.refund_address}
+                            </p>
+                            <p>
+                          <span className="invoice-label">Refund Transaction:</span> {bid.refund_txid === null ? "Not available" : <a href={`https://blockstream.info/tx/` + bid.refund_txid}>https://blockstream.info/tx/{bid.refund_txid}</a>}
+                            </p>
+                          </div>
+
                            <div className="stratum-info">
                            <h5 className="invoice-section-title" 
-                           style={{paddingBottom: "17px"}}>Stratum Configuration</h5>
+                           style={{marginTop: "35px", paddingBottom: "5px"}}>Stratum Configuration</h5>
                            <div className="invoice-info">
                                  <p><span className="invoice-label">Stratum Host:</span> {bid.stratum_host}</p>
                             </div>
