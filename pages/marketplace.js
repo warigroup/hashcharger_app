@@ -1754,6 +1754,8 @@ class Marketplace extends React.Component {
                         <p className="is-invalid-error add-padding-left">
                           {this.props.errors.price}
                         </p> : null}
+
+                        <p>If a limit price is specified you will only be matched with miners that have rates equal to or less than the specified price.</p>
                   </div>
                   </div>
                   </div>
