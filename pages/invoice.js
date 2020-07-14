@@ -429,7 +429,7 @@ class InvoicePage extends React.Component {
                          <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 invoice-section">
                            <br />
                            <h5 className="invoice-section-title" 
-                           style={{marginTop: "16px", paddingBottom: "5px"}}>Invoice for order #{bid.bid_id}</h5>
+                           style={{marginTop: "16px", paddingBottom: "5px"}}>Invoice For Order #{bid.bid_id}</h5>
                            <div className="invoice-info">
                            <p><span className="invoice-label">Hashrate Reserved:</span> {bid.reserved_hashrate}{" "}{bid.hashrate_units}H/s</p>
                             </div>
