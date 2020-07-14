@@ -1626,6 +1626,13 @@ class Marketplace extends React.Component {
 
                     {this.props.errors.refund_address !== undefined ? <p className="is-invalid-error add-padding-left">
                       {this.props.errors.refund_address}</p> : null}
+                      <p style={{
+                        fontSize: "0.7em",
+                        color: "rgba(0,0,0,0.6)",
+                        marginLeft: "5px",
+                        marginTop: "8px",
+                        maxWidth: "400px"
+                      }}>Partial and Full refund will be sent to this address, in case we cannot deliver the full hashing power purchased.</p>
                   </div>
                 
          
@@ -1753,6 +1760,14 @@ class Marketplace extends React.Component {
                         <p className="is-invalid-error add-padding-left">
                           {this.props.errors.price}
                         </p> : null}
+
+                        <p style={{
+                        fontSize: "0.7em",
+                        color: "rgba(0,0,0,0.6)",
+                        marginLeft: "5px",
+                        marginTop: "8px"
+                      }}>If a limit price is specified you will only be matched with miners that have rates equal to or less than the specified price.
+                      </p>
                   </div>
                   </div>
                   </div>
