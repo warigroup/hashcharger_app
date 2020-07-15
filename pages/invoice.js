@@ -467,7 +467,7 @@ class InvoicePage extends React.Component {
                               <span className="invoice-label">Owed Refund:</span> {bid.settlement_is_finished === false ? "Order is not finished yet" : bid.refund_amount + " BTC"}
                             </p>
                             <p>
-                              <span className="invoice-label">Refund Method:</span> {bid.refund_address === null ? "Credit given to user account" : "Sent to " + bid.refund_address}
+                              <span className="invoice-label">Refund Method:</span> {bid.refund_address === null ? "Credit given to user account" : "Send to " + bid.refund_address}
                             </p>
                             <p>
                           <span className="invoice-label">Refund Transaction:</span> {bid.refund_txid === null ? "Not available" : <a href={`https://blockstream.info/tx/` + bid.refund_txid}>https://blockstream.info/tx/{bid.refund_txid}</a>}
