@@ -1112,15 +1112,7 @@ class Marketplace extends React.Component {
                <br />
                <br />
                <br />
-             <a href="https://warihash.zendesk.com/hc/en-us/requests/new" 
-             target="_blank"
-             rel="noopener noreferrer"
-             style={{ marginLeft: "14px" }}>
-               <button className="nav-buttons">
-                 <p>Help</p>
-                </button>
-              </a>
-             {" "}<p className="nav-bar">|</p>{" "} 
+
              <button className="nav-buttons"
              onClick={() => this.openOrderHistory()}>
                <p>My Order History</p>
