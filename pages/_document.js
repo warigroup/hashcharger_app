@@ -175,6 +175,9 @@ class MyDocument extends Document {
 
             </Fragment>
           ) : null}
+        <script id="ze-snippet" 
+        src="https://static.zdassets.com/ekr/snippet.js?key=44bfd989-efb4-4dfd-a622-dd6724a11755">
+        </script>
         </body>
       </Html>
     );
