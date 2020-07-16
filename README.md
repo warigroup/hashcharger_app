@@ -1,5 +1,7 @@
 ![Build Status](https://travis-ci.com/warigroup/warihash_frontend.svg?token=q9XzrdKj8m2cMpY4bzuG&branch=master)
-## Next.js (https://nextjs.org/) version frontend repo.
+#  WariHash HashCharger Frontend App
+
+This is a repo for HashCharger's frontend implementation. This frontend can be used as a widget on other websites as specified by [this repo](https://github.com/warigroup/hashcharger). This repo is open for implementers who wishes to make custom modifications to the HashCharger interface.
 
 ## Run development mode in local environment:
 
