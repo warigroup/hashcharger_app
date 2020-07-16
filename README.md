@@ -1,4 +1,3 @@
-
 #  WariHash HashCharger Frontend App
 
 This is a repo for HashCharger's frontend implementation. This frontend can be used as a widget on other websites as specified by [this repo](https://github.com/warigroup/hashcharger). This repo is open for implementers who wishes to make custom modifications to the HashCharger interface.
@@ -131,7 +130,3 @@ Find settings.js in root directory. Add miner locations to 'minerLocations' arra
 
 Make sure you have installed the latest version [Node.js](https://nodejs.org/en/), we currently use Node 10.16.0
 
-## Coding guidelines
-
-- AirBnb React / JSX style guide (https://github.com/airbnb/javascript/tree/master/react)
-- JavaScript ECMAScript 6+ (https://www.w3schools.com/js/js_es6.asp)
