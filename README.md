@@ -108,27 +108,14 @@ Find settings.js in root directory. Add mining algorithms to 'algorithms' array.
 
 Find settings.js in root directory. Add miner locations to 'minerLocations' array.
 
-## Admin pages
-
-Admin pages are accessible by superuser accounts. 
-
-* /marketmonitor page will display available offers on a table.
-* /bid/id page will show bid details with hashrate graph.
-
-## Maintenance mode
-
-Find apiurl.js in root directory. Set "export const maintenanceMode" to "true" and comment out "false" to create a maintenance version build. Maintenance mode will disable authentication features and marketplaces.
-
 ## Frontend libraries used:
 
 - React.js 16.8.6 (https://reactjs.org/)
 - Next.js 8.1 (http://nextjs.org/)
 - Redux 4.0.1 (https://redux.js.org/)
 - Axios (https://github.com/axios/axios)
-- Chart.js 2 (http://jerairrest.github.io/react-chartjs-2/)
 - Bootstrap 4.3 (https://getbootstrap.com/)
 - Styled JSX (https://github.com/zeit/styled-jsx)
-- React Modal (https://reactcommunity.org/react-modal/)
 - React Icons (https://react-icons.netlify.com/)
 - Sweetalert (http://djorg83.github.io/react-bootstrap-sweetalert/)
 - Moment Timezone (https://momentjs.com/timezone/)
@@ -148,17 +135,3 @@ Make sure you have installed the latest version [Node.js](https://nodejs.org/en/
 
 - AirBnb React / JSX style guide (https://github.com/airbnb/javascript/tree/master/react)
 - JavaScript ECMAScript 6+ (https://www.w3schools.com/js/js_es6.asp)
-
-## Code formatter
-
-- Install Prettier (https://prettier.io/) by Esben Petersen on Visual Studio Code extensions. 
-- "Ctrl + Shift + P" and choose "Format Document" to run prettier on VSCode. 
-- No extra setting needs to be applied. 
-
-## SEO
-
-- Schema.org (https://schema.org/)
-- Facebook Open Graph (http://ogp.me/)
-- Meta tags (https://htmlhead.dev/)
-- Google Search Console (https://www.google.com/webmasters/)
-- Bing Webmaster Tools (https://www.bing.com/toolbox/webmaster)
