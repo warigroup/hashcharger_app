@@ -26,9 +26,6 @@ class MyDocument extends Document {
       <Html
         lang="en"
         dir="ltr"
-        prefix="og: http://ogp.me/ns#"
-        itemScope=""
-        itemType="https://schema.org/WebPage"
       >
         <Head>
           <meta charSet="utf-8" />
