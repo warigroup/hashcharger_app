@@ -600,7 +600,7 @@ export const getStats = () => dispatch => {
 export const setStratumHostPort = (host, port) => {
   return {
     type: types.SET_STRATUM_HOST_PORT,
-    payload: [{ host: host }, { port: port}]
+    payload: [{ host: host }, { port: port }]
   };
 };
 

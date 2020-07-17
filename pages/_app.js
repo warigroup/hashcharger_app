@@ -7,7 +7,7 @@ import { initializeStore } from '../store';
 import Cookies from 'js-cookie';
 import { sessioncookie, csrfcookie } from '../utils/cookieNames';
 
-class MyApp extends App {
+class HashCharger extends App {
 	static async getInitialProps({ Component, ctx }) {
 		const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
 		return { pageProps };
@@ -30,4 +30,4 @@ class MyApp extends App {
 	}
 }
 
-export default withRedux(initializeStore)(MyApp);
+export default withRedux(initializeStore)(HashCharger);
