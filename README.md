@@ -4,7 +4,7 @@ This is a repo for HashCharger's frontend implementation. This frontend can be u
 
 ## Run development mode in local environment:
 
-1. Make sure to change [apiurl.js](https://github.com/warigroup/warihash_frontend#dynamic-api-url) to a port on localhost.
+1. Open settings.js, make sure to change 'apiurl' (https://github.com/warigroup/warihash_frontend#dynamic-api-url) to a port on localhost.
 2. npm install
 3. npm run dev
 4. access localhost:3000
@@ -13,7 +13,7 @@ This is a repo for HashCharger's frontend implementation. This frontend can be u
 
 ## Run production mode in local environment:
 
-1. Make sure to change [apiurl.js](https://github.com/warigroup/warihash_frontend#dynamic-api-url) to a port on localhost.
+1.Open settings.js, make sure to change 'apiurl' (https://github.com/warigroup/warihash_frontend#dynamic-api-url) to a port on localhost.
 2. npm install
 3. npm run build (this will create a production version app in .next folder)
 4. npm start
