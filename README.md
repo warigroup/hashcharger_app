@@ -8,8 +8,6 @@ This is a repo for HashCharger's frontend implementation. This frontend can be u
 2. Run 'npm run dev'
 3. access http://localhost:3000/market/stratum.slushpool.com/3333/widgetaccount/password/sha256d/3626a5/ffffff/3626a5/233f5c/ffffff/ffffff/Wz4okAcgswSbB7rm5XD2kf/subuser
 
-* Our public API will not allow you to fetch data from your local machine. Please deploy your app on a server to fully test this application.
-
 ## Run production mode on Ngnix server:
 
 1. Run 'npm install'
