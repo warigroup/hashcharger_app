@@ -2,6 +2,10 @@
 
 This is a repo for HashCharger's frontend implementation. This frontend can be used as a widget on other websites as specified by [this repo](https://github.com/warigroup/hashcharger). This repo is open for implementers who wishes to make custom modifications to the HashCharger interface.
 
+## Installation
+
+Install [Node.js](https://nodejs.org/en/), we currently use the latest release of Node version 10.x. If you are on Debian 9.7, an installation script is provided at [install.sh](https://github.com/warigroup/hashcharger_app/blob/master/install.sh)
+
 ## Run development mode in local environment:
 
 1. Run 'npm install'
@@ -53,7 +57,4 @@ Other testing libraries used:
 - Express.js (https://en.wikipedia.org/wiki/Express.js)
 - PM2 (https://pm2.io/)
 
-## Node.js 10.16.0
-
-Make sure you have installed the latest version [Node.js](https://nodejs.org/en/), we currently use Node 10.16.0
 
