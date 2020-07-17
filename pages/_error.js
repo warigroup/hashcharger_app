@@ -11,12 +11,10 @@ class NotFound extends React.Component {
 		this.props.notFoundPage();
 	}
 
-	gotomainpage = () => {
-		Router.pushRoute(
+	gotomainpage = () => Router.pushRoute(
 			`/market/${this.props.settings.host}/${this.props.settings.port}/${this.props.settings.username}/${this
 				.props.settings.password}/${this.props.miningalgo.algorithm}`
 		);
-	};
 
 	render() {
 		return (
