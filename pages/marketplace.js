@@ -1559,11 +1559,8 @@ class Marketplace extends React.Component {
                 
         <div className="container-fluid">
           <div className="row refund-address-container">
-          
-                <div className="offset-xl-6 col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12" 
-                style={{paddingRight: "0px"}}>
-                  <div className="form-group" 
-                  style={{paddingRight: "0px"}}>
+            <div className="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12" style={{paddingRight: "0px"}}>
+                  <div className="form-group" style={{paddingRight: "0px"}}>
                     <label htmlFor="refund_address" className="inputlabel">
                       Bitcoin Refund Address:
                     </label>
@@ -1607,7 +1604,6 @@ class Marketplace extends React.Component {
                         required
                       />
                     </div>
-
                     {this.props.errors.refund_address !== undefined ? <p className="is-invalid-error add-padding-left">
                       {this.props.errors.refund_address}</p> : null}
                       <p style={{
@@ -1618,8 +1614,6 @@ class Marketplace extends React.Component {
                         maxWidth: "400px"
                       }}>Partial and Full refund will be sent to this address, in case we cannot deliver the full hashing power purchased.</p>
                   </div>
-                
-         
                 </div>
                         
                        
