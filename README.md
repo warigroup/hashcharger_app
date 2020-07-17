@@ -2,22 +2,32 @@
 
 This is a repo for HashCharger's frontend implementation. This frontend can be used as a widget on other websites as specified by [this repo](https://github.com/warigroup/hashcharger). This repo is open for implementers who wishes to make custom modifications to the HashCharger interface.
 
+## settings.js file
+This file has three different settings that can be used. 
+prod.settings.js has production version settings.
+dev.settings.js has development version settings.
+test.settings.js has test environment settings. 
+
 ## Run development mode in local environment:
 
-1. Make sure to change [apiurl.js](https://github.com/warigroup/warihash_frontend#dynamic-api-url) to a port on localhost.
-2. npm install
-3. npm run dev
-4. access localhost:3000
+1. create a brand new 'settings.js' file in root directory.
+2. copy and paste in contents from dev.settings.js
+3. Make sure to change [apiurl.js](https://github.com/warigroup/warihash_frontend#dynamic-api-url) to a port on localhost.
+4. npm install
+5. npm run dev
+6. access localhost:3000
 
 - Development mode can detect any errors in the app. However, development mode is slower than production mode.
 
 ## Run production mode in local environment:
 
-1. Make sure to change [apiurl.js](https://github.com/warigroup/warihash_frontend#dynamic-api-url) to a port on localhost.
-2. npm install
-3. npm run build (this will create a production version app in .next folder)
-4. npm start
-5. access localhost:3000
+1. create a brand new 'settings.js' file in root directory.
+2. copy and paste in contents from dev.settings.js
+3. Make sure to change [apiurl.js](https://github.com/warigroup/warihash_frontend#dynamic-api-url) to a port on localhost.
+4. npm install
+5. npm run build (this will create a production version app in .next folder)
+6. npm start
+7. access localhost:3000
 
 - Production mode doesn't have any server-side error detection.
 
@@ -93,12 +103,6 @@ Requirements:
 pipenv run python warihash/manage.py shell -c "from orders.models import User; User.objects.create_superuser('cypress', 'test@cypress.com', 'password')"
 ```
 To run a targeted test or only a subset of tests, the cypress dashboard can be accessed with "npm run cypress-dashboard". When the tests are run they create screenshots and compressed videos in cypress/screenshots and cypress/videos, these directories are excluded in git. 
-
-## settings.js file
-This file has three different settings that can be used. 
-prod.settings.js has production version settings.
-dev.settings.js has development version settings.
-test.settings.js has test environment settings. 
 
 ## Dynamic API URL
 
