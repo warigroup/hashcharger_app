@@ -89,21 +89,6 @@ Other testing libraries used:
 * React Test Renderer (https://reactjs.org/docs/test-renderer.html)
 * Enzyme Adapter React 16 (https://www.npmjs.com/package/enzyme-adapter-react-16)
 
-## Running Cypress e2e tests (https://www.cypress.io/)
-
-Cypress is used to run e2e tests. To run the full suite execute: "npm run cypress-dashboard".
-Total three cmds should be running at the same time. 
-
-Requirements:
-* The test suite requires the --test flag passed to development_start when starting the api server.
-* Frontend server must be running at localhost:3000 using a different cmd with "npm run dev" command.
-* Execute "npm run cypress-dashboard" on third cmd while both front end and api server are running.
-* A test user credential is needed that is inserted into the database with development_install, but to manually set the credential run this command in the warihash_api root directory: 
-```
-pipenv run python warihash/manage.py shell -c "from orders.models import User; User.objects.create_superuser('cypress', 'test@cypress.com', 'password')"
-```
-To run a targeted test or only a subset of tests, the cypress dashboard can be accessed with "npm run cypress-dashboard". When the tests are run they create screenshots and compressed videos in cypress/screenshots and cypress/videos, these directories are excluded in git. 
-
 ## Dynamic API URL
 
 Find settings.js in root directory. Choose your API address for the app.
