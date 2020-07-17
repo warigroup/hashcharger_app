@@ -100,7 +100,6 @@ class MyDocument extends Document {
           <meta name="apple-mobile-web-app-title" content="WariHash" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
 
-
           {/*** FACEBOOK PIXEL SCRIPTS ***/}
           {facebookPixel === "on" ? 
           <React.Fragment> 
@@ -135,7 +134,6 @@ class MyDocument extends Document {
                 async
                 src="https://www.googletagmanager.com/gtag/js?id=UA-142386975-2"
               />
-              
               {/***  GOOGLE ADS ***/}
               <script 
                 async 
