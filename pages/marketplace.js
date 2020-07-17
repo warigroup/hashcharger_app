@@ -1096,7 +1096,7 @@ class Marketplace extends React.Component {
              </button>
              </div>
 
-             <div className="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12" > 
+             <div className="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12" > 
               {/******* MINING ALGORITHM SELECTOR *********/}
                <div className="miningalgo-selector-container addpaddingleft">
                   <h4 className="marketplacetitle">Buy Hashing Power for</h4>
@@ -1106,7 +1106,7 @@ class Marketplace extends React.Component {
                 </div>
                 {/******* MINING ALGORITHM SELECTOR END *********/}
              </div>
-             <div className="col-xl-5 col-lg-5 col-md-5 d-xl-inline d-lg-inline d-md-inline d-sm-none d-none" 
+             <div className="col-xl-4 col-lg-4 col-md-4 d-xl-inline d-lg-inline d-md-inline d-sm-none d-none" 
              style={{paddingTop: "11.5px", paddingLeft: "60px"}}>
                <br />
                <br />
@@ -1161,7 +1161,6 @@ class Marketplace extends React.Component {
               <p style={{fontWeight: "bold",
               fontSize: "0.85em"}}>Currently, no hashing power is available for this algorithm. Please check again later.
               <br /> You can still buy hashing power for different mining algorithms.</p>
-           
               </div> 
            </div>
        </div>
