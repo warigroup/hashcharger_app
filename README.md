@@ -4,30 +4,27 @@ This is a repo for HashCharger's frontend implementation. This frontend can be u
 
 ## Run development mode in local environment:
 
-1. Open settings.js, make sure to change 'apiurl' (https://github.com/warigroup/warihash_frontend#dynamic-api-url) to a port on localhost.
-2. npm install
-3. npm run dev
-4. access localhost:3000
+1. npm install
+2. npm run dev
+3. access localhost:3000
 
 - Development mode can detect any errors in the app. However, development mode is slower than production mode.
 
 ## Run production mode in local environment:
 
-1.Open settings.js, make sure to change 'apiurl' (https://github.com/warigroup/warihash_frontend#dynamic-api-url) to a port on localhost.
-2. npm install
-3. npm run build (this will create a production version app in .next folder)
-4. npm start
-5. access localhost:3000
+1. npm install
+2. npm run build (this will create a production version app in .next folder)
+3. npm start
+4. access localhost:3000
 
 - Production mode doesn't have any server-side error detection.
 
 ## Run production mode on Ngnix server:
 
-1. Make sure to change [apiurl.js](https://github.com/warigroup/warihash_frontend#dynamic-api-url) to the address where API is running.
-2. npm install
-3. npm run build
-4. install pm2 package using "npm install pm2@latest -g"
-5. pm2 start npm --name "next" -- start
+1. npm install
+2. npm run build
+3. install pm2 package using "npm install pm2@latest -g"
+4. pm2 start npm --name "next" -- start
 
 - Start application's server from application’s root folder rather than running it from the production build directory.
 
