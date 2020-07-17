@@ -24,38 +24,6 @@ This is a repo for HashCharger's frontend implementation. This frontend can be u
 - Deployment guideline:
 https://medium.com/@indiesk/deploying-a-nextjs-app-in-production-with-custom-server-using-nginx-and-pm2-786ccf9444c5
 
-
-## Alternative deployment method (http://pm2.keymetrics.io/docs/usage/application-declaration/)
-
-1. Navigate to app's root directory (server.js is in root directory)
-2. npm install
-3. npm run build
-4. install pm2 package using "npm install pm2@latest -g"
-5. pm2 ecosystem   (This will generate a sample, ecosystem.config.js.)
-6. Open your ecosystem.config.js file, erase its sample contents. Copy and paste in below node.js module:
-
-```js
-module.exports = {
-  apps : [{
-    name: 'next',
-    script: './server.js',
-    instances: 1,
-    autorestart: true,
-    watch: false,
-    max_memory_restart: '1G',
-    env: {
-      NODE_ENV: 'production'
-    },
-  }]
-};
-```
-
-
-7. pm2 start ecosystem.config.js
-
-* Use "pm2 reload ecosystem.config.js" to reload app. Use "pm2 stop ecosystem.config.js" to stop app.
-* More info: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
-
 ## Running Jest unit tests (https://jestjs.io/) and Enzyme render tests (https://airbnb.io/enzyme/)
 
 To run the full suite execute: "npm run jest-test"
