@@ -20,7 +20,7 @@ import {
   setThemeColors,
   setToken,
   setSubUser } from "../actions/warihashApiCalls";
-import { FaRegClock, FaBitcoin, FaQuestionCircle, FaWallet } from "react-icons/fa";
+import { FaRegClock, FaBitcoin, FaWallet } from "react-icons/fa";
 import { TiFlash } from "react-icons/ti";
 import { Router } from "../routes";
 import MiningAlgoDropDown from "../components/tools/MiningAlgoDropDown";
