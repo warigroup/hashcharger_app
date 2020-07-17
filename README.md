@@ -8,7 +8,7 @@ This is a repo for HashCharger's frontend implementation. This frontend can be u
 2. npm run dev
 3. access localhost:3000
 
-* Our public API will not allow you to fetch data from your local machine.
+* Our public API will not allow you to fetch data from your local machine. Please deploy your app on a server to fully test this application.
 
 ## Run production mode on Ngnix server:
 
