@@ -69,8 +69,6 @@ class MyDocument extends Document {
           />
           <meta name="msapplication-TileColor" content="#00aba9" />
           <meta name="theme-color" content="#ffffff" />
-          <meta name="application-name" content="WariHash" />
-
           <script
             type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.20.0/polyfill.min.js"

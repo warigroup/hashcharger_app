@@ -440,22 +440,6 @@ class Marketplace extends React.Component {
       return (this.props.configs &&
         this.props.configs[this.props.miningalgo.algorithm])
     };
-    
-    checkNestedAvailable = () => {
-      return (
-        this.props.stats &&
-        this.props.stats.available &&
-        this.props.stats.available[this.props.miningalgo.algorithm]
-      )
-    };
-
-    bestAvailableRate = () => {
-      return (
-        this.props.stats &&
-        this.props.stats.best_offer && 
-        (this.props.stats || {}).best_offer[this.props.miningalgo.algorithm]
-      )
-    };
 
     maxDurationCheck = () => {
       return (
@@ -500,7 +484,7 @@ class Marketplace extends React.Component {
       durationunit,
       location
     } = this.state;
-    const { miningalgo, configs, stats } = this.props;
+    const { miningalgo, configs } = this.props;
     
     let hashrateExampleText = "";
     
@@ -1131,10 +1115,7 @@ class Marketplace extends React.Component {
 
             <div className="container">
               <div className="row">
-              { this.checkNestedAvailable() &&
-                stats.available[miningalgo.algorithm].hashrate !== undefined &&
-                stats.available[miningalgo.algorithm].hashrate === "0.0000" ||
-                this.checkNestedConfigs() &&
+              { this.checkNestedConfigs() &&
                 configs[miningalgo.algorithm]['NA East'] &&
                 configs[miningalgo.algorithm]['NA East'][durationunit].hashrate_min === null &&
                 configs[miningalgo.algorithm]['NA West'] &&
@@ -1935,7 +1916,6 @@ Marketplace.propTypes = {
   form: PropTypes.object,
   time: PropTypes.object,
   profile: PropTypes.object,
-  stats: PropTypes.object,
   payment: PropTypes.object,
   settings: PropTypes.object,
   theme: PropTypes.object,
@@ -1952,7 +1932,6 @@ const mapStateToProps = state => ({
   form: state.form,
   time: state.time,
   profile: state.profile,
-  stats: state.stats,
   payment: state.payment,
   settings: state.settings,
   theme: state.theme,
