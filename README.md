@@ -8,7 +8,7 @@ This is a repo for HashCharger's frontend implementation. This frontend can be u
 2. npm run dev
 3. access localhost:3000
 
-- Development mode can detect any errors in the app. However, development mode is slower than production mode.
+* Our public API will not allow you to fetch data from your local machine.
 
 ## Run production mode on Ngnix server:
 
