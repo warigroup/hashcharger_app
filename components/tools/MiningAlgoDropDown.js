@@ -1,5 +1,4 @@
 import React from 'react';
-import WatchClickOutside from './WatchClickOutside';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter';
@@ -11,18 +10,9 @@ class MiningAlgoDropDown extends React.Component {
 			menuOpen: false
 		};
 	}
-	toggleAlgoMenu = () => {
-		const currentState = this.state.menuOpen;
-		this.setState({ menuOpen: !currentState });
-	};
-
-	collapseAlgoMenu = () => {
-		this.setState({ menuOpen: false });
-	};
 
 	render() {
 		return (
-			<WatchClickOutside onClickOutside={this.collapseAlgoMenu}>
 				<div className="miningalgorithm-dropdown" style={{ marginTop: '26px' }}>
 					<div className="dropdown-btn" id="miningalgorithm-selector">
 						<h4 style={{ color: `${this.props.theme.primary}` }}>
@@ -33,7 +23,6 @@ class MiningAlgoDropDown extends React.Component {
 					</div>
 					<div className="displayblockdiv" />
 				</div>
-			</WatchClickOutside>
 		);
 	}
 }
