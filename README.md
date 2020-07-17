@@ -10,15 +10,6 @@ This is a repo for HashCharger's frontend implementation. This frontend can be u
 
 - Development mode can detect any errors in the app. However, development mode is slower than production mode.
 
-## Run production mode in local environment:
-
-1. npm install
-2. npm run build (this will create a production version app in .next folder)
-3. npm start
-4. access localhost:3000
-
-- Production mode doesn't have any server-side error detection.
-
 ## Run production mode on Ngnix server:
 
 1. npm install
