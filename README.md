@@ -2,12 +2,6 @@
 
 This is a repo for HashCharger's frontend implementation. This frontend can be used as a widget on other websites as specified by [this repo](https://github.com/warigroup/hashcharger). This repo is open for implementers who wishes to make custom modifications to the HashCharger interface.
 
-## settings.js file
-This file has three different settings that can be used. 
-prod.settings.js has production version settings.
-dev.settings.js has development version settings.
-test.settings.js has test environment settings. 
-
 ## Run development mode in local environment:
 
 1. create a brand new 'settings.js' file in root directory.
@@ -88,19 +82,6 @@ Other testing libraries used:
 * Nock (https://github.com/nock/nock)
 * React Test Renderer (https://reactjs.org/docs/test-renderer.html)
 * Enzyme Adapter React 16 (https://www.npmjs.com/package/enzyme-adapter-react-16)
-
-## Dynamic API URL
-
-Find settings.js in root directory. Choose your API address for the app.
-Make sure to use only one API address at a time.
-
-## Add mining algorithms
-
-Find settings.js in root directory. Add mining algorithms to 'algorithms' array.
-
-## Add miner locations
-
-Find settings.js in root directory. Add miner locations to 'minerLocations' array.
 
 ## Frontend libraries used:
 
