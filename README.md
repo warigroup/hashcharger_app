@@ -94,6 +94,12 @@ pipenv run python warihash/manage.py shell -c "from orders.models import User; U
 ```
 To run a targeted test or only a subset of tests, the cypress dashboard can be accessed with "npm run cypress-dashboard". When the tests are run they create screenshots and compressed videos in cypress/screenshots and cypress/videos, these directories are excluded in git. 
 
+## settings.js file
+This file has three different settings that can be used. 
+prod.settings.js has production version settings.
+dev.settings.js has development version settings.
+test.settings.js has test environment settings. 
+
 ## Dynamic API URL
 
 Find settings.js in root directory. Choose your API address for the app.
