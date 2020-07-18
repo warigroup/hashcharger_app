@@ -1578,18 +1578,13 @@ class Marketplace extends React.Component {
                   </div>
                 </div>
                         
-                       
-              
-
-      <div className="col-xl-6 col-lg-12 col-md-12 col-12">
-            
-
+    <div className="col-xl-6 col-lg-12 col-md-12 col-12">
       <div className="text-xl-left text-lg-left text-md-left text-left estimate-container">
         <div className="extrapadding">
           <div className="container-fluid estimate-containerdiv" style={{paddingLeft: "0px", paddingRight: "0px"}}>
           <div className="bordertop"></div>
             <div className="row rowpaddings">
-              <div className="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-5" 
+              <div className="col-xl-5 col-lg-4 col-md-4 col-sm-4 col-4" 
                 style={{paddingLeft: "3px", paddingRight: "0px"}}>
                     <div className="iconcontainers">
                       <FaBitcoin style={{
@@ -1605,13 +1600,13 @@ class Marketplace extends React.Component {
                           Estimated Cost:
                           </h6>{" "}
                       </div>
-                      <div className="col-xl-7 col-lg-6 col-md-6 col-sm-7 col-7 text-left">
+                      <div className="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-7 text-left">
                       <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
                         {this.props.estimate.price === undefined ? "- - - - - - - " : this.props.estimate.price.total_payment_amount} BTC</h6>
                       </div>
 
 
-                            <div className="col-xl-5 col-lg-6 col-md-6 col-sm-5 col-5" 
+                            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4" 
                             style={{paddingLeft: "3px", paddingRight: "0px"}}>
                                 <div className="iconcontainers">
                             <FaBitcoin style={{
