@@ -1584,7 +1584,7 @@ class Marketplace extends React.Component {
           <div className="container-fluid estimate-containerdiv" style={{paddingLeft: "0px", paddingRight: "0px"}}>
           <div className="bordertop"></div>
             <div className="row rowpaddings">
-              <div className="col-xl-5 col-lg-4 col-md-4 col-sm-4 col-4" 
+              <div className="col-xl-5 col-lg-5 col-md-5 col-5" 
                 style={{paddingLeft: "3px", paddingRight: "0px"}}>
                     <div className="iconcontainers">
                       <FaBitcoin style={{
@@ -1606,7 +1606,7 @@ class Marketplace extends React.Component {
                       </div>
 
 
-                            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4" 
+                            <div className="col-xl-5 col-lg-5 col-md-5 col-5" 
                             style={{paddingLeft: "3px", paddingRight: "0px"}}>
                                 <div className="iconcontainers">
                             <FaBitcoin style={{
