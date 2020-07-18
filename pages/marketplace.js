@@ -1681,8 +1681,6 @@ class Marketplace extends React.Component {
                                {fielderrorsReason} </p>
                                 : null}
                           </div>
-                          <br />
-                          <br />    
 
 
                           <div className="specify-limit text-xl-right text-lg-left text-md-left text-left"
@@ -1746,7 +1744,7 @@ class Marketplace extends React.Component {
                           ? "input-group input-group-md limitinput focused"
                           : "input-group input-group-md limitinput"
                       }
-                      style={{maxWidth: "285px"}}
+                      style={{maxWidth: "285px", marginLeft: "105px"}}
                     >
                       <div className="input-group-prepend">
                         <span
