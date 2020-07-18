@@ -551,8 +551,8 @@ class Marketplace extends React.Component {
             position: relative; 
           }
           .estimate-container {
-            padding-left: 68px;
-            padding-right: 45px;
+            padding-left: 0px;
+            padding-right: 35px;
           }
           .miningalgo-selector-container {
             display: block;
@@ -1644,7 +1644,7 @@ class Marketplace extends React.Component {
                     </div>     
                          
                     <CSRFToken />
-                    <div style={{width: "100%", textAlign: "right"}}>
+                    <div style={{width: "100%", textAlign: "right", paddingRight: "45px"}}>
                        <button
                         disabled={this.state.formloading}
                         className="btn btn-info nooutline buybtn"
@@ -1684,7 +1684,7 @@ class Marketplace extends React.Component {
 
 
                           <div className="specify-limit text-xl-right text-lg-left text-md-left text-left"
-              style={{marginBottom: "25px", width: "100%"}}>
+              style={{marginBottom: "25px", width: "100%", paddingRight: "25px"}}>
                    <label>
 
                         <span style={{
@@ -1744,7 +1744,7 @@ class Marketplace extends React.Component {
                           ? "input-group input-group-md limitinput focused"
                           : "input-group input-group-md limitinput"
                       }
-                      style={{maxWidth: "285px", marginLeft: "105px"}}
+                      style={{maxWidth: "285px", marginLeft: "155px"}}
                     >
                       <div className="input-group-prepend">
                         <span
@@ -1799,9 +1799,11 @@ class Marketplace extends React.Component {
                         marginTop: "8px"
                       }}>If a limit price is specified you will only be matched with miners that have rates equal to or less than the specified price.
                       </p>
+                      <br />
                   </div>
                   </div>
                   </div>
+            
                   </div> : null}
 
 
