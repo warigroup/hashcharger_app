@@ -1004,6 +1004,9 @@ class Marketplace extends React.Component {
                 padding-left: 0px; 
                 padding-right: 0px;
               }
+              .limit-price-container {
+                margin-left: -17px; 
+              }
             }
 
             @media (max-width: 620px) {
