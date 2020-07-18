@@ -854,6 +854,13 @@ class Marketplace extends React.Component {
               display: inline-block;
             }
 
+            .bottom-error-message-box {
+              padding-top: 25px; 
+              padding-bottom: 0px; 
+              padding-left: 24px; 
+              padding-right: 35px;
+            }
+
             @media (max-width: 1203px) {
               .estimate-containerdiv {
                 padding-top: 16px; 
@@ -1006,6 +1013,12 @@ class Marketplace extends React.Component {
               }
               .limit-price-container {
                 margin-left: -17px; 
+              }
+              .bottom-error-message-box {
+                padding-top: 25px; 
+                padding-bottom: 0px; 
+                padding-left: 10px; 
+                padding-right: 10px;
               }
             }
 
@@ -1594,7 +1607,7 @@ class Marketplace extends React.Component {
           <div className="container-fluid estimate-containerdiv" style={{paddingLeft: "0px", paddingRight: "0px"}}>
           <div className="bordertop"></div>
             <div className="row rowpaddings">
-              <div className="col-xl-5 col-lg-5 col-md-5 col-5" 
+              <div className="col-xl-5 col-lg-5 col-md-5 col-4" 
                 style={{paddingLeft: "3px", paddingRight: "0px"}}>
                     <div className="iconcontainers">
                       <FaBitcoin style={{
@@ -1610,13 +1623,13 @@ class Marketplace extends React.Component {
                           Estimated Cost:
                           </h6>{" "}
                       </div>
-                      <div className="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-7 text-left">
+                      <div className="col-xl-7 col-lg-7 col-md-7 col-8 text-left">
                       <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
                         {this.props.estimate.price === undefined ? "- - - - - - - " : this.props.estimate.price.total_payment_amount} BTC</h6>
                       </div>
 
 
-                            <div className="col-xl-5 col-lg-5 col-md-5 col-5" 
+                            <div className="col-xl-5 col-lg-5 col-md-5 col-4" 
                             style={{paddingLeft: "3px", paddingRight: "0px"}}>
                                 <div className="iconcontainers">
                             <FaBitcoin style={{
@@ -1631,7 +1644,7 @@ class Marketplace extends React.Component {
                               Estimated Rate:
                                </h6>{" "}
                             </div>
-                            <div className="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-7 text-left">
+                            <div className="col-xl-7 col-lg-7 col-md-7 col-8 text-left">
                               <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
                               {this.props.estimate.price === undefined ? "- - - - - - - " : this.props.estimate.price.average_price} <BTCPaymentRate />
                               </h6>
@@ -1665,8 +1678,7 @@ class Marketplace extends React.Component {
                          
                     
 
-                      <div className="text-center"
-                      style={{ paddingTop: "25px", paddingBottom: "0px", paddingLeft: "24px", paddingRight: "35px" }}>
+                      <div className="text-center bottom-error-message-box">
 
                            {this.props.time.message !== null ? 
                            <p className="is-invalid-error add-padding-left">{this.props.time.message}</p> : null}
