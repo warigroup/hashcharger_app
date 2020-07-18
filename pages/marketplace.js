@@ -1575,7 +1575,8 @@ class Marketplace extends React.Component {
                         required
                       />
                     </div>
-                    {this.props.errors.refund_address !== undefined ? <p className="is-invalid-error add-padding-left">
+                    {this.props.errors.refund_address !== undefined ? 
+                    <p className="is-invalid-error add-padding-left" style={{maxWidth: "400px"}}>
                       {this.props.errors.refund_address}</p> : null}
                       <p style={{
                         fontSize: "0.7em",
@@ -1682,6 +1683,7 @@ class Marketplace extends React.Component {
                                 fielderrors != "password" &&
                                 fielderrors != "discount_code" &&
                                 fielderrors != "price" &&
+                                fielderrors != "refund_address" &&
                                this.props.errors.host === undefined &&
                                this.props.errors.port === undefined 
                                 ? <p className="is-invalid-error add-padding-left">
