@@ -10,7 +10,7 @@ Install [Node.js](https://nodejs.org/en/), we currently use the latest release o
 
 1. Run 'npm install'
 2. Run 'npm run dev'
-3. access http://localhost:3000/market/stratum.slushpool.com/3333/widgetaccount/password/sha256d/3626a5/ffffff/3626a5/233f5c/ffffff/ffffff/Wz4okAcgswSbB7rm5XD2kf/subuser
+3. access http://localhost:3000/market/stratum.slushpool.com/3333/widgetaccount/password/sha256d/3626a5/ffffff/3626a5/233f5c/ffffff/ffffff/FRxtvCGmNWV9AqJRKAs7CB/subuser
 
 ## Run production mode on Ngnix server:
 
