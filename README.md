@@ -1,29 +1,24 @@
+#  WariHash HashCharger Frontend App
+
+This is a repo for HashCharger's frontend implementation. This frontend can be used as a widget on other websites as specified by [this repo](https://github.com/warigroup/hashcharger). This repo is open for implementers who wishes to make custom modifications to the HashCharger interface.
+
+## Installation
+
+Install [Node.js](https://nodejs.org/en/), we currently use the latest release of Node version 10.x. If you are on Debian 9.7, an installation script is provided at [install.sh](https://github.com/warigroup/hashcharger_app/blob/master/install.sh)
+
 ## Run development mode in local environment:
 
-1. Make sure to change [apiurl.js](https://github.com/warigroup/warihash_frontend#dynamic-api-url) to a port on localhost.
-2. npm install
-3. npm run dev
-4. access localhost:3000
-
-- Development mode can detect any errors in the app. However, development mode is slower than production mode.
-
-## Run production mode in local environment:
-
-1. Make sure to change [apiurl.js](https://github.com/warigroup/warihash_frontend#dynamic-api-url) to a port on localhost.
-2. npm install
-3. npm run build (this will create a production version app in .next folder)
-4. npm start
-5. access localhost:3000
-
-- Production mode doesn't have any server-side error detection.
+1. Run 'npm install'
+2. Run 'npm run dev'
+3. access http://localhost:3000/market/stratum.slushpool.com/3333/widgetaccount/password/sha256d/3626a5/ffffff/3626a5/233f5c/ffffff/ffffff/Wz4okAcgswSbB7rm5XD2kf/subuser
 
 ## Run production mode on Ngnix server:
 
-1. Make sure to change [apiurl.js](https://github.com/warigroup/warihash_frontend#dynamic-api-url) to the address where API is running.
-2. npm install
-3. npm run build
-4. install pm2 package using "npm install pm2@latest -g"
-5. pm2 start npm --name "next" -- start
+1. Run 'npm install'
+2. Run 'npm run build'
+3. Run 'npm start' or if using pm2 follow next instructions
+4. Install pm2 package using 'npm install pm2@latest -g'
+4. Run 'pm2 start npm --name "next" -- start'
 
 - Start application's server from application’s root folder rather than running it from the production build directory.
 
@@ -31,38 +26,6 @@
 
 - Deployment guideline:
 https://medium.com/@indiesk/deploying-a-nextjs-app-in-production-with-custom-server-using-nginx-and-pm2-786ccf9444c5
-
-
-## Alternative deployment method (http://pm2.keymetrics.io/docs/usage/application-declaration/)
-
-1. Navigate to app's root directory (server.js is in root directory)
-2. npm install
-3. npm run build
-4. install pm2 package using "npm install pm2@latest -g"
-5. pm2 ecosystem   (This will generate a sample, ecosystem.config.js.)
-6. Open your ecosystem.config.js file, erase its sample contents. Copy and paste in below node.js module:
-
-```js
-module.exports = {
-  apps : [{
-    name: 'next',
-    script: './server.js',
-    instances: 1,
-    autorestart: true,
-    watch: false,
-    max_memory_restart: '1G',
-    env: {
-      NODE_ENV: 'production'
-    },
-  }]
-};
-```
-
-
-7. pm2 start ecosystem.config.js
-
-* Use "pm2 reload ecosystem.config.js" to reload app. Use "pm2 stop ecosystem.config.js" to stop app.
-* More info: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
 
 ## Running Jest unit tests (https://jestjs.io/) and Enzyme render tests (https://airbnb.io/enzyme/)
 
@@ -74,34 +37,6 @@ Other testing libraries used:
 * Nock (https://github.com/nock/nock)
 * React Test Renderer (https://reactjs.org/docs/test-renderer.html)
 * Enzyme Adapter React 16 (https://www.npmjs.com/package/enzyme-adapter-react-16)
-
-## Running Cypress e2e tests (https://www.cypress.io/)
-
-Cypress is used to run e2e tests. To run the full suite execute: "npm run cypress-dashboard".
-Total three cmds should be running at the same time. 
-
-Requirements:
-* The test suite requires the --test flag passed to development_start when starting the api server.
-* Frontend server must be running at localhost:3000 using a different cmd with "npm run dev" command.
-* Execute "npm run cypress-dashboard" on third cmd while both front end and api server are running.
-* A test user credential is needed that is inserted into the database with development_install, but to manually set the credential run this command in the warihash_api root directory: 
-```
-pipenv run python warihash/manage.py shell -c "from orders.models import User; User.objects.create_superuser('cypress', 'test@cypress.com', 'password')"
-```
-To run a targeted test or only a subset of tests, the cypress dashboard can be accessed with "npm run cypress-dashboard". When the tests are run they create screenshots and compressed videos in cypress/screenshots and cypress/videos, these directories are excluded in git. 
-
-## Dynamic API URL
-
-Find settings.js in root directory. Choose your API address for the app.
-Make sure to use only one API address at a time.
-
-## Add mining algorithms
-
-Find settings.js in root directory. Add mining algorithms to 'algorithms' array.
-
-## Add miner locations
-
-Find settings.js in root directory. Add miner locations to 'minerLocations' array.
 
 ## Frontend libraries used:
 
@@ -121,9 +56,5 @@ Find settings.js in root directory. Add miner locations to 'minerLocations' arra
 - Node.js (https://en.wikipedia.org/wiki/Node.js)
 - Express.js (https://en.wikipedia.org/wiki/Express.js)
 - PM2 (https://pm2.io/)
-
-## Node.js 10.16.0
-
-Make sure you have installed the latest version [Node.js](https://nodejs.org/en/), we currently use Node 10.16.0
 
 

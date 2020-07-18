@@ -26,9 +26,6 @@ class MyDocument extends Document {
       <Html
         lang="en"
         dir="ltr"
-        prefix="og: http://ogp.me/ns#"
-        itemScope=""
-        itemType="https://schema.org/WebPage"
       >
         <Head>
           <meta charSet="utf-8" />
@@ -66,37 +63,12 @@ class MyDocument extends Document {
           <meta name="format-detection" content="address=no" />
           <meta name="format-detection" content="telephone=no" />
           <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href="/static/apple-touch-icon.png"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="/static/favicon-32x32.png"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="16x16"
-            href="/static/favicon-16x16.png"
-          />
-          <link rel="shortcut icon" href="/static/favicon.ico" />
-          <link rel="manifest" href="/static/site.webmanifest" />
-          <link
             rel="mask-icon"
             href="/static/safari-pinned-tab.svg"
             color="#5bbad5"
           />
-          <meta
-            itemProp="image"
-            content="https://alpha.warihash.com/static/apple-touch-icon.png"
-          />
           <meta name="msapplication-TileColor" content="#00aba9" />
           <meta name="theme-color" content="#ffffff" />
-          <meta name="application-name" content="WariHash" />
-
           <script
             type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.20.0/polyfill.min.js"
@@ -121,12 +93,10 @@ class MyDocument extends Document {
 
           <link rel="stylesheet" href="/static/style.css" />
           <link rel="stylesheet" href="/static/pretty-checkbox.css" />
-          <link rel="manifest" href="/static/manifest.json" />
           <meta name="theme-color" content="#ffffff" />
           <meta name="mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-title" content="WariHash" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
-
 
           {/*** FACEBOOK PIXEL SCRIPTS ***/}
           {facebookPixel === "on" ? 
@@ -151,7 +121,6 @@ class MyDocument extends Document {
           }
           
           <script type="text/javascript" src="/static/disabledev.js" />
-          {/* <script type="text/javascript" src="/static/HackTimer.min.js" /> */}
         </Head>
         <body>
           <Main />
@@ -163,16 +132,12 @@ class MyDocument extends Document {
                 async
                 src="https://www.googletagmanager.com/gtag/js?id=UA-142386975-2"
               />
-              
               {/***  GOOGLE ADS ***/}
               <script 
                 async 
                 src="https://www.googletagmanager.com/gtag/js?id=AW-693268366" 
               />
               <script dangerouslySetInnerHTML={this.setGoogleTags()} />
-
-
-
             </Fragment>
           ) : null}
         <script id="ze-snippet" 

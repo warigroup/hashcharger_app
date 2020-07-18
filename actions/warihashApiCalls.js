@@ -6,48 +6,13 @@ axios.defaults.withCredentials = true;
 axios.defaults.crossDomain = true;
 
 //////// AUTH ACTIONS ////////////////////////////////
-
 export const resetErrors = () => {
   return {
     type: types.RESET_ERRORS
   };
 };
 
-//////// CANCEL OFFER ACTIONS ////////////////////////
-
-export const cancelOrder = (offerId, token) => dispatch => {
-  const CancelToken = axios.CancelToken;
-  let source = CancelToken.source();
-  setTimeout(() => {
-    source.cancel("ERROR: Timeout");
-  }, TIMEOUT_DURATION);
-  return axios
-    .post(
-      `${apiurl}/offer_take_cancel/`,
-      { offer_take_id: offerId },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `CustomToken ${token}`
-        }
-      },
-      { cancelToken: source.token }
-    )
-    .then(res => {
-      dispatch({
-        type: types.CLEAR_ERRORS_ORDER_CANCEL
-      });
-    })
-    .catch(err => {
-      dispatch({
-        type: types.ORDER_CANCEL_FAIL,
-        payload: (err.response || {}).data
-      });
-    });
-};
-
 /////// REMOVE ALERTS ////////////////////////////////
-
 export const clearAlert = () => {
   return {
     type: types.CLEAR_ALERT
@@ -55,7 +20,6 @@ export const clearAlert = () => {
 };
 
 /////// CLEAR ERRORS & OPEN ALERT /////////////////////
-
 export const clearErrorsShowAlert = () => {
   return {
     type: types.CLEAR_ERRORS_SHOW_ALERT
@@ -63,7 +27,6 @@ export const clearErrorsShowAlert = () => {
 };
 
 /////// RESET NETWORK ERRORS //////////////////////////
-
 export const clearNetwork = () => {
   return {
     type: types.CLEAR_NETWORK_CODE
@@ -98,7 +61,6 @@ export const getConfigs = () => dispatch => {
 
 
 //////// GET OFFERS (PROFILE PAGE) //////////////////////////
-
 export const getOffers = (pagenumber, token) => dispatch => {
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();
@@ -132,7 +94,6 @@ export const getOffers = (pagenumber, token) => dispatch => {
 };
 
 //////// LOAD OFFER DETAILS //////////////////////////
-
 export const getOfferInfo = (offerid) => dispatch => {
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();
@@ -163,45 +124,13 @@ export const getOfferInfo = (offerid) => dispatch => {
     );
 };
 
-
 export const clearOffers = () => {
   return {
     type: types.CLEAR_OFFERS
   };
 };
 
-/////// LOAD SETTLEMENTS (USER PROFILE PAGE) //////////
-
-export const getSettlements = (offer_take_id, token) => dispatch => {
-  const CancelToken = axios.CancelToken;
-  let source = CancelToken.source();
-  setTimeout(() => {
-    source.cancel("ERROR: Timeout");
-  }, TIMEOUT_DURATION);
-  return axios
-    .get(
-      `${apiurl}/get_settlements/?offer_take_id=${offer_take_id}`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `CustomToken ${token}`
-        }
-      },
-      { cancelToken: source.token }
-    )
-    .then(res => {
-      dispatch({
-        type: types.GET_SETTLEMENTS_PROFILE,
-        payload: res.data
-      });
-    })
-    .catch(err => {
-      console.log(err);
-    });
-};
-
 //////// MAKE OFFER ACTIONS //////////////////////////
-
 export const clearPaymentInfo = () => {
   return {
     type: types.CLEAR_PAYMENT_INFO
@@ -209,7 +138,6 @@ export const clearPaymentInfo = () => {
 };
 
 ///// OPEN INVOIEC FROM PROFILE PAGE, NAVIGATION ////////////////
-
 export const setOldInvoiceId = (invoice_id) => {
   return {
     type: types.SET_OLD_INVOICE_ID,
@@ -224,17 +152,7 @@ export const setRecentInvoiceId = (invoice_id) => {
   };
 };
 
-///// MINERS FORM ///////////////////////////////////
-
-export const getErrorStatus = err => {
-  return {
-    type: types.GET_STATUS_CODE,
-    network: (err.response || {}).status
-  };
-};
-
 //////// MINING ALGO SELECT /////////////////////////////////
-
 export const algoSelect = algorithm_name => {
   return {
     type: types.ALGOCHANGE,
@@ -243,7 +161,6 @@ export const algoSelect = algorithm_name => {
 };
 
 //////// NAVIGATION ACTIONS //////////////////////////
-
 export const marketplacePage = () => {
   return {
     type: types.MARKETPLACE_PAGE
@@ -262,12 +179,6 @@ export const orderHistoryPage = () => {
   };
 };
 
-export const orderDetailsPage = () => {
-  return {
-    type: types.ORDER_DETAILS_PAGE
-  };
-};
-
 export const notFoundPage = () => {
   return {
     type: types.NOT_FOUND_PAGE
@@ -275,7 +186,6 @@ export const notFoundPage = () => {
 };
 
 //////// PROFILE ACTIONS /////////////////////////////
-
 export const getCurrentProfile = (token) => dispatch => {
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();
@@ -305,7 +215,6 @@ export const resetProfileLoading = () => {
 };
 
 //////// TAKE OFFER ACTIONS //////////////////////////
-
 export const takeOffer = (
   hashrate,
   hashrate_units,
@@ -371,7 +280,6 @@ export const takeOffer = (
 };
 
 //////// GET BIDS ACTIONS //////////////////////////
-
 export const getBids = (number, sub_user, token) => dispatch => {
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();
@@ -440,7 +348,6 @@ export const clearBids = () => {
 };
 
 /////// FORM SUBMISSION /////////////////////////////////
-
 export const formSubmission = () => {
   return {
     type: types.FORM_SUBMITTED
@@ -454,7 +361,6 @@ export const enableNavigation = () => {
 };
 
 ////// TIME OUT ERROR HANDLING /////////////////////////
-
 export const timeoutError = () => {
   return {
     type: types.TIMEOUT_ERROR
@@ -468,7 +374,6 @@ export const timeoutReset = () => {
 };
 
 /////// GET HASHRATE INFO ///////////////////////////////
-
 export const getHashrateInfo = (idnumber, token) => dispatch => {
   const CancelToken = axios.CancelToken;
   let source = CancelToken.source();
@@ -478,36 +383,6 @@ export const getHashrateInfo = (idnumber, token) => dispatch => {
   return axios
     .get(
       `${apiurl}/get_hashrate_info/?offer_id=${idnumber}`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `CustomToken ${token}`
-        }
-      },
-      { cancelToken: source.token }
-    )
-    .then(res => dispatch({ type: types.GET_HASHRATE_INFO, payload: res.data }))
-    .catch(err => {
-      dispatch({
-        type: types.GET_ERRORS,
-        payload: (err.response || {}).data
-      });
-      dispatch({
-        type: types.GET_STATUS_CODE,
-        payload: (err.response || {}).status
-      });
-    });
-};
-
-export const getHashrateHistory = (idnumber, token) => dispatch => {
-  const CancelToken = axios.CancelToken;
-  let source = CancelToken.source();
-  setTimeout(() => {
-    source.cancel("ERROR: Timeout");
-  }, TIMEOUT_DURATION);
-  return axios
-    .get(
-      `${apiurl}/get_hashrate_info/?offer_take_id=${idnumber}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -561,46 +436,17 @@ export const getBidHashrateChart = (idnumber, token) => dispatch => {
 
 
 ///// CLEAR HASHRATE DATA /////////////////////////
-
 export const clearHashrateData = () => {
   return {
     type: types.CLEAR_HASHRATE_DATA
   };
 };
 
-///// GET STATS ///////////////////////////////////
-
-export const getStats = () => dispatch => {
-  const CancelToken = axios.CancelToken;
-  let source = CancelToken.source();
-  setTimeout(() => {
-    source.cancel("ERROR: Timeout");
-  }, TIMEOUT_DURATION);
-  return axios
-    .get(
-      `${apiurl}/get_stats/`,
-      {
-        headers: {
-          "Content-Type": "application/json"
-        }
-      },
-      { cancelToken: source.token }
-    )
-    .then(res =>
-      dispatch({
-        type: types.GET_STATS_DATA,
-        payload: res.data
-      })
-    )
-    .catch(err => console.log(err));
-};
-
 ///////// SET GLOBAL STRATUM, USER CONFIGS /////////////////////
-
 export const setStratumHostPort = (host, port) => {
   return {
     type: types.SET_STRATUM_HOST_PORT,
-    payload: [{ host: host }, { port: port}]
+    payload: [{ host: host }, { port: port }]
   };
 };
 
@@ -641,7 +487,6 @@ export const setSubUser = subuser => {
 };
 
 /////// GET ESTIMATE ///////////////////////////////
-
 export const getEstimate = (
   duration,
   hashrate,

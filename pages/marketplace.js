@@ -20,7 +20,7 @@ import {
   setThemeColors,
   setToken,
   setSubUser } from "../actions/warihashApiCalls";
-import { FaRegClock, FaBitcoin, FaQuestionCircle, FaWallet } from "react-icons/fa";
+import { FaRegClock, FaBitcoin, FaWallet } from "react-icons/fa";
 import { TiFlash } from "react-icons/ti";
 import { Router } from "../routes";
 import MiningAlgoDropDown from "../components/tools/MiningAlgoDropDown";
@@ -440,22 +440,6 @@ class Marketplace extends React.Component {
       return (this.props.configs &&
         this.props.configs[this.props.miningalgo.algorithm])
     };
-    
-    checkNestedAvailable = () => {
-      return (
-        this.props.stats &&
-        this.props.stats.available &&
-        this.props.stats.available[this.props.miningalgo.algorithm]
-      )
-    };
-
-    bestAvailableRate = () => {
-      return (
-        this.props.stats &&
-        this.props.stats.best_offer && 
-        (this.props.stats || {}).best_offer[this.props.miningalgo.algorithm]
-      )
-    };
 
     maxDurationCheck = () => {
       return (
@@ -500,7 +484,7 @@ class Marketplace extends React.Component {
       durationunit,
       location
     } = this.state;
-    const { miningalgo, configs, stats } = this.props;
+    const { miningalgo, configs } = this.props;
     
     let hashrateExampleText = "";
     
@@ -565,11 +549,10 @@ class Marketplace extends React.Component {
             padding-left: 0px; 
             padding-top: 0px; 
             position: relative; 
-            right: -33.5px;
           }
           .estimate-container {
-            padding-left: 68px;
-            padding-right: 45px;
+            padding-left: 0px;
+            padding-right: 35px;
           }
           .miningalgo-selector-container {
             display: block;
@@ -580,10 +563,6 @@ class Marketplace extends React.Component {
           .specify-limit {
             margin-top: 8px; 
             margin-left: 0px; 
-            padding-left: 0%; 
-            position: relative; 
-            left: 90px;
-            top: 6px;
           }
 
           .nav-buttons {
@@ -602,6 +581,11 @@ class Marketplace extends React.Component {
           .nav-bar {
             display: inline-block;
             font-size: 13px;
+          }
+
+          .limitinput {
+            text-align: right;
+            margin-left: 157px;
           }
 
           .number-circle {
@@ -829,10 +813,7 @@ class Marketplace extends React.Component {
             }
 
             .limit-price-container {
-              margin-top: 8px; 
               padding-left: 0px; 
-              position: relative; 
-              left: 9px; 
             }
 
             .addpaddingleft {
@@ -884,11 +865,6 @@ class Marketplace extends React.Component {
               .bordertop {
                 border-top: none;
                 padding-top: 16px; 
-              }
-
-              .limit-price-container {
-                position: relative; 
-                left: -15.5px;
               }
 
               .refund-address-container {
@@ -1001,17 +977,12 @@ class Marketplace extends React.Component {
                 position: relative; 
                 left: 12px;
               }
+            }
 
+            @media (max-width: 1003px) {
               .limitinput {
-                text-align: left;
-              }
-
-              .limit-price-container {
-                margin-top: 8px; 
-                margin-left: 0px; 
-                padding-left: 0px; 
-                position: relative; 
-                left: 0px;
+                text-align: right;
+                margin-left: 0px;
               }
             }
 
@@ -1082,8 +1053,8 @@ class Marketplace extends React.Component {
      configs[miningalgo.algorithm][minerLocations[0].value] !== undefined ?
                      
         <div>
-        <div className="container">
-          <div className="row">
+        <div className="container" style={{paddingTop: "0px"}}>
+          <div className="row" style={{paddingTop: "0px"}}>
           <div className="col-sm-12 col-12 d-xl-none d-lg-none d-md-none d-sm-inline d-inline addpaddingleftmenu" 
              style={{paddingTop: "11.5px"}}>
                <br />
@@ -1096,7 +1067,7 @@ class Marketplace extends React.Component {
              </button>
              </div>
 
-             <div className="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12" > 
+             <div className="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12" > 
               {/******* MINING ALGORITHM SELECTOR *********/}
                <div className="miningalgo-selector-container addpaddingleft">
                   <h4 className="marketplacetitle">Buy Hashing Power for</h4>
@@ -1106,7 +1077,7 @@ class Marketplace extends React.Component {
                 </div>
                 {/******* MINING ALGORITHM SELECTOR END *********/}
              </div>
-             <div className="col-xl-5 col-lg-5 col-md-5 d-xl-inline d-lg-inline d-md-inline d-sm-none d-none" 
+             <div className="col-xl-4 col-lg-4 col-md-4 d-xl-inline d-lg-inline d-md-inline d-sm-none d-none" 
              style={{paddingTop: "11.5px", paddingLeft: "60px"}}>
                <br />
                <br />
@@ -1131,10 +1102,7 @@ class Marketplace extends React.Component {
 
             <div className="container">
               <div className="row">
-              { this.checkNestedAvailable() &&
-                stats.available[miningalgo.algorithm].hashrate !== undefined &&
-                stats.available[miningalgo.algorithm].hashrate === "0.0000" ||
-                this.checkNestedConfigs() &&
+              { this.checkNestedConfigs() &&
                 configs[miningalgo.algorithm]['NA East'] &&
                 configs[miningalgo.algorithm]['NA East'][durationunit].hashrate_min === null &&
                 configs[miningalgo.algorithm]['NA West'] &&
@@ -1161,7 +1129,6 @@ class Marketplace extends React.Component {
               <p style={{fontWeight: "bold",
               fontSize: "0.85em"}}>Currently, no hashing power is available for this algorithm. Please check again later.
               <br /> You can still buy hashing power for different mining algorithms.</p>
-           
               </div> 
            </div>
        </div>
@@ -1560,11 +1527,8 @@ class Marketplace extends React.Component {
                 
         <div className="container-fluid">
           <div className="row refund-address-container">
-          
-                <div className="offset-xl-6 col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12" 
-                style={{paddingRight: "0px"}}>
-                  <div className="form-group" 
-                  style={{paddingRight: "0px"}}>
+            <div className="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12" style={{paddingRight: "0px"}}>
+                  <div className="form-group" style={{paddingRight: "0px"}}>
                     <label htmlFor="refund_address" className="inputlabel">
                       Bitcoin Refund Address:
                     </label>
@@ -1608,7 +1572,6 @@ class Marketplace extends React.Component {
                         required
                       />
                     </div>
-
                     {this.props.errors.refund_address !== undefined ? <p className="is-invalid-error add-padding-left">
                       {this.props.errors.refund_address}</p> : null}
                       <p style={{
@@ -1619,22 +1582,114 @@ class Marketplace extends React.Component {
                         maxWidth: "400px"
                       }}>Partial and Full refund will be sent to this address, in case we cannot deliver the full hashing power purchased.</p>
                   </div>
-                
-         
                 </div>
                         
-                       
-              
+    <div className="col-xl-6 col-lg-10 col-md-10 col-12">
+      <div className="text-xl-left text-lg-left text-md-left text-left estimate-container">
+        <div className="extrapadding">
+          <div className="container-fluid estimate-containerdiv" style={{paddingLeft: "0px", paddingRight: "0px"}}>
+          <div className="bordertop"></div>
+            <div className="row rowpaddings">
+              <div className="col-xl-5 col-lg-5 col-md-5 col-5" 
+                style={{paddingLeft: "3px", paddingRight: "0px"}}>
+                    <div className="iconcontainers">
+                      <FaBitcoin style={{
+                        display: "inline-block",
+                        fontSize: "1.18em",
+                        opacity: "1",
+                        color: "black",
+                        marginRight: "16px",
+                        marginLeft: "2px"
+                      }} />
+                      </div>
+                        <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
+                          Estimated Cost:
+                          </h6>{" "}
+                      </div>
+                      <div className="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-7 text-left">
+                      <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
+                        {this.props.estimate.price === undefined ? "- - - - - - - " : this.props.estimate.price.total_payment_amount} BTC</h6>
+                      </div>
 
-      <div className="col-xl-12 col-lg-12 col-md-12 col-12" 
-          style={{ paddingRight: "0px", paddingLeft: "0px" }}>
 
-          <div className="container">
-              <div className="row">
-              <div className="specify-limit offset-xl-2 col-xl-10 col-lg-12 col-md-12 col-sm-12 col-12 text-xl-right text-lg-left text-md-left text-left"
-              style={{marginBottom: "25px"}}>
+                            <div className="col-xl-5 col-lg-5 col-md-5 col-5" 
+                            style={{paddingLeft: "3px", paddingRight: "0px"}}>
+                                <div className="iconcontainers">
+                            <FaBitcoin style={{
+                              display: "inline-block",
+                              fontSize: "1.18em",
+                              opacity: "0",
+                              marginRight: "16px",
+                              marginLeft: "2px"
+                            }} /> 
+                            </div>
+                              <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
+                              Estimated Rate:
+                               </h6>{" "}
+                            </div>
+                            <div className="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-7 text-left">
+                              <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
+                              {this.props.estimate.price === undefined ? "- - - - - - - " : this.props.estimate.price.average_price} <BTCPaymentRate />
+                              </h6>
+                            </div>
+
+                           <div className="col-xl-12 col-lg-12 col-md-12 col-12">
+                           <p style={{ fontSize: "0.73em", opacity: "0.7", marginTop: "7px"}}>
+                      Estimate is based on latest available rate. May change when continuing to payment.
+                      </p>
+                           </div>
+
+                           <CSRFToken />
+                    <div className="col-xl-12 col-lg-7 col-md-7 col-sm-7 col-7 text-right" 
+                    style={{paddingRight: "58px", marginTop: "0px"}}>
+                       <button
+                        disabled={this.state.formloading}
+                        className="btn btn-info nooutline buybtn"
+                        type="submit"
+                        style={{position: "relative", left: "0px"}}
+                      >
+                        {this.state.formloading === true
+                          ? <ThreeDotsLoading />
+                          : <p style={{ paddingBottom: "0px", marginBottom: "0px" }}>Continue to Payment</p>}
+                      </button>
+                      </div>
+                        </div>
+                      </div>
+                     
+                     
+                    </div>     
+                         
+                    
+
+                      <div className="text-center"
+                            style={{ paddingTop: "25px", paddingBottom: "0px" }}>
+
+                           {this.props.time.message !== null ? 
+                           <p className="is-invalid-error add-padding-left">{this.props.time.message}</p> : null}
+                           
+                           {this.state.networkerror !== "" ? 
+                           <p className="is-invalid-error add-padding-left">{this.state.networkerror}</p> : null}
+                           {this.props.errors.errors !== null &&
+                           this.props.errors !== undefined &&
+                           this.props.payment.bid_id === undefined &&
+                           this.state.networkerror === "" &&
+                                fielderrors != "hashrate" &&
+                                fielderrors != "duration" &&
+                                fielderrors != "username" &&
+                                fielderrors != "password" &&
+                                fielderrors != "discount_code" &&
+                                fielderrors != "price" &&
+                               this.props.errors.host === undefined &&
+                               this.props.errors.port === undefined 
+                                ? <p className="is-invalid-error add-padding-left">
+                               {fielderrorsReason} </p>
+                                : null}
+                          </div>
+
+
+                          <div className="specify-limit text-xl-right text-lg-left text-md-left text-left"
+              style={{marginBottom: "25px", width: "100%", paddingRight: "25px"}}>
                    <label>
-
                         <span style={{
                             fontSize: "0.83em",
                             marginLeft: "0px",
@@ -1679,16 +1734,15 @@ class Marketplace extends React.Component {
 
                   {this.state.checked === true ? 
               <div className="container-fluid">
-                <div className="offset-xl-8 col-xl-4 limit-price-container">
-                <div className="text-xl-right text-lg-left text-md-left text-left">
+               <div className="row">
+                <div className="col-xl-12 limit-price-container">
                   <div className="form-group">
                     <label htmlFor="limit_price" 
                     className="inputlabel limitpricelabel"
                     style={{ position: "relative" }}>
                       Limit Price in <PaymentRate />
                     </label>
-                    <div
-                      className={
+                    <div className={
                         pricefocus === true
                           ? "input-group input-group-md limitinput focused"
                           : "input-group input-group-md limitinput"
@@ -1748,144 +1802,25 @@ class Marketplace extends React.Component {
                         marginTop: "8px"
                       }}>If a limit price is specified you will only be matched with miners that have rates equal to or less than the specified price.
                       </p>
+                      <br />
                   </div>
                   </div>
                   </div>
+            
                   </div> : null}
 
-
-                    </div>
-
-      <div className="offset-xl-5 col-xl-6 col-lg-12 col-md-12 col-12 text-xl-left text-lg-left text-md-left text-left estimate-container">
-        <div className="extrapadding">
-          <div className="container-fluid estimate-containerdiv" style={{paddingLeft: "0px", paddingRight: "0px"}}>
-          <div className="bordertop"></div>
-            <div className="row rowpaddings">
-              <div className="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-5" 
-                style={{paddingLeft: "3px", paddingRight: "0px"}}>
-                    <div className="iconcontainers">
-                      <FaBitcoin style={{
-                        display: "inline-block",
-                        fontSize: "1.18em",
-                        opacity: "1",
-                        color: "black",
-                        marginRight: "16px",
-                        marginLeft: "2px"
-                      }} />
-                      </div>
-                        <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
-                          Estimated Cost:
-                          </h6>{" "}
-                      </div>
-                      <div className="col-xl-7 col-lg-6 col-md-6 col-sm-7 col-7 text-left">
-                      <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
-                        {this.props.estimate.price === undefined ? "- - - - - - - " : this.props.estimate.price.total_payment_amount} BTC</h6>
-                      </div>
-
-
-                            <div className="col-xl-5 col-lg-6 col-md-6 col-sm-5 col-5" 
-                            style={{paddingLeft: "3px", paddingRight: "0px"}}>
-                                <div className="iconcontainers">
-                            <FaBitcoin style={{
-                              display: "inline-block",
-                              fontSize: "1.18em",
-                              opacity: "0",
-                              marginRight: "16px",
-                              marginLeft: "2px"
-                            }} /> 
-                            </div>
-                              <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
-                              Estimated Rate:
-                               </h6>{" "}
-                            </div>
-                            <div className="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-7 text-left">
-                              <h6 style={{ display: "inline-block", fontSize: "0.78em" }}>
-                              {this.props.estimate.price === undefined ? "- - - - - - - " : this.props.estimate.price.average_price} <BTCPaymentRate />
-                              </h6>
-                            </div>
-
-                           <div className="col-xl-12 col-lg-12 col-md-12 col-12">
-                           <p style={{ fontSize: "0.73em", opacity: "0.7", marginTop: "7px"}}>
-                      Estimate is based on latest available rate. May change when continuing to payment.
-                      </p>
-                           </div>
-                        </div>
-                      </div>
-                     
-                     
-                    </div>     
-                         
-                    <CSRFToken />
-                    <div style={{width: "100%", textAlign: "right"}}>
-                       <button
-                        disabled={this.state.formloading}
-                        className="btn btn-info nooutline buybtn"
-                        type="submit"
-                        style={{position: "relative", left: "0px"}}
-                      >
-                        {this.state.formloading === true
-                          ? <ThreeDotsLoading />
-                          : <p style={{ paddingBottom: "0px", marginBottom: "0px" }}>Continue to Payment</p>}
-                      </button>
-                      </div>
-
-                      <div className="text-center"
-                            style={{ paddingTop: "25px", paddingBottom: "0px" }}>
-
-                           {this.props.time.message !== null ? 
-                           <p className="is-invalid-error add-padding-left">{this.props.time.message}</p> : null}
-                           
-                           {this.state.networkerror !== "" ? 
-                           <p className="is-invalid-error add-padding-left">{this.state.networkerror}</p> : null}
-                           {this.props.errors.errors !== null &&
-                           this.props.errors !== undefined &&
-                           this.props.payment.bid_id === undefined &&
-                           this.state.networkerror === "" &&
-                                fielderrors != "hashrate" &&
-                                fielderrors != "duration" &&
-                                fielderrors != "username" &&
-                                fielderrors != "password" &&
-                                fielderrors != "discount_code" &&
-                                fielderrors != "price" &&
-                               this.props.errors.host === undefined &&
-                               this.props.errors.port === undefined 
-                                ? <p className="is-invalid-error add-padding-left">
-                               {fielderrorsReason} </p>
-                                : null}
-                          </div>
-                          <br />
-                          <br />    
-
-
-                            </div>
-
-                          </div>
-
-
-                           
-                           
-
-                            </div>
-                           </div>
-
-
-                        </div>
-                      </div>
-
-                    
-
+                     </div>
+                     </div>
+                     </div>
+                     </div>
+                     </div>
 
                         </form> 
             </div>   }
           </div>
          </div> 
-         
-
-
          </div> : 
-         
-         <div 
-         style={{width: "100vw", height: "100vh", 
+         <div style={{width: "100vw", height: "100vh", 
          textAlign: "center", position: "absolute", 
          top: "0"}}>
             <img
@@ -1942,7 +1877,6 @@ Marketplace.propTypes = {
   form: PropTypes.object,
   time: PropTypes.object,
   profile: PropTypes.object,
-  stats: PropTypes.object,
   payment: PropTypes.object,
   settings: PropTypes.object,
   theme: PropTypes.object,
@@ -1959,7 +1893,6 @@ const mapStateToProps = state => ({
   form: state.form,
   time: state.time,
   profile: state.profile,
-  stats: state.stats,
   payment: state.payment,
   settings: state.settings,
   theme: state.theme,

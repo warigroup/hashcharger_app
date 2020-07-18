@@ -155,7 +155,6 @@ class InvoicePage extends React.Component {
               <div className="container">
                   <div className="row">
                       <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style={{marginTop: "56px"}}>   
-
                 <div>
                 <style jsx>
                     {`
@@ -494,17 +493,9 @@ class InvoicePage extends React.Component {
                   </p>
                      </div>
                      <br />        
-                     <div>
-                            
-                     
-                        
-                        </div>
-
                          </div>
                         </div>
                       </div>
-                                        
-                
                   </div>
                 );
               }
@@ -512,11 +503,8 @@ class InvoicePage extends React.Component {
           }
 
                     </div>
-                   
-                  
-
-                        <br />
-                        <br />
+                    <br />
+                    <br />
                   </div>
               </div>
           </div>
