@@ -583,6 +583,11 @@ class Marketplace extends React.Component {
             font-size: 13px;
           }
 
+          .limitinput {
+            text-align: right;
+            margin-left: 157px;
+          }
+
           .number-circle {
             border: 2.5px solid ${this.props.theme.navtexts};
             border-radius: 50%;
@@ -809,8 +814,6 @@ class Marketplace extends React.Component {
 
             .limit-price-container {
               padding-left: 0px; 
-              position: relative; 
-              left: 9px; 
             }
 
             .addpaddingleft {
@@ -974,9 +977,12 @@ class Marketplace extends React.Component {
                 position: relative; 
                 left: 12px;
               }
+            }
 
+            @media (max-width: 1003px) {
               .limitinput {
                 text-align: right;
+                margin-left: 0px;
               }
             }
 
@@ -1047,8 +1053,8 @@ class Marketplace extends React.Component {
      configs[miningalgo.algorithm][minerLocations[0].value] !== undefined ?
                      
         <div>
-        <div className="container">
-          <div className="row">
+        <div className="container" style={{paddingTop: "0px"}}>
+          <div className="row" style={{paddingTop: "0px"}}>
           <div className="col-sm-12 col-12 d-xl-none d-lg-none d-md-none d-sm-inline d-inline addpaddingleftmenu" 
              style={{paddingTop: "11.5px"}}>
                <br />
@@ -1635,7 +1641,7 @@ class Marketplace extends React.Component {
 
                            <CSRFToken />
                     <div className="col-xl-12 col-lg-7 col-md-7 col-sm-7 col-7 text-right" 
-                    style={{paddingRight: "45px"}}>
+                    style={{paddingRight: "58px", marginTop: "0px"}}>
                        <button
                         disabled={this.state.formloading}
                         className="btn btn-info nooutline buybtn"
@@ -1684,7 +1690,6 @@ class Marketplace extends React.Component {
                           <div className="specify-limit text-xl-right text-lg-left text-md-left text-left"
               style={{marginBottom: "25px", width: "100%", paddingRight: "25px"}}>
                    <label>
-
                         <span style={{
                             fontSize: "0.83em",
                             marginLeft: "0px",
@@ -1729,7 +1734,7 @@ class Marketplace extends React.Component {
 
                   {this.state.checked === true ? 
               <div className="container-fluid">
-                <div className="row">
+               <div className="row">
                 <div className="col-xl-12 limit-price-container">
                   <div className="form-group">
                     <label htmlFor="limit_price" 
@@ -1742,7 +1747,7 @@ class Marketplace extends React.Component {
                           ? "input-group input-group-md limitinput focused"
                           : "input-group input-group-md limitinput"
                       }
-                      style={{maxWidth: "285px", marginLeft: "155px"}}
+                      style={{maxWidth: "285px"}}
                     >
                       <div className="input-group-prepend">
                         <span
@@ -1804,30 +1809,18 @@ class Marketplace extends React.Component {
             
                   </div> : null}
 
-
-                    </div>
-
-                            </div>
-                           </div>
-
-
-                        </div>
-                      </div>
-
-                    
-
+                     </div>
+                     </div>
+                     </div>
+                     </div>
+                     </div>
 
                         </form> 
             </div>   }
           </div>
          </div> 
-         
-
-
          </div> : 
-         
-         <div 
-         style={{width: "100vw", height: "100vh", 
+         <div style={{width: "100vw", height: "100vh", 
          textAlign: "center", position: "absolute", 
          top: "0"}}>
             <img
