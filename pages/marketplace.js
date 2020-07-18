@@ -1578,7 +1578,7 @@ class Marketplace extends React.Component {
                   </div>
                 </div>
                         
-    <div className="col-xl-6 col-lg-12 col-md-12 col-12">
+    <div className="col-xl-6 col-lg-10 col-md-10 col-12">
       <div className="text-xl-left text-lg-left text-md-left text-left estimate-container">
         <div className="extrapadding">
           <div className="container-fluid estimate-containerdiv" style={{paddingLeft: "0px", paddingRight: "0px"}}>
@@ -1632,14 +1632,10 @@ class Marketplace extends React.Component {
                       Estimate is based on latest available rate. May change when continuing to payment.
                       </p>
                            </div>
-                        </div>
-                      </div>
-                     
-                     
-                    </div>     
-                         
-                    <CSRFToken />
-                    <div style={{width: "100%", textAlign: "right", paddingRight: "45px"}}>
+
+                           <CSRFToken />
+                    <div className="col-xl-12 col-lg-7 col-md-7 col-sm-7 col-7 text-right" 
+                    style={{paddingRight: "45px"}}>
                        <button
                         disabled={this.state.formloading}
                         className="btn btn-info nooutline buybtn"
@@ -1651,6 +1647,13 @@ class Marketplace extends React.Component {
                           : <p style={{ paddingBottom: "0px", marginBottom: "0px" }}>Continue to Payment</p>}
                       </button>
                       </div>
+                        </div>
+                      </div>
+                     
+                     
+                    </div>     
+                         
+                    
 
                       <div className="text-center"
                             style={{ paddingTop: "25px", paddingBottom: "0px" }}>
