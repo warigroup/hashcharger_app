@@ -808,7 +808,6 @@ class Marketplace extends React.Component {
             }
 
             .limit-price-container {
-              margin-top: 8px; 
               padding-left: 0px; 
               position: relative; 
               left: 9px; 
@@ -863,11 +862,6 @@ class Marketplace extends React.Component {
               .bordertop {
                 border-top: none;
                 padding-top: 16px; 
-              }
-
-              .limit-price-container {
-                position: relative; 
-                left: -15.5px;
               }
 
               .refund-address-container {
@@ -982,15 +976,7 @@ class Marketplace extends React.Component {
               }
 
               .limitinput {
-                text-align: left;
-              }
-
-              .limit-price-container {
-                margin-top: 8px; 
-                margin-left: 0px; 
-                padding-left: 0px; 
-                position: relative; 
-                left: 0px;
+                text-align: right;
               }
             }
 
@@ -1747,16 +1733,15 @@ class Marketplace extends React.Component {
 
                   {this.state.checked === true ? 
               <div className="container-fluid">
+                <div className="row">
                 <div className="col-xl-12 limit-price-container">
-                <div className="text-xl-right text-lg-left text-md-left text-left">
                   <div className="form-group">
                     <label htmlFor="limit_price" 
                     className="inputlabel limitpricelabel"
                     style={{ position: "relative" }}>
                       Limit Price in <PaymentRate />
                     </label>
-                    <div
-                      className={
+                    <div className={
                         pricefocus === true
                           ? "input-group input-group-md limitinput focused"
                           : "input-group input-group-md limitinput"
