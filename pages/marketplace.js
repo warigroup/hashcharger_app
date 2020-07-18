@@ -549,7 +549,6 @@ class Marketplace extends React.Component {
             padding-left: 0px; 
             padding-top: 0px; 
             position: relative; 
-            right: -33.5px;
           }
           .estimate-container {
             padding-left: 68px;
@@ -564,10 +563,6 @@ class Marketplace extends React.Component {
           .specify-limit {
             margin-top: 8px; 
             margin-left: 0px; 
-            padding-left: 0%; 
-            position: relative; 
-            left: 90px;
-            top: 6px;
           }
 
           .nav-buttons {
@@ -1600,137 +1595,10 @@ class Marketplace extends React.Component {
                        
               
 
-      <div className="col-xl-12 col-lg-12 col-md-12 col-12" 
-          style={{ paddingRight: "0px", paddingLeft: "0px" }}>
+      <div className="col-xl-6 col-lg-12 col-md-12 col-12">
+            
 
-          <div className="container">
-              <div className="row">
-              <div className="specify-limit offset-xl-2 col-xl-10 col-lg-12 col-md-12 col-sm-12 col-12 text-xl-right text-lg-left text-md-left text-left"
-              style={{marginBottom: "25px"}}>
-                   <label>
-
-                        <span style={{
-                            fontSize: "0.83em",
-                            marginLeft: "0px",
-                            marginRight: "10px",
-                            position: "relative",
-                            top: "-1.2px",
-                            zIndex: "1423",
-                            display: "inline-block"
-                          }}
-                        >
-                         Specify limit price
-                        </span>
-                      </label>
-
-                  <div className="pretty p-svg p-curve" style={{position: "relative", top: "1.5px"}}>
-                    <input
-                      type="checkbox"
-                      onChange={this.handleCheck}
-                      defaultChecked={this.state.checked}
-                    />
-                    <div className="state p-success">
-                      <label>
-                        <span
-                          style={{
-                            fontSize: "0.83em",
-                            marginLeft: "7px",
-                            position: "relative",
-                            top: "0px",
-                            zIndex: "1423"
-                          }}
-                        >
-                        </span>
-                      </label>
-                      <svg className="svg svg-icon" viewBox="0 0 20 20" >
-                        <path
-                          d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"
-                          style={{ stroke: "white", fill: "white" }}
-                        />
-                      </svg>
-                    </div>
-                  </div>
-
-                  {this.state.checked === true ? 
-              <div className="container-fluid">
-                <div className="offset-xl-8 col-xl-4 limit-price-container">
-                <div className="text-xl-right text-lg-left text-md-left text-left">
-                  <div className="form-group">
-                    <label htmlFor="limit_price" 
-                    className="inputlabel limitpricelabel"
-                    style={{ position: "relative" }}>
-                      Limit Price in <PaymentRate />
-                    </label>
-                    <div
-                      className={
-                        pricefocus === true
-                          ? "input-group input-group-md limitinput focused"
-                          : "input-group input-group-md limitinput"
-                      }
-                      style={{maxWidth: "285px"}}
-                    >
-                      <div className="input-group-prepend">
-                        <span
-                          className="input-group-text"
-                          style={{
-                            background: "white",
-                            border: "none",
-                            color: "rgba(0,0,0,0.5)"
-                          }}
-                        >
-                          <FaBitcoin style={pricefocus === true ?
-                           { fontSize: "1.3em", opacity: "1" } : 
-                           { fontSize: "1.3em", opacity: "0.8" }} />
-                        </span>
-                      </div>
-                      <input
-                        type="text"
-                        placeholder="Example: 0.0015"
-                        name="limit_price"
-                        value={this.state.limit_price}
-                        onChange={this.handleChange}
-                        className="form-control inputstyles2"
-                        style={{
-                          border: "none",
-                          borderRadius: "7px",
-                          fontSize: "0.82em"
-                        }}
-                        onFocus={this.handlePriceFocus}
-                        onBlur={this.handlePriceBlur}
-                        autoComplete="off"
-                      /><p style={{paddingTop: "0px", 
-                      paddingBottom: "0px", 
-                      marginBottom: "0px",
-                      position: "relative",
-                      fontSize: "0.92em",
-                      top: "5.9px",
-                      right: "13px", 
-                      zIndex: "222"}}>
-                        BTC
-                        </p>
-                    </div>
-
-                        {this.props.errors.price !== undefined ? 
-                        <p className="is-invalid-error add-padding-left">
-                          {this.props.errors.price}
-                        </p> : null}
-
-                        <p style={{
-                        fontSize: "0.7em",
-                        color: "rgba(0,0,0,0.6)",
-                        marginLeft: "5px",
-                        marginTop: "8px"
-                      }}>If a limit price is specified you will only be matched with miners that have rates equal to or less than the specified price.
-                      </p>
-                  </div>
-                  </div>
-                  </div>
-                  </div> : null}
-
-
-                    </div>
-
-      <div className="offset-xl-5 col-xl-6 col-lg-12 col-md-12 col-12 text-xl-left text-lg-left text-md-left text-left estimate-container">
+      <div className="text-xl-left text-lg-left text-md-left text-left estimate-container">
         <div className="extrapadding">
           <div className="container-fluid estimate-containerdiv" style={{paddingLeft: "0px", paddingRight: "0px"}}>
           <div className="bordertop"></div>
@@ -1831,13 +1699,130 @@ class Marketplace extends React.Component {
                           <br />    
 
 
-                            </div>
+                          <div className="specify-limit text-xl-right text-lg-left text-md-left text-left"
+              style={{marginBottom: "25px", width: "100%"}}>
+                   <label>
 
-                          </div>
+                        <span style={{
+                            fontSize: "0.83em",
+                            marginLeft: "0px",
+                            marginRight: "10px",
+                            position: "relative",
+                            top: "-1.2px",
+                            zIndex: "1423",
+                            display: "inline-block"
+                          }}
+                        >
+                         Specify limit price
+                        </span>
+                      </label>
+
+                  <div className="pretty p-svg p-curve" style={{position: "relative", top: "1.5px"}}>
+                    <input
+                      type="checkbox"
+                      onChange={this.handleCheck}
+                      defaultChecked={this.state.checked}
+                    />
+                    <div className="state p-success">
+                      <label>
+                        <span
+                          style={{
+                            fontSize: "0.83em",
+                            marginLeft: "7px",
+                            position: "relative",
+                            top: "0px",
+                            zIndex: "1423"
+                          }}
+                        >
+                        </span>
+                      </label>
+                      <svg className="svg svg-icon" viewBox="0 0 20 20" >
+                        <path
+                          d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"
+                          style={{ stroke: "white", fill: "white" }}
+                        />
+                      </svg>
+                    </div>
+                  </div>
+
+                  {this.state.checked === true ? 
+              <div className="container-fluid">
+                <div className="col-xl-12 limit-price-container">
+                <div className="text-xl-right text-lg-left text-md-left text-left">
+                  <div className="form-group">
+                    <label htmlFor="limit_price" 
+                    className="inputlabel limitpricelabel"
+                    style={{ position: "relative" }}>
+                      Limit Price in <PaymentRate />
+                    </label>
+                    <div
+                      className={
+                        pricefocus === true
+                          ? "input-group input-group-md limitinput focused"
+                          : "input-group input-group-md limitinput"
+                      }
+                      style={{maxWidth: "285px"}}
+                    >
+                      <div className="input-group-prepend">
+                        <span
+                          className="input-group-text"
+                          style={{
+                            background: "white",
+                            border: "none",
+                            color: "rgba(0,0,0,0.5)"
+                          }}
+                        >
+                          <FaBitcoin style={pricefocus === true ?
+                           { fontSize: "1.3em", opacity: "1" } : 
+                           { fontSize: "1.3em", opacity: "0.8" }} />
+                        </span>
+                      </div>
+                      <input
+                        type="text"
+                        placeholder="Example: 0.0015"
+                        name="limit_price"
+                        value={this.state.limit_price}
+                        onChange={this.handleChange}
+                        className="form-control inputstyles2"
+                        style={{
+                          border: "none",
+                          borderRadius: "7px",
+                          fontSize: "0.82em"
+                        }}
+                        onFocus={this.handlePriceFocus}
+                        onBlur={this.handlePriceBlur}
+                        autoComplete="off"
+                      /><p style={{paddingTop: "0px", 
+                      paddingBottom: "0px", 
+                      marginBottom: "0px",
+                      position: "relative",
+                      fontSize: "0.92em",
+                      top: "5.9px",
+                      right: "13px", 
+                      zIndex: "222"}}>
+                        BTC
+                        </p>
+                    </div>
+
+                        {this.props.errors.price !== undefined ? 
+                        <p className="is-invalid-error add-padding-left">
+                          {this.props.errors.price}
+                        </p> : null}
+
+                        <p style={{
+                        fontSize: "0.7em",
+                        color: "rgba(0,0,0,0.6)",
+                        marginLeft: "5px",
+                        marginTop: "8px"
+                      }}>If a limit price is specified you will only be matched with miners that have rates equal to or less than the specified price.
+                      </p>
+                  </div>
+                  </div>
+                  </div>
+                  </div> : null}
 
 
-                           
-                           
+                    </div>
 
                             </div>
                            </div>
