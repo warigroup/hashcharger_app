@@ -861,6 +861,11 @@ class Marketplace extends React.Component {
               padding-right: 35px;
             }
 
+            .continue-btn {
+              padding-right: 58px; 
+              margin-top: 0px;
+            }
+
             @media (max-width: 1203px) {
               .estimate-containerdiv {
                 padding-top: 16px; 
@@ -1019,6 +1024,10 @@ class Marketplace extends React.Component {
                 padding-bottom: 0px; 
                 padding-left: 10px; 
                 padding-right: 10px;
+              }
+              .continue-btn {
+                padding-right: 0px; 
+                margin-top: 0px;
               }
             }
 
@@ -1657,8 +1666,7 @@ class Marketplace extends React.Component {
                            </div>
 
                            <CSRFToken />
-                    <div className="col-xl-12 col-lg-7 col-md-7 col-sm-7 col-7 text-right" 
-                    style={{paddingRight: "58px", marginTop: "0px"}}>
+                    <div className="col-xl-12 col-lg-10 col-md-10 col-12 text-xl-right text-left continue-btn">
                        <button
                         disabled={this.state.formloading}
                         className="btn btn-info nooutline buybtn"
