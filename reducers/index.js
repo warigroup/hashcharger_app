@@ -11,7 +11,6 @@ import timeReducer from './timeReducer';
 import hashrateReducer from './hashrateReducer';
 import paymentReducer from './paymentReducer';
 import bidsReducer from './bidsReducer';
-import statsReducer from './statsReducer';
 import globalStratumConfigs from './globalStratumConfigs';
 import themeReducer from './themeReducer';
 import tokenReducer from './tokenReducer';
@@ -31,7 +30,6 @@ export default combineReducers({
 	time: timeReducer,
 	payment: paymentReducer,
 	bids: bidsReducer,
-	stats: statsReducer,
 	settings: globalStratumConfigs,
 	theme: themeReducer,
 	token: tokenReducer,
