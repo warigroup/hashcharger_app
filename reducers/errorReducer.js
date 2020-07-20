@@ -2,9 +2,7 @@ import {
 	CLEAR_ERRORS_SHOW_ALERT,
 	CLEAR_ALERT,
 	GET_ERRORS,
-	RESET_ERRORS,
-	CLEAR_ERRORS_ORDER_CANCEL,
-	ORDER_CANCEL_FAIL
+	RESET_ERRORS
 } from '../actions/types';
 
 const initialState = {
@@ -21,16 +19,6 @@ export default function(state = initialState, action) {
 			return {
 				alertnow: 'alertnow',
 				cancelfail: null
-			};
-		case CLEAR_ERRORS_ORDER_CANCEL:
-			return {
-				alertnow: 'ordercancel',
-				cancelfail: null
-			};
-		case ORDER_CANCEL_FAIL:
-			return {
-				errors: action.payload,
-				cancelfail: 'cancelfail'
 			};
 		case CLEAR_ALERT:
 			return {
