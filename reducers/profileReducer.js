@@ -1,4 +1,4 @@
-import { CLEAR_CURRENT_PROFILE, GET_PROFILE, GET_SETTLEMENTS_PROFILE, SET_RECENT_INVOICE_ID } from '../actions/types';
+import { CLEAR_CURRENT_PROFILE, GET_PROFILE, SET_RECENT_INVOICE_ID } from '../actions/types';
 
 const initialState = {
 	profile: { username: '', is_staff: false },
@@ -24,11 +24,6 @@ export default function(state = initialState, action) {
 				profile_loaded: false,
 				miners: [],
 				miners_loaded: false
-			};
-		case GET_SETTLEMENTS_PROFILE:
-			return {
-				...state,
-				settlements: action.payload
 			};
 		case SET_RECENT_INVOICE_ID:
 			return {
