@@ -10,3 +10,5 @@
 # Ignore next.js production folder
 /.next
 
+cypress/videos
+cypress/screenshots
