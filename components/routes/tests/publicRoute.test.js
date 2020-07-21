@@ -12,7 +12,7 @@ Router.router = mockedRouter
 //// create mocked redux store ////////
 const mockStore = configureMockStore([thunk]);
 
-describe('PublicRoute component accessed by non-authenticated user', () => {
+describe('PublicRoute component accessed by unauthenticated user', () => {
     /// set fake store for redux states ///////
     let store;
     beforeEach(() => {
@@ -37,7 +37,7 @@ describe('PublicRoute component accessed by non-authenticated user', () => {
             }
         });
     });
-    it('will show Navigation and Footer', () => {
+    it('render', () => {
         const wrapper = mount(
             <Provider store={store}>
                 <PublicRoute />
