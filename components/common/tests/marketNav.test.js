@@ -30,8 +30,8 @@ describe('MarketNav component', () => {
     );
     /// check if marketplace navigation menu is rendering correctly
     expect(wrapper.find(MarketNav).length).to.equal(1);
-    expect(wrapper.find('.marketplacenav')).to.have.lengthOf(2);
-    expect(wrapper.find('a')).to.have.lengthOf(2);
+    expect(wrapper.find('.marketplacenav')).to.have.lengthOf(3);
+    expect(wrapper.find('a')).to.have.lengthOf(3);
   });
 
 });
