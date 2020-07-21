@@ -11,19 +11,18 @@ describe("Buy hashing power", function() {
    
       // make sure to have some hashing power available in your SHA256d marketplace before running this test.
       // You can change hashing power input value here. 
-      let hashingpower = '250';
-      let myduration = '3';
-      cy.get('select[name="location"]').select('NA West')
+      let hashingpower = '900';
+      let refundaddress = '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2';
       cy.get('input[name="hashrate"]').type(hashingpower).should('have.value', hashingpower)
-      cy.get('input[name="duration"]').type(myduration).should('have.value', myduration)
-      // select duration unit
-      cy.get('select[name="durationunit"]').select('hour')
+      cy.get('input[name="refund_address"]').type(refundaddress).should('have.value', refundaddress)
+
  
       // Submit form
       cy.get('button:contains("Continue to Payment")').click({force: true})
       cy.wait(4000)
+      cy.get('button:contains("Continue to Payment")').click({force: true})
       // Confirm we're on invoice page.
-      cy.get('#invoice-order-id').should('exist')
+      cy.get('.invoice-section-title').should('exist')
     });
 
 });
