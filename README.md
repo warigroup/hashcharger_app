@@ -27,6 +27,18 @@ Install [Node.js](https://nodejs.org/en/), we currently use the latest release o
 - Deployment guideline:
 https://medium.com/@indiesk/deploying-a-nextjs-app-in-production-with-custom-server-using-nginx-and-pm2-786ccf9444c5
 
+## Running Cypress e2e tests (https://www.cypress.io/)
+
+Cypress is used to run e2e tests. To run the full suite execute: "npm run cypress-dashboard".
+Total two cmds should be running at the same time. 
+
+Requirements:
+* The test suite requires the --test flag passed to development_start when starting the api server.
+* Frontend server must be running at localhost:3000 using a different cmd with "npm run dev" command.
+* Execute "npm run cypress-dashboard" on third cmd while both front end and api server are running.
+
+To run a targeted test or only a subset of tests, the cypress dashboard can be accessed with "npm run cypress-dashboard". When the tests are run they create screenshots and compressed videos in cypress/screenshots and cypress/videos, these directories are excluded in git. 
+
 ## Running Jest unit tests (https://jestjs.io/) and Enzyme render tests (https://airbnb.io/enzyme/)
 
 To run the full suite execute: "npm run jest-test"
