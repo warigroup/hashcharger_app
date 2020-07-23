@@ -17,20 +17,11 @@ describe('PublicRoute component accessed by unauthenticated user', () => {
     let store;
     beforeEach(() => {
         store = mockStore({
-            auth: {
-                isAuthenticated: false
-            },
-            profile: {
-                profile: {
-                    username: "",
-                    is_staff: false
-                }
-            },
             configs: {
                 server_time: "2019-11-11T22:48:33+00:00"
             },
             nav: {
-                page: "loginpage"
+                page: "marketplacepage"
             },
             form: {
                 blocknav: "enable"

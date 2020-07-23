@@ -18,7 +18,7 @@ describe('MarketNav component', () => {
   beforeEach(() => {
     store = mockStore({
         nav: {
-            page: "markethistorypage"
+            page: "marketplacepage"
         }
     });
   });
