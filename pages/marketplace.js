@@ -829,7 +829,7 @@ class Marketplace extends React.Component {
             }
 
             .estimate-containerdiv {
-              padding-top: 16px; 
+              padding-top: 27px; 
               padding-left: 0px;
               padding-right: 0px;
             }
@@ -1613,7 +1613,7 @@ class Marketplace extends React.Component {
     <div className="col-xl-6 col-lg-10 col-md-10 col-12">
       <div className="text-xl-left text-lg-left text-md-left text-left estimate-container">
         <div className="extrapadding">
-          <div className="container-fluid estimate-containerdiv" style={{paddingLeft: "0px", paddingRight: "0px"}}>
+          <div className="container-fluid estimate-containerdiv">
           <div className="bordertop"></div>
             <div className="row rowpaddings">
               <div className="col-xl-5 col-lg-5 col-md-5 col-4" 
