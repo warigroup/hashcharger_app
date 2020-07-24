@@ -869,7 +869,7 @@ class Marketplace extends React.Component {
             @media (max-width: 1203px) {
               .estimate-containerdiv {
                 padding-top: 16px; 
-                padding-left: 15px;
+                padding-left: 0px;
                 padding-right: 0px;
                 border-top: none;
               }
@@ -888,8 +888,8 @@ class Marketplace extends React.Component {
               }
 
               .estimate-container {
-                padding-left: 27px;
-                padding-right: 25px;
+                padding-left: 0px;
+                padding-right: 0px;
               }
 
               .main-marketplace-form {
@@ -989,6 +989,9 @@ class Marketplace extends React.Component {
                 position: relative; 
                 left: 12px;
               }
+              .extrapadding {
+                padding-left: 0px;
+              }
             }
 
             @media (max-width: 1003px) {
@@ -996,17 +999,19 @@ class Marketplace extends React.Component {
                 text-align: right;
                 margin-left: 0px;
               }
+              
             }
 
             @media (max-width: 820px) {
               .iconcontainers {
                 display: none;
               }
+              
             }
 
             @media (max-width: 773px) {
               .estimate-containerdiv {
-                padding-left: 5px;
+                padding-left: 10px;
               }
               .extrapadding {
                 padding-left: 0px;
@@ -1016,9 +1021,7 @@ class Marketplace extends React.Component {
                 padding-left: 0px; 
                 padding-right: 0px;
               }
-              .limit-price-container {
-                margin-left: -17px; 
-              }
+              
               .bottom-error-message-box {
                 padding-top: 25px; 
                 padding-bottom: 0px; 
