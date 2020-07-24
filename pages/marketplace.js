@@ -559,7 +559,6 @@ class Marketplace extends React.Component {
             width: 100%;
             margin-top: 77px;
           }
-
           .specify-limit {
             margin-top: 8px; 
             margin-left: 0px; 
@@ -873,12 +872,10 @@ class Marketplace extends React.Component {
                 padding-right: 0px;
                 border-top: none;
               }
-
               .bordertop {
                 border-top: none;
                 padding-top: 16px; 
               }
-
               .refund-address-container {
                 padding-right: 0px; 
                 padding-left: 0px; 
@@ -886,28 +883,22 @@ class Marketplace extends React.Component {
                 position: relative;
                 left: 0px;
               }
-
               .estimate-container {
                 padding-left: 0px;
                 padding-right: 0px;
               }
-
               .main-marketplace-form {
                 padding-left: 10px;
               }
-
               .limitpricelabel {
                 left: 0px;
               }
-
               .addpaddingleft {
                 padding-left: 10px;
               }
-
               .addpaddingleftmenu {
                 padding-left: 16px;
               }
-
               .offerformlabel {
                 display: inline-block; 
                 margin-left: 15px;
@@ -967,7 +958,6 @@ class Marketplace extends React.Component {
               .miningalgo-selector-container {
                 margin-top: 13px;
               }
-
               .desktop-br {
                 display: none;
               }
@@ -999,14 +989,12 @@ class Marketplace extends React.Component {
                 text-align: right;
                 margin-left: 0px;
               }
-              
             }
 
             @media (max-width: 820px) {
               .iconcontainers {
                 display: none;
               }
-              
             }
 
             @media (max-width: 773px) {
