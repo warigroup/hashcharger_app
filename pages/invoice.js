@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
 import { Link } from "../routes";
 import { convertDuration } from "../utils/convertDuration";
 import copy from 'copy-to-clipboard';
-import { googleAnalytics, invoiceExpMin } from "../settings";
+import { googleAnalytics } from "../settings";
 
 const moment = require('moment-timezone');
 var Scroll = require('react-scroll');
@@ -79,15 +79,14 @@ class InvoicePage extends React.Component {
     }, 5000);
   };
  
-  setCountdown = invoice_expiration_time => {
-    this.countdownTimer = setInterval(() => {
+  setCountdown = (invoice_expiration_time, invoice_length_min) => { this.countdownTimer = setInterval(() => {
       let utctime = moment().tz('UTC').valueOf() / 1000;
       let expirationtime = moment(invoice_expiration_time).valueOf() / 1000;
       let remainingtime = expirationtime - utctime;
       let minutes = Math.floor(remainingtime / 60);
       let seconds = Math.trunc(remainingtime % 60);
       let countdowntime = (minutes > 0 ? minutes : "0") + (minutes > 1 ? ' minutes' : ' minute') + " and " + (seconds < 10 ? '0' : '') + seconds + " seconds";
-      let progressbarTime =  100 - Math.floor(minutes * 100 / invoiceExpMin );
+      let progressbarTime =  100 - Math.floor(minutes * 100 / invoice_length_min );
       if (this._isMounted && 
         this.state.isSent === false &&
         this.state.isFailed === false) {
@@ -376,8 +375,10 @@ class InvoicePage extends React.Component {
                     {this.state.msIE === false ? 
                 <p className="invoice-contents" style={{marginTop: "15px", marginBottom: "0px"}}>Please make a payment of <span className="paymentinfo">{bid.payment_amount} BTC</span> to complete purchase.
                 {/********* Set countdown and automatic page refresh ********/}
-                {this.state.isSent === false ? this.setCountdown(bid.invoice_expiration_time) : null} 
-                
+                {this.state.isSent === false ? this.setCountdown(
+                    bid.invoice_expiration_time,
+                    Math.floor((moment(bid.invoice_expiration_time).valueOf() - moment(bid.invoice_creation_time).valueOf())/1000/60)) : null}
+               
                 </p> : null }
 
                 <div className="btcaddress-container">

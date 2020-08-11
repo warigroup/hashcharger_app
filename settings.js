@@ -69,8 +69,4 @@ export const searchEngine = "on";
 export const alphaURL = "https://market.warihash.com";
 
 
-///##########
-///########## Invoice Expiration Time In Minutes. Set your invoice expiration time here.
-///########## 
 
-export const invoiceExpMin = 60;
